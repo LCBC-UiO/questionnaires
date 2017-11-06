@@ -1,8 +1,4 @@
----
-output:
-  pdf_document: default
-  html_document: default
----
+
 # International Physical Activity Questionnaire
 
 ##Background
