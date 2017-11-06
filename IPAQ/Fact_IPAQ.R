@@ -17,9 +17,9 @@ Fact_IPAQ = function(DATA){
   # Categorise the data
   DATA1$IPAQ_Category = ifelse( (DATA1$IPAQ_MET.Vigorous >= 1500 & DATA1$IPAQ_5>=3) |
                                   (DATA1$IPAQ_1+DATA1$IPAQ_3+DATA1$IPAQ_5>=7 & DATA1$IPAQ_MET >= 3000) ,
-                                   "HEPA active",ifelse((DATA1$IPAQ_6>=20 & DATA1$IPAQ_5>=3) | 
+                                   "High",ifelse((DATA1$IPAQ_6>=20 & DATA1$IPAQ_5>=3) | 
                                                    (DATA1$IPAQ_1+DATA1$IPAQ_3>=5 & (DATA1$IPAQ_1>=30 | DATA1$IPAQ_3>=30 ) ), 
-                                                 "Minimally active","Inactive")) 
+                                                 "Moderate","Low")) 
   
   DATA2 = DATA %>% left_join(DATA1, by=c("CrossProject_ID","Subject_Timepoint")) %>% 
     select(-matches("\\.x$"))
