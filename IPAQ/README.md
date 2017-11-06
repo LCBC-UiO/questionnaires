@@ -1,7 +1,7 @@
 
 # International Physical Activity Questionnaire
 
-##Background
+## Background
 
 The purpose of the International Physical Activity Questionnaires (IPAQ) is to provide a set of well-developed instruments that can be used internationally to obtain comparable estimates of physical activity. There are two versions of the questionnaire. The short version is suitable for use in national and regional surveillance systems and the long version provide more detailed information often required in research work or for evaluation purposes.
 
