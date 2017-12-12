@@ -1,7 +1,7 @@
 # Remembering-Imagination
  Cue-Word Task 
 
-This script is not yet cleaned, and will not easily function with MOAS data without manipulation. This is coming, but likely after Christmas 2017.
+** This script is not yet cleaned, and will not easily function with MOAS data without manipulation. This is coming, but likely after Christmas 2017. **
 
 ## Description
 The task was modeled on a much-used cue-word paradigm (Schacter et al., 2007) and previously implemented in our lab (Østby et al., 2012). The task consisted on remembering past experiences and envisioning possible future scenarios in response to cue words within 2 years into the past/future. The participants were instructed to retrieve/imagine specific episodes that could happen to them within a limited period (<1day) and to not recast exact memories as future scenarios. A practice trial and six tasks were administered. A cue word was presented on a computer screen together with a word designating either “past” or “future” by use of E-prime software. The participants were then asked to think of an episode that the cue word reminded them of and to press a key when they had found a relevant episode. They were then given 40 s to think through the episode and imagine it in as much detail as possible. 
