@@ -16,6 +16,8 @@ In response to the global demand for comparable and valid measures of physical a
 Scoring of the IPAQ is based on a metric called METs, which are multiples of the resting metabolic rate.
 [The IPAQ scoring description can be found here ](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnx0aGVpcGFxfGd4OjE0NDgxMDk3NDU1YWRlZTM)
 
+## This script specifically needs questions 2,4, and 6 (regarding hours spent doing activities) to be coded in decimal hours (where 1.5 = 1h 30mins)
+
 ### Continuous Score
 
 Expressed as MET-min per week: MET level x minutes of activity/day x days per week
