@@ -1,60 +1,94 @@
-Fact_PSQI = function(DATA){
+Fact_PSQI = function(DATA, Q4="dec"){
+  require(tidyverse); require(lubridate)
   
-  IDX = grep("ID|PSQI",names(DATA))
+  #### --- Special function to go from hms to decimal hours --- ####
+  hms2deciH = function(x){
+    require(lubridate)
+    t = hour(x)+
+      (minute(x)/60)+
+      (second(x)/120)
+    return(t)
+  }
   
-  df = DATA[,IDX]
+  #### --- Prepping data --- ####
+  # assumes first column is ID column
+  df = DATA %>% select(contains("PSQI"))
   
-  df$PSQI_1 = as.character(df$PSQI_1)
-
+  # Make sure SPSS has not added strange ".0" the the end of timestamp.
+  # Assumes Q1 and Q3 are HH:MM:SS
+  df$PSQI_1 = df$PSQI_1 %>% 
+    as.character() %>% 
+    gsub(pattern = "\\.0$",replacement = "", .) %>% 
+    hms(roll=T, quiet = T)
+  
+  df$PSQI_3 = df$PSQI_3 %>% 
+    as.character() %>% 
+    gsub(pattern = "\\.0$",replacement = "", .) %>% 
+    hms(roll=T, quiet = T)
+  
+  # Scale Q2
   df$PSQI_2_scaled = ifelse(df$PSQI_2 >= 15 & df$PSQI_2 <= 30, 1, 
                             ifelse(df$PSQI_2 >= 31 & df$PSQI_2 <= 60,2,
                                    ifelse(df$PSQI_2 >= 60, 3, 0)))
   
-  #create the PSQI data frame
-  PSQI = data.frame(matrix(ncol=0, nrow=nrow(df)))
+  # If Q4 is punched as HH:MM, convert to decminal hours
+  if(Q4=="time"){
+    df$PSQI_4 = df$PSQI_4 %>% hms() %>% hms2deciH()
+  }
+  
+  
+  # Works around varying punching of after midnight bedtimes (added 24hr for easy calculations)
+  df$Bedtime = if_else(hour(df$PSQI_1)<=5, df$PSQI_1+hours(24), df$PSQI_1) %>% period_to_seconds
+  
+  # Adds 24hr to rising time, for easy calculation of time spent in bed
+  df$Risingtime = df$PSQI_3+hours(24) %>% period_to_seconds()
+  
+  # Calculate time spend in bed from bedtime and rising time
+  df$TimeInBed = (df$Risingtime-df$Bedtime) %>% 
+    as.period(unit = "hours") %>% hms2deciH()
+  
+
+  
+  #### --- Calculate components --- ####
+  
+  # Component 1 is assessment of sleep quality in Q6
   DATA$PSQI_Comp1_SleepQuality     = df$PSQI_6 
   
-  PSQI$PSQI_Comp2_sum = df$PSQI_2_scaled + df$PSQI_5a
-  DATA$PSQI_Comp2_Latency = ifelse(PSQI$PSQI_Comp2_sum >= 1 & PSQI$PSQI_Comp2_sum <= 2, 1,
-                              ifelse(PSQI$PSQI_Comp2_sum >= 3 & PSQI$PSQI_Comp2_sum <= 4, 2, 
-                                     ifelse(PSQI$PSQI_Comp2_sum >=5, 3, 0)))
+  # Component 2 is a latency score, the sum of scaled Q2 with Q5a, and then scaled
+  df$PSQI_Comp2_sum = df$PSQI_2_scaled + df$PSQI_5a
+  DATA$PSQI_Comp2_Latency = ifelse(df$PSQI_Comp2_sum >= 1 & df$PSQI_Comp2_sum <= 2, 1,
+                              ifelse(df$PSQI_Comp2_sum >= 3 & df$PSQI_Comp2_sum <= 4, 2, 
+                                     ifelse(df$PSQI_Comp2_sum >=5, 3, 0)))
   
+  # Component 3 is a scaling of sleep duration
   DATA$PSQI_Comp3_Duration = ifelse(df$PSQI_4 > 7, 0,
                                ifelse(df$PSQI_4 >= 6 & df$PSQI_4 <= 7, 1,
                                       ifelse(df$PSQI_4 >= 5 & df$PSQI_4 < 6, 2, 3)))
+
+  # Component 4 is a scaled indicator of sleep efficiency
+  df$PSQI_Comp4_Percent = (df$PSQI_4/df$TimeInBed)*100
+  DATA$PSQI_Comp4_Efficiency = ifelse(df$PSQI_Comp4_Percent > 85, 0,
+                                 ifelse(df$PSQI_Comp4_Percent <= 85 & df$PSQI_Comp4_Percent >= 75, 1,
+                                        ifelse( df$PSQI_Comp4_Percent < 75 & df$PSQI_Comp4_Percent >= 65, 2, 3)))
   
-  #There are some issues with importing date-times from SPSS.
-  #This part of code tries to work around that to get the correct values.
-  tmp = data.frame(matrix(nrow=nrow(PSQI)))
-  tmp$Bedtime = Fix_times(df$PSQI_1); tmp$Bedtime = ifelse(tmp$Bedtime<5, tmp$Bedtime+24,tmp$Bedtime)
-  tmp$Risingtime = Fix_times(df$PSQI_3); tmp$Risingtime = tmp$Risingtime+24
-  tmp$TimeInBed = (tmp$Risingtime-tmp$Bedtime)
-  
-  PSQI$PSQI_Comp4_Percent = (df$PSQI_4/tmp$TimeInBed)*100
-  DATA$PSQI_Comp4_Efficiency = ifelse(PSQI$PSQI_Comp4_Percent > 85, 0,
-                                 ifelse(PSQI$PSQI_Comp4_Percent <= 85 & PSQI$PSQI_Comp4_Percent >= 75, 1,
-                                        ifelse( PSQI$PSQI_Comp4_Percent < 75 & PSQI$PSQI_Comp4_Percent >= 65, 2, 3)))
-  
-  # Get all the 5-questions that are not strings.
-  tmp = df[, grep("_5", names(df))]
-  tmp = tmp[,grep("Coded|Desc",names(tmp))*-1]  
-  PSQI$PSQI_Comp_5_sum = ifelse(!is.na(tmp$PSQI_5a),rowSums(tmp[,1:ncol(tmp)], na.rm=T), NA)
+  # Get all the 5-questions that are not strings. This assumes all the Q5's column names end
+  # with "_5" and the characters a-j in small case
+  tmp = df %>% select(matches("_5[a-j]$"))
+  df$PSQI_Comp_5_sum = ifelse(!is.na(tmp$PSQI_5a),rowSums(tmp[,1:ncol(tmp)], na.rm=T), NA)
     
-  DATA$PSQI_Comp_5_Problems = ifelse(PSQI$PSQI_Comp_5_sum == 0, 0,
-                                ifelse(PSQI$PSQI_Comp_5_sum >= 1 & PSQI$PSQI_Comp_5_sum < 10, 1,
-                                       ifelse(PSQI$PSQI_Comp_5_sum >= 10 & PSQI$PSQI_Comp_5_sum < 19, 2, 3)))
+  DATA$PSQI_Comp_5_Problems = ifelse(df$PSQI_Comp_5_sum == 0, 0,
+                                ifelse(df$PSQI_Comp_5_sum >= 1 & df$PSQI_Comp_5_sum < 10, 1,
+                                       ifelse(df$PSQI_Comp_5_sum >= 10 & df$PSQI_Comp_5_sum < 19, 2, 3)))
   
   DATA$PSQI_Comp6_Medication = df$PSQI_7
   
-  PSQI$PSQI_Comp7_sum = rowMeans(cbind(df$PSQI_8,df$PSQI_9))*2
-  DATA$PSQI_Comp7_Tired = ifelse(PSQI$PSQI_Comp7_sum == 0, 0,
-                            ifelse(PSQI$PSQI_Comp7_sum > 0 & PSQI$PSQI_Comp7_sum <= 2, 1,
-                                   ifelse(PSQI$PSQI_Comp7_sum > 2 & PSQI$PSQI_Comp7_sum <= 4, 2, 3)))
+  df$PSQI_Comp7_sum = rowMeans(cbind(df$PSQI_8,df$PSQI_9))*2
+  DATA$PSQI_Comp7_Tired = ifelse(df$PSQI_Comp7_sum == 0, 0,
+                            ifelse(df$PSQI_Comp7_sum > 0 & df$PSQI_Comp7_sum <= 2, 1,
+                                   ifelse(df$PSQI_Comp7_sum > 2 & df$PSQI_Comp7_sum <= 4, 2, 3)))
   
-  #Remove temporary columns
-  DATA$PSQI_Global = rowSums(DATA[,grep("PSQI_Comp",names(DATA))])
+  DATA$PSQI_Global = DATA %>% select(contains("PSQI_Comp")) %>% rowSums()
   
-
-  #Return the Data with the new values appended.
+  #Return the entire incoming data with the new values added
   return(DATA)
 }
