@@ -1,6 +1,8 @@
 ---
 title: "Pittsburgh Sleep Quality Index"
 subtitle: "Calculation of components and global score"
+output: pdf_document
+toc: TRUE
 ---
 
 ## Background
@@ -29,7 +31,7 @@ All 4-option questions need to be coded **0-3**, not **1-4**.
 
 #### Time formats
 For question 1 and 3 (bedtime and rising time), data should be punched as "**HH:MM**". 
-Question 2 should be punched as minutes in numbers
+Question 2 should be punched as minutes in numbers.  
 Question 4 can be punched both as decimal hours or "**HH:MM**".
 
 ### Output   
