@@ -28,7 +28,7 @@ Fact_IPAQ = function(DATA){
                                                  "Moderate","Low")) 
   
   DATA2 = DATA %>% left_join(DATA1, by=c("CrossProject_ID","Subject_Timepoint")) %>% 
-    select(-matches("\\.x$"), contains("DELETE[12]"))
+    select(-matches("\\.x$"), -matches("DELETE[12]"))
   names(DATA2) = gsub("\\.y$", "", names(DATA2))
   
   return(DATA2)
