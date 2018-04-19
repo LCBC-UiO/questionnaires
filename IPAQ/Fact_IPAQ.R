@@ -1,15 +1,40 @@
 Fact_IPAQ = function(DATA){
   require(tidyverse)
   
+  #### --- Special function to go from hms to decimal hours --- ####
+  hms2deciH = function(x){
+    require(lubridate)
+    t = hour(x)+
+      (minute(x)/60)+
+      (second(x)/120)
+    return(t)
+  }
+  
   METS = c(Light = 3.3, Moderate = 4.0, Vigorous = 8.0)
   
   # Converts decimal hours to minutes
   DATA1 = DATA %>% 
-    select(CrossProject_ID,Subject_Timepoint, contains("IPAQ")) %>% 
-    mutate(IPAQ_MET.Vigorous = IPAQ_2*60*IPAQ_1b*METS["Vigorous"],
+    select(CrossProject_ID,Subject_Timepoint, contains("IPAQ")) 
+  
+  # Find instances where time is punched as a time, not decimal, and convert them
+  for(k in c("IPAQ_2", "IPAQ_4", "IPAQ_6")){
+    
+    for(i in grep(":",DATA1[,k])){
+      DATA1[i,k] = if(DATA1[i,k] %>% str_count(":") == 1){
+        DATA1[i,k] %>% hm() %>% hms2deciH()
+      }else{
+        DATA1[i,k] %>% hms() %>% hms2deciH()
+      }
+    }
+    
+    DATA1[,k] = DATA1[,k]  %>% as.numeric()
+  }
+  
+  DATA1 = DATA1 %>% mutate(IPAQ_MET.Vigorous = IPAQ_2*60*IPAQ_1b*METS["Vigorous"],
            IPAQ_MET.Moderate = IPAQ_4*60*IPAQ_3b*METS["Moderate"],
            IPAQ_MET.Light    = IPAQ_6*60*IPAQ_5b*METS["Light"]) %>% 
     select(-matches("IPAQ_[246]M$"))
+  
   DATA1$IPAQ_MET = ifelse(apply(DATA1 %>% select(IPAQ_MET.Light, IPAQ_MET.Moderate, IPAQ_MET.Vigorous),1, function(x) !all(is.na(x))),
                           rowSums(DATA1 %>% select(IPAQ_MET.Light,IPAQ_MET.Moderate,IPAQ_MET.Vigorous), na.rm=T), NA )
     
