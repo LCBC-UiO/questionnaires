@@ -11,7 +11,8 @@ Calc_BDI = function(DATA){
   
   DT = DATA %>%
     select(-contains("BDI")) %>%
-    bind_cols(BDI)
+    bind_cols(BDI) %>% 
+    cbind.data.frame(DATA$BDI_19b)
   
   return(DT)
 }

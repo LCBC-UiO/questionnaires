@@ -13,7 +13,7 @@ Fact_EHI = function(DATA){
     mutate(EHI_LE = ((POS-NEG)/(POS+NEG))*100) %>%
     
     #Grab the answer from the first question (writing), and turn into nominal scale
-    mutate(EHI_Nominal = ifelse(EHI$EHI_01 > 0,"Right", ifelse(EHI$EHI_01 == 0, "Ambi", "Left"))) %>%
+    mutate(EHI_Nominal = ifelse(EHI$EHI_01 > 0,"Right", ifelse(EHI$EHI_01 == 0, "Ambidexterous", "Left"))) %>%
     
     #Code into Left or Right according to quotient, ambi is not allowed. See Oldfield paper.
     
