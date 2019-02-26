@@ -1,9 +1,8 @@
-# Questionnaires
-Scripts for questionnaires used by LCBC. 
-All scripts are made specifically with the use of MOAS data (i.e. requires columns names a particular way).
+# lifebrain.sleep
+Code for Lifebrain sleep analysis
 
-They should always be annotated enough to be understood and adapted when used otherwise.
+The directory `R/` contains function definitions.
 
-The scripts create functions in the global workspace, that you may call as any other R-function (ex. Fact_TAS(your_data) ). All the functions return the entire data frame with new data appended as columns. 
-
-More information for the various questionnaires and scripts may be found within their respective folders, in their README.md files.
+the function `compute_psqi` will as default calculate all components, and ise column naming conventions as in the LCBC MOAS data. 
+Column specifications may be manually inputed, and so can the option to add the PSQI calculations to the data supplied (`keep_all = TRUE`), or just output the computations (`keep_all = FALSE`). 
+You may also specify which components to calculate by integer vector to the `component` option. Global calculation will only be implemented if all 7 components are calculated. 

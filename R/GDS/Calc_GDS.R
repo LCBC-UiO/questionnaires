@@ -1,6 +1,5 @@
 Calc_GDS = function(DATA){
-  require(tidyverse)
-  
+
   tmp = DATA %>% select(matches("GDS_[0-9][0-9]$"))
   
   Neg = tmp %>%

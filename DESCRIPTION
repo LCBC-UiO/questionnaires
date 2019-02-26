@@ -1,0 +1,18 @@
+Package: Questionnaires
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Athanasia Monika",
+           family = "Mowinckel",
+           role = c("aut", "cre"),
+           email = "a.m.mowinckel@psykologi.uio.no")
+Description: What the package does (one paragraph).
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    dplyr,
+    lubridate
+Suggests: 
+    testthat
+RoxygenNote: 6.1.1
