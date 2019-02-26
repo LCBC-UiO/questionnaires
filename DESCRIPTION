@@ -14,5 +14,6 @@ Imports:
     dplyr,
     lubridate
 Suggests: 
-    testthat
+    testthat,
+    here
 RoxygenNote: 6.1.1

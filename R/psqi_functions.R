@@ -15,7 +15,7 @@ compute_time_in_bed <- function(risingtime, bedtime){
 #' @param noSleep30min column name with evaluation of sleep within 30min (0-3) [PSQI_05a]
 #'
 #' @export
-compute_comp2 <- function(minBeforeSleep, noSleep30min){
+psqi_compute_comp2 <- function(minBeforeSleep, noSleep30min){
   
   tmp <- cut(minBeforeSleep, breaks = c(0, 15, 31, 61, Inf), 
              labels = FALSE, include.lowest = TRUE, right = FALSE) - 1L
@@ -30,7 +30,7 @@ compute_comp2 <- function(minBeforeSleep, noSleep30min){
 #' @param hoursSleep column name with hours of sleep (decimal hours) [PSQI_04]
 #'
 #' @export
-compute_comp3 <- function(hoursSleep){
+psqi_compute_comp3 <- function(hoursSleep){
   4L - cut(hoursSleep, breaks = c(0, 4.999, 5.999, 7, Inf), 
            labels = FALSE, include.lowest = TRUE, right = TRUE)
 }
@@ -42,7 +42,7 @@ compute_comp3 <- function(hoursSleep){
 #' @param hoursSleep column name with hours of sleep (decimal hours) [PSQI_04]
 #'
 #' @export
-compute_comp4 <- function(hoursSleep, bedtime, risingtime){
+psqi_compute_comp4 <- function(hoursSleep, bedtime, risingtime){
   4L - cut(hoursSleep / compute_time_in_bed(risingtime, bedtime) * 100,
            breaks = c(0, 65, 75, 85.0001), labels = FALSE, include.lowest = TRUE,
            right = FALSE)
@@ -56,7 +56,7 @@ compute_comp4 <- function(hoursSleep, bedtime, risingtime){
 #'
 #' @export
 #' @importFrom dplyr enquo select mutate if_else pull
-compute_comp5 <- function(data, noSleep30min = PSQI_05a, sleepTroubles = matches("^PSQI_05[a-j]$")){
+psqi_compute_comp5 <- function(data, noSleep30min = PSQI_05a, sleepTroubles = matches("^PSQI_05[a-j]$")){
   sleepTroubles <- enquo(sleepTroubles)
   noSleep30min <- enquo(noSleep30min)
   
@@ -74,7 +74,7 @@ compute_comp5 <- function(data, noSleep30min = PSQI_05a, sleepTroubles = matches
 #' @param keepEnthused column name with evaluation of keeping enthusiastic (0-3) [PSQI_09]
 #'
 #' @export
-compute_comp7 <- function(keepAwake, keepEnthused){
+psqi_compute_comp7 <- function(keepAwake, keepEnthused){
   cut(keepAwake + keepEnthused,
       breaks = c(-Inf, 0, 2, 4, Inf), labels = FALSE, include.lowest = TRUE, 
       right = TRUE) - 1L
@@ -87,7 +87,7 @@ compute_comp7 <- function(keepAwake, keepEnthused){
 #'
 #' @export
 #' @importFrom dplyr enquo select
-compute_global <- function(data, cols = matches("^PSQI_Comp[0-9]+_")){
+psqi_compute_global <- function(data, cols = matches("^PSQI_Comp[0-9]+_")){
   cols <- enquo(cols)
   
   rowSums(select(data, !!cols))
@@ -113,7 +113,7 @@ compute_global <- function(data, cols = matches("^PSQI_Comp[0-9]+_")){
 #' @return a data.frame containing only the calculated components
 #' @export
 #' @importFrom dplyr enquo mutate matches
-compute_psqi <- function(data, 
+psqi_compute <- function(data, 
                          components = 1:7,
                          bedtime = PSQI_01, minBeforeSleep = PSQI_02, risingtime = PSQI_03, 
                          hoursSleep = PSQI_04, noSleep30min = PSQI_05a, sleepQuality = PSQI_06, 
@@ -141,22 +141,22 @@ compute_psqi <- function(data,
   }
   
   if(2 %in% components){
-    tmp <- mutate(tmp, PSQI_Comp2_Latency = compute_comp2(!!minBeforeSleep, !!noSleep30min))
+    tmp <- mutate(tmp, PSQI_Comp2_Latency = psqi_compute_comp2(!!minBeforeSleep, !!noSleep30min))
     nn = c(nn, "PSQI_Comp2_Latency")  
   } 
   
   if(3 %in% components){
-    tmp <- mutate(tmp, PSQI_Comp3_Duration = compute_comp3(!!hoursSleep))
+    tmp <- mutate(tmp, PSQI_Comp3_Duration = psqi_compute_comp3(!!hoursSleep))
     nn = c(nn, "PSQI_Comp3_Duration")
   } 
   
   if(4 %in% components){
-    tmp <- mutate(tmp, PSQI_Comp4_Efficiency = compute_comp4(!!hoursSleep, !!bedtime, !!risingtime))
+    tmp <- mutate(tmp, PSQI_Comp4_Efficiency = psqi_compute_comp4(!!hoursSleep, !!bedtime, !!risingtime))
     nn = c(nn, "PSQI_Comp4_Efficiency")
   } 
   
   if(5 %in% components){
-    tmp <- mutate(tmp, PSQI_Comp5_Problems = compute_comp5(data, !!noSleep30min, sleepTroubles))
+    tmp <- mutate(tmp, PSQI_Comp5_Problems = psqi_compute_comp5(data, !!noSleep30min, sleepTroubles))
     nn = c(nn, "PSQI_Comp5_Problems")
   } 
   
@@ -166,7 +166,7 @@ compute_psqi <- function(data,
   } 
   
   if(7 %in% components){
-    tmp <- mutate(tmp, PSQI_Comp7_Tired = compute_comp7(!!keepAwake, !!keepEnthused))
+    tmp <- mutate(tmp, PSQI_Comp7_Tired = psqi_compute_comp7(!!keepAwake, !!keepEnthused))
     nn = c(nn, "PSQI_Comp7_Tired")
   } 
   
@@ -174,7 +174,7 @@ compute_psqi <- function(data,
   
   if(all(1:7 %in% components)){
     mutate(tmp,
-           PSQI_Global = compute_global(tmp)
+           PSQI_Global = psqi_compute_global(tmp)
     )
   }else{
     tmp

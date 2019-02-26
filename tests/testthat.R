@@ -1,4 +1,4 @@
 library(testthat)
-library(lifebrain.sleep)
+library(Questionnaires)
 
-test_check("lifebrain.sleep")
+test_check("Questionnaires")
