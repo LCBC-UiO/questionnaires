@@ -44,7 +44,7 @@ psqi_compute_comp3 <- function(hoursSleep){
 #' @export
 psqi_compute_comp4 <- function(hoursSleep, bedtime, risingtime){
   4L - cut(hoursSleep / compute_time_in_bed(risingtime, bedtime) * 100,
-           breaks = c(0, 65, 75, 85.0001), labels = FALSE, include.lowest = TRUE,
+           breaks = c(0, 65, 75, 85.0001, Inf), labels = FALSE, include.lowest = TRUE,
            right = FALSE)
 }
 

@@ -10,11 +10,12 @@ test_that("Check component calculations", {
   expect_equal(psqi_compute_comp3(hoursSleep = psqi$PSQI_04),
                c(1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1))
   
-  expect_equal(psqi_compute_comp4(hoursSleep = psqi$PSQI_04, 
-                bedtime = psqi$PSQI_01, 
-                risingtime = psqi$PSQI_03),
-               c(NA, NA, NA, NA, 1, NA, NA, NA, 1, NA, 3, 2))
-  
+
+  expect_equal(psqi_compute_comp4(hoursSleep = test$PSQI_04, 
+                bedtime = test$PSQI_01, 
+                risingtime = test$PSQI_03),
+               c(0, 0, 0, NA, 1, 0, 0, 0, 1, 0, 3, 2))
+
   expect_equal(psqi_compute_comp5(data = psqi, 
                 noSleep30min = PSQI_05a, 
                 sleepTroubles = matches("^PSQI_05[a-j]$")),
