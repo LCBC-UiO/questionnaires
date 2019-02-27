@@ -8,15 +8,13 @@ ehi_compute(data, cols = matches("^EHI_[0-9][0-9]$"), writing = EHI_01,
   keep_all = TRUE)
 }
 \arguments{
-\item{data}{}
+\item{data}{data.frame containing EHI data}
 
-\item{writing}{}
+\item{cols}{tidyselected columns of all EHI data}
 
-\item{keep_all}{}
+\item{writing}{numeric vector of writing prefereance [-2,-1,0,1,2]}
 
-\item{positive_cols}{}
-
-\item{negative_cols}{}
+\item{keep_all}{logical, append to data.frame}
 }
 \value{
 data.frame

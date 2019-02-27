@@ -11,7 +11,7 @@ bdi_compute(data, cols = matches("BDI_[0-9][0-9]$"), keep_all = TRUE)
 
 \item{cols}{Columns that contain BDI data}
 
-\item{keep_all}{Logical. Keep all original columns in output or not.}
+\item{keep_all}{logical, append to data.frame}
 }
 \value{
 data.frame

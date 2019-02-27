@@ -108,7 +108,7 @@ psqi_compute_global <- function(data, cols = matches("^PSQI_Comp[0-9]+_")){
 #' @param keepAwake column name with evaluation of staying awake (0-3) [PSQI_08]
 #' @param keepEnthused column name with evaluation of keeping enthusiastic (0-3) [PSQI_09]
 #' @param sleepTroubles columns containing sleep problem evaluations (0-3) [PSQI_05[a-j] ]
-#' @param keep_all logical, append PSQI to data.frame
+#' @param keep_all logical, append to data.frame
 #'
 #' @return a data.frame containing only the calculated components
 #' @export

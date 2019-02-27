@@ -6,7 +6,6 @@
 #' @return numeric
 #' @export
 #' @family bdi_functions
-#' @examples
 #' @importFrom dplyr enquo select matches
 bdi_compute_sum = function(data, cols = matches("BDI_[0-9][0-9]$")){
   cols = enquo(cols)
@@ -24,7 +23,6 @@ bdi_compute_sum = function(data, cols = matches("BDI_[0-9][0-9]$")){
 #' @return factor
 #' @export
 #' @family bdi_functions
-#' @examples
 bdi_factorise <- function(bdi_sum = BDI){
   
   # If there is a sum, categorise it according to original paper.
@@ -49,12 +47,11 @@ bdi_factorise <- function(bdi_sum = BDI){
 #'
 #' @param data Data containing BDI data
 #' @param cols Columns that contain BDI data
-#' @param keep_all Logical. Keep all original columns in output or not.
+#' @param keep_all logical, append to data.frame
 #'
 #' @return data.frame
 #' @export
 #' @family bdi_functions
-#' @examples
 bdi_compute = function(data, cols = matches("BDI_[0-9][0-9]$"), keep_all = TRUE){
   
   tmp <- mutate(data, BDI = bdi_compute_sum(data, cols))

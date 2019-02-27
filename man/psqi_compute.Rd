@@ -36,7 +36,7 @@ psqi_compute(data, components = 1:7, bedtime = PSQI_01,
 
 \item{sleepTroubles}{columns containing sleep problem evaluations (0-3) [PSQI_05[a-j] ]}
 
-\item{keep_all}{logical, append PSQI to data.frame}
+\item{keep_all}{logical, append to data.frame}
 }
 \value{
 a data.frame containing only the calculated components

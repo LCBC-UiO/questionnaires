@@ -30,7 +30,6 @@ ehi_values <- function(data,
 #' @return numeric
 #' @export
 #' @family ehi_functions
-#' @examples
 ehi_compute_le <- function(data, cols = matches("^EHI_[0-9][0-9]$")){
   
   pos <- ehi_values(data, cols, 1)
@@ -46,7 +45,6 @@ ehi_compute_le <- function(data, cols = matches("^EHI_[0-9][0-9]$")){
 #' @return factor
 #' @export
 #' @family ehi_functions
-#' @examples
 ehi_factorise_nominal <- function(writing = EHI_01){
   factor(
     ifelse(writing > 0, "Right", 
@@ -63,7 +61,6 @@ ehi_factorise_nominal <- function(writing = EHI_01){
 #' @return factor
 #' @export
 #' @family ehi_functions
-#' @examples
 ehi_factorise_le <- function(le = EHI_LE){
   factor(
     ifelse(le >= 0,"Right","Left"),
@@ -75,12 +72,10 @@ ehi_factorise_le <- function(le = EHI_LE){
 #' 
 #' Compute all variables of EHI 
 #' 
-#' @param data 
-#'
-#' @param positive_cols 
-#' @param negative_cols 
-#' @param writing 
-#' @param keep_all 
+#' @param data data.frame containing EHI data
+#' @param cols tidyselected columns of all EHI data
+#' @param writing numeric vector of writing prefereance [-2,-1,0,1,2]
+#' @param keep_all logical, append to data.frame
 #' 
 #' @return data.frame
 #' @export
