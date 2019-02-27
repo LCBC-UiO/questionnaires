@@ -44,3 +44,12 @@ a data.frame containing only the calculated components
 \description{
 Compute all PSQI components and global score
 }
+\seealso{
+Other psqi_functions: \code{\link{psqi_compute_comp2}},
+  \code{\link{psqi_compute_comp3}},
+  \code{\link{psqi_compute_comp4}},
+  \code{\link{psqi_compute_comp5}},
+  \code{\link{psqi_compute_comp7}},
+  \code{\link{psqi_compute_global}}
+}
+\concept{psqi_functions}

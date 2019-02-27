@@ -13,7 +13,7 @@ compute_time_in_bed <- function(risingtime, bedtime){
 #' 
 #' @param minBeforeSleep column name with no. minutes before sleep (numeric) [PSQI_02]
 #' @param noSleep30min column name with evaluation of sleep within 30min (0-3) [PSQI_05a]
-#'
+#' @family psqi_functions
 #' @export
 psqi_compute_comp2 <- function(minBeforeSleep, noSleep30min){
   
@@ -28,7 +28,7 @@ psqi_compute_comp2 <- function(minBeforeSleep, noSleep30min){
 #' Compute component PSQI 3
 #' 
 #' @param hoursSleep column name with hours of sleep (decimal hours) [PSQI_04]
-#'
+#' @family psqi_functions
 #' @export
 psqi_compute_comp3 <- function(hoursSleep){
   4L - cut(hoursSleep, breaks = c(0, 4.999, 5.999, 7, Inf), 
@@ -40,7 +40,7 @@ psqi_compute_comp3 <- function(hoursSleep){
 #' @param bedtime column name with bedtime (HH:MM:SS) [PSQI_01]
 #' @param risingtime column name with rising time (HH:MM:SS) [PSQI_03]
 #' @param hoursSleep column name with hours of sleep (decimal hours) [PSQI_04]
-#'
+#' @family psqi_functions
 #' @export
 psqi_compute_comp4 <- function(hoursSleep, bedtime, risingtime){
   4L - cut(hoursSleep / compute_time_in_bed(risingtime, bedtime) * 100,
@@ -53,7 +53,7 @@ psqi_compute_comp4 <- function(hoursSleep, bedtime, risingtime){
 #' @param data data frame with the data
 #' @param noSleep30min column name with evaluation of sleep within 30min (0-3) [PSQI_05a]
 #' @param sleepTroubles columns containing sleep problem evaluations (0-3) [PSQI_05[a-j] ]
-#'
+#' @family psqi_functions
 #' @export
 #' @importFrom dplyr enquo select mutate if_else pull
 psqi_compute_comp5 <- function(data, noSleep30min = PSQI_05a, sleepTroubles = matches("^PSQI_05[a-j]$")){
@@ -72,7 +72,7 @@ psqi_compute_comp5 <- function(data, noSleep30min = PSQI_05a, sleepTroubles = ma
 #' 
 #' @param keepAwake column name with evaluation of staying awake (0-3) [PSQI_08]
 #' @param keepEnthused column name with evaluation of keeping enthusiastic (0-3) [PSQI_09]
-#'
+#' @family psqi_functions
 #' @export
 psqi_compute_comp7 <- function(keepAwake, keepEnthused){
   cut(keepAwake + keepEnthused,
@@ -84,7 +84,7 @@ psqi_compute_comp7 <- function(keepAwake, keepEnthused){
 #' 
 #' @param data Data frame containing PSQI components
 #' @param cols columns containing the components
-#'
+#' @family psqi_functions
 #' @export
 #' @importFrom dplyr enquo select
 psqi_compute_global <- function(data, cols = matches("^PSQI_Comp[0-9]+_")){
@@ -112,6 +112,7 @@ psqi_compute_global <- function(data, cols = matches("^PSQI_Comp[0-9]+_")){
 #'
 #' @return a data.frame containing only the calculated components
 #' @export
+#' @family psqi_functions
 #' @importFrom dplyr enquo mutate matches
 psqi_compute <- function(data, 
                          components = 1:7,
@@ -180,4 +181,8 @@ psqi_compute <- function(data,
     tmp
   }
 }
+
+if(getRversion() >= "2.15.1")  utils::globalVariables(c("PSQI_01", "PSQI_02", "PSQI_03", "PSQI_04", 
+                                                        "PSQI_05a", "PSQI_06", "PSQI_07", "PSQI_08", "PSQI_09",
+                                                        "value"))
 

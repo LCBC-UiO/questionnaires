@@ -14,3 +14,12 @@ psqi_compute_global(data, cols = matches("^PSQI_Comp[0-9]+_"))
 \description{
 Compute Global PSQI component
 }
+\seealso{
+Other psqi_functions: \code{\link{psqi_compute_comp2}},
+  \code{\link{psqi_compute_comp3}},
+  \code{\link{psqi_compute_comp4}},
+  \code{\link{psqi_compute_comp5}},
+  \code{\link{psqi_compute_comp7}},
+  \code{\link{psqi_compute}}
+}
+\concept{psqi_functions}
