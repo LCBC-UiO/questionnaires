@@ -6,7 +6,7 @@
 #' @importFrom lubridate hms period_to_seconds hours
 compute_time_in_bed <- function(risingtime, bedtime){
   tmp <- hms(risingtime, quiet = T) - hms(bedtime, quiet = T)
-  period_to_seconds(if_else(tmp < 0, hours(24) + tmp, tmp))/3600
+  period_to_seconds(if_else(as.numeric(tmp) < 0, hours(24) + tmp, tmp))/3600
 }
 
 #' Compute component PSQI 2
