@@ -1,5 +1,5 @@
 
-
+#' Compute time in bed
 #' @param bedtime column name with bedtime (HH:MM:SS) [PSQI_01]
 #' @param risingtime column name with rising time (HH:MM:SS) [PSQI_03]
 #' @importFrom dplyr if_else
