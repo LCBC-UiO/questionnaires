@@ -55,6 +55,8 @@ gds_factorise <- function(gds_sum){
          levels = c("Normal", "Mild depression", "Severe depression"))
 }
 
+#' Title
+#' 
 #' @param data data.frame with GDS data in it
 #'
 #' @param cols GDS data columns

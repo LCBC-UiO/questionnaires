@@ -56,8 +56,6 @@ ipaq_compute_sum <- function(data, cols = c(IPAQ_MET_Vigorous,IPAQ_MET_Moderate,
 }
 
 
-#' @param keep_all logical, append to data.frame
-
 ipaq_compute <- function(ipaq_sum, 
                          alter_time_cols = NULL,
                          mets = list(light = 3.3, moderate = 4.0, vigorous = 8.0),
