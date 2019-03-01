@@ -1,12 +1,12 @@
 
-
+#' Compute time in bed
 #' @param bedtime column name with bedtime (HH:MM:SS) [PSQI_01]
 #' @param risingtime column name with rising time (HH:MM:SS) [PSQI_03]
 #' @importFrom dplyr if_else
 #' @importFrom lubridate hms period_to_seconds hours
 compute_time_in_bed <- function(risingtime, bedtime){
   tmp <- hms(risingtime, quiet = T) - hms(bedtime, quiet = T)
-  period_to_seconds(if_else(tmp < 0, hours(24) + tmp, tmp))/3600
+  period_to_seconds(if_else(as.numeric(tmp) < 0, hours(24) + tmp, tmp))/3600
 }
 
 #' Compute component PSQI 2

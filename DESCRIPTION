@@ -12,7 +12,8 @@ Encoding: UTF-8
 LazyData: true
 Imports: 
     dplyr,
-    lubridate
+    lubridate,
+    readr
 Suggests: 
     testthat
 RoxygenNote: 6.1.1
