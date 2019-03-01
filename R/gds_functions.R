@@ -90,3 +90,5 @@ gds_compute <- function(data,
     tmp
   }
 }
+
+if(getRversion() >= "2.15.1")  utils::globalVariables(c("GDS"))

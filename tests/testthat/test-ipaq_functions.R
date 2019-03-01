@@ -37,7 +37,7 @@ test_that("Check component calculations", {
   
   
   expect_equal(ipaq_compute_sum(vig, mod, light),
-               c(3600, 2640, 3840, 2840, 2640, 4320, 0, 3600, 9120, NA)
+               c(3480, 1560, 4194, 2714, 2400, 3786, 792, 3547.5, 6240, 1405.5)
   )
   
 })
@@ -46,7 +46,6 @@ test_that("Check component calculations", {
 test_that("Check component calculations", {
   
   tt <- ipaq_time_alter(ipaq)
-  
   
   expect_equal(names(ipaq_compute(tt, keep_all = FALSE)),
                c("IPAQ_MET_Vigorous", "IPAQ_MET_Moderate", "IPAQ_MET_Light", 

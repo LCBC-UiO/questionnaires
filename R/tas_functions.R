@@ -54,3 +54,4 @@ tas_compute <- function(data,
   }
 }
 
+if(getRversion() >= "2.15.1")  utils::globalVariables(paste0("TAS_", stringr::str_pad(1:20, 2, "left", 0)))

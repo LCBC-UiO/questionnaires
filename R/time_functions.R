@@ -1,13 +1,13 @@
 
-time_hms2deciH = function(x, type="hour"){
-  x = lubridate::hour(x) +
+time_hms2deciH = function(x, unit="hour"){
+  t = lubridate::hour(x) +
     (lubridate::minute(x)/60)+
     (lubridate::second(x)/120)
   
-  switch(type,
-         "hour" = x,
-         "minute" = x*60,
-         "second" = x*60*60)
+  switch(unit,
+         "hour" = t,
+         "minute" = t*60,
+         "second" = t*60*60)
 }
 
 
@@ -33,15 +33,9 @@ time_deci2period <- function(x, unit = "hour", type = "hm"){
   
 }
 
-time_alter = function(x, type = "minute"){
-  if(grepl(":",x)){
-    x = if(x %>% stringr::str_count(":") == 1){
-      x %>% lubridate::hm() %>% time_hms2deciH(type)
-    }else{
-      x %>% lubridate::hms() %>% time_hms2deciH(type)
-    }
-  }
-  as.character(x)
+time_alter = function(x, unit = "minute"){
+  t <- lubridate::hm(x)   
+  time_hms2deciH(t, unit = unit)
 }
 
 is.hms = function(x) any(class(x) %in% "hms")
