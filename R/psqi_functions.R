@@ -51,17 +51,15 @@ psqi_compute_comp4 <- function(hoursSleep, bedtime, risingtime){
 #' Compute component PSQI 5
 #' 
 #' @param data data frame with the data
-#' @param noSleep30min column name with evaluation of sleep within 30min (0-3) [PSQI_05a]
-#' @param sleepTroubles columns containing sleep problem evaluations (0-3) [PSQI_05[a-j] ]
+#' @param sleepTroubles columns containing sleep problem evaluations (0-3) [PSQI_05[b-j] ]
 #' @family psqi_functions
 #' @export
 #' @importFrom dplyr enquo select mutate if_else pull
-psqi_compute_comp5 <- function(data, noSleep30min = PSQI_05a, sleepTroubles = matches("^PSQI_05[a-j]$")){
+psqi_compute_comp5 <- function(data, sleepTroubles = matches("^PSQI_05[b-j]$")){
   sleepTroubles <- enquo(sleepTroubles)
-  noSleep30min <- enquo(noSleep30min)
   
   tmp <- select(data, !!sleepTroubles)
-  tmp <- mutate(tmp, value = if_else(is.na(!!noSleep30min), NA_real_, rowSums(tmp, na.rm = TRUE))) 
+  tmp <- mutate(tmp, value = rowSums(tmp, na.rm = TRUE))
   tmp <- pull(tmp, value)
   
   cut(tmp, breaks = c(0, 1, 10, 19, Inf),
@@ -157,7 +155,7 @@ psqi_compute <- function(data,
   } 
   
   if(5 %in% components){
-    tmp <- mutate(tmp, PSQI_Comp5_Problems = psqi_compute_comp5(data, !!noSleep30min, sleepTroubles))
+    tmp <- mutate(tmp, PSQI_Comp5_Problems = psqi_compute_comp5(data, sleepTroubles))
     nn = c(nn, "PSQI_Comp5_Problems")
   } 
   

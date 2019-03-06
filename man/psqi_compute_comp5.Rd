@@ -4,15 +4,12 @@
 \alias{psqi_compute_comp5}
 \title{Compute component PSQI 5}
 \usage{
-psqi_compute_comp5(data, noSleep30min = PSQI_05a,
-  sleepTroubles = matches("^PSQI_05[a-j]$"))
+psqi_compute_comp5(data, sleepTroubles = matches("^PSQI_05[b-j]$"))
 }
 \arguments{
 \item{data}{data frame with the data}
 
-\item{noSleep30min}{column name with evaluation of sleep within 30min (0-3) [PSQI_05a]}
-
-\item{sleepTroubles}{columns containing sleep problem evaluations (0-3) [PSQI_05[a-j] ]}
+\item{sleepTroubles}{columns containing sleep problem evaluations (0-3) [PSQI_05[b-j] ]}
 }
 \description{
 Compute component PSQI 5
