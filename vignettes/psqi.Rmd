@@ -25,13 +25,13 @@ Questions with multiple subquestions should be named in a similar manner, suffix
 **PSQI_2**         
 **PSQI_3**         
 **PSQI_4**         
-**PSQI_5a**  **PSQI_5b**  **PSQI_5c**  **PSQI_5d**  **PSQI_5e**  **PSQI_5f**  **PSQI_5g**  **PSQI_5h**  **PSQI_5i** **PSQI_5j**   **PSQI_5j_Coded**  **PSQI_5j_Desc**   
+**PSQI_5a** **PSQI_5b** **PSQI_5c** **PSQI_5d** **PSQI_5e** **PSQI_5f** **PSQI_5g** **PSQI_5h** **PSQI_5i** **PSQI_5j** **PSQI_5j_Coded** **PSQI_5j_Desc**   
 **PSQI_6**        
 **PSQI_7**         
 **PSQI_8**         
 **PSQI_9**         
-**PSQI_10**  **PSQI_10a**  **PSQI_10b**  **PSQI_10c**  **PSQI_10d**  **PSQI_10e**  **PSQI_10e_Desc**  **PSQI_10e_Coded**    
-**PSQI_11a**       **PSQI_11b**       **PSQI_11c**       **PSQI_11d**  
+**PSQI_10** **PSQI_10a** **PSQI_10b** **PSQI_10c** **PSQI_10d** **PSQI_10e** **PSQI_10e_Desc** **PSQI_10e_Coded**    
+**PSQI_11a** **PSQI_11b** **PSQI_11c** **PSQI_11d**  
 
 ### 4-option questions coding
 All 4-option questions need to be coded **0-3**, not **1-4**.
@@ -40,5 +40,15 @@ All 4-option questions need to be coded **0-3**, not **1-4**.
 For question 1, 3 and 4 (bedtime, rising time, hours of sleep), data should be punched as "**HH:MM**". 
 Question 2 should be punched as minutes in numbers.
 
+## The components
+- **Component 1: subjective sleep quality** - Answer to q 6.  
+- Component 2: sleep latency** - Scaled sum of number of minutes before sleep (q 2) and evaluation of sleep within 30min (q 5a), scaled to a 5 point scale.  
+- **Component 3: sleep duration** - Scaled score of number of hours before one falls asleep (q 4), scaled to a 5 point scale.   
+- **Component 4: habitual sleep efficiency** - hours of sleep (q 4) divided by bedtime (q 1) subtracted from rising time (q 3), and scaled to a 5 point scale.  
+- **Component 5: sleep disturbances** - Sum of evaluation of sleep within 30min (q 5a) and all remaining questions on sleep problems (q 5b-j), scaled to a 5 point scale.  
+- **Component 6: use of sleeping medication** - Answer to question on use of sleep medication (q 7).  
+- **Component 7: daytime dysfunction **- Sum of evaluation of staying awake (q 8) and evaluation of keeping enthusiastic (q 9), scaled to a 5 point scale.  
+- **Global score: sum of the above.** If any of the above is not possible to calculate, the global sum is also not calculated. 
+
 ## References  
-Buysse et al. (1989) [The Pittsburgh sleep quality index: A new instrument for psychiatric practice and research]("http://www.psy-journal.com/article/0165-1781(89)90047-4/pdf"), _Psychiatry Research_, 28:2, 193-213
+Buysse et al. (1989) [The Pittsburgh sleep quality index: A new instrument for psychiatric practice and research](https://www.sciencedirect.com/science/article/pii/0165178189900474), _Psychiatry Research_, 28:2, 193-213
