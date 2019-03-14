@@ -1,3 +1,4 @@
+^README\.Rmd$
 ^docs$
 ^LICENCE\.md$
 ^.*\.Rproj$

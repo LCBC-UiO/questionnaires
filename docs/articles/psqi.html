@@ -6,11 +6,18 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pittsburgh Sleep Quality Inventory • Questionnaires</title>
+<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Pittsburgh Sleep Quality Inventory">
 <meta property="og:description" content="">
+<meta property="og:image" content="/logo.png">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -148,6 +155,13 @@
 <strong>Global score: sum of the above.</strong> If any of the above is not possible to calculate, the global sum is also not calculated.</li>
 </ul>
 </div>
+<div id="use-the-psqi-functions" class="section level2">
+<h2 class="hasAnchor">
+<a href="#use-the-psqi-functions" class="anchor"></a>Use the <code>psqi</code> functions</h2>
+<p>All the functions necessary to compute the components and the global score for the psqi are included in this package, and loading it in your R-environment makes them accessable to you. All the functions for the PSQI, are prefixed with <code>psqi_</code>, so they are easy to find.</p>
+<p>There are a total of 7 <code>psqi_</code> functions in this package. One for each component, except 1 and 6 which are just the raw answers from questions 4 and 7. In addition, there is a function to calculate the global, which must be done <em>after</em> having computed the 7 components. Lastly, there is a function <code>psqi_compute</code> which will do it all for you, compute all the components and the global. All the functions are documented as any function in R, and so you may call <code>?psqi_compute</code> to see the user documentation for the functions.</p>
+<p>There are many options you can utilise for these functions, so you may explore them as you wish. The functions are also made such that you can use them on datasets other than the LCBC MOAS dataset, but you will then have to specify the columns to use for the various components your self. The functions are made to work directly with the MOAS, and require no extra input other that the object containing the MOAS to run all calculations. Running <code>psqi_compute(MOAS)</code> will calculate all components and append them to the data you provided. Running <code>psqi_compute(MOAS, keep_all = FALSE)</code> will only return the computed components and the global score in a data frame.</p>
+</div>
 <div id="references" class="section level2">
 <h2 class="hasAnchor">
 <a href="#references" class="anchor"></a>References</h2>
@@ -163,6 +177,7 @@
 <li><a href="#background">Background</a></li>
       <li><a href="#data-requirements">Data requirements</a></li>
       <li><a href="#the-components">The components</a></li>
+      <li><a href="#use-the-psqi-functions">Use the <code>psqi</code> functions</a></li>
       <li><a href="#references">References</a></li>
       </ul>
 </div>

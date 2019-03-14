@@ -8,7 +8,7 @@ psqi_compute(data, components = 1:7, bedtime = PSQI_01,
   minBeforeSleep = PSQI_02, risingtime = PSQI_03,
   hoursSleep = PSQI_04, noSleep30min = PSQI_05a,
   sleepQuality = PSQI_06, medication = PSQI_07, keepAwake = PSQI_08,
-  keepEnthused = PSQI_09, sleepTroubles = matches("^PSQI_05[a-j]$"),
+  keepEnthused = PSQI_09, sleepTroubles = matches("^PSQI_05[b-j]$"),
   keep_all = TRUE)
 }
 \arguments{

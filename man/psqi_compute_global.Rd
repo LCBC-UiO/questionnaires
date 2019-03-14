@@ -4,7 +4,7 @@
 \alias{psqi_compute_global}
 \title{Compute Global PSQI component}
 \usage{
-psqi_compute_global(data, cols = matches("^PSQI_Comp[0-9]+_"))
+psqi_compute_global(data, cols = matches("^PSQI_Comp[1-7]+_"))
 }
 \arguments{
 \item{data}{Data frame containing PSQI components}
