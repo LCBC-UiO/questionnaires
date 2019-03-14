@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# Questionnaires - LCBC-conversions <img src="man/figures/hex.png" align="right" alt="" width="120" />
+# LCBC Questionnaires <img src="man/figures/hex.png" align="right" alt="" width="120" />
 
 The repository contains functions to run coversions and calculate
 components from commonly used questionnaires in LCBC research.
