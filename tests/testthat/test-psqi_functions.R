@@ -17,9 +17,8 @@ test_that("Check component calculations", {
                c(0, 0, 0, NA, 1, 0, 0, 0, 1, 0, 3, 2))
 
   expect_equal(psqi_compute_comp5(data = psqi, 
-                noSleep30min = PSQI_05a, 
-                sleepTroubles = matches("^PSQI_05[a-j]$")),
-               c(0, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 1))
+                sleepTroubles = matches("^PSQI_05[b-j]$")),
+               c(0, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1))
   
   expect_equal(psqi_compute_comp7(keepAwake = psqi$PSQI_08, 
                 keepEnthused = psqi$PSQI_09),
