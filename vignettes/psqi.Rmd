@@ -21,17 +21,17 @@ Despite the prevalence of sleep complaints among psychiatric patients, few quest
 ### Column names
 Questions with multiple subquestions should be named in a similar manner, suffixed by the alphabetical index (**PSQI_5a**, **PSQI_5b** etc.). For questions 5j and 10j, the frequency of occurence should have the names **PSQI_5j** and **PSQI_10e**, and the freehand explanations should have any type of **suffix** after this to indicate a text answers (i.e. **PSQI_5j_Desc** or **PSQI_5j_string**, **PSQI_5j_freehand**). 
  As an example, LCBC has the following set-up:  
-**PSQI_1**         
-**PSQI_2**         
-**PSQI_3**         
-**PSQI_4**         
-**PSQI_5a** **PSQI_5b** **PSQI_5c** **PSQI_5d** **PSQI_5e** **PSQI_5f** **PSQI_5g** **PSQI_5h** **PSQI_5i** **PSQI_5j** **PSQI_5j_Coded** **PSQI_5j_Desc**   
-**PSQI_6**        
-**PSQI_7**         
-**PSQI_8**         
-**PSQI_9**         
-**PSQI_10** **PSQI_10a** **PSQI_10b** **PSQI_10c** **PSQI_10d** **PSQI_10e** **PSQI_10e_Desc** **PSQI_10e_Coded**    
-**PSQI_11a** **PSQI_11b** **PSQI_11c** **PSQI_11d**  
+- **PSQI_1**         
+- **PSQI_2**         
+- **PSQI_3**         
+- **PSQI_4**         
+- **PSQI_5a** **PSQI_5b** **PSQI_5c** **PSQI_5d** **PSQI_5e** **PSQI_5f** **PSQI_5g** **PSQI_5h** **PSQI_5i** **PSQI_5j** - - **PSQI_5j_Coded** **PSQI_5j_Desc**   
+- **PSQI_6**        
+- **PSQI_7**         
+- **PSQI_8**         
+- **PSQI_9**         
+- **PSQI_10** **PSQI_10a** **PSQI_10b** **PSQI_10c** **PSQI_10d** **PSQI_10e** **PSQI_10e_Desc** **PSQI_10e_Coded**    
+- **PSQI_11a** **PSQI_11b** **PSQI_11c** **PSQI_11d**  
 
 ### 4-option questions coding
 All 4-option questions need to be coded **0-3**, not **1-4**.
@@ -42,7 +42,7 @@ Question 2 should be punched as minutes in numbers.
 
 ## The components
 - **Component 1: subjective sleep quality** - Answer to q 6.  
-- Component 2: sleep latency** - Scaled sum of number of minutes before sleep (q 2) and evaluation of sleep within 30min (q 5a), scaled to a 5 point scale.  
+- **Component 2: sleep latency** - Scaled sum of number of minutes before sleep (q 2) and evaluation of sleep within 30min (q 5a), scaled to a 5 point scale.  
 - **Component 3: sleep duration** - Scaled score of number of hours before one falls asleep (q 4), scaled to a 5 point scale.   
 - **Component 4: habitual sleep efficiency** - hours of sleep (q 4) divided by bedtime (q 1) subtracted from rising time (q 3), and scaled to a 5 point scale.  
 - **Component 5: sleep disturbances** - Sum of evaluation of sleep within 30min (q 5a) and all remaining questions on sleep problems (q 5b-j), scaled to a 5 point scale.  

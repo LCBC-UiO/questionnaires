@@ -85,7 +85,7 @@ psqi_compute_comp7 <- function(keepAwake, keepEnthused){
 #' @family psqi_functions
 #' @export
 #' @importFrom dplyr enquo select
-psqi_compute_global <- function(data, cols = matches("^PSQI_Comp[0-9]+_")){
+psqi_compute_global <- function(data, cols = matches("^PSQI_Comp[1-7]+_")){
   cols <- enquo(cols)
   
   rowSums(select(data, !!cols))
@@ -117,7 +117,7 @@ psqi_compute <- function(data,
                          bedtime = PSQI_01, minBeforeSleep = PSQI_02, risingtime = PSQI_03, 
                          hoursSleep = PSQI_04, noSleep30min = PSQI_05a, sleepQuality = PSQI_06, 
                          medication = PSQI_07, keepAwake = PSQI_08, keepEnthused = PSQI_09,
-                         sleepTroubles = matches("^PSQI_05[a-j]$"),
+                         sleepTroubles = matches("^PSQI_05[b-j]$"),
                          keep_all = TRUE
 ){
   
@@ -135,8 +135,8 @@ psqi_compute <- function(data,
   nn <- character()
 
   if(1 %in% components){
-    tmp <- mutate(tmp, PSQI_Comp1_SleepQuality = !!sleepQuality)
-    nn = c(nn, "PSQI_Comp1_SleepQuality")
+    tmp <- mutate(tmp, PSQI_Comp1_Quality = !!sleepQuality)
+    nn = c(nn, "PSQI_Comp1_Quality")
   }
   
   if(2 %in% components){

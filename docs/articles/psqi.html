@@ -75,7 +75,7 @@
     <div class="page-header toc-ignore">
       <h1>Pittsburgh Sleep Quality Inventory</h1>
             
-            <h4 class="date">2019-03-01</h4>
+            <h4 class="date">2019-03-14</h4>
       
       
       <div class="hidden name"><code>psqi.Rmd</code></div>
@@ -95,7 +95,18 @@
 <div id="column-names" class="section level3">
 <h3 class="hasAnchor">
 <a href="#column-names" class="anchor"></a>Column names</h3>
-<p>Questions with multiple subquestions should be named in a similar manner, suffixed by the alphabetical index (<strong>PSQI_5a</strong>, <strong>PSQI_5b</strong> etc.). For questions 5j and 10j, the frequency of occurence should have the names <strong>PSQI_5j</strong> and <strong>PSQI_10e</strong>, and the freehand explanations should have any type of <strong>suffix</strong> after this to indicate a text answers (i.e. <strong>PSQI_5j_Desc</strong> or <strong>PSQI_5j_string</strong>, <strong>PSQI_5j_freehand</strong>). As an example, LCBC has the following set-up:<br><strong>PSQI_1</strong><br><strong>PSQI_2</strong><br><strong>PSQI_3</strong><br><strong>PSQI_4</strong><br><strong>PSQI_5a</strong> <strong>PSQI_5b</strong> <strong>PSQI_5c</strong> <strong>PSQI_5d</strong> <strong>PSQI_5e</strong> <strong>PSQI_5f</strong> <strong>PSQI_5g</strong> <strong>PSQI_5h</strong> <strong>PSQI_5i</strong> <strong>PSQI_5j</strong> <strong>PSQI_5j_Coded</strong> <strong>PSQI_5j_Desc</strong><br><strong>PSQI_6</strong><br><strong>PSQI_7</strong><br><strong>PSQI_8</strong><br><strong>PSQI_9</strong><br><strong>PSQI_10</strong> <strong>PSQI_10a</strong> <strong>PSQI_10b</strong> <strong>PSQI_10c</strong> <strong>PSQI_10d</strong> <strong>PSQI_10e</strong> <strong>PSQI_10e_Desc</strong> <strong>PSQI_10e_Coded</strong><br><strong>PSQI_11a</strong> <strong>PSQI_11b</strong> <strong>PSQI_11c</strong> <strong>PSQI_11d</strong></p>
+<p>Questions with multiple subquestions should be named in a similar manner, suffixed by the alphabetical index (<strong>PSQI_5a</strong>, <strong>PSQI_5b</strong> etc.). For questions 5j and 10j, the frequency of occurence should have the names <strong>PSQI_5j</strong> and <strong>PSQI_10e</strong>, and the freehand explanations should have any type of <strong>suffix</strong> after this to indicate a text answers (i.e. <strong>PSQI_5j_Desc</strong> or <strong>PSQI_5j_string</strong>, <strong>PSQI_5j_freehand</strong>). As an example, LCBC has the following set-up:<br>
+- <strong>PSQI_1</strong><br>
+- <strong>PSQI_2</strong><br>
+- <strong>PSQI_3</strong><br>
+- <strong>PSQI_4</strong><br>
+- <strong>PSQI_5a</strong> <strong>PSQI_5b</strong> <strong>PSQI_5c</strong> <strong>PSQI_5d</strong> <strong>PSQI_5e</strong> <strong>PSQI_5f</strong> <strong>PSQI_5g</strong> <strong>PSQI_5h</strong> <strong>PSQI_5i</strong> <strong>PSQI_5j</strong> - - <strong>PSQI_5j_Coded</strong> <strong>PSQI_5j_Desc</strong><br>
+- <strong>PSQI_6</strong><br>
+- <strong>PSQI_7</strong><br>
+- <strong>PSQI_8</strong><br>
+- <strong>PSQI_9</strong><br>
+- <strong>PSQI_10</strong> <strong>PSQI_10a</strong> <strong>PSQI_10b</strong> <strong>PSQI_10c</strong> <strong>PSQI_10d</strong> <strong>PSQI_10e</strong> <strong>PSQI_10e_Desc</strong> <strong>PSQI_10e_Coded</strong><br>
+- <strong>PSQI_11a</strong> <strong>PSQI_11b</strong> <strong>PSQI_11c</strong> <strong>PSQI_11d</strong></p>
 </div>
 <div id="option-questions-coding" class="section level3">
 <h3 class="hasAnchor">
@@ -108,10 +119,39 @@
 <p>For question 1, 3 and 4 (bedtime, rising time, hours of sleep), data should be punched as “<strong>HH:MM</strong>”. Question 2 should be punched as minutes in numbers.</p>
 </div>
 </div>
+<div id="the-components" class="section level2">
+<h2 class="hasAnchor">
+<a href="#the-components" class="anchor"></a>The components</h2>
+<ul>
+<li>
+<strong>Component 1: subjective sleep quality</strong> - Answer to q 6.<br>
+</li>
+<li>
+<strong>Component 2: sleep latency</strong> - Scaled sum of number of minutes before sleep (q 2) and evaluation of sleep within 30min (q 5a), scaled to a 5 point scale.<br>
+</li>
+<li>
+<strong>Component 3: sleep duration</strong> - Scaled score of number of hours before one falls asleep (q 4), scaled to a 5 point scale.<br>
+</li>
+<li>
+<strong>Component 4: habitual sleep efficiency</strong> - hours of sleep (q 4) divided by bedtime (q 1) subtracted from rising time (q 3), and scaled to a 5 point scale.<br>
+</li>
+<li>
+<strong>Component 5: sleep disturbances</strong> - Sum of evaluation of sleep within 30min (q 5a) and all remaining questions on sleep problems (q 5b-j), scaled to a 5 point scale.<br>
+</li>
+<li>
+<strong>Component 6: use of sleeping medication</strong> - Answer to question on use of sleep medication (q 7).<br>
+</li>
+<li>
+<strong>Component 7: daytime dysfunction </strong>- Sum of evaluation of staying awake (q 8) and evaluation of keeping enthusiastic (q 9), scaled to a 5 point scale.<br>
+</li>
+<li>
+<strong>Global score: sum of the above.</strong> If any of the above is not possible to calculate, the global sum is also not calculated.</li>
+</ul>
+</div>
 <div id="references" class="section level2">
 <h2 class="hasAnchor">
 <a href="#references" class="anchor"></a>References</h2>
-<p>Buysse et al. (1989) <a href="%22http://www.psy-journal.com/article/0165-1781(89)90047-4/pdf%22">The Pittsburgh sleep quality index: A new instrument for psychiatric practice and research</a>, <em>Psychiatry Research</em>, 28:2, 193-213</p>
+<p>Buysse et al. (1989) <a href="https://www.sciencedirect.com/science/article/pii/0165178189900474">The Pittsburgh sleep quality index: A new instrument for psychiatric practice and research</a>, <em>Psychiatry Research</em>, 28:2, 193-213</p>
 </div>
   </div>
 
@@ -122,6 +162,7 @@
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#background">Background</a></li>
       <li><a href="#data-requirements">Data requirements</a></li>
+      <li><a href="#the-components">The components</a></li>
       <li><a href="#references">References</a></li>
       </ul>
 </div>
