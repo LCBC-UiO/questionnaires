@@ -93,13 +93,15 @@ psqi_compute_global <- function(data, cols = matches("^PSQI_Comp[1-7]+_"), max_m
   if(max_missing > 6) stop("max_missing must be between 0 and 6.")
   cols <- enquo(cols)
   
+  
   tmp <- select(data, !!cols)
   tmp <- mutate(tmp, ID = row_number())
-  tmp <- gather(tmp, key = "key", value = "value", !!cols, na.rm = TRUE)
+  tmp <- gather(tmp, key = "key", value = "value", !!cols, na.rm = FALSE)
+  
   tmp <- group_by_at(tmp, vars(ID))
 
-  tmp <- summarise_at(tmp, vars(value),
-                      list(~ if_else(n() < (7 - !!max_missing), NA_real_, 7 / n() * sum(value))))
+  tmp <- summarise_at(tmp, vars(value), 
+                      list(~ if_else(7 - sum(!is.na(.)) > max_missing, NA_real_, 7 / sum(!is.na(.)) * sum(., na.rm = TRUE))))
   pull(tmp)
 }
 
