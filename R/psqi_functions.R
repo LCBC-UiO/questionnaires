@@ -59,7 +59,7 @@ psqi_compute_comp5 <- function(data, sleepTroubles = matches("^PSQI_05[b-j]$")){
   sleepTroubles <- enquo(sleepTroubles)
   
   tmp <- select(data, !!sleepTroubles)
-  tmp <- mutate(tmp, value = rowSums(tmp, na.rm = TRUE))
+  tmp <- mutate(tmp, value = apply(tmp, 1, function(x) if_else(all(is.na(x)), NA_real_, as.numeric(sum(x, na.rm = TRUE)))))
   tmp <- pull(tmp, value)
   
   cut(tmp, breaks = c(0, 1, 10, 19, Inf),
