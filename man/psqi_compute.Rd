@@ -36,8 +36,9 @@ psqi_compute(data, components = 1:7, bedtime = PSQI_01,
 
 \item{sleepTroubles}{columns containing sleep problem evaluations (0-3) [PSQI_05[a-j] ]}
 
-\item{max_missing}{Integer specifying the number of missing values to accept in the computation
-of \code{PSQI_Global}.}
+\item{max_missing}{Integer specifying the number of missing values to accept in the PSQI components, 
+before the global PSQI value is set to missing. Defaults to 0. If \code{max_missing > 0}, the 
+global PSQI value is computed by weighting each non-missing entry with \code{7 / (7 - max_missing)}.}
 
 \item{keep_all}{logical, append to data.frame}
 }

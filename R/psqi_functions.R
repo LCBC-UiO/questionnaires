@@ -82,10 +82,8 @@ psqi_compute_comp7 <- function(keepAwake, keepEnthused){
 #' 
 #' @param data Data frame containing PSQI components
 #' @param cols columns containing the components
-#' @param max_missing Integer specifying the number of missing values to accept in the PSQI components, 
-#' before the global PSQI value is set to missing. Defaults to 0. If \code{max_missing > 0}, the 
-#' global PSQI value is computed by weighting each non-missing entry with \code{7 / (7 - max_missing)}.
 #' @family psqi_functions
+#' @inheritParams psqi_compute
 #' @export
 #' @importFrom dplyr enquo select group_by_at n row_number summarise_at pull if_else
 #' @importFrom tidyr gather
@@ -120,8 +118,9 @@ psqi_compute_global <- function(data, cols = matches("^PSQI_Comp[1-7]+_"), max_m
 #' @param keepAwake column name with evaluation of staying awake (0-3) [PSQI_08]
 #' @param keepEnthused column name with evaluation of keeping enthusiastic (0-3) [PSQI_09]
 #' @param sleepTroubles columns containing sleep problem evaluations (0-3) [PSQI_05[a-j] ]
-#' @param max_missing Integer specifying the number of missing values to accept in the computation
-#' of \code{PSQI_Global}.
+#' @param max_missing Integer specifying the number of missing values to accept in the PSQI components, 
+#' before the global PSQI value is set to missing. Defaults to 0. If \code{max_missing > 0}, the 
+#' global PSQI value is computed by weighting each non-missing entry with \code{7 / (7 - max_missing)}.
 #' @param keep_all logical, append to data.frame
 #'
 #' @return a data.frame containing only the calculated components
