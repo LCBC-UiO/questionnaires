@@ -197,5 +197,5 @@ psqi_compute <- function(data,
 
 if(getRversion() >= "2.15.1")  utils::globalVariables(c("PSQI_01", "PSQI_02", "PSQI_03", "PSQI_04", 
                                                         "PSQI_05a", "PSQI_06", "PSQI_07", "PSQI_08", "PSQI_09",
-                                                        "value"))
+                                                        "value", "ID"))
 

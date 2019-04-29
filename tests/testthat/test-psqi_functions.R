@@ -32,12 +32,12 @@ test_that("Check component calculations", {
   
   
   expect_equal(names(psqi_compute(psqi, keep_all = FALSE)),
-               c("PSQI_Comp1_SleepQuality", "PSQI_Comp2_Latency", "PSQI_Comp3_Duration",
+               c("PSQI_Comp1_Quality", "PSQI_Comp2_Latency", "PSQI_Comp3_Duration",
                  "PSQI_Comp4_Efficiency", "PSQI_Comp5_Problems", "PSQI_Comp6_Medication",
                  "PSQI_Comp7_Tired", "PSQI_Global"))
   
   expect_equal(names(psqi_compute(psqi, components = 1:3, keep_all = FALSE)),
-               c("PSQI_Comp1_SleepQuality", "PSQI_Comp2_Latency", "PSQI_Comp3_Duration"))
+               c("PSQI_Comp1_Quality", "PSQI_Comp2_Latency", "PSQI_Comp3_Duration"))
   
   expect_equal(ncol(psqi_compute(psqi, components = 1:7, keep_all = TRUE)),
                39)
