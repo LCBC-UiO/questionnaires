@@ -59,7 +59,7 @@ psqi_compute_comp5 <- function(data, sleepTroubles = matches("^PSQI_05[b-j]$")){
   sleepTroubles <- enquo(sleepTroubles)
   
   tmp <- select(data, !!sleepTroubles)
-  tmp <- mutate(tmp, value = rowSums(tmp, na.rm = TRUE))
+  tmp <- mutate(tmp, value = apply(tmp, 1, function(x) if_else(all(is.na(x)), NA_real_, as.numeric(sum(x, na.rm = TRUE)))))
   tmp <- pull(tmp, value)
   
   cut(tmp, breaks = c(0, 1, 10, 19, Inf),
@@ -83,12 +83,24 @@ psqi_compute_comp7 <- function(keepAwake, keepEnthused){
 #' @param data Data frame containing PSQI components
 #' @param cols columns containing the components
 #' @family psqi_functions
+#' @inheritParams psqi_compute
 #' @export
-#' @importFrom dplyr enquo select
-psqi_compute_global <- function(data, cols = matches("^PSQI_Comp[1-7]+_")){
+#' @importFrom dplyr enquo select group_by_at n row_number summarise_at pull if_else
+#' @importFrom tidyr gather
+psqi_compute_global <- function(data, cols = matches("^PSQI_Comp[1-7]+_"), max_missing = 0){
+  if(max_missing > 6) stop("max_missing must be between 0 and 6.")
   cols <- enquo(cols)
   
-  rowSums(select(data, !!cols))
+  
+  tmp <- select(data, !!cols)
+  tmp <- mutate(tmp, ID = row_number())
+  tmp <- gather(tmp, key = "key", value = "value", !!cols, na.rm = FALSE)
+  
+  tmp <- group_by_at(tmp, vars(ID))
+
+  tmp <- summarise_at(tmp, vars(value), 
+                      list(~ if_else(7 - sum(!is.na(.)) > max_missing, NA_real_, 7 / sum(!is.na(.)) * sum(., na.rm = TRUE))))
+  pull(tmp)
 }
 
 #' Compute all PSQI components and global score
@@ -106,6 +118,9 @@ psqi_compute_global <- function(data, cols = matches("^PSQI_Comp[1-7]+_")){
 #' @param keepAwake column name with evaluation of staying awake (0-3) [PSQI_08]
 #' @param keepEnthused column name with evaluation of keeping enthusiastic (0-3) [PSQI_09]
 #' @param sleepTroubles columns containing sleep problem evaluations (0-3) [PSQI_05[a-j] ]
+#' @param max_missing Integer specifying the number of missing values to accept in the PSQI components, 
+#' before the global PSQI value is set to missing. Defaults to 0. If \code{max_missing > 0}, the 
+#' global PSQI value is computed by weighting each non-missing entry with \code{7 / (7 - max_missing)}.
 #' @param keep_all logical, append to data.frame
 #'
 #' @return a data.frame containing only the calculated components
@@ -117,7 +132,7 @@ psqi_compute <- function(data,
                          bedtime = PSQI_01, minBeforeSleep = PSQI_02, risingtime = PSQI_03, 
                          hoursSleep = PSQI_04, noSleep30min = PSQI_05a, sleepQuality = PSQI_06, 
                          medication = PSQI_07, keepAwake = PSQI_08, keepEnthused = PSQI_09,
-                         sleepTroubles = matches("^PSQI_05[b-j]$"),
+                         sleepTroubles = matches("^PSQI_05[b-j]$"), max_missing = 0,
                          keep_all = TRUE
 ){
   
@@ -173,7 +188,7 @@ psqi_compute <- function(data,
   
   if(all(1:7 %in% components)){
     mutate(tmp,
-           PSQI_Global = psqi_compute_global(tmp)
+           PSQI_Global = psqi_compute_global(tmp, max_missing = max_missing)
     )
   }else{
     tmp

@@ -9,7 +9,7 @@ psqi_compute(data, components = 1:7, bedtime = PSQI_01,
   hoursSleep = PSQI_04, noSleep30min = PSQI_05a,
   sleepQuality = PSQI_06, medication = PSQI_07, keepAwake = PSQI_08,
   keepEnthused = PSQI_09, sleepTroubles = matches("^PSQI_05[b-j]$"),
-  keep_all = TRUE)
+  max_missing = 0, keep_all = TRUE)
 }
 \arguments{
 \item{data}{data frame}
@@ -35,6 +35,10 @@ psqi_compute(data, components = 1:7, bedtime = PSQI_01,
 \item{keepEnthused}{column name with evaluation of keeping enthusiastic (0-3) [PSQI_09]}
 
 \item{sleepTroubles}{columns containing sleep problem evaluations (0-3) [PSQI_05[a-j] ]}
+
+\item{max_missing}{Integer specifying the number of missing values to accept in the PSQI components, 
+before the global PSQI value is set to missing. Defaults to 0. If \code{max_missing > 0}, the 
+global PSQI value is computed by weighting each non-missing entry with \code{7 / (7 - max_missing)}.}
 
 \item{keep_all}{logical, append to data.frame}
 }

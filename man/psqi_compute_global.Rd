@@ -4,12 +4,17 @@
 \alias{psqi_compute_global}
 \title{Compute Global PSQI component}
 \usage{
-psqi_compute_global(data, cols = matches("^PSQI_Comp[1-7]+_"))
+psqi_compute_global(data, cols = matches("^PSQI_Comp[1-7]+_"),
+  max_missing = 0)
 }
 \arguments{
 \item{data}{Data frame containing PSQI components}
 
 \item{cols}{columns containing the components}
+
+\item{max_missing}{Integer specifying the number of missing values to accept in the PSQI components, 
+before the global PSQI value is set to missing. Defaults to 0. If \code{max_missing > 0}, the 
+global PSQI value is computed by weighting each non-missing entry with \code{7 / (7 - max_missing)}.}
 }
 \description{
 Compute Global PSQI component
