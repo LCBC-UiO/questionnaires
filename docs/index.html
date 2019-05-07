@@ -60,6 +60,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="articles/Education.html">Education</a>
+    </li>
+    <li>
       <a href="articles/ipaq.html">International Physical Activity Questionnaire</a>
     </li>
     <li>
@@ -71,7 +74,14 @@
   <a href="news/index.html">Changelog</a>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="https://github.com/LCBC-UiO/Questionnaires">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -91,6 +101,8 @@
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#lcbc-questionnaires" class="anchor"></a>LCBC Questionnaires <img src="reference/figures/hex.png" align="right" alt="" width="120">
 </h1></div>
+<!-- badges: start -->
+<!-- badges: end -->
 <p>The repository contains functions to run coversions and calculate components from commonly used questionnaires in LCBC research.</p>
 <p>The questionnaires covered so far:</p>
 <ul>
@@ -101,13 +113,35 @@
 <li>GDS - Geriatric Depression Scale</li>
 <li>TAS -</li>
 </ul>
-<p>All functions in this package are prefixed with the name of the questionnaire the function is intended for (i.e. <code>psqi_</code>, <code>ipaq_</code> etc.). Column specifications may be manually inputed, but if columns are named after as the function expects (i.e. MOAS standard), the functions generally work without manual input. The functions that will run all (most) necessary steps to completely calculate components and sums are named as <code>questionnaire_compute</code> (i.e. <code>psqi_compute()</code>, <code>ipaq_compute</code>, etc.). These functions all have the option to <code>keep_all</code> which takes a <code>TRUE</code> or <code>FALSE</code> statement on whether the data should be appended to the input data, or just to return the computed columns.</p>
+<p>All functions in this package are prefixed with the name of the questionnaire the function is intended for (i.e. <code>psqi_</code>, <code>ipaq_</code> etc.). Column specifications may be manually inputed, but if columns are named after as the function expects (i.e. MOAS standard), the functions generally work without manual input. The functions that will run all (most) necessary steps to completely calculate components and sums are named as <code>questionnaire_compute</code> (i.e. <code><a href="reference/psqi_compute.html">psqi_compute()</a></code>, <code>ipaq_compute</code>, etc.). These functions all have the option to <code>keep_all</code> which takes a <code>TRUE</code> or <code>FALSE</code> statement on whether the data should be appended to the input data, or just to return the computed columns.</p>
 <p>Vignettes are on their way, and so far there are only vignettes for PSQI and IPAQ which just describe the background for the computations.</p>
+<div id="installation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#installation" class="anchor"></a>Installation</h2>
+<p>As this package is in a private github repository, you need to do a couple of steps to install it.</p>
+<p>First, install the packages <code>usethis</code> and <code>devtools</code>.</p>
+<pre><code><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages(c("devtools", "usethis"))</a></code></pre>
+<p>Then, in github, create a Personal Access Token (PAT) by going to Settings -&gt; Developer Settings -&gt; Personal Access Token -&gt; Generate new access token.</p>
+<p>Give the token a name, and tick of all boxes in the <code>repo</code> category. <img src="reference/figures/PAT.png"></p>
+<p>Copy the token that is made, then go back to R. In R, type <code><a href="https://usethis.r-lib.org/reference/edit.html">usethis::edit_r_environ()</a></code>, which should open a blank file (if you have not edited it before) called <code>.Renviron</code>. Here add this line: <code>GITHUB_PAT=yourtoken</code>, and add your token after the <code>=</code> sign. Restart R (go to Session - Restart R in RStudio), and then you should be able to install this package.</p>
+<p>You can install the private version of Questionnaires from <a href="https://github.com/">GitHub</a> with:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># install.packages("devtools")</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"LCBC-UiO/Questionnaires"</span>)</a></code></pre></div>
+</div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <div class="license">
+    <div class="links">
+<h2>Links</h2>
+<ul class="list-unstyled">
+<li>Browse source code at <br><a href="https://github.com/LCBC-UiO/Questionnaires">https://​github.com/​LCBC-UiO/​Questionnaires</a>
+</li>
+<li>Report a bug at <br><a href="https://github.com/LCBC-UiO/Questionnaires/issues">https://​github.com/​LCBC-UiO/​Questionnaires/​issues</a>
+</li>
+</ul>
+</div>
+<div class="license">
 <h2>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>

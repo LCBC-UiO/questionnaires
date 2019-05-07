@@ -1,5 +1,6 @@
 ^README\.Rmd$
 ^docs$
+^pkgdown$
 ^LICENCE\.md$
 ^.*\.Rproj$
 ^\.Rproj\.user$

@@ -95,6 +95,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/Education.html">Education</a>
+    </li>
+    <li>
       <a href="../articles/ipaq.html">International Physical Activity Questionnaire</a>
     </li>
     <li>
@@ -108,7 +111,12 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/LCBC-UiO/Questionnaires">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -122,7 +130,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Compute all PSQI components and global score</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/LCBC-UiO/Questionnaires/blob/master/R/psqi_functions.R'><code>R/psqi_functions.R</code></a></small>
     <div class="hidden name"><code>psqi_compute.Rd</code></div>
     </div>
 
@@ -137,7 +145,7 @@
   <span class='kw'>hoursSleep</span> <span class='kw'>=</span> <span class='no'>PSQI_04</span>, <span class='kw'>noSleep30min</span> <span class='kw'>=</span> <span class='no'>PSQI_05a</span>,
   <span class='kw'>sleepQuality</span> <span class='kw'>=</span> <span class='no'>PSQI_06</span>, <span class='kw'>medication</span> <span class='kw'>=</span> <span class='no'>PSQI_07</span>, <span class='kw'>keepAwake</span> <span class='kw'>=</span> <span class='no'>PSQI_08</span>,
   <span class='kw'>keepEnthused</span> <span class='kw'>=</span> <span class='no'>PSQI_09</span>, <span class='kw'>sleepTroubles</span> <span class='kw'>=</span> <span class='fu'>matches</span>(<span class='st'>"^PSQI_05[b-j]$"</span>),
-  <span class='kw'>keep_all</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+  <span class='kw'>max_missing</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>keep_all</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -191,6 +199,12 @@
       <td><p>columns containing sleep problem evaluations (0-3) [PSQI_05[a-j] ]</p></td>
     </tr>
     <tr>
+      <th>max_missing</th>
+      <td><p>Integer specifying the number of missing values to accept in the PSQI components, 
+before the global PSQI value is set to missing. Defaults to 0. If <code>max_missing &gt; 0</code>, the 
+global PSQI value is computed by weighting each non-missing entry with <code>7 / (7 - max_missing)</code>.</p></td>
+    </tr>
+    <tr>
       <th>keep_all</th>
       <td><p>logical, append to data.frame</p></td>
     </tr>
@@ -202,12 +216,12 @@
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other psqi_functions: <code>psqi_compute_comp2</code>,
-  <code>psqi_compute_comp3</code>,
-  <code>psqi_compute_comp4</code>,
-  <code>psqi_compute_comp5</code>,
-  <code>psqi_compute_comp7</code>,
-  <code>psqi_compute_global</code></p></div>
+    <div class='dont-index'><p>Other psqi_functions: <code><a href='psqi_compute_comp2.html'>psqi_compute_comp2</a></code>,
+  <code><a href='psqi_compute_comp3.html'>psqi_compute_comp3</a></code>,
+  <code><a href='psqi_compute_comp4.html'>psqi_compute_comp4</a></code>,
+  <code><a href='psqi_compute_comp5.html'>psqi_compute_comp5</a></code>,
+  <code><a href='psqi_compute_comp7.html'>psqi_compute_comp7</a></code>,
+  <code><a href='psqi_compute_global.html'>psqi_compute_global</a></code></p></div>
     
 
   </div>

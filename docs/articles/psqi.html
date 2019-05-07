@@ -60,6 +60,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/Education.html">Education</a>
+    </li>
+    <li>
       <a href="../articles/ipaq.html">International Physical Activity Questionnaire</a>
     </li>
     <li>
@@ -71,7 +74,14 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="https://github.com/LCBC-UiO/Questionnaires">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -85,9 +95,9 @@
     <div class="page-header toc-ignore">
       <h1>Pittsburgh Sleep Quality Inventory</h1>
             
-            <h4 class="date">2019-03-14</h4>
+            <h4 class="date">2019-05-07</h4>
       
-      
+      <small class="dont-index">Source: <a href="https://github.com/LCBC-UiO/Questionnaires/blob/master/vignettes/psqi.Rmd"><code>vignettes/psqi.Rmd</code></a></small>
       <div class="hidden name"><code>psqi.Rmd</code></div>
 
     </div>
@@ -162,8 +172,8 @@
 <h2 class="hasAnchor">
 <a href="#use-the-psqi-functions" class="anchor"></a>Use the <code>psqi</code> functions</h2>
 <p>All the functions necessary to compute the components and the global score for the psqi are included in this package, and loading it in your R-environment makes them accessable to you. All the functions for the PSQI, are prefixed with <code>psqi_</code>, so they are easy to find.</p>
-<p>There are a total of 7 <code>psqi_</code> functions in this package. One for each component, except 1 and 6 which are just the raw answers from questions 4 and 7. In addition, there is a function to calculate the global, which must be done <em>after</em> having computed the 7 components. Lastly, there is a function <code>psqi_compute</code> which will do it all for you, compute all the components and the global. All the functions are documented as any function in R, and so you may call <code>?psqi_compute</code> to see the user documentation for the functions.</p>
-<p>There are many options you can utilise for these functions, so you may explore them as you wish. The functions are also made such that you can use them on datasets other than the LCBC MOAS dataset, but you will then have to specify the columns to use for the various components your self. The functions are made to work directly with the MOAS, and require no extra input other that the object containing the MOAS to run all calculations. Running <code>psqi_compute(MOAS)</code> will calculate all components and append them to the data you provided. Running <code>psqi_compute(MOAS, keep_all = FALSE)</code> will only return the computed components and the global score in a data frame.</p>
+<p>There are a total of 7 <code>psqi_</code> functions in this package. One for each component, except 1 and 6 which are just the raw answers from questions 4 and 7. In addition, there is a function to calculate the global, which must be done <em>after</em> having computed the 7 components. Lastly, there is a function <code>psqi_compute</code> which will do it all for you, compute all the components and the global. All the functions are documented as any function in R, and so you may call <code><a href="../reference/psqi_compute.html">?psqi_compute</a></code> to see the user documentation for the functions.</p>
+<p>There are many options you can utilise for these functions, so you may explore them as you wish. The functions are also made such that you can use them on datasets other than the LCBC MOAS dataset, but you will then have to specify the columns to use for the various components your self. The functions are made to work directly with the MOAS, and require no extra input other that the object containing the MOAS to run all calculations. Running <code><a href="../reference/psqi_compute.html">psqi_compute(MOAS)</a></code> will calculate all components and append them to the data you provided. Running <code><a href="../reference/psqi_compute.html">psqi_compute(MOAS, keep_all = FALSE)</a></code> will only return the computed components and the global score in a data frame.</p>
 </div>
 <div id="references" class="section level2">
 <h2 class="hasAnchor">
