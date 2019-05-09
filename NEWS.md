@@ -1,5 +1,6 @@
 # Questionnaires 0.0.1
 
+* bdi_compute_sum added option for minimum answered. Some participants by accident skip one or two questions, add possibility to still compute despite missing some answers.
 * calculation of component 5 which needs answers to all the sub-questions of question 5 mistakenly also included 5a, which is NOT part of this component  
 
 

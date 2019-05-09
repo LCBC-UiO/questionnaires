@@ -4,7 +4,8 @@
 \alias{bdi_compute_sum}
 \title{Calculate sum of BDI}
 \usage{
-bdi_compute_sum(data, cols = matches("BDI_[0-9][0-9]$"))
+bdi_compute_sum(data, cols = matches("BDI_[0-9][0-9]$"),
+  min.answered = 18)
 }
 \arguments{
 \item{data}{Data containing BDI data}

@@ -7,12 +7,17 @@
 #' @export
 #' @family bdi_functions
 #' @importFrom dplyr enquo select matches
-bdi_compute_sum = function(data, cols = matches("BDI_[0-9][0-9]$")){
+bdi_compute_sum = function(data, cols = matches("BDI_[0-9][0-9]$"), min.answered = 18){
   cols = enquo(cols)
   
-  # If raw BDI is punched, calculate the sum
-  rowSums(select(data, !!cols), na.rm=T)
+  tmp <- transmute(data, 
+                N = rowSums(!is.na(select(data, !!cols))),
+                BDI = rowSums(select(data, !!cols), na.rm=TRUE)
+  )
   
+  # If raw BDI is punched, calculate the sum
+  ifelse(tmp$N < min.answered, NA, tmp$BDI)
+        
 }
 
 
