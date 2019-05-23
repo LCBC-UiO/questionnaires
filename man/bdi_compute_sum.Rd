@@ -4,18 +4,43 @@
 \alias{bdi_compute_sum}
 \title{Calculate sum of BDI}
 \usage{
-bdi_compute_sum(data, cols = matches("BDI_[0-9][0-9]$"))
+bdi_compute_sum(data, cols = matches("BDI_[0-9][0-9]$"),
+  max_missing = NULL)
 }
 \arguments{
 \item{data}{Data containing BDI data}
 
 \item{cols}{Columns that contain BDI data}
+
+\item{max_missing}{Maximum number of components allowed to be missing. Defaults
+to \code{NULL}, which means that any missing component counts as 0. Hence, 
+if all BDI components are missing, the sum is still 0, not \code{NA}.}
 }
 \value{
 numeric
 }
 \description{
 Calculate sum of BDI
+}
+\examples{
+# Example of treatment of missing values
+library(dplyr)
+library(Questionnaires)
+data <- tibble(
+BDI_01 = c(1, NA_real_, NA_real_, 2, 1),
+BDI_02 = c(1, 1, NA_real_, 2, NA_real_)
+)
+
+# Row with all components missing, gets sum 0
+data \%>\% 
+  bind_cols(BDI_sum = bdi_compute_sum(data))
+# Do not allow any missing values
+data \%>\% 
+  bind_cols(BDI_sum = bdi_compute_sum(data, max_missing = 0))
+# Allow one missing value
+data \%>\% 
+  bind_cols(BDI_sum = bdi_compute_sum(data, max_missing = 2))
+
 }
 \seealso{
 Other bdi_functions: \code{\link{bdi_compute}},
