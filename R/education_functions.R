@@ -157,6 +157,7 @@ edu10_to_years <- function(x){
 #' @param keep_all  logical, append to data.frame
 #'
 #' @importFrom dplyr select starts_with
+#' @importFrom data.table ':='
 #' @family education_functions
 #' @return a data.frame
 #' @export

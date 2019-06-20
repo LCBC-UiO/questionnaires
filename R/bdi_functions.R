@@ -2,6 +2,7 @@
 #'
 #' @param data Data containing BDI data
 #' @param cols Columns that contain BDI data
+#' @param min.answered Minimum number of questions answered to sum score
 #'
 #' @return numeric
 #' @export

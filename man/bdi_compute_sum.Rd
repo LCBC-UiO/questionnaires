@@ -11,6 +11,8 @@ bdi_compute_sum(data, cols = matches("BDI_[0-9][0-9]$"),
 \item{data}{Data containing BDI data}
 
 \item{cols}{Columns that contain BDI data}
+
+\item{min.answered}{Minimum number of questions answered to sum score}
 }
 \value{
 numeric
