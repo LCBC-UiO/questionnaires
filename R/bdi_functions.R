@@ -2,23 +2,50 @@
 #'
 #' @param data Data containing BDI data
 #' @param cols Columns that contain BDI data
-#' @param min.answered Minimum number of questions answered to sum score
+#' @param max_missing Maximum number of components allowed to be missing.
+#'   Defaults to "0", and will return \code{NA} if missing any question. If set to
+#'   \code{NULL} any missing component counts as 0, meaning if all BDI
+#'   components are missing, the sum is still 0, not \code{NA}.
 #'
 #' @return numeric
 #' @export
 #' @family bdi_functions
 #' @importFrom dplyr enquo select matches
-bdi_compute_sum = function(data, cols = matches("BDI_[0-9][0-9]$"), min.answered = 18){
+#' @examples
+#' # Example of treatment of missing values
+#' library(dplyr)
+#' library(Questionnaires)
+#' data <- tibble(
+#' BDI_01 = c(1, NA_real_, NA_real_, 2, 1),
+#' BDI_02 = c(1, 1, NA_real_, 2, NA_real_)
+#' )
+#'
+#' # Row with all components missing, gets sum 0
+#' data %>%
+#'   bind_cols(BDI_sum = bdi_compute_sum(data))
+#' # Do not allow any missing values
+#' data %>%
+#'   bind_cols(BDI_sum = bdi_compute_sum(data, max_missing = 0))
+#' # Allow one missing value
+#' data %>%
+#'   bind_cols(BDI_sum = bdi_compute_sum(data, max_missing = 2))
+#' 
+bdi_compute_sum = function(data, cols = matches("BDI_[0-9][0-9]$"), max_missing = 0){
   cols = enquo(cols)
   
-  tmp <- transmute(data, 
-                N = rowSums(!is.na(select(data, !!cols))),
-                BDI = rowSums(select(data, !!cols), na.rm=TRUE)
-  )
-  
   # If raw BDI is punched, calculate the sum
-  ifelse(tmp$N < min.answered, NA, tmp$BDI)
-        
+  if(is.null(max_missing)){
+    rowSums(select(data, !!cols), na.rm = TRUE)  
+  } else {
+    stopifnot(max_missing >= 0)
+    apply(select(data, !!cols), 1, function(x){
+      if(sum(is.na(x)) > max_missing){
+        NA_real_
+      } else {
+        sum(x, na.rm = TRUE)
+      }
+    })
+  }
 }
 
 
