@@ -87,7 +87,11 @@ bdi_factorise <- function(bdi_sum = BDI){
 #' @family bdi_functions
 bdi_compute = function(data, cols = matches("BDI_[0-9][0-9]$"), keep_all = TRUE){
   
-  tmp <- mutate(data, BDI = bdi_compute_sum(data, cols))
+  tmp <- mutate(data, 
+                BDI = ifelse(!is.na(BDI_01), 
+                             bdi_compute_sum(data, cols), 
+                             BDI))
+  
   tmp <- mutate(tmp, BDI_Coded = bdi_factorise(BDI))
   
   

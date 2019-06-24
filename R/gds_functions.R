@@ -33,8 +33,11 @@ gds_compute_sum <- function(data,
   tmp <- gds_compute_values(tmp, values["Yes"], cols_alter)
   tmp <- gds_compute_values(tmp, values["No"], -cols_alter)
   
-  rowSums(tmp)
+  tt <- rowSums(tmp)
   
+  idx <- is.na(data$GDS_01)
+  tt[idx] <- data$GDS[idx]
+  tt
 }
 
 #' Factorise the GDS sum
