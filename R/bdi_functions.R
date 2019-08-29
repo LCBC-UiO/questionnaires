@@ -90,12 +90,16 @@ bdi_compute = function(data,
                        keep_all = TRUE){
   
   # If BDI does no exists in the data, make NAs for missing
-  col <- ifelse("BDI" %in% names(data), !!enquo(BDI), NA) 
+  tmp <- if("BDI" %in% names(data)){
+    data
+  }else{
+    mutate(data, BDI = NA)
+  }
   
-  tmp <- mutate(data, 
+  tmp <- mutate(tmp, 
                 BDI = ifelse(!is.na(BDI_01), 
                              bdi_compute_sum(data, cols, max_missing = max_missing), 
-                             col))
+                             BDI))
   
   tmp <- mutate(tmp, BDI_Coded = bdi_factorise(BDI))
   

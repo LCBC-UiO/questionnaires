@@ -2,14 +2,20 @@
 % Please edit documentation in R/bdi_functions.R
 \name{bdi_compute}
 \alias{bdi_compute}
-\title{Title}
+\title{Compute all BDI data from questionnaire}
 \usage{
-bdi_compute(data, cols = matches("BDI_[0-9][0-9]$"), keep_all = TRUE)
+bdi_compute(data, cols = matches("BDI_[0-9][0-9]$"), max_missing = 0,
+  keep_all = TRUE)
 }
 \arguments{
 \item{data}{Data containing BDI data}
 
 \item{cols}{Columns that contain BDI data}
+
+\item{max_missing}{Maximum number of components allowed to be missing.
+Defaults to "0", and will return \code{NA} if missing any question. If set to
+\code{NULL} any missing component counts as 0, meaning if all BDI
+components are missing, the sum is still 0, not \code{NA}.}
 
 \item{keep_all}{logical, append to data.frame}
 }
@@ -17,7 +23,7 @@ bdi_compute(data, cols = matches("BDI_[0-9][0-9]$"), keep_all = TRUE)
 data.frame
 }
 \description{
-Title
+Compute all BDI data from questionnaire
 }
 \seealso{
 Other bdi_functions: \code{\link{bdi_compute_sum}},
