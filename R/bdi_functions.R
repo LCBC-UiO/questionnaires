@@ -76,24 +76,28 @@ bdi_factorise <- function(bdi_sum = BDI){
   )
 }
 
-#' Title
+#' Compute all BDI data from questionnaire
 #'
-#' @param data Data containing BDI data
-#' @param cols Columns that contain BDI data
+#' @inheritParams bdi_compute_sum
 #' @param keep_all logical, append to data.frame
 #'
 #' @return data.frame
 #' @export
 #' @family bdi_functions
-bdi_compute = function(data, cols = matches("BDI_[0-9][0-9]$"), keep_all = TRUE){
+bdi_compute = function(data, 
+                       cols = matches("BDI_[0-9][0-9]$"), 
+                       max_missing = 0, 
+                       keep_all = TRUE){
+  
+  # If BDI does no exists in the data, make NAs for missing
+  col <- ifelse("BDI" %in% names(data), !!enquo(BDI), NA) 
   
   tmp <- mutate(data, 
                 BDI = ifelse(!is.na(BDI_01), 
-                             bdi_compute_sum(data, cols), 
-                             BDI))
+                             bdi_compute_sum(data, cols, max_missing = max_missing), 
+                             col))
   
   tmp <- mutate(tmp, BDI_Coded = bdi_factorise(BDI))
-  
   
   if(keep_all){
     tmp

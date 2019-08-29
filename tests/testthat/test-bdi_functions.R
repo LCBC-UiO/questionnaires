@@ -1,5 +1,6 @@
 context("test-bdi_functions")
 load("bdi.rda")
+# load("tests/testthat/bdi.rda")
 
 test_that("Check component calculations", {
   
@@ -42,6 +43,10 @@ test_that("Check component calculations", {
   
   expect_equal(ncol(bdi_compute(bdi, keep_all=FALSE)),
                2)
+  
+  bdi <- bdi_compute(bdi)
+  bdi$BDI_01 <- c()
+  
 })
 
 
