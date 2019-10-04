@@ -44,7 +44,7 @@ As this package is in a private github repository, you need to do a couple of st
 
 First, install the packages `usethis` and `remotes`.
 ```
-install.packages(c("remotes", "usethis"))
+install.packages("usethis")
 ```
 
 Then, in github, create a Personal Access Token (PAT)  by going to Settings -> Developer Settings -> Personal Access Token -> Generate new access token.

@@ -44,7 +44,11 @@ couple of steps to install it.
 
 First, install the packages `usethis` and `remotes`.
 
+<<<<<<< HEAD
     install.packages(c("remotes", "usethis"))
+=======
+    install.packages("usethis")
+>>>>>>> 8bfaa7d37f0c01996c6ef591160fc760f72ed5d4
 
 Then, in github, create a Personal Access Token (PAT) by going to
 Settings -\> Developer Settings -\> Personal Access Token -\> Generate
