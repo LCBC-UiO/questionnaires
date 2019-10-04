@@ -4,3 +4,4 @@
 ^LICENCE\.md$
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^\.circleci/config\.yml$

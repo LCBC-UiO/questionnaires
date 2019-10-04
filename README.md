@@ -5,6 +5,10 @@
 
 <!-- badges: start -->
 
+[![CircleCI build
+status](https://circleci.com/gh/LCBC-UiO/Questionnaires.svg?style=svg)](https://circleci.com/gh/LCBC-UiO/Questionnaires)
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 
 The repository contains functions to run coversions and calculate
@@ -20,12 +24,12 @@ The questionnaires covered so far:
   - TAS -
 
 All functions in this package are prefixed with the name of the
-questionnaire the function is intended for (i.e. `psqi_`, `ipaq_` etc.).
+questionnaire the function is intended for (i.e. `psqi_`, `ipaq_` etc.).
 Column specifications may be manually inputed, but if columns are named
 after as the function expects (i.e. MOAS standard), the functions
 generally work without manual input. The functions that will run all
 (most) necessary steps to completely calculate components and sums are
-named as `questionnaire_compute` (i.e. `psqi_compute()`, `ipaq_compute`,
+named as `questionnaire_compute` (i.e. `psqi_compute()`, `ipaq_compute`,
 etc.). These functions all have the option to `keep_all` which takes a
 `TRUE` or `FALSE` statement on whether the data should be appended to
 the input data, or just to return the computed columns.
@@ -38,9 +42,9 @@ and IPAQ which just describe the background for the computations.
 As this package is in a private github repository, you need to do a
 couple of steps to install it.
 
-First, install the packages `usethis` and `devtools`.
+First, install the packages `usethis` and `remotes`.
 
-    install.packages(c("devtools", "usethis"))
+    install.packages(c("remotes", "usethis"))
 
 Then, in github, create a Personal Access Token (PAT) by going to
 Settings -\> Developer Settings -\> Personal Access Token -\> Generate
@@ -60,6 +64,6 @@ You can install the private version of Questionnaires from
 [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("LCBC-UiO/Questionnaires")
+# install.packages("remotes")
+remotes::install_github("LCBC-UiO/Questionnaires")
 ```

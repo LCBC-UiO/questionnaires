@@ -16,6 +16,8 @@ knitr::opts_chunk$set(
 # LCBC Questionnaires <img src="man/figures/hex.png" align="right" alt="" width="120" />
 
 <!-- badges: start -->
+[![CircleCI build status](https://circleci.com/gh/LCBC-UiO/Questionnaires.svg?style=svg)](https://circleci.com/gh/LCBC-UiO/Questionnaires)
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 
 The repository contains functions to run coversions and calculate components from commonly used questionnaires in LCBC research. 
@@ -40,9 +42,9 @@ Vignettes are on their way, and so far there are only vignettes for PSQI and IPA
 
 As this package is in a private github repository, you need to do a couple of steps to install it. 
 
-First, install the packages `usethis` and `devtools`.
+First, install the packages `usethis` and `remotes`.
 ```
-install.packages(c("devtools", "usethis"))
+install.packages(c("remotes", "usethis"))
 ```
 
 Then, in github, create a Personal Access Token (PAT)  by going to Settings -> Developer Settings -> Personal Access Token -> Generate new access token.
@@ -58,6 +60,6 @@ Restart R (go to Session - Restart R in RStudio), and then you should be able to
 You can install the private version of Questionnaires from [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("LCBC-UiO/Questionnaires")
+# install.packages("remotes")
+remotes::install_github("LCBC-UiO/Questionnaires")
 ```
