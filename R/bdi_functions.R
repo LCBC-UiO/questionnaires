@@ -31,14 +31,14 @@
 #'   bind_cols(BDI_sum = bdi_compute_sum(data, max_missing = 2))
 #' 
 bdi_compute_sum = function(data, cols = matches("BDI_[0-9][0-9]$"), max_missing = 0){
-  cols = enquo(cols)
+
   
   # If raw BDI is punched, calculate the sum
   if(is.null(max_missing)){
-    rowSums(select(data, !!cols), na.rm = TRUE)  
+    rowSums(select(data, {{cols}} ), na.rm = TRUE)  
   } else {
     stopifnot(max_missing >= 0)
-    apply(select(data, !!cols), 1, function(x){
+    apply(select(data, {{cols}} ), 1, function(x){
       if(sum(is.na(x)) > max_missing){
         NA_real_
       } else {

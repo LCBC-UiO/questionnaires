@@ -12,9 +12,8 @@ ehi_change <- function(x, direction = 1){
 ehi_values <- function(data, 
                        cols = matches("^EHI_[0-9][0-9]$"),
                        direction = 1){
-  cols = dplyr::enquo(cols)
-  
-  tmp <- dplyr::select(data, !!cols) 
+
+  tmp <- dplyr::select(data, {{cols}} ) 
   tmp <- dplyr::mutate_all(tmp, ehi_change, direction = direction) 
   
   rowSums(tmp)
@@ -82,14 +81,13 @@ ehi_factorise_le <- function(le = EHI_LE){
 #' @family ehi_functions
 #' @importFrom dplyr mutate select
 ehi_compute = function(data, cols = matches("^EHI_[0-9][0-9]$"), writing = EHI_01, keep_all = TRUE){
-  writing = enquo(writing)
   
   le <- ehi_compute_le(data, cols)
   sum <- ehi_factorise_le(le)
   
   tmp <- mutate(data,
                 EHI_LE = le,
-                EHI_Nominal = ehi_factorise_nominal(!!writing),
+                EHI_Nominal = ehi_factorise_nominal( {{writing}} ),
                 EHI_Coded = sum
   )
   

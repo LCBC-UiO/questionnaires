@@ -56,10 +56,11 @@ psqi_compute_comp4 <- function(hoursSleep, bedtime, risingtime){
 #' @export
 #' @importFrom dplyr enquo select mutate if_else pull
 psqi_compute_comp5 <- function(data, sleepTroubles = matches("^PSQI_05[b-j]$")){
-  sleepTroubles <- enquo(sleepTroubles)
-  
-  tmp <- select(data, !!sleepTroubles)
-  tmp <- mutate(tmp, value = apply(tmp, 1, function(x) if_else(all(is.na(x)), NA_real_, as.numeric(sum(x, na.rm = TRUE)))))
+
+  tmp <- select(data, {{sleepTroubles}} )
+  tmp <- mutate(tmp, value = apply(tmp, 1, function(x) 
+    if_else(all(is.na(x)), NA_real_, as.numeric(sum(x, na.rm = TRUE))))
+    )
   tmp <- pull(tmp, value)
   
   cut(tmp, breaks = c(0, 1, 10, 19, Inf),
@@ -89,17 +90,17 @@ psqi_compute_comp7 <- function(keepAwake, keepEnthused){
 #' @importFrom tidyr gather
 psqi_compute_global <- function(data, cols = matches("^PSQI_Comp[1-7]+_"), max_missing = 0){
   if(max_missing > 6) stop("max_missing must be between 0 and 6.")
-  cols <- enquo(cols)
-  
-  
-  tmp <- select(data, !!cols)
+
+  tmp <- select(data, {{cols}} )
   tmp <- mutate(tmp, ID = row_number())
-  tmp <- gather(tmp, key = "key", value = "value", !!cols, na.rm = FALSE)
+  tmp <- gather(tmp, key = "key", value = "value", {{cols}} , na.rm = FALSE)
   
   tmp <- group_by_at(tmp, vars(ID))
 
   tmp <- summarise_at(tmp, vars(value), 
-                      list(~ if_else(7 - sum(!is.na(.)) > max_missing, NA_real_, 7 / sum(!is.na(.)) * sum(., na.rm = TRUE))))
+                      list(~ if_else(7 - sum(!is.na(.)) > max_missing, 
+                                     NA_real_, 
+                                     7 / sum(!is.na(.)) * sum(., na.rm = TRUE))))
   pull(tmp)
 }
 
@@ -136,55 +137,54 @@ psqi_compute <- function(data,
                          keep_all = TRUE
 ){
   
-  bedtime <- enquo(bedtime)
-  minBeforeSleep <- enquo(minBeforeSleep)
-  risingtime <- enquo(risingtime)
-  hoursSleep <- enquo(hoursSleep)
-  noSleep30min <- enquo(noSleep30min)
-  sleepQuality <- enquo(sleepQuality)
-  medication <- enquo(medication)
-  keepAwake <- enquo(keepAwake)
-  keepEnthused <- enquo(keepEnthused)
-  
   tmp <- data
   nn <- character()
 
   if(1 %in% components){
-    tmp <- mutate(tmp, PSQI_Comp1_Quality = !!sleepQuality)
+    tmp <- mutate(tmp, PSQI_Comp1_Quality = {{sleepQuality}} )
     nn = c(nn, "PSQI_Comp1_Quality")
   }
   
   if(2 %in% components){
-    tmp <- mutate(tmp, PSQI_Comp2_Latency = psqi_compute_comp2(!!minBeforeSleep, !!noSleep30min))
+    tmp <- mutate(tmp, 
+                  PSQI_Comp2_Latency = psqi_compute_comp2({{minBeforeSleep}} , 
+                                                               {{noSleep30min}} ))
     nn = c(nn, "PSQI_Comp2_Latency")  
   } 
   
   if(3 %in% components){
-    tmp <- mutate(tmp, PSQI_Comp3_Duration = psqi_compute_comp3(!!hoursSleep))
+    tmp <- mutate(tmp, 
+                  PSQI_Comp3_Duration = psqi_compute_comp3({{hoursSleep}} ))
     nn = c(nn, "PSQI_Comp3_Duration")
   } 
   
   if(4 %in% components){
-    tmp <- mutate(tmp, PSQI_Comp4_Efficiency = psqi_compute_comp4(!!hoursSleep, !!bedtime, !!risingtime))
+    tmp <- mutate(tmp, 
+                  PSQI_Comp4_Efficiency = psqi_compute_comp4({{hoursSleep}} , 
+                                                                  {{bedtime}},  
+                                                                  {{risingtime}} ))
     nn = c(nn, "PSQI_Comp4_Efficiency")
   } 
   
   if(5 %in% components){
-    tmp <- mutate(tmp, PSQI_Comp5_Problems = psqi_compute_comp5(data, sleepTroubles))
+    tmp <- mutate(tmp, 
+                  PSQI_Comp5_Problems = psqi_compute_comp5(data, sleepTroubles))
     nn = c(nn, "PSQI_Comp5_Problems")
   } 
   
   if(6 %in% components){
-    tmp <- mutate(tmp, PSQI_Comp6_Medication = !!medication)
+    tmp <- mutate(tmp, 
+                  PSQI_Comp6_Medication = {{medication}} )
     nn = c(nn, "PSQI_Comp6_Medication")
   } 
   
   if(7 %in% components){
-    tmp <- mutate(tmp, PSQI_Comp7_Tired = psqi_compute_comp7(!!keepAwake, !!keepEnthused))
+    tmp <- mutate(tmp, 
+                  PSQI_Comp7_Tired = psqi_compute_comp7({{keepAwake}} , {{keepEnthused}} ))
     nn = c(nn, "PSQI_Comp7_Tired")
   } 
   
-  if(!keep_all) tmp <- select(tmp, !!nn)
+  if(!keep_all) tmp <- select(tmp, {{nn}} )
   
   if(all(1:7 %in% components)){
     mutate(tmp,

@@ -3,7 +3,8 @@ load("ipaq.rda")
 
 test_that("Check component calculations", {
   
-  tt <- ipaq_time_alter(ipaq)
+  tt <- expect_warning(ipaq_time_alter(ipaq),
+                       "failed to parse")
   
   expect_equal(tt$IPAQ_2,
                c(0, NA, 60, 60, 0, 210, 60, 25, 0, 45)
@@ -45,7 +46,8 @@ test_that("Check component calculations", {
 
 test_that("Check component calculations", {
   
-  tt <- ipaq_time_alter(ipaq)
+  tt <- expect_warning(ipaq_time_alter(ipaq),
+                       "failed to parse")
   
   expect_equal(names(ipaq_compute(tt, keep_all = FALSE)),
                c("IPAQ_MET_Vigorous", "IPAQ_MET_Moderate", "IPAQ_MET_Light", 

@@ -166,22 +166,19 @@ education_compute <- function(data,
                               edu10 = Edu_Coded10,
                               edu_years = Edu_Years,
                               keep_all = TRUE){
-  edu4 <- dplyr::enquo(edu4)
-  edu10 <- dplyr::enquo(edu10)
-  edu_years <- dplyr::enquo(edu_years)
   
   tmp <- mutate(data,
-                !!edu10 := edu10_factorize(!!edu10),
-                !!edu4 := ifelse(is.na(!!edu4), 
-                                 edu10_reduce(!!edu10),
-                                 !!edu4),
-                !!edu4 := edu4_factorize(!!edu4),
-                !!edu_years := ifelse(is.na(!!edu_years) | !!edu_years < 6,
-                                      as.numeric(!!edu10),
-                                      !!edu_years),
-                !!edu_years := ifelse(is.na(!!edu_years),
-                                      edu4_to_years(!!edu4),
-                                      !!edu_years)
+                 {{edu10}} := edu10_factorize( {{edu10}} ),
+                 {{edu4 }} := ifelse(is.na( {{edu4}} ), 
+                                 edu10_reduce( {{edu10}} ),
+                                  {{edu4}} ),
+                 {{edu4}}  := edu4_factorize( {{edu4}} ),
+                {{edu_years}}  := ifelse(is.na( {{edu_years}} ) |  {{edu_years}}  < 6,
+                                      as.numeric( {{edu10}} ),
+                                       {{edu_years}} ),
+                 {{edu_years}}  := ifelse(is.na( {{edu_years}} ),
+                                      edu4_to_years( {{edu4}} ),
+                                       {{edu_years}} )
   )
   
   if(keep_all){
@@ -209,20 +206,17 @@ edu_compiled <- function(data,
                          participant,
                          mother,
                          father){
-  participant <- dplyr::enquo(participant)
-  mother <- dplyr::enquo(mother)
-  father <- dplyr::enquo(father)
   
   dplyr::mutate(data,
          Edu_Compiled_Code4 = edu4_factorize(dplyr::case_when(
-           !is.na(!!participant) ~ as.character(!!participant),
-           !is.na(!!mother) ~ as.character(!!mother),
-           !is.na(!!father) ~ as.character(!!father))),
+           !is.na( {{participant}} ) ~ as.character( {{participant}} ),
+           !is.na( {{mother}} ) ~ as.character( {{mother}} ),
+           !is.na( {{father}} ) ~ as.character( {{father}} ))),
          Edu_Compiled_Years = as.numeric(Edu_Compiled_Code4),
          Edu_Compiled_Source = dplyr::case_when(
-           !is.na(!!participant) ~ "Participant",
-           !is.na(!!mother) ~ "Mother",
-           !is.na(!!father) ~ "Father")
+           !is.na( {{participant}} ) ~ "Participant",
+           !is.na( {{mother}} ) ~ "Mother",
+           !is.na( {{father}} ) ~ "Father")
   )
 }
 

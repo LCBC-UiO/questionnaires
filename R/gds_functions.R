@@ -4,9 +4,7 @@ gds_binary <- function(x, value) ifelse(x != value, 1, 0)
 #' @importFrom dplyr enquo mutate_at vars
 gds_compute_values <- function(data, value = 1,
                                cols = matches("01$|05$|07$|09$|15$|19$|21$|27$|29$|30$")){
-  cols <- enquo(cols)
-  
-  mutate_at(data, vars(!!cols), gds_binary, value = value)
+  mutate_at(data, vars( {{cols}} ), gds_binary, value = value)
 }
 
 
@@ -26,9 +24,8 @@ gds_compute_sum <- function(data,
                             cols_alter = matches("01$|05$|07$|09$|15$|19$|21$|27$|29$|30$"),
                             values = c(Yes = 1, No = 0)
 ){
-  cols <- enquo(cols)
   
-  tmp <- select(data, !!cols)
+  tmp <- select(data, {{cols}} )
   
   tmp <- gds_compute_values(tmp, values["Yes"], cols_alter)
   tmp <- gds_compute_values(tmp, values["No"], -cols_alter)
@@ -87,7 +84,8 @@ gds_compute <- function(data,
   
   
   if(keep_all){
-    bind_cols(select(data, -one_of(names(data)[names(data) %in% names(tmp)])), 
+    bind_cols(select(data,
+                     -one_of(names(data)[names(data) %in% names(tmp)])), 
               tmp)
   }else{
     tmp
