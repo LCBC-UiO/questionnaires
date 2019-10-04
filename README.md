@@ -6,9 +6,11 @@
 <!-- badges: start -->
 
 [![CircleCI build
-status](https://circleci.com/gh/LCBC-UiO/Questionnaires.svg?style=svg)](https://circleci.com/gh/LCBC-UiO/Questionnaires)
+status](https://circleci.com/gh/LCBC-UiO/Questionnaires.svg?style=svg&circle-token=8de4dd4d0d428ed1382feef5513cfa15aac3703e)](https://circleci.com/gh/LCBC-UiO/Questionnaires)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![Travis build
+status](https://travis-ci.org/LCBC-UiO/Questionnaires.svg?branch=master)](https://travis-ci.org/LCBC-UiO/Questionnaires)
 <!-- badges: end -->
 
 The repository contains functions to run coversions and calculate
@@ -44,11 +46,7 @@ couple of steps to install it.
 
 First, install the packages `usethis` and `remotes`.
 
-<<<<<<< HEAD
-    install.packages(c("remotes", "usethis"))
-=======
     install.packages("usethis")
->>>>>>> 8bfaa7d37f0c01996c6ef591160fc760f72ed5d4
 
 Then, in github, create a Personal Access Token (PAT) by going to
 Settings -\> Developer Settings -\> Personal Access Token -\> Generate
