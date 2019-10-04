@@ -11,6 +11,8 @@ status](https://circleci.com/gh/LCBC-UiO/Questionnaires.svg?style=svg&circle-tok
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![Travis build
 status](https://travis-ci.org/LCBC-UiO/Questionnaires.svg?branch=master)](https://travis-ci.org/LCBC-UiO/Questionnaires)
+[![Codecov test
+coverage](https://codecov.io/gh/LCBC-UiO/Questionnaires/branch/master/graph/badge.svg)](https://codecov.io/gh/LCBC-UiO/Questionnaires?branch=master)
 <!-- badges: end -->
 
 The repository contains functions to run coversions and calculate

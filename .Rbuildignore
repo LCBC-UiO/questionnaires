@@ -7,3 +7,5 @@
 ^\.circleci/config\.yml$
 ^\.travis\.yml$
 ^_pkgdown\.yml$
+^codecov\.yml$
+^LICENSE\.md$

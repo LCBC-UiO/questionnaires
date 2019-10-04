@@ -1,12 +1,11 @@
 Package: Questionnaires
 Title: Package with functions to calculate components and sums for LCBC questionnaires
 Version: 0.0.1
-Authors@R: 
-    person(given = "Athanasia Monika",
-           family = "Mowinckel",
-           role = c("aut", "cre"),
-           email = "a.m.mowinckel@psykologi.uio.no")
-Description: What the package does (one paragraph).
+Authors@R: person("Athanasia Mo", "Mowinckel", 
+        email = "a.m.mowinckel@psykologi.uio.no", 
+        role = c("aut", "cre"),
+        comment = c(ORCID = "0000-0002-5756-0223"))
+Description: Creates summaries and factorials of answers to questionnaires.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -21,7 +20,8 @@ Imports:
 Suggests: 
     testthat (>= 2.1.0),
     knitr,
-    rmarkdown
+    rmarkdown,
+    covr
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr
 URL: https://github.com/LCBC-UiO/Questionnaires
