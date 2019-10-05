@@ -41,6 +41,9 @@ test_that("Check component calculations", {
   
   expect_equal(ncol(psqi_compute(psqi, components = 1:7, keep_all = TRUE)),
                39)
+  
+  expect_error(psqi_compute_global(psqi, max_missing = 8),
+               "max_missing must be between 0 and 6")
 })
 
 

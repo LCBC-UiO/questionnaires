@@ -1,4 +1,3 @@
-context("test-education_functions")
 
 test_that("test edu4", {
   edu4 <- c("3", "High school", "1", 

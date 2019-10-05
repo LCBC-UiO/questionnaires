@@ -38,5 +38,6 @@ time_alter = function(x, unit = "minute"){
   time_hms2deciH(t, unit = unit)
 }
 
-is.hms = function(x) any(class(x) %in% "hms")
+is.hms = function(x) any(class(x) %in% "Period")
+is.hm = function(x) any(class(x) %in% "Period")
 

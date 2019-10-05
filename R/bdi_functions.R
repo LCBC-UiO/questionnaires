@@ -89,7 +89,7 @@ bdi_compute = function(data,
                        max_missing = 0, 
                        keep_all = TRUE){
   
-  # If BDI does no exists in the data, make NAs for missing
+  # If BDI does not exists in the data, make NAs for missing
   tmp <- if("BDI" %in% names(data)){
     data
   }else{

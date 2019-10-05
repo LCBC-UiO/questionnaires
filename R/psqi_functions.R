@@ -89,7 +89,7 @@ psqi_compute_comp7 <- function(keepAwake, keepEnthused){
 #' @importFrom dplyr enquo select group_by_at n row_number summarise_at pull if_else
 #' @importFrom tidyr gather
 psqi_compute_global <- function(data, cols = matches("^PSQI_Comp[1-7]+_"), max_missing = 0){
-  if(max_missing > 6) stop("max_missing must be between 0 and 6.")
+  if(max_missing > 6) stop("max_missing must be between 0 and 6.", call. = FALSE)
 
   tmp <- select(data, {{cols}} )
   tmp <- mutate(tmp, ID = row_number())

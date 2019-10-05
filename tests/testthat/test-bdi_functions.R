@@ -29,7 +29,7 @@ test_that("Check component calculations", {
 })
 
 
-test_that("Check component calculations", {
+test_that("Check full calculations", {
   
   expect_equal(names(bdi_compute(bdi, keep_all=FALSE)),
                c("BDI", "BDI_Coded")
@@ -44,8 +44,15 @@ test_that("Check component calculations", {
   expect_equal(ncol(bdi_compute(bdi, keep_all=FALSE)),
                2)
   
+  
+  # Check what happens with BDI already exists
   bdi <- bdi_compute(bdi)
+  expect_equal(names(bdi_compute(bdi, keep_all=FALSE)),
+               c("BDI", "BDI_Coded")
+  )
+  
   bdi$BDI_01 <- c()
+  
   
 })
 

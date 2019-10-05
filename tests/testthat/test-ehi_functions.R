@@ -1,5 +1,5 @@
-context("test-ehi_functions")
 load("ehi.rda")
+# load("tests/testthat/ehi.rda")
 
 test_that("Check component calculations", {
   
@@ -44,3 +44,16 @@ test_that("Check component calculations", {
                15)
 })
 
+
+test_that("Check ehi_change", {
+  
+  expect_equal(ehi_change(1:4, direction = 1), 1:4)
+  expect_equal(ehi_change(1:4, direction = -1), rep(1,4))
+  
+  expect_equal(ehi_change(-1:-4, direction = -1), 1:4)
+  expect_equal(ehi_change(-1:-4, direction = 1), rep(1,4))
+  
+  expect_error(ehi_change(1:4, direction = 0), "not valid")
+  
+  
+})
