@@ -16,7 +16,7 @@ Reduce 10 category education to 4
 Other education_functions: \code{\link{edu10_factorize}},
   \code{\link{edu10_to_years}},
   \code{\link{edu4_factorize}},
-  \code{\link{edu4_to_years}}, \code{\link{edu_compiled}},
+  \code{\link{edu4_to_years}}, \code{\link{edu_compile}},
   \code{\link{education_compute}}
 }
 \concept{education_functions}

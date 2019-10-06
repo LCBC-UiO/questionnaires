@@ -202,7 +202,7 @@ education_compute <- function(data,
 #' @return dataframe with three new columns
 #' @export
 #' @family education_functions
-edu_compiled <- function(data,
+edu_compile <- function(data,
                          participant,
                          mother,
                          father){

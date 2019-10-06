@@ -29,6 +29,6 @@ converts from on type of coding to another etc.
 Other education_functions: \code{\link{edu10_factorize}},
   \code{\link{edu10_reduce}}, \code{\link{edu10_to_years}},
   \code{\link{edu4_factorize}},
-  \code{\link{edu4_to_years}}, \code{\link{edu_compiled}}
+  \code{\link{edu4_to_years}}, \code{\link{edu_compile}}
 }
 \concept{education_functions}
