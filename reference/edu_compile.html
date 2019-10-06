@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Factorize vector of 10 category education data. — edu10_factorize • Questionnaires</title>
+<title>Compile education across sources — edu_compile • Questionnaires</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,8 +42,10 @@
 
 
 
-<meta property="og:title" content="Factorize vector of 10 category education data. — edu10_factorize" />
-<meta property="og:description" content="Factorize vector of 10 category education data." />
+<meta property="og:title" content="Compile education across sources — edu_compile" />
+<meta property="og:description" content="Compiles education from participant, mother or father depending
+on source availability. Made for ease of testing and reporting education SES
+of family" />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -134,32 +136,49 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Factorize vector of 10 category education data.</h1>
+    <h1>Compile education across sources</h1>
     <small class="dont-index">Source: <a href='https://github.com/LCBC-UiO/Questionnaires/blob/master/R/education_functions.R'><code>R/education_functions.R</code></a></small>
-    <div class="hidden name"><code>edu10_factorize.Rd</code></div>
+    <div class="hidden name"><code>edu_compile.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Factorize vector of 10 category education data.</p>
+    <p>Compiles education from participant, mother or father depending
+on source availability. Made for ease of testing and reporting education SES
+of family</p>
     </div>
 
-    <pre class="usage"><span class='fu'>edu10_factorize</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>edu_compile</span>(<span class='no'>data</span>, <span class='no'>participant</span>, <span class='no'>mother</span>, <span class='no'>father</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>Vector of 10 category education data</p></td>
+      <th>data</th>
+      <td><p>MOAS-like data.frame</p></td>
+    </tr>
+    <tr>
+      <th>participant</th>
+      <td><p>unquoted column of 4 category education for participant</p></td>
+    </tr>
+    <tr>
+      <th>mother</th>
+      <td><p>unquoted column of 4 category education for participant's mother</p></td>
+    </tr>
+    <tr>
+      <th>father</th>
+      <td><p>unquoted column of 4 category education for participant's father</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>dataframe with three new columns</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other education_functions: <code><a href='edu10_reduce.html'>edu10_reduce</a></code>,
-  <code><a href='edu10_to_years.html'>edu10_to_years</a></code>,
+    <div class='dont-index'><p>Other education_functions: <code><a href='edu10_factorize.html'>edu10_factorize</a></code>,
+  <code><a href='edu10_reduce.html'>edu10_reduce</a></code>, <code><a href='edu10_to_years.html'>edu10_to_years</a></code>,
   <code><a href='edu4_factorize.html'>edu4_factorize</a></code>,
-  <code><a href='edu4_to_years.html'>edu4_to_years</a></code>, <code><a href='edu_compile.html'>edu_compile</a></code>,
+  <code><a href='edu4_to_years.html'>edu4_to_years</a></code>,
   <code><a href='education_compute.html'>education_compute</a></code></p></div>
 
   </div>
@@ -167,6 +186,7 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
       <li><a href="#see-also">See also</a></li>
     </ul>
 
