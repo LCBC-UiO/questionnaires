@@ -124,19 +124,13 @@
 <li>TAS - [The Toronto Alexithymia Scale (not documented yet)]</li>
 </ul>
 <p>All functions in this package are prefixed with the name of the questionnaire the function is intended for (i.e. <code>psqi_</code>, <code>ipaq_</code> etc.). Column specifications may be manually inputed, but if columns are named after as the function expects (i.e. MOAS standard), the functions generally work without manual input. The functions that will run all (most) necessary steps to completely calculate components and sums are named as <code>questionnaire_compute</code> (i.e. <code><a href="reference/psqi_compute.html">psqi_compute()</a></code>, <code>ipaq_compute</code>, etc.). These functions all have the option to <code>keep_all</code> which takes a <code>TRUE</code> or <code>FALSE</code> statement on whether the data should be appended to the input data, or just to return the computed columns.</p>
-<p>Vignettes are on their way, and so far there are only vignettes for PSQI and IPAQ which just describe the background for the computations.</p>
+<p>Full documentation with tutorials and function docs online at <a href="https://lcbc-uio.github.io/Questionnaires/" class="uri">https://lcbc-uio.github.io/Questionnaires/</a></p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>As this package is in a private github repository, you need to do a couple of steps to install it.</p>
-<p>First, install the packages <code>usethis</code> and <code>remotes</code>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"usethis"</span>)</a></code></pre></div>
-<p>Then, in github, create a Personal Access Token (PAT) by going to Settings -&gt; Developer Settings -&gt; Personal Access Token -&gt; Generate new access token.</p>
-<p>Give the token a name, and tick of all boxes in the <code>repo</code> category. <img src="reference/figures/PAT.png"></p>
-<p>Copy the token that is made, then go back to R. In R, type <code><a href="https://usethis.r-lib.org/reference/edit.html">usethis::edit_r_environ()</a></code>, which should open a blank file (if you have not edited it before) called <code>.Renviron</code>. Here add this line: <code>GITHUB_PAT=yourtoken</code>, and add your token after the <code>=</code> sign. Restart R (go to Session - Restart R in RStudio), and then you should be able to install this package.</p>
-<p>You can install the private version of Questionnaires from <a href="https://github.com/">GitHub</a> with:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># install.packages("remotes")</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">remotes<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/remotes/man/install_github.html">install_github</a></span>(<span class="st">"LCBC-UiO/Questionnaires"</span>)</a></code></pre></div>
+<p>This package is only on github, and requires the package <code>remotes</code> to install.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># install.packages("remotes")</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">remotes<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/remotes/man/install_github.html">install_github</a></span>(<span class="st">"LCBC-UiO/Questionnaires"</span>)</a></code></pre></div>
 </div>
 </div>
   </div>
