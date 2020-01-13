@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Compute component PSQI 4 — psqi_compute_comp4 • Questionnaires</title>
+<title>Restructure BDI questions from wide format — bdi_restructure • Questionnaires</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,8 +42,12 @@
 
 
 
-<meta property="og:title" content="Compute component PSQI 4 — psqi_compute_comp4" />
-<meta property="og:description" content="Compute component PSQI 4" />
+<meta property="og:title" content="Restructure BDI questions from wide format — bdi_restructure" />
+<meta property="og:description" content="If data come from Nettskjema, the structure is
+in wide format, with each question option as
+columns, creating 21*4 columns of data. 
+This function allows you to gather and create
+single columns for questions." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -140,49 +144,76 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Compute component PSQI 4</h1>
-    <small class="dont-index">Source: <a href='https://github.com/LCBC-UiO/Questionnaires/blob/master/R/psqi_functions.R'><code>R/psqi_functions.R</code></a></small>
-    <div class="hidden name"><code>psqi_compute_comp4.Rd</code></div>
+    <h1>Restructure BDI questions from wide format</h1>
+    <small class="dont-index">Source: <a href='https://github.com/LCBC-UiO/Questionnaires/blob/master/R/bdi_functions.R'><code>R/bdi_functions.R</code></a></small>
+    <div class="hidden name"><code>bdi_restructure.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Compute component PSQI 4</p>
+    <p>If data come from Nettskjema, the structure is
+in wide format, with each question option as
+columns, creating 21*4 columns of data. 
+This function allows you to gather and create
+single columns for questions.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>psqi_compute_comp4</span>(<span class='no'>hoursSleep</span>, <span class='no'>bedtime</span>, <span class='no'>risingtime</span>)</pre>
+    <pre class="usage"><span class='fu'>bdi_restructure</span>(<span class='no'>data</span>, <span class='kw'>cols</span> <span class='kw'>=</span> <span class='fu'>matches</span>(<span class='st'>"[0-9]_[0-9]"</span>), <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>"_"</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>hoursSleep</th>
-      <td><p>column name with hours of sleep (decimal hours) [PSQI_04]</p></td>
+      <th>data</th>
+      <td><p>Data containing BDI data</p></td>
     </tr>
     <tr>
-      <th>bedtime</th>
-      <td><p>column name with bedtime (HH:MM:SS) [PSQI_01]</p></td>
+      <th>cols</th>
+      <td><p>Columns that contain BDI data</p></td>
     </tr>
     <tr>
-      <th>risingtime</th>
-      <td><p>column name with rising time (HH:MM:SS) [PSQI_03]</p></td>
+      <th>sep</th>
+      <td><p>separator to use for the colum names</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <div class='dont-index'><p>Other psqi_functions: <code><a href='psqi_compute_comp2.html'>psqi_compute_comp2</a></code>,
-  <code><a href='psqi_compute_comp3.html'>psqi_compute_comp3</a></code>,
-  <code><a href='psqi_compute_comp5.html'>psqi_compute_comp5</a></code>,
-  <code><a href='psqi_compute_comp7.html'>psqi_compute_comp7</a></code>,
-  <code><a href='psqi_compute_global.html'>psqi_compute_global</a></code>,
-  <code><a href='psqi_compute.html'>psqi_compute</a></code></p></div>
+    <p>data frame</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
+    <p>The columns must adhere to some specific logic to work.
+It is recommended that the column names are in 
+the format BDI_01_0 BDI_01_1 BDI_01_2 BDI_01_3,
+where the first two numbers are the question 
+number, and the last number is the option number.</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>  <span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
+     <span class='kw'>ID</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>4</span>,
+     <span class='kw'>BDI_01_0</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>NA</span>,<span class='fl'>1</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>),
+     <span class='kw'>BDI_01_1</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>NA</span>, <span class='fl'>1</span>, <span class='fl'>NA</span>),
+     <span class='kw'>BDI_01_2</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>1</span>, <span class='fl'>NA</span>),
+     <span class='kw'>BDI_01_3</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>),
+     <span class='kw'>BDI_02_0</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>),
+     <span class='kw'>BDI_02_1</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>NA</span>,<span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>),
+     <span class='kw'>BDI_02_2</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>NA</span>,<span class='fl'>1</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>),
+     <span class='kw'>BDI_02_3</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>1</span>)
+  )
+  <span class='fu'>bdi_restructure</span>(<span class='no'>dat</span>)</div><div class='output co'>#&gt; # A tibble: 4 x 3
+#&gt;      ID BDI_01 BDI_02
+#&gt;   &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+#&gt; 1     1    1        0
+#&gt; 2     2    0        2
+#&gt; 3     3    1.5     NA
+#&gt; 4     4   NA        3</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#see-also">See also</a></li>
+      <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

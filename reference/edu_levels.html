@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Compute component PSQI 4 — psqi_compute_comp4 • Questionnaires</title>
+<title>Get education levels scheme — edu_levels • Questionnaires</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,8 +42,11 @@
 
 
 
-<meta property="og:title" content="Compute component PSQI 4 — psqi_compute_comp4" />
-<meta property="og:description" content="Compute component PSQI 4" />
+<meta property="og:title" content="Get education levels scheme — edu_levels" />
+<meta property="og:description" content="Keeping track of the different educational
+coding schemes at LCBC can be tricky.
+This formula contains the two current types
+of coding schemas employed by LCBC." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -140,49 +143,111 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Compute component PSQI 4</h1>
-    <small class="dont-index">Source: <a href='https://github.com/LCBC-UiO/Questionnaires/blob/master/R/psqi_functions.R'><code>R/psqi_functions.R</code></a></small>
-    <div class="hidden name"><code>psqi_compute_comp4.Rd</code></div>
+    <h1>Get education levels scheme</h1>
+    <small class="dont-index">Source: <a href='https://github.com/LCBC-UiO/Questionnaires/blob/master/R/edu_functions.R'><code>R/edu_functions.R</code></a></small>
+    <div class="hidden name"><code>edu_levels.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Compute component PSQI 4</p>
+    <p>Keeping track of the different educational
+coding schemes at LCBC can be tricky.
+This formula contains the two current types
+of coding schemas employed by LCBC.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>psqi_compute_comp4</span>(<span class='no'>hoursSleep</span>, <span class='no'>bedtime</span>, <span class='no'>risingtime</span>)</pre>
+    <pre class="usage"><span class='fu'>edu_levels</span>(<span class='kw'>levels</span> <span class='kw'>=</span> <span class='fl'>4</span>)
+
+<span class='fu'>edu4_levels</span>()
+
+<span class='fu'>edu9_levels</span>()</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>hoursSleep</th>
-      <td><p>column name with hours of sleep (decimal hours) [PSQI_04]</p></td>
-    </tr>
-    <tr>
-      <th>bedtime</th>
-      <td><p>column name with bedtime (HH:MM:SS) [PSQI_01]</p></td>
-    </tr>
-    <tr>
-      <th>risingtime</th>
-      <td><p>column name with rising time (HH:MM:SS) [PSQI_03]</p></td>
+      <th>levels</th>
+      <td><p>how many levels to return (either 4 or 9)</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>named numeric vector</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Specialized returns</p><ul>
+<li><p>edu_levels - returns named numeric vector for levels specified</p></li>
+<li><p>edu4_levels - returns named numeric vector for 4-levels scheme</p></li>
+<li><p>edu9_levels - returns named numeric vector for 9-levels scheme</p></li>
+</ul>
+
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other psqi_functions: <code><a href='psqi_compute_comp2.html'>psqi_compute_comp2</a></code>,
-  <code><a href='psqi_compute_comp3.html'>psqi_compute_comp3</a></code>,
-  <code><a href='psqi_compute_comp5.html'>psqi_compute_comp5</a></code>,
-  <code><a href='psqi_compute_comp7.html'>psqi_compute_comp7</a></code>,
-  <code><a href='psqi_compute_global.html'>psqi_compute_global</a></code>,
-  <code><a href='psqi_compute.html'>psqi_compute</a></code></p></div>
+    <div class='dont-index'><p>Other edu_functions: <code><a href='edu_compile.html'>edu_compile</a></code>,
+  <code><a href='edu_compute.html'>edu_compute</a></code>, <code><a href='edu_factorise.html'>edu_factorise</a></code>,
+  <code><a href='edu_levels2name.html'>edu_levels2name</a></code>, <code><a href='edu_reduce.html'>edu_reduce</a></code>,
+  <code><a href='edu_to_years.html'>edu_to_years</a></code></p></div>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>edu_levels</span>(<span class='fl'>4</span>)</div><div class='output co'>#&gt;                  Primary school (9 years) 
+#&gt;                                         9 
+#&gt;                               High school 
+#&gt;                                        12 
+#&gt; University/University college (&lt; 4 years) 
+#&gt;                                        16 
+#&gt; University/University college (&gt; 4 years) 
+#&gt;                                        19 </div><div class='input'><span class='fu'>edu_levels</span>(<span class='fl'>9</span>)</div><div class='output co'>#&gt;                                     Pre-school/No schooling 
+#&gt;                                                           0 
+#&gt;                                    Primary school (6 years) 
+#&gt;                                                           6 
+#&gt;                                  Secondary school (9 years) 
+#&gt;                                                           9 
+#&gt;                                      High school (12 years) 
+#&gt;                                                          12 
+#&gt;                              High school diploma (13 years) 
+#&gt;                                                          13 
+#&gt;                             High school addition (14 years) 
+#&gt;                                                          14 
+#&gt; Lower level University/University college degree (16 years) 
+#&gt;                                                          16 
+#&gt;        Upper level University/University college (19 years) 
+#&gt;                                                          19 
+#&gt;                                            Ph.D. (21 years) 
+#&gt;                                                          21 </div><div class='input'>
+<span class='fu'>edu4_levels</span>()</div><div class='output co'>#&gt;                  Primary school (9 years) 
+#&gt;                                         9 
+#&gt;                               High school 
+#&gt;                                        12 
+#&gt; University/University college (&lt; 4 years) 
+#&gt;                                        16 
+#&gt; University/University college (&gt; 4 years) 
+#&gt;                                        19 </div><div class='input'><span class='fu'>edu9_levels</span>()</div><div class='output co'>#&gt;                                     Pre-school/No schooling 
+#&gt;                                                           0 
+#&gt;                                    Primary school (6 years) 
+#&gt;                                                           6 
+#&gt;                                  Secondary school (9 years) 
+#&gt;                                                           9 
+#&gt;                                      High school (12 years) 
+#&gt;                                                          12 
+#&gt;                              High school diploma (13 years) 
+#&gt;                                                          13 
+#&gt;                             High school addition (14 years) 
+#&gt;                                                          14 
+#&gt; Lower level University/University college degree (16 years) 
+#&gt;                                                          16 
+#&gt;        Upper level University/University college (19 years) 
+#&gt;                                                          19 
+#&gt;                                            Ph.D. (21 years) 
+#&gt;                                                          21 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
       <li><a href="#see-also">See also</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

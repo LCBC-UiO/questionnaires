@@ -2,7 +2,9 @@ pandoc: '2.2'
 pkgdown: 1.4.1
 pkgdown_sha: ~
 articles:
-  Education: Education.html
+  bdi: bdi.html
+  edu: edu.html
+  gds: gds.html
   ipaq: ipaq.html
   psqi: psqi.html
 

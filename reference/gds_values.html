@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Compute component PSQI 4 — psqi_compute_comp4 • Questionnaires</title>
+<title>Specify coding scheme for GDS questions — gds_values • Questionnaires</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,8 +42,9 @@
 
 
 
-<meta property="og:title" content="Compute component PSQI 4 — psqi_compute_comp4" />
-<meta property="og:description" content="Compute component PSQI 4" />
+<meta property="og:title" content="Specify coding scheme for GDS questions — gds_values" />
+<meta property="og:description" content="Function to easily set the response coding used
+in the GDS data." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -140,49 +141,54 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Compute component PSQI 4</h1>
-    <small class="dont-index">Source: <a href='https://github.com/LCBC-UiO/Questionnaires/blob/master/R/psqi_functions.R'><code>R/psqi_functions.R</code></a></small>
-    <div class="hidden name"><code>psqi_compute_comp4.Rd</code></div>
+    <h1>Specify coding scheme for GDS questions</h1>
+    <small class="dont-index">Source: <a href='https://github.com/LCBC-UiO/Questionnaires/blob/master/R/gds_functions.R'><code>R/gds_functions.R</code></a></small>
+    <div class="hidden name"><code>gds_values.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Compute component PSQI 4</p>
+    <p>Function to easily set the response coding used
+in the GDS data.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>psqi_compute_comp4</span>(<span class='no'>hoursSleep</span>, <span class='no'>bedtime</span>, <span class='no'>risingtime</span>)</pre>
+    <pre class="usage"><span class='fu'>gds_values</span>(<span class='kw'>yes</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>no</span> <span class='kw'>=</span> <span class='fl'>0</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>hoursSleep</th>
-      <td><p>column name with hours of sleep (decimal hours) [PSQI_04]</p></td>
+      <th>yes</th>
+      <td><p>value indicating a positive answer</p></td>
     </tr>
     <tr>
-      <th>bedtime</th>
-      <td><p>column name with bedtime (HH:MM:SS) [PSQI_01]</p></td>
-    </tr>
-    <tr>
-      <th>risingtime</th>
-      <td><p>column name with rising time (HH:MM:SS) [PSQI_03]</p></td>
+      <th>no</th>
+      <td><p>value indicating a negative answer</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <div class='dont-index'><p>Other psqi_functions: <code><a href='psqi_compute_comp2.html'>psqi_compute_comp2</a></code>,
-  <code><a href='psqi_compute_comp3.html'>psqi_compute_comp3</a></code>,
-  <code><a href='psqi_compute_comp5.html'>psqi_compute_comp5</a></code>,
-  <code><a href='psqi_compute_comp7.html'>psqi_compute_comp7</a></code>,
-  <code><a href='psqi_compute_global.html'>psqi_compute_global</a></code>,
-  <code><a href='psqi_compute.html'>psqi_compute</a></code></p></div>
+    <p>list of yes and no values</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>gds_values</span>()</div><div class='output co'>#&gt; $yes
+#&gt; [1] 1
+#&gt; 
+#&gt; $no
+#&gt; [1] 0
+#&gt; </div><div class='input'><span class='fu'>gds_values</span>(<span class='kw'>yes</span> <span class='kw'>=</span> <span class='st'>"YES"</span>, <span class='kw'>no</span> <span class='kw'>=</span> <span class='st'>"NO"</span>)</div><div class='output co'>#&gt; $yes
+#&gt; [1] "YES"
+#&gt; 
+#&gt; $no
+#&gt; [1] "NO"
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#see-also">See also</a></li>
+      <li><a href="#value">Value</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

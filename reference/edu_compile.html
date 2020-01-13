@@ -19,8 +19,8 @@
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
@@ -102,7 +102,13 @@ of family" />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/Education.html">Education</a>
+      <a href="../articles/bdi.html">Beck Depression Inventory</a>
+    </li>
+    <li>
+      <a href="../articles/edu.html">Education</a>
+    </li>
+    <li>
+      <a href="../articles/gds.html">Geriatric Depression Scale</a>
     </li>
     <li>
       <a href="../articles/ipaq.html">International Physical Activity Questionnaire</a>
@@ -137,7 +143,7 @@ of family" />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Compile education across sources</h1>
-    <small class="dont-index">Source: <a href='https://github.com/LCBC-UiO/Questionnaires/blob/master/R/education_functions.R'><code>R/education_functions.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/LCBC-UiO/Questionnaires/blob/master/R/edu_functions.R'><code>R/edu_functions.R</code></a></small>
     <div class="hidden name"><code>edu_compile.Rd</code></div>
     </div>
 
@@ -175,12 +181,78 @@ of family</p>
     <p>dataframe with three new columns</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other education_functions: <code><a href='edu10_factorize.html'>edu10_factorize</a></code>,
-  <code><a href='edu10_reduce.html'>edu10_reduce</a></code>, <code><a href='edu10_to_years.html'>edu10_to_years</a></code>,
-  <code><a href='edu4_factorize.html'>edu4_factorize</a></code>,
-  <code><a href='edu4_to_years.html'>edu4_to_years</a></code>,
-  <code><a href='education_compute.html'>education_compute</a></code></p></div>
+    <div class='dont-index'><p>Other edu_functions: <code><a href='edu_compute.html'>edu_compute</a></code>,
+  <code><a href='edu_factorise.html'>edu_factorise</a></code>,
+  <code><a href='edu_levels2name.html'>edu_levels2name</a></code>, <code><a href='edu_levels.html'>edu_levels</a></code>,
+  <code><a href='edu_reduce.html'>edu_reduce</a></code>, <code><a href='edu_to_years.html'>edu_to_years</a></code></p></div>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='no'>edu</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
+    <span class='kw'>edu4</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"3"</span>, <span class='st'>"High school"</span>, <span class='fl'>1</span>, <span class='fl'>NA</span>,
+         <span class='st'>"University/University college (&gt; 4 years)"</span>, <span class='fl'>NA</span>,
+          <span class='st'>"University/University college (&lt; 4 years)"</span>),
+    <span class='kw'>edu9</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>7</span>,<span class='fl'>7</span>,<span class='fl'>8</span>,<span class='fl'>NA</span>,<span class='st'>"Primary school (6 years)"</span>,<span class='fl'>5</span>, <span class='fl'>9</span>),
+    <span class='kw'>edu_years</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>NA</span>, <span class='fl'>12</span>, <span class='fl'>9</span>, <span class='fl'>NA</span>, <span class='fl'>19</span>, <span class='fl'>19</span>, <span class='fl'>NA</span>),
+    <span class='kw'>mother</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"3"</span>, <span class='st'>"High school"</span>, <span class='fl'>1</span>, <span class='fl'>NA</span>,
+               <span class='st'>"University/University college (&gt; 4 years)"</span>,
+               <span class='st'>"University/University college (&gt; 4 years)"</span>,
+               <span class='st'>"University/University college (&lt; 4 years)"</span>),
+    <span class='kw'>father</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>7</span>,<span class='fl'>7</span>,<span class='fl'>8</span>,<span class='fl'>4</span>,<span class='st'>"Primary school (6 years)"</span>,<span class='fl'>5</span>, <span class='fl'>10</span>),
+    <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+    )
+
+ <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
+ <span class='no'>edu</span> <span class='kw'>%&gt;%</span>
+     <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(
+        <span class='kw'>mother</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span>(<span class='no'>mother</span> <span class='kw'>==</span> <span class='st'>"3"</span>, <span class='fl'>NA</span>, <span class='no'>mother</span>),
+        <span class='kw'>mother</span> <span class='kw'>=</span> <span class='fu'><a href='edu_factorise.html'>edu4_factorise</a></span>(<span class='no'>mother</span>),
+        <span class='kw'>father</span> <span class='kw'>=</span> <span class='fu'><a href='edu_reduce.html'>edu9_reduce</a></span>(<span class='fu'><a href='edu_factorise.html'>edu9_factorise</a></span>(<span class='no'>father</span>))
+     ) <span class='kw'>%&gt;%</span>
+     <span class='fu'>edu_compile</span>(
+        <span class='kw'>participant</span> <span class='kw'>=</span> <span class='no'>edu4</span>,
+        <span class='kw'>mother</span> <span class='kw'>=</span> <span class='no'>mother</span>,
+        <span class='kw'>father</span> <span class='kw'>=</span> <span class='no'>father</span>
+        )</div><div class='output co'>#&gt;                                        edu4                     edu9 edu_years
+#&gt; 1                                         3                        7        NA
+#&gt; 2                               High school                        7        12
+#&gt; 3                                         1                        8         9
+#&gt; 4                                      &lt;NA&gt;                     &lt;NA&gt;        NA
+#&gt; 5 University/University college (&gt; 4 years) Primary school (6 years)        19
+#&gt; 6                                      &lt;NA&gt;                        5        19
+#&gt; 7 University/University college (&lt; 4 years)                        9        NA
+#&gt;                                      mother
+#&gt; 1                                      &lt;NA&gt;
+#&gt; 2                               High school
+#&gt; 3                  Primary school (9 years)
+#&gt; 4                                      &lt;NA&gt;
+#&gt; 5 University/University college (&gt; 4 years)
+#&gt; 6 University/University college (&gt; 4 years)
+#&gt; 7 University/University college (&lt; 4 years)
+#&gt;                                      father
+#&gt; 1 University/University college (&lt; 4 years)
+#&gt; 2 University/University college (&lt; 4 years)
+#&gt; 3 University/University college (&gt; 4 years)
+#&gt; 4                               High school
+#&gt; 5                                      &lt;NA&gt;
+#&gt; 6                               High school
+#&gt; 7                                      &lt;NA&gt;
+#&gt;                          Edu_Compiled_Code4 Edu_Compiled_Years
+#&gt; 1 University/University college (&lt; 4 years)                 16
+#&gt; 2                               High school                 12
+#&gt; 3                  Primary school (9 years)                  9
+#&gt; 4                               High school                 12
+#&gt; 5 University/University college (&gt; 4 years)                 19
+#&gt; 6 University/University college (&gt; 4 years)                 19
+#&gt; 7 University/University college (&lt; 4 years)                 16
+#&gt;   Edu_Compiled_Source
+#&gt; 1         Participant
+#&gt; 2         Participant
+#&gt; 3         Participant
+#&gt; 4              Father
+#&gt; 5         Participant
+#&gt; 6              Mother
+#&gt; 7         Participant</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -188,6 +260,7 @@ of family</p>
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
       <li><a href="#see-also">See also</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
@@ -61,7 +61,13 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/Education.html">Education</a>
+      <a href="articles/bdi.html">Beck Depression Inventory</a>
+    </li>
+    <li>
+      <a href="articles/edu.html">Education</a>
+    </li>
+    <li>
+      <a href="articles/gds.html">Geriatric Depression Scale</a>
     </li>
     <li>
       <a href="articles/ipaq.html">International Physical Activity Questionnaire</a>
@@ -103,12 +109,19 @@
 <p>The repository contains functions to run coversions and calculate components from commonly used questionnaires in LCBC research.</p>
 <p>The questionnaires covered so far:</p>
 <ul>
-<li>PSQI - Pittsburgh Sleep Quality Inventory</li>
-<li>IPAQ - International Physical Activity Questionnaire</li>
-<li>EHI - Edinburgh Handedness Inventory</li>
-<li>BDI - Beck Depression Inventory</li>
-<li>GDS - Geriatric Depression Scale</li>
-<li>TAS -</li>
+<li>PSQI - <a href="https://lcbc-uio.github.io/Questionnaires/articles/psqi.html">Pittsburgh Sleep Quality Inventory</a>
+</li>
+<li>IPAQ - <a href="https://lcbc-uio.github.io/Questionnaires/articles/ipaq.html">International Physical Activity Questionnaire</a>
+</li>
+<li>EHI - <a href="https://lcbc-uio.github.io/Questionnaires/articles/ehi.html">Edinburgh Handedness Inventory</a>
+</li>
+<li>BDI - <a href="https://lcbc-uio.github.io/Questionnaires/articles/bdi.html">Beck Depression Inventory</a>
+</li>
+<li>GDS - <a href="https://lcbc-uio.github.io/Questionnaires/articles/gds.html">Geriatric Depression Scale</a>
+</li>
+<li>EDU - <a href="https://lcbc-uio.github.io/Questionnaires/articles/edu.html">Education questions</a>
+</li>
+<li>TAS - [The Toronto Alexithymia Scale (not documented yet)]</li>
 </ul>
 <p>All functions in this package are prefixed with the name of the questionnaire the function is intended for (i.e. <code>psqi_</code>, <code>ipaq_</code> etc.). Column specifications may be manually inputed, but if columns are named after as the function expects (i.e. MOAS standard), the functions generally work without manual input. The functions that will run all (most) necessary steps to completely calculate components and sums are named as <code>questionnaire_compute</code> (i.e. <code><a href="reference/psqi_compute.html">psqi_compute()</a></code>, <code>ipaq_compute</code>, etc.). These functions all have the option to <code>keep_all</code> which takes a <code>TRUE</code> or <code>FALSE</code> statement on whether the data should be appended to the input data, or just to return the computed columns.</p>
 <p>Vignettes are on their way, and so far there are only vignettes for PSQI and IPAQ which just describe the background for the computations.</p>
@@ -120,7 +133,7 @@
 <div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"usethis"</span>)</a></code></pre></div>
 <p>Then, in github, create a Personal Access Token (PAT) by going to Settings -&gt; Developer Settings -&gt; Personal Access Token -&gt; Generate new access token.</p>
 <p>Give the token a name, and tick of all boxes in the <code>repo</code> category. <img src="reference/figures/PAT.png"></p>
-<p>Copy the token that is made, then go back to R. In R, type <code>usethis::edit_r_environ()</code>, which should open a blank file (if you have not edited it before) called <code>.Renviron</code>. Here add this line: <code>GITHUB_PAT=yourtoken</code>, and add your token after the <code>=</code> sign. Restart R (go to Session - Restart R in RStudio), and then you should be able to install this package.</p>
+<p>Copy the token that is made, then go back to R. In R, type <code><a href="https://usethis.r-lib.org/reference/edit.html">usethis::edit_r_environ()</a></code>, which should open a blank file (if you have not edited it before) called <code>.Renviron</code>. Here add this line: <code>GITHUB_PAT=yourtoken</code>, and add your token after the <code>=</code> sign. Restart R (go to Session - Restart R in RStudio), and then you should be able to install this package.</p>
 <p>You can install the private version of Questionnaires from <a href="https://github.com/">GitHub</a> with:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># install.packages("remotes")</span></a>
 <a class="sourceLine" id="cb2-2" data-line-number="2">remotes<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/remotes/man/install_github.html">install_github</a></span>(<span class="st">"LCBC-UiO/Questionnaires"</span>)</a></code></pre></div>
