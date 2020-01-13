@@ -1,5 +1,15 @@
-context("test-ipaq_functions")
-load("ipaq.rda")
+load(paste0(test_path(), "/data/ipaq.rda"))
+
+test_that("Check ipaq_mets", {
+  
+  expect_equal(
+    ipaq_mets(4.0, 3.3, 6.0), 
+    list(light  = 4.0,
+         moderate = 3.3,
+         vigorous = 6.0)
+  )
+  
+})
 
 test_that("Check component calculations", {
   

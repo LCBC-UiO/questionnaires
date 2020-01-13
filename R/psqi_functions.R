@@ -11,6 +11,10 @@ compute_time_in_bed <- function(risingtime, bedtime){
 
 #' Compute component PSQI 2
 #' 
+#' Computes the second PSQI component on sleep quality, 
+#' using the number of minutes before sleep (PSQI Q2) and
+#' subjective evaluation of sleep within 30 minutes
+#' 
 #' @param minBeforeSleep column name with no. minutes before sleep (numeric) [PSQI_02]
 #' @param noSleep30min column name with evaluation of sleep within 30min (0-3) [PSQI_05a]
 #' @family psqi_functions
@@ -130,10 +134,17 @@ psqi_compute_global <- function(data, cols = matches("^PSQI_Comp[1-7]+_"), max_m
 #' @importFrom dplyr enquo mutate matches
 psqi_compute <- function(data, 
                          components = 1:7,
-                         bedtime = PSQI_01, minBeforeSleep = PSQI_02, risingtime = PSQI_03, 
-                         hoursSleep = PSQI_04, noSleep30min = PSQI_05a, sleepQuality = PSQI_06, 
-                         medication = PSQI_07, keepAwake = PSQI_08, keepEnthused = PSQI_09,
-                         sleepTroubles = matches("^PSQI_05[b-j]$"), max_missing = 0,
+                         bedtime = PSQI_01, 
+                         minBeforeSleep = PSQI_02, 
+                         risingtime = PSQI_03, 
+                         hoursSleep = PSQI_04, 
+                         noSleep30min = PSQI_05a, 
+                         sleepQuality = PSQI_06, 
+                         medication = PSQI_07, 
+                         keepAwake = PSQI_08, 
+                         keepEnthused = PSQI_09,
+                         sleepTroubles = matches("^PSQI_05[b-j]$"), 
+                         max_missing = 0,
                          keep_all = TRUE
 ){
   

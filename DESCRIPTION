@@ -19,7 +19,10 @@ Imports:
     data.table
 Suggests: 
     testthat (>= 2.1.0),
+    here,
+    devtools,
     knitr,
+    kableExtra,
     rmarkdown,
     covr
 RoxygenNote: 6.1.1

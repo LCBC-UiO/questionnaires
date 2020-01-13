@@ -1,5 +1,4 @@
-load("ehi.rda")
-# load("tests/testthat/ehi.rda")
+load(paste0(test_path(), "/data/ehi.rda"))
 
 test_that("Check component calculations", {
   

@@ -5,15 +5,15 @@
 \title{Compute the GDS sum}
 \usage{
 gds_compute_sum(data, cols = matches("GDS_[0-3][0-9]$"),
-  cols_alter = matches("01$|05$|07$|09$|15$|19$|21$|27$|29$|30$"),
-  values = c(Yes = 1, No = 0))
+  cols_rev = matches("01$|05$|07$|09$|15$|19$|21$|27$|29$|30$"),
+  values = gds_values())
 }
 \arguments{
 \item{data}{data.frame with GDS data in it}
 
 \item{cols}{GDS data columns}
 
-\item{cols_alter}{Columns for reversal of binary code}
+\item{cols_rev}{Columns for reversal of binary code}
 
 \item{values}{named vector of 2 providing the coding for Yes and No answers c(Yes = 1, No = 2)}
 }
@@ -21,7 +21,9 @@ gds_compute_sum(data, cols = matches("GDS_[0-3][0-9]$"),
 numeric
 }
 \description{
-Compute the GDS sum
+Calculates the GDS total score based
+on the columns indicated, with reversal
+of the columns indicated.
 }
 \seealso{
 Other gds_functions: \code{\link{gds_compute}},

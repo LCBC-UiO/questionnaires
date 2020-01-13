@@ -1,0 +1,202 @@
+---
+title: "Beck Depression Inventory"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{bdi}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  eval = FALSE,
+  comment = "#>"
+)
+
+devtools::load_all(".")
+```
+
+```{r setup, eval=FALSE}
+library(Questionnaires)
+```
+
+## Bakcground
+
+Beck Depression Inventory-II (BDI-II) is one of the most widely used instruments for measuring the severity of self-reported depression in adolescents and adults. 
+As a general rule, BDI-II is administrated in LCBC to adults with an upper cut off around 60 years, while depression in older adults is assessed with the Geriatric Depression Scale (GDS). 
+However, please consult the instructions for each project, as this guideline has been implemented at different time points across the projects.
+
+## Symptom specifications 
+The questionnaire consists of 21 statements, each reflecting a depression symptom or attitude which could be rated from 0 to 3 in terms of intensity. 
+The answers should be based the participant´s feelings throughout the last week, including the day of filling out the form. 
+The sum of the scores of the items (0-3) yields one total score, with a possible range between 0 and 62.
+
+**1:** Sadness  
+**2:** Pessimism  
+**3:** Past failure  
+**4:** Loss of pleasure  
+**5:** Guilty feelings  
+**6:** punishment feelings  
+**7:** Self-dislike  
+**8:** Self-criticalness  
+**9:** Suicidal thought or wishes*  
+**10:** Crying  
+**11:** Agitation  
+**12:** Loss of interest  
+**13:** Indecisiveness  
+**14:** Worthlessness  
+**15:** Loss of energy   
+**16:** Changes in sleep pattern  
+**17:** Irritability  
+**18:** Changes in appetite (including specification of weight loss intentions if applicable)  
+**19:** Concentration difficulty  
+**20:** Tiredness or fatigue  
+**21:** Loss of interest in sex  
+
+**Weight loss format:**  
+For item 18, weight loss intention if applicable should be punched as numbers with decimals.
+
+### Interpretation of the scores (Total scores)
+|Score|Category|
+|---|---|
+|0-10|These ups and downs are considered to be normal|
+|11-16|Mild mood disturbance|
+|17 – 20|Borderline clinical disturbance|
+|21 – 30|Moderate depression|
+|31 – 40|Severe depression|
+|Above 40|Extreme depression|
+
+If a participant scores `>= 17`, we should consider contacting the participant to follow up on this and offer making a note for the participant's doctor describing the scores.
+
+#### Suicidality
+Please note that this questionnaire includes one question (q 9) regarding suicidal thoughts. 
+In the case of scores above 1 on this item, the participant should be contacted to for a follow up. 
+This should be described in the **clinical observation document** . 
+If the participant scores 3 on this question ("_Jeg vil ta livet mitt om jeg fikk sjansen_"), this should obviously be taken very seriously, and the participant should be contacted immediately.
+
+
+## Data requirements  
+### Column names
+By default, the functions assume that columns have names in the manner of `BDI_XX` where `XX` is a zero-padded (i.e. zero in front of numbers belof 9, eg. `09`) question number of the inventory. 
+You may have column names in another format, but in that case you will need to supply to the functions the names of those columns using tidy-selectors (see the [tidyverse](https://www.tidyverse.org/) packages for this).
+The columns should adhere to some naming logic that is easy to specify.
+
+### Data values
+The values in the columns should be the item number of the question that was answered (i.e. `0`, `1`, `2`, or `3`). 
+The inventory allows subjects to respond to several options per question, in the case of this, the mean of the responded alternatives should be applied. 
+
+## Using the `bdi` functions
+
+There are two main bdi functions: `bdi_compute_sum` and `bdi_factorise`.
+If you have MOAS-like data they can be applied directly without any other specification.
+```{r, eval=FALSE}
+# Creates a vector with the BDI sums, given they are in the dataset
+bdi_sum <- bdi_compute_sum(yourData)
+
+# Creates a vector of BDI clasification based on the sums from above
+bdi_factorise(bdi_sum)
+```
+
+Some participants may have missed answering some questions. 
+By default, the `bdi_compute_sum` function allows no missing values for a participant, and will give NA if there are any.
+This is to ensure you are fully aware of what is happening to the output. 
+You can alter the number of missing for a participant you allow through the `max_missing` argument. 
+
+```{r, eval=FALSE}
+# Allows each participant to have at most two missing questions
+bdi_sum <- bdi_compute_sum(yourData, max_missing = 2)
+```
+
+If you are working with non-MOAS data, the naming of columns might be different. 
+Hopefully, the naming is consistent in some way so you easily can you tidy-selectors. 
+
+```{r eval=FALSE}
+# Base calculation on columns with names that start with "bdi"
+otherData %>% 
+  bdi_compute_sum(cols = starts_with("bdi"))
+
+# Base calculation on columns with names that contain the string "Beck"
+otherData %>% 
+  bdi_compute_sum(cols = contains("Beck"))
+
+# Base calculation on columns with names matching a regular expression
+otherData %>% 
+  bdi_compute_sum(cols = matches("BDI_[0-9][0-9]$"))
+```
+
+The funcion can be used within `dplyr:mutate` but requires the use of the special `.` to work, as it needs the entire data frame to do calculations.
+the `.` within a `mutate` (or other dplyr function) means "insert piped object in here", and thus the below example the entire `data` object is placed where the `.` is. 
+In this case, you would make a new column in the piped data called `bdi_sum`, 
+and using that column also create the factorised version in a column named `bdi_fact`.
+
+
+```{r}
+data %>% 
+  mutate(
+    bdi_sum = bdi_compute_sum(., cols = matches("BDI_[0-9][0-9]$")),
+    bdi_fact = bdi_factorise(bdi_sum))
+```
+
+This last part can also be done in a single step with the `bdi_compute` function.
+This function will return a data.frame with columnd `BDI` (the sum)  and `BDI_Coded` (the factor), based on the given data set. 
+By default, these two columns will be added to the end of the dataset provided, and use the default arguments to the two other bdi functions it calls. 
+
+```{r}
+data %>% 
+  bdi_compute()
+```
+
+You may also choose to only have the two computed columns returned by setting `keep_all` to `FALSE`
+```{r}
+data %>% 
+  bdi_compute(keep_all = FALSE)
+```
+
+Lastly, this function also takes a `predicate`, a logical statement (of length 1 or the number of rows of the data) for the calculation of the sum.
+For instance, in the MOAS, we do not have the single question answers for projects before nettskjema implementation.
+That means that we have a pre-calculated sum in the data, and the sum cannot be calculated based on single question data. 
+In this case, we use the predicate `!is.na(BDI_01)`, so that the `bdi_compute_sum` function is only run on data that actually has single question data.
+If we don't do this, the punched `BDI` score will be overwritten with `NA`. 
+
+```{r}
+data %>% 
+  bdi_compute(predicate = !is.na(BDI_01))
+```
+
+### Nettskjema special case
+Data collected through nettskjema has some special features because of the way the data gets structured with you can choose multiple options. 
+For this reason, a special function to handle the way Nettskjema data is structures is made `bdi_restructure`. 
+If data come from Nettskjema, the structure is in wide format, with each question option as columns, creating 21*4 columns of data. 
+This function allows you to gather and create single columns for questions. 
+
+The columns must adhere to some specific logic to work.
+It is recommended that the column names are in  the format `BDI_01_2` `BDI_01_3`, where the first two numbers are the question number, and the last number is the option number.
+The `bdi_restructure` function transforms the last numbers in the column name a cell value, as this is the BDI score for that option, and then calculates the mean of all options _per question answered_. 
+
+```{r, eval=TRUE}
+dat <- data.frame(
+    ID = 1:4, 
+    BDI_01_0 = c(NA,1, NA, NA),
+    BDI_01_1 = c(1, NA, 1, NA),
+    BDI_01_2 = c(NA, NA, 1, NA),
+    BDI_01_3 = c(NA, NA, NA, NA),
+    BDI_02_0 = c(1, NA, NA, NA),
+    BDI_02_1 = c(NA,NA, NA, NA),
+    BDI_02_2 = c(NA,1, NA, NA),
+    BDI_02_3 = c(NA, NA, NA, 1)
+  )
+
+dat
+
+bdi_restructure(dat)
+```
+
+
+## References
+
+Aaron T.Beck, Robert A.Steer, Margery G.Carbin (1988) Psychometric properties of the Beck Depression Inventory: Twenty-five years of evaluation, _Clinical Psychology Review, Volume_ 8, Issue 1, Pages 77-100, [doi: 10.1016/0272-7358(88)90050-5](https://doi.org/10.1016/0272-7358(88)90050-5)
+
+Robert A.Steer, David J.Rissmiller, Aaron T.Beck (2000) Use of the Beck Depression Inventory-II with depressed geriatric inpatients _Behaviour Research and Therapy_ Volume 38, Issue 3,Pages 311-318, [doi: https://doi.org/10.1016/S0005-7967(99)00068-6](https://doi.org/10.1016/S0005-7967(99)00068-6)
+ 
+Groth-Marnat G. (1990). [The handbook of psychological assessment (2nd ed.)](https://books.google.no/books?id=ldF5oRto-HAC&lpg=PR13&ots=Id0OKllubF&dq=Groth-Marnat%20G.%20(1990).%20The%20handbook%20of%20psychological%20assessment%20(2nd%20ed.).%20New%20York%3A%20John%20Wiley%20%26%20Sons.&lr&hl=no&pg=PR13#v=onepage&q&f=false). New York: John Wiley & Sons.

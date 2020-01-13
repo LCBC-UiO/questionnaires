@@ -52,21 +52,19 @@ bdi_compute_sum = function(data, cols = matches("BDI_[0-9][0-9]$"), max_missing 
 #' Factorize BDI sum
 #'
 #' @param bdi_sum Sum of BDI questions, as summed by [bdi_compute_sum]
-#'
+#' @importFrom dplyr case_when
 #' @return factor
 #' @export
 #' @family bdi_functions
 bdi_factorise <- function(bdi_sum = BDI){
   
   # If there is a sum, categorise it according to original paper.
-  tmp <- ifelse(bdi_sum<=13, 
-                "Minimal depression",
-                ifelse(bdi_sum>=14 & bdi_sum <=19, 
-                       "Mild depression",
-                       ifelse(bdi_sum>=20 & bdi_sum <= 28, 
-                              "Moderate depression",
-                              "Severe depression"))
-  )
+  tmp <- dplyr::case_when(
+    bdi_sum <= 13 ~ "Minimal depression",
+    bdi_sum>=14 & bdi_sum <=19 ~ "Mild depression",
+    bdi_sum>=20 & bdi_sum <= 28 ~ "Moderate depression",
+    bdi_sum > 28 ~ "Severe depression"
+    )
   
   factor(tmp, 
          levels = c("Minimal depression", 
@@ -77,16 +75,22 @@ bdi_factorise <- function(bdi_sum = BDI){
 }
 
 #' Compute all BDI data from questionnaire
+#' 
+#' Computes the sum and factorises the sum into 
+#' the four BDI categories based on the sum
 #'
 #' @inheritParams bdi_compute_sum
+#' @param predicate logical statement on which data 
+#' to include in the summing function
 #' @param keep_all logical, append to data.frame
-#'
+#' #TODO: create option to make your own name
 #' @return data.frame
 #' @export
 #' @family bdi_functions
 bdi_compute = function(data, 
                        cols = matches("BDI_[0-9][0-9]$"), 
                        max_missing = 0, 
+                       predicate = rep(TRUE, nrow(data)),
                        keep_all = TRUE){
   
   # If BDI does not exists in the data, make NAs for missing
@@ -97,7 +101,7 @@ bdi_compute = function(data,
   }
   
   tmp <- mutate(tmp, 
-                BDI = ifelse(!is.na(BDI_01), 
+                BDI = ifelse({{predicate}}, 
                              bdi_compute_sum(data, cols, max_missing = max_missing), 
                              BDI))
   
@@ -109,7 +113,55 @@ bdi_compute = function(data,
     select(tmp, BDI, BDI_Coded)
   }
 }
+
+#' Restructure BDI questions from wide format
+#' 
+#' If data come from Nettskjema, the structure is
+#' in wide format, with each question option as
+#' columns, creating 21*4 columns of data. 
+#' This function allows you to gather and create
+#' single columns for questions. 
+#' 
+#' The columns must adhere to some specific logic to work.
+#' It is recommended that the column names are in 
+#' the format BDI_01_0 BDI_01_1 BDI_01_2 BDI_01_3,
+#' where the first two numbers are the question 
+#' number, and the last number is the option number.
+#'
+#' @inheritParams bdi_compute_sum
+#' @param sep separator to use for the colum names
+#' @importFrom dplyr filter mutate group_by_at summarise ungroup '%>%'
+#' @importFrom tidyr gather spread separate unite
+#' @return data frame
+#' @export
+#' @examples 
+#'   dat <- data.frame(
+#'      ID = 1:4, 
+#'      BDI_01_0 = c(NA,1, NA, NA),
+#'      BDI_01_1 = c(1, NA, 1, NA),
+#'      BDI_01_2 = c(NA, NA, 1, NA),
+#'      BDI_01_3 = c(NA, NA, NA, NA),
+#'      BDI_02_0 = c(1, NA, NA, NA),
+#'      BDI_02_1 = c(NA,NA, NA, NA),
+#'      BDI_02_2 = c(NA,1, NA, NA),
+#'      BDI_02_3 = c(NA, NA, NA, 1)
+#'   )
+#'   bdi_restructure(dat)
+bdi_restructure <- function(data, 
+                            cols = matches("[0-9]_[0-9]"),
+                            sep = "_"){
+  data %>% 
+    tidyr::gather(key, val, {{cols}}) %>% 
+    dplyr::filter(!is.na(val)) %>% 
+    tidyr::separate(key, c("key", "q", "val")) %>% 
+    dplyr::mutate(val = as.integer(val)) %>% 
+    dplyr::group_by_at(dplyr::vars(-val)) %>% 
+    dplyr::summarise_at(vars(val), mean) %>% 
+    tidyr::unite(key, c(key, q), sep = sep) %>% 
+    tidyr::spread(key, val) %>% 
+    dplyr::ungroup()
+}
   
 if(getRversion() >= "2.15.1")  utils::globalVariables(c("BDI_Coded", "BDI",
-                                                        "BDI_01"))
+                                                        "BDI_01", "val", "key"))
 

@@ -20,12 +20,19 @@ components from commonly used questionnaires in LCBC research.
 
 The questionnaires covered so far:
 
-  - PSQI - Pittsburgh Sleep Quality Inventory
-  - IPAQ - International Physical Activity Questionnaire
-  - EHI - Edinburgh Handedness Inventory
-  - BDI - Beck Depression Inventory
-  - GDS - Geriatric Depression Scale
-  - TAS -
+  - PSQI - [Pittsburgh Sleep Quality
+    Inventory](https://lcbc-uio.github.io/Questionnaires/articles/psqi.html)
+  - IPAQ - [International Physical Activity
+    Questionnaire](https://lcbc-uio.github.io/Questionnaires/articles/ipaq.html)
+  - EHI - [Edinburgh Handedness
+    Inventory](https://lcbc-uio.github.io/Questionnaires/articles/ehi.html)
+  - BDI - [Beck Depression
+    Inventory](https://lcbc-uio.github.io/Questionnaires/articles/bdi.html)
+  - GDS - [Geriatric Depression
+    Scale](https://lcbc-uio.github.io/Questionnaires/articles/gds.html)
+  - EDU - [Education
+    questions](https://lcbc-uio.github.io/Questionnaires/articles/edu.html)
+  - TAS - \[The Toronto Alexithymia Scale (not documented yet)\]
 
 All functions in this package are prefixed with the name of the
 questionnaire the function is intended for (i.e. `psqi_`, `ipaq_` etc.).
