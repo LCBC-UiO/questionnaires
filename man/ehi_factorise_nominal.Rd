@@ -2,7 +2,7 @@
 % Please edit documentation in R/ehi_functions.R
 \name{ehi_factorise_nominal}
 \alias{ehi_factorise_nominal}
-\title{Edinburgh handedness inventory nominal}
+\title{Nominal laterality factor}
 \usage{
 ehi_factorise_nominal(writing = EHI_01)
 }
@@ -13,10 +13,16 @@ ehi_factorise_nominal(writing = EHI_01)
 factor
 }
 \description{
-Edinburgh handedness inventory nominal
+Using the answers to the first question 
+on writing from the Edinburgh handedness inventory,
+a nominal scale of three factors can be returned.
+}
+\examples{
+writing <- c(2, 2, -1, 0, 1, -2)
+ehi_factorise_nominal(writing)
 }
 \seealso{
-Other ehi_functions: \code{\link{ehi_compute_le}},
-  \code{\link{ehi_compute}}, \code{\link{ehi_factorise_le}}
+Other ehi_functions: \code{\link{ehi_compute_lq}},
+  \code{\link{ehi_compute}}, \code{\link{ehi_factorise_lq}}
 }
 \concept{ehi_functions}

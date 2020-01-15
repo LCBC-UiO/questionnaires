@@ -1,0 +1,192 @@
+---
+title: "Edinburgh Handedness Inventory"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{ehi}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(dplyr)
+library(knitr)
+library(kableExtra)
+devtools::load_all(".")
+```
+
+
+## Bakcground
+The Edinburgh Handedness Inventory is a measurement scale used to assess the dominance of a person's right or left hand in everyday activities, sometimes referred to as laterality. 
+The inventory can be used by an observer assessing the person, or by a person self-reporting hand use. 
+The latter method tends to be less reliable due to a person over-attributing tasks to the dominant hand.
+
+### Interpretation of the scores
+The EHI has several measures that can help assess a person's laterality.
+
+```{r}
+tibble(
+  answer = c("Left dominance", "Left preference", 
+             "No preference", 
+             "Right preference", "Right dominance"),
+  value = -2:2
+) %>% 
+  mutate(nominal = ehi_factorise_nominal(value),
+         LQ = c(-100, -40, 0, 40, 100),
+         LQ_cat = ehi_factorise_lq(LQ),
+         LQA_cat = ehi_factorise_lqa(LQ)
+  ) %>% 
+  kable() %>% 
+  kable_styling() %>% 
+  column_spec (3, border_right = T) %>%
+  add_header_above(c("Raw answers" = 3, "Laterality quotient based" = 3))
+```
+
+#### Nominal
+The easiest measure from the EHI is the nominal laterality value, which is just the answer to the first question on hand preference when writing. 
+This simple index just treat negative answers as "left" dominance, positive number as "right" dominance, and a 0 as ambidexterous.
+**Note:** The original paper by Oldfield (1971) does not excplicitly state a category for "Amidexterious".
+It is very rare that a person does not have a clear preference on writing hand, even if they _can_ write with both hands.
+This category is only added in this package to handle the possible case of someone ansering "No preference". 
+
+**-2, -1 :** Left  
+     **0 :** Ambidexterous  
+ **1,  2 :** Right  
+
+#### Laterality quotient (lq)
+The total score of the EHI is more than just summing the values for each answer. 
+The laterality quotient (LQ) uses the answers to all the questions.
+The LQ can take values from -100 to 100, and is calculated by taking the sum of all positive answers subtracting the sum of absolute values of the negative answers, divided by the sum of both, and multiplied by 100. 
+
+$$ LQ = \frac{\Sigma(|positive|)-\Sigma(|negative|)}{ \Sigma(|positive|) + \Sigma(|negative|)} x 100  $$
+
+
+
+#### Laterality index
+The laterality index is based on the laterality quotient (above) and categorises answers into to categories, Left and Right. 
+The Oldfield (1971) paper mentions "indeterminate handedness" a couple of times in the paper, but the case for "true" ambidextri is not made, and as such the inventory does not have official categories for that.
+As the index is based on the quotient, that ranges from -100 to 100, getting a perfect `0` LQ is very unlikely, and as indicated in the paper, such score is assumed to belong to the Right hand part of the scale.
+
+**-100 - -1 :** Left  
+ **0 - 100 :** Right  
+
+An alternate laterality index is also often employed, where scores between -40 and 40 are treated as ambidexterious.
+
+## Data requirements  
+One row of data should refer to a single questionnaire answered, and as such, if a person has answered multiple times, these should appear on seperate rows with columns identifying ID and time point per observation.
+
+### Column names
+For ease, we recommend naming the columns in a consistent way, so the functions in this package become easier to use. 
+If you have MOAS-like data, all defaults for the functions work immediately with the data, and you need not specify anything else.
+Working with other data and these functions is still possible, but you will need to inspect the arguments and find tidy-selectors that will select the correct columns from the data that contain the EHI data.
+
+The MOAS follows a naming scheme that prefixes al columns with `EHI_` and ends with a zero-padded double digit indicator of the question number:
+
+**EHI_01** - Writing  
+**EHI_02** - Drawing  
+**EHI_03** - Trhrowing  
+**EHI_04** - Use scissors  
+**EHI_05** - Brush teeth  
+**EHI_06** - Use knife (without fork)  
+**EHI_07** - Use spoon  
+**EHI_08** - Use broom (top hand)  
+**EHI_09** - Strike match (holding match)  
+**EHI_10** - Opening container (hand on lid)  
+
+### Data values
+The cell values in the data should be coded from -2 through 0 to 2, and there should be a single value per question. 
+
+**-2 :** Left hand dominance  
+**-1 :** Left hand preference  
+  **0 :** No preference  
+  **1 :** Right hand preference  
+  **2 :** Right hand dominance  
+
+## Using the `ehi` functions
+### Nominal value
+The nominal value from the EHI is based on the answer to question number 1, regarding writing. 
+The `ehi_factorise_nominal` function should be supplied this answer directly, and will return a factor vector of equal length with the categories.
+
+```{r}
+writing <- c(2, 2, -1, 0, 1, -2)
+ehi_factorise_nominal(writing)
+```
+
+### Laterality quotient
+Calculating the laterality quotient requires the entire dataset of all EHI columns to be computed, and as such takes an entire data.frame, with a tidy-selector selecting the columns that contain the EHI columns.
+If you are working with MOAS-like data, the columns are select by default settings. 
+
+```{r}
+# Make some synthetic data to try on
+ehi_data <- data.frame(
+  EHI_01 = c(2L, 2L, -2L, 1L, 2L), 
+  EHI_02 = c(2L, 1L, -2L, 1L, 2L), 
+  EHI_03 = c(2L, 0L, -1L, 0L, 1L), 
+  EHI_04 = c(2L, -1L, -2L, -1L, 1L), 
+  EHI_05 = c(2L, 0L, -1L, 1L, 1L),
+  EHI_06 = c(1L, 0L, -1L, 0L, 1L), 
+  EHI_07 = c(2L, 2L, -1L, 0L, 1L), 
+  EHI_08 = c(1L, 2L, 1L, -1L, 1L), 
+  EHI_09 = c(2L, 1L, -2L, -1L, 1L),
+  EHI_10 = c(2L, 0L, -1L, 0L, 1L)
+  )
+
+ehi_data %>% 
+  # ignore this part, just for nicer table online
+  kable() %>% 
+  kable_styling()
+```
+
+```{r}
+ehi_data %>% 
+  ehi_compute_lq()
+```
+
+These values can then be categorised into the two different laterality factors we have available.
+
+```{r}
+ehi_data %>% 
+  ehi_compute_lq() %>% 
+  ehi_factorise_lq()
+
+ehi_data %>% 
+  ehi_compute_lq() %>% 
+  ehi_factorise_lqa()
+```
+
+### Combine EHI results into a data.frame
+In most cases, people will want to add the data derived from the `ehi` functions directly into their data.frame.
+This is in most cases best done using `dplyr::mutate`.
+
+```{r}
+ehi_data %>% 
+  mutate(
+    EHI_Nominal = ehi_factorise_nominal(EHI_01),
+    EHI_LQ = ehi_compute_lq(.),
+    EHI_LQ_cat = ehi_factorise_lq(EHI_LQ),
+    EHI_LQA_cat = ehi_factorise_lqa(EHI_LQ)
+  ) %>% 
+  # ignore this part, just for nicer table online
+  kable(digits = 2) %>% 
+  kable_styling()
+```
+
+Because this is a little cumbersome to remember, a convenience function is made that will add columns using this naming convention.
+
+```{r}
+ehi_data %>% 
+  ehi_compute()
+```
+
+
+
+## References
+
+Oldfield, RC (March 1971) _The assessment and analysis of handedness: The Edinburgh inventory_. Neuropsychologia. 9 (1): 97–113. [doi:10.1016/0028-3932(71)90067-4](https://www.sciencedirect.com/science/article/abs/pii/0028393271900674?via%3Dihub)
+
+Verdino, M; Dingman, S (April 1998). _Two measures of laterality in handedness: the Edinburgh Handedness Inventory and the Purdue Pegboard test of manual dexterity_. Perceptual and Motor Skills. 86 (2): 476–8. [doi:10.2466/pms.1998.86.2.476](https://doi.org/10.2466%2Fpms.1998.86.2.476)
+
+Knecht, S; Dräger, B; Deppe, M; Bobe, L; Lohmann, H; Flöel, A; Ringelstein, E-B; Henningsen, H (December 2000). _Handedness and hemispheric language dominance in healthy humans_. Brain. 123 (12): 2512–8. [doi:10.1093/brain/123.12.2512](https://doi.org/10.1093%2Fbrain%2F123.12.2512).
