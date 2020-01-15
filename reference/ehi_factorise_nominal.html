@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Edinburgh handedness inventory nominal — ehi_factorise_nominal • Questionnaires</title>
+<title>Nominal laterality factor — ehi_factorise_nominal • Questionnaires</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,8 +42,10 @@
 
 
 
-<meta property="og:title" content="Edinburgh handedness inventory nominal — ehi_factorise_nominal" />
-<meta property="og:description" content="Edinburgh handedness inventory nominal" />
+<meta property="og:title" content="Nominal laterality factor — ehi_factorise_nominal" />
+<meta property="og:description" content="Using the answers to the first question 
+on writing from the Edinburgh handedness inventory,
+a nominal scale of three factors can be returned." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -106,6 +108,9 @@
       <a href="../articles/edu.html">Education</a>
     </li>
     <li>
+      <a href="../articles/ehi.html">Edinburgh Handedness Inventory</a>
+    </li>
+    <li>
       <a href="../articles/gds.html">Geriatric Depression Scale</a>
     </li>
     <li>
@@ -140,13 +145,15 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Edinburgh handedness inventory nominal</h1>
+    <h1>Nominal laterality factor</h1>
     <small class="dont-index">Source: <a href='https://github.com/LCBC-UiO/Questionnaires/blob/master/R/ehi_functions.R'><code>R/ehi_functions.R</code></a></small>
     <div class="hidden name"><code>ehi_factorise_nominal.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Edinburgh handedness inventory nominal</p>
+    <p>Using the answers to the first question 
+on writing from the Edinburgh handedness inventory,
+a nominal scale of three factors can be returned.</p>
     </div>
 
     <pre class="usage"><span class='fu'>ehi_factorise_nominal</span>(<span class='kw'>writing</span> <span class='kw'>=</span> <span class='no'>EHI_01</span>)</pre>
@@ -165,9 +172,14 @@
     <p>factor</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other ehi_functions: <code><a href='ehi_compute_le.html'>ehi_compute_le</a></code>,
-  <code><a href='ehi_compute.html'>ehi_compute</a></code>, <code><a href='ehi_factorise_le.html'>ehi_factorise_le</a></code></p></div>
+    <div class='dont-index'><p>Other ehi_functions: <code><a href='ehi_compute_lq.html'>ehi_compute_lq</a></code>,
+  <code><a href='ehi_compute.html'>ehi_compute</a></code>, <code><a href='ehi_factorise_lq.html'>ehi_factorise_lq</a></code></p></div>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>writing</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>, <span class='fl'>2</span>, -<span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, -<span class='fl'>2</span>)
+<span class='fu'>ehi_factorise_nominal</span>(<span class='no'>writing</span>)</div><div class='output co'>#&gt; [1] Right         Right         Left          Ambidexterous Right        
+#&gt; [6] Left         
+#&gt; Levels: Left Ambidexterous Right</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -175,6 +187,7 @@
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
       <li><a href="#see-also">See also</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

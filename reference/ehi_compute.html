@@ -43,7 +43,12 @@
 
 
 <meta property="og:title" content="Edinburgh handedness inventory — ehi_compute" />
-<meta property="og:description" content="Compute all variables of EHI" />
+<meta property="og:description" content="Compute all variables of EHI, using 
+other functions in this package. 
+Will return the given data.frame with
+three additional columns, the laterality
+quotient (LQ), the laterality factor (Coded), and
+the nominal laterality code (Nominal)." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -106,6 +111,9 @@
       <a href="../articles/edu.html">Education</a>
     </li>
     <li>
+      <a href="../articles/ehi.html">Edinburgh Handedness Inventory</a>
+    </li>
+    <li>
       <a href="../articles/gds.html">Geriatric Depression Scale</a>
     </li>
     <li>
@@ -146,11 +154,16 @@
     </div>
 
     <div class="ref-description">
-    <p>Compute all variables of EHI</p>
+    <p>Compute all variables of EHI, using 
+other functions in this package. 
+Will return the given data.frame with
+three additional columns, the laterality
+quotient (LQ), the laterality factor (Coded), and
+the nominal laterality code (Nominal).</p>
     </div>
 
     <pre class="usage"><span class='fu'>ehi_compute</span>(<span class='no'>data</span>, <span class='kw'>cols</span> <span class='kw'>=</span> <span class='fu'>matches</span>(<span class='st'>"^EHI_[0-9][0-9]$"</span>), <span class='kw'>writing</span> <span class='kw'>=</span> <span class='no'>EHI_01</span>,
-  <span class='kw'>keep_all</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+  <span class='no'>...</span>, <span class='kw'>keep_all</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -168,6 +181,10 @@
       <td><p>numeric vector of writing prefereance [-2,-1,0,1,2]</p></td>
     </tr>
     <tr>
+      <th>...</th>
+      <td><p>additional arguments to ehi_factorise_lqa</p></td>
+    </tr>
+    <tr>
       <th>keep_all</th>
       <td><p>logical, append to data.frame</p></td>
     </tr>
@@ -178,8 +195,8 @@
     <p>data.frame</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other ehi_functions: <code><a href='ehi_compute_le.html'>ehi_compute_le</a></code>,
-  <code><a href='ehi_factorise_le.html'>ehi_factorise_le</a></code>,
+    <div class='dont-index'><p>Other ehi_functions: <code><a href='ehi_compute_lq.html'>ehi_compute_lq</a></code>,
+  <code><a href='ehi_factorise_lq.html'>ehi_factorise_lq</a></code>,
   <code><a href='ehi_factorise_nominal.html'>ehi_factorise_nominal</a></code></p></div>
 
   </div>

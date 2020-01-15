@@ -4,6 +4,7 @@ pkgdown_sha: ~
 articles:
   bdi: bdi.html
   edu: edu.html
+  ehi: ehi.html
   gds: gds.html
   ipaq: ipaq.html
   psqi: psqi.html
