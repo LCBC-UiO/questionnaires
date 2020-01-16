@@ -105,6 +105,7 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Geriatric Depression Scale</h1>
+            <h3 class="subtitle">Original version: Yesavage J A, 1983 - Norwegian version: Knut Engedal</h3>
             
       
       <small class="dont-index">Source: <a href="https://github.com/LCBC-UiO/Questionnaires/blob/master/vignettes/gds.Rmd"><code>vignettes/gds.Rmd</code></a></small>
@@ -117,17 +118,43 @@
 <div id="background" class="section level2">
 <h2 class="hasAnchor">
 <a href="#background" class="anchor"></a>Background</h2>
-<p>The GDS is commonly used as a routine part of a Comprehensive Geriatric Assessment. One point is assigned to each answer and the cumulative score is rated on a scoring grid. The grid sets a range of 0-9 as “normal”, 10-19 as “mildly depressed”, and 20-30 as “severely depressed”.</p>
-<p>A diagnosis of clinical depression should not be based on GDS results alone. Although the test has well-established reliability and validity evaluated against other diagnostic criteria, responses should be considered along with results from a comprehensive diagnostic work-up. A short version of the GDS (GDS-SF) containing 15 questions has been developed, and the scale is available in languages other than English. The conducted research found the GDS-SF to be an adequate substitute for the original 30-item scale.</p>
+<p>The Geriatric Depression Scale (GDS) is an instrument designed specifically for rating depression in the elderly. It can be administrated to healthy, medically ill, and mild to moderately cognitively impaired older adults. As a general rule, GDS is administrated in LCBC to older adults with a lower cut off around 60 years. However, please consult the instructions for each project, as this guideline has been implemented at different time points across the projects.</p>
+<p>The questionnaire consists of 30 questions tapping into a wide variety of topics relevant to depression, including cognitive complaints, motivation, thoughts about the past and the future, self-image, and mood itself. The answers should be based the participants’ feelings throughout the last week.</p>
+<p>Twenty of the questions indicate the presence of depression when answered positively, while the ten remaining indicate depression when answered negatively (see scoring instructions below). The questionnaire is scored accordingly, giving one point for each statement that affirms a depressive symptom. The sum of these scores yields one total score, with a possible range between 0 and 30.</p>
 </div>
 <div id="gds-scoring-information" class="section level2">
 <h2 class="hasAnchor">
 <a href="#gds-scoring-information" class="anchor"></a>GDS scoring information</h2>
 <p>The GDS is quite straight forward in its format, a series of 30 questions that take a yes or no answer. This binary coding makes it quite easy to work with. Several of the questions, however, are formulated in such a way that they require a reversal of the coding before the total score can be summed. The questions which require reversal of coding are, <strong>01, 05, 07, 09, 15, 19, 21, 27, 29, 30</strong>, meaning answering “yes” to these should be altered to 0, and “no” altered to 1, before calculating the sum score. The total GDS score is after reversal, a simple addition of all the answers into a single score.</p>
+<p>One point is given for any “No” answered to the following questions:<br>
+1, 5, 7, 9, 15, 19, 21, 27, 29 and 30</p>
+<p>and one point is given for every “Yes” answered on the following questions:<br>
+2, 3, 4, 6, 8, 10, 11, 12, 13, 14, 16, 17, 18, 20, 22, 23, 24, 25, 26, 28</p>
+<div id="depression-categories" class="section level3">
+<h3 class="hasAnchor">
+<a href="#depression-categories" class="anchor"></a>Depression categories</h3>
 <p>There are 3 categories of severity for the GDS total score. Below or equal to <code>9</code> is “Normal”, above 19 is “Severe depression”, and the remaining fall within “Mild depression”.</p>
-<pre><code>gds_sum &lt;= 9 ~ "Normal"
-gds_sum &gt;= 10  &amp; gds_sum &lt;= 19 ~ "Mild depression"
-gds_sum &gt; 19 ~ "Severe deppression"</code></pre>
+<table class="table">
+<thead><tr class="header">
+<th>GDS score</th>
+<th>Depression category</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>0-9</td>
+<td>Normal</td>
+</tr>
+<tr class="even">
+<td>10-19</td>
+<td>Mild depressive</td>
+</tr>
+<tr class="odd">
+<td>20-30</td>
+<td>Severe depressive</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div id="data-requirements" class="section level2">
 <h2 class="hasAnchor">
@@ -149,64 +176,64 @@ GDS_30</p>
 <h3 class="hasAnchor">
 <a href="#data-values" class="anchor"></a>Data values</h3>
 <p>Each row of data should belong to a single answer to the entire questionnaire. Meaning if you have multiple answers to the questionnaire over time, these should be placed in another row, duplicating the participant ID, together with a column indicating the timepoint the data was collected in. Data values are binary yes and no answers to the GDS. While the functions are made in such a way that any type of binary coding works well, the default is set to be <code>yes = 1</code>, <code>no = 0</code>. These can be altered by applying the <code>gds_values</code> functions to the other functions asking for the coding schema.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="../reference/gds_values.html">gds_values</a></span>(<span class="dt">yes =</span> <span class="dv">1</span>, <span class="dt">no =</span> <span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">#&gt; $yes</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt; [1] 1</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt; $no</span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; [1] 0</span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="kw"><a href="../reference/gds_values.html">gds_values</a></span>(<span class="dt">yes =</span> <span class="st">"yes"</span>, <span class="dt">no =</span> <span class="st">"no"</span>)</a>
-<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt; $yes</span></a>
-<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt; [1] "yes"</span></a>
-<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt; $no</span></a>
-<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt; [1] "no"</span></a>
-<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="kw"><a href="../reference/gds_values.html">gds_values</a></span>(<span class="dt">yes =</span> <span class="st">"ja"</span>, <span class="dt">no =</span> <span class="st">"nei"</span>)</a>
-<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co">#&gt; $yes</span></a>
-<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="co">#&gt; [1] "ja"</span></a>
-<a class="sourceLine" id="cb2-16" data-line-number="16"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb2-17" data-line-number="17"><span class="co">#&gt; $no</span></a>
-<a class="sourceLine" id="cb2-18" data-line-number="18"><span class="co">#&gt; [1] "nei"</span></a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="../reference/gds_values.html">gds_values</a></span>(<span class="dt">yes =</span> <span class="dv">1</span>, <span class="dt">no =</span> <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co">#&gt; $yes</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co">#&gt; [1] 1</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co">#&gt; $no</span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="co">#&gt; [1] 0</span></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="kw"><a href="../reference/gds_values.html">gds_values</a></span>(<span class="dt">yes =</span> <span class="st">"yes"</span>, <span class="dt">no =</span> <span class="st">"no"</span>)</a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="co">#&gt; $yes</span></a>
+<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="co">#&gt; [1] "yes"</span></a>
+<a class="sourceLine" id="cb1-10" data-line-number="10"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb1-11" data-line-number="11"><span class="co">#&gt; $no</span></a>
+<a class="sourceLine" id="cb1-12" data-line-number="12"><span class="co">#&gt; [1] "no"</span></a>
+<a class="sourceLine" id="cb1-13" data-line-number="13"><span class="kw"><a href="../reference/gds_values.html">gds_values</a></span>(<span class="dt">yes =</span> <span class="st">"ja"</span>, <span class="dt">no =</span> <span class="st">"nei"</span>)</a>
+<a class="sourceLine" id="cb1-14" data-line-number="14"><span class="co">#&gt; $yes</span></a>
+<a class="sourceLine" id="cb1-15" data-line-number="15"><span class="co">#&gt; [1] "ja"</span></a>
+<a class="sourceLine" id="cb1-16" data-line-number="16"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb1-17" data-line-number="17"><span class="co">#&gt; $no</span></a>
+<a class="sourceLine" id="cb1-18" data-line-number="18"><span class="co">#&gt; [1] "nei"</span></a></code></pre></div>
 </div>
 </div>
 <div id="using-the-gds-functions" class="section level2">
 <h2 class="hasAnchor">
 <a href="#using-the-gds-functions" class="anchor"></a>Using the <code>gds</code> functions</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt; Attaching package: 'dplyr'</span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt; The following object is masked from 'package:testthat':</span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt;     matches</span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; The following object is masked from 'package:kableExtra':</span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt;     group_rows</span></a>
-<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt; The following objects are masked from 'package:stats':</span></a>
-<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt;     filter, lag</span></a>
-<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt; The following objects are masked from 'package:base':</span></a>
-<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="co">#&gt;     intersect, setdiff, setequal, union</span></a>
-<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(tidyr)</a>
-<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb3-18" data-line-number="18"><span class="co">#&gt; Attaching package: 'tidyr'</span></a>
-<a class="sourceLine" id="cb3-19" data-line-number="19"><span class="co">#&gt; The following object is masked from 'package:testthat':</span></a>
-<a class="sourceLine" id="cb3-20" data-line-number="20"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb3-21" data-line-number="21"><span class="co">#&gt;     matches</span></a>
-<a class="sourceLine" id="cb3-22" data-line-number="22"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(stringr)</a>
-<a class="sourceLine" id="cb3-23" data-line-number="23"></a>
-<a class="sourceLine" id="cb3-24" data-line-number="24"><span class="co"># randomly create some data as example</span></a>
-<a class="sourceLine" id="cb3-25" data-line-number="25">gds_data &lt;-<span class="st"> </span><span class="kw"><a href="https://tidyr.tidyverse.org/reference/expand_grid.html">expand_grid</a></span>(<span class="dt">ID =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, </a>
-<a class="sourceLine" id="cb3-26" data-line-number="26">            <span class="dt">key =</span> <span class="st">"GDS"</span>, </a>
-<a class="sourceLine" id="cb3-27" data-line-number="27">            <span class="dt">question =</span> <span class="kw"><a href="https://stringr.tidyverse.org/reference/str_pad.html">str_pad</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">30</span>, <span class="dv">2</span>, <span class="st">"left"</span>, <span class="dv">0</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb3-28" data-line-number="28"><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">value =</span> <span class="kw"><a href="https://dplyr.tidyverse.org/reference/sample.html">sample</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="kw"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(.), <span class="dt">replace =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb3-29" data-line-number="29"><span class="st">  </span><span class="kw"><a href="https://tidyr.tidyverse.org/reference/unite.html">unite</a></span>(key, <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(key, question)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb3-30" data-line-number="30"><span class="st">  </span><span class="kw"><a href="https://tidyr.tidyverse.org/reference/spread.html">spread</a></span>(key, value)</a>
-<a class="sourceLine" id="cb3-31" data-line-number="31"></a>
-<a class="sourceLine" id="cb3-32" data-line-number="32">gds_data <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb3-33" data-line-number="33"><span class="st">  </span><span class="co"># ignore this part, it's just so the table looks better online</span></a>
-<a class="sourceLine" id="cb3-34" data-line-number="34"><span class="st">  </span><span class="kw">kable</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb3-35" data-line-number="35"><span class="st">  </span><span class="kw">kable_styling</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt; Attaching package: 'dplyr'</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt; The following object is masked from 'package:testthat':</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt;     matches</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt; The following object is masked from 'package:kableExtra':</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt;     group_rows</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt; The following objects are masked from 'package:stats':</span></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt;     filter, lag</span></a>
+<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co">#&gt; The following objects are masked from 'package:base':</span></a>
+<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="co">#&gt;     intersect, setdiff, setequal, union</span></a>
+<a class="sourceLine" id="cb2-16" data-line-number="16"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(tidyr)</a>
+<a class="sourceLine" id="cb2-17" data-line-number="17"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb2-18" data-line-number="18"><span class="co">#&gt; Attaching package: 'tidyr'</span></a>
+<a class="sourceLine" id="cb2-19" data-line-number="19"><span class="co">#&gt; The following object is masked from 'package:testthat':</span></a>
+<a class="sourceLine" id="cb2-20" data-line-number="20"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb2-21" data-line-number="21"><span class="co">#&gt;     matches</span></a>
+<a class="sourceLine" id="cb2-22" data-line-number="22"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(stringr)</a>
+<a class="sourceLine" id="cb2-23" data-line-number="23"></a>
+<a class="sourceLine" id="cb2-24" data-line-number="24"><span class="co"># randomly create some data as example</span></a>
+<a class="sourceLine" id="cb2-25" data-line-number="25">gds_data &lt;-<span class="st"> </span><span class="kw"><a href="https://tidyr.tidyverse.org/reference/expand_grid.html">expand_grid</a></span>(<span class="dt">ID =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, </a>
+<a class="sourceLine" id="cb2-26" data-line-number="26">            <span class="dt">key =</span> <span class="st">"GDS"</span>, </a>
+<a class="sourceLine" id="cb2-27" data-line-number="27">            <span class="dt">question =</span> <span class="kw"><a href="https://stringr.tidyverse.org/reference/str_pad.html">str_pad</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">30</span>, <span class="dv">2</span>, <span class="st">"left"</span>, <span class="dv">0</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-28" data-line-number="28"><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">value =</span> <span class="kw"><a href="https://dplyr.tidyverse.org/reference/sample.html">sample</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="kw"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(.), <span class="dt">replace =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-29" data-line-number="29"><span class="st">  </span><span class="kw"><a href="https://tidyr.tidyverse.org/reference/unite.html">unite</a></span>(key, <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(key, question)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-30" data-line-number="30"><span class="st">  </span><span class="kw"><a href="https://tidyr.tidyverse.org/reference/spread.html">spread</a></span>(key, value)</a>
+<a class="sourceLine" id="cb2-31" data-line-number="31"></a>
+<a class="sourceLine" id="cb2-32" data-line-number="32">gds_data <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-33" data-line-number="33"><span class="st">  </span><span class="co"># ignore this part, it's just so the table looks better online</span></a>
+<a class="sourceLine" id="cb2-34" data-line-number="34"><span class="st">  </span><span class="kw">kable</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-35" data-line-number="35"><span class="st">  </span><span class="kw">kable_styling</span>()</a></code></pre></div>
 <table class="table table">
 <thead><tr>
 <th style="text-align:right;">
@@ -309,34 +336,7 @@ GDS_30
 1
 </td>
 <td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
 0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
 </td>
 <td style="text-align:right;">
 1
@@ -351,7 +351,55 @@ GDS_30
 1
 </td>
 <td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
 0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
 </td>
 <td style="text-align:right;">
 0
@@ -369,31 +417,10 @@ GDS_30
 0
 </td>
 <td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
 1
 </td>
 <td style="text-align:right;">
 0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
 </td>
 <td style="text-align:right;">
 1
@@ -410,30 +437,6 @@ GDS_30
 1
 </td>
 <td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
 0
 </td>
 <td style="text-align:right;">
@@ -441,24 +444,6 @@ GDS_30
 </td>
 <td style="text-align:right;">
 1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
 </td>
 <td style="text-align:right;">
 0
@@ -482,10 +467,52 @@ GDS_30
 0
 </td>
 <td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
 1
 </td>
 <td style="text-align:right;">
 0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
 </td>
 <td style="text-align:right;">
 1
@@ -499,55 +526,7 @@ GDS_30
 3
 </td>
 <td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
 1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
 </td>
 <td style="text-align:right;">
 1
@@ -559,7 +538,7 @@ GDS_30
 1
 </td>
 <td style="text-align:right;">
-0
+1
 </td>
 <td style="text-align:right;">
 0
@@ -586,7 +565,55 @@ GDS_30
 0
 </td>
 <td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
 1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
 </td>
 </tr>
 <tr>
@@ -594,22 +621,13 @@ GDS_30
 4
 </td>
 <td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
 1
 </td>
 <td style="text-align:right;">
 1
 </td>
 <td style="text-align:right;">
-0
+1
 </td>
 <td style="text-align:right;">
 1
@@ -621,7 +639,10 @@ GDS_30
 0
 </td>
 <td style="text-align:right;">
-1
+0
+</td>
+<td style="text-align:right;">
+0
 </td>
 <td style="text-align:right;">
 0
@@ -642,7 +663,34 @@ GDS_30
 0
 </td>
 <td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
 0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
 </td>
 <td style="text-align:right;">
 1
@@ -652,27 +700,6 @@ GDS_30
 </td>
 <td style="text-align:right;">
 1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
 </td>
 <td style="text-align:right;">
 1
@@ -689,21 +716,6 @@ GDS_30
 5
 </td>
 <td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
 0
 </td>
 <td style="text-align:right;">
@@ -713,7 +725,7 @@ GDS_30
 1
 </td>
 <td style="text-align:right;">
-0
+1
 </td>
 <td style="text-align:right;">
 0
@@ -737,15 +749,6 @@ GDS_30
 0
 </td>
 <td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
 1
 </td>
 <td style="text-align:right;">
@@ -761,7 +764,22 @@ GDS_30
 0
 </td>
 <td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
 0
+</td>
+<td style="text-align:right;">
+1
 </td>
 <td style="text-align:right;">
 0
@@ -770,13 +788,22 @@ GDS_30
 0
 </td>
 <td style="text-align:right;">
-0
+1
 </td>
 <td style="text-align:right;">
-0
+1
 </td>
 <td style="text-align:right;">
-0
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
 </td>
 </tr>
 </tbody>
@@ -785,17 +812,17 @@ GDS_30
 <h3 class="hasAnchor">
 <a href="#calculating-the-gsd-sum" class="anchor"></a>Calculating the GSD sum</h3>
 <p>The function to calculate the total GDS score is <code>gds_compute_sum</code>, and requires a data frame, a tidy-selector that selects all the GDS columns and a tidy-selector indicating which columns should be reversed. If you have MOAS-like data, then the defaults should work, and as such you need not specify this.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">gds_data <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/gds_compute_sum.html">gds_compute_sum</a></span>()</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt; [1] 14 13 16 14 12</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">gds_data <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/gds_compute_sum.html">gds_compute_sum</a></span>()</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt; [1] 19 13 14 16 16</span></a></code></pre></div>
 <p>To add a column with total GDS to a data set, place the argument inside a <code>mutate</code>, here a column named <code>GDS_total</code> will appear as the right-most column.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">gds_data <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3">    <span class="dt">GSD_total =</span> <span class="kw"><a href="../reference/gds_compute_sum.html">gds_compute_sum</a></span>(.)</a>
-<a class="sourceLine" id="cb5-4" data-line-number="4">  ) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="st">  </span><span class="co"># ignore this part, it's just so the table looks better online</span></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="st">  </span><span class="kw">kable</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="st">  </span><span class="kw">kable_styling</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">gds_data <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">    <span class="dt">GSD_total =</span> <span class="kw"><a href="../reference/gds_compute_sum.html">gds_compute_sum</a></span>(.)</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">  ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="st">  </span><span class="co"># ignore this part, it's just so the table looks better online</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="st">  </span><span class="kw">kable</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="st">  </span><span class="kw">kable_styling</span>()</a></code></pre></div>
 <table class="table table">
 <thead><tr>
 <th style="text-align:right;">
@@ -901,6 +928,39 @@ GSD_total
 1
 </td>
 <td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
 1
 </td>
 <td style="text-align:right;">
@@ -916,21 +976,6 @@ GSD_total
 0
 </td>
 <td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
 1
 </td>
 <td style="text-align:right;">
@@ -943,7 +988,10 @@ GSD_total
 1
 </td>
 <td style="text-align:right;">
-0
+1
+</td>
+<td style="text-align:right;">
+1
 </td>
 <td style="text-align:right;">
 0
@@ -961,7 +1009,7 @@ GSD_total
 0
 </td>
 <td style="text-align:right;">
-0
+1
 </td>
 <td style="text-align:right;">
 0
@@ -970,28 +1018,7 @@ GSD_total
 1
 </td>
 <td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-14
+19
 </td>
 </tr>
 <tr>
@@ -1005,30 +1032,6 @@ GSD_total
 1
 </td>
 <td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
 0
 </td>
 <td style="text-align:right;">
@@ -1036,24 +1039,6 @@ GSD_total
 </td>
 <td style="text-align:right;">
 1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
 </td>
 <td style="text-align:right;">
 0
@@ -1077,10 +1062,52 @@ GSD_total
 0
 </td>
 <td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
 1
 </td>
 <td style="text-align:right;">
 0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
 </td>
 <td style="text-align:right;">
 1
@@ -1097,55 +1124,7 @@ GSD_total
 3
 </td>
 <td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
 1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
 </td>
 <td style="text-align:right;">
 1
@@ -1157,7 +1136,7 @@ GSD_total
 1
 </td>
 <td style="text-align:right;">
-0
+1
 </td>
 <td style="text-align:right;">
 0
@@ -1179,6 +1158,152 @@ GSD_total
 </td>
 <td style="text-align:right;">
 0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
 </td>
 <td style="text-align:right;">
 0
@@ -1192,122 +1317,9 @@ GSD_total
 </tr>
 <tr>
 <td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-14
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
 5
 </td>
 <td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
 0
 </td>
 <td style="text-align:right;">
@@ -1317,7 +1329,7 @@ GSD_total
 1
 </td>
 <td style="text-align:right;">
-0
+1
 </td>
 <td style="text-align:right;">
 0
@@ -1341,15 +1353,6 @@ GSD_total
 0
 </td>
 <td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
 1
 </td>
 <td style="text-align:right;">
@@ -1365,7 +1368,22 @@ GSD_total
 0
 </td>
 <td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
 0
+</td>
+<td style="text-align:right;">
+1
 </td>
 <td style="text-align:right;">
 0
@@ -1374,16 +1392,25 @@ GSD_total
 0
 </td>
 <td style="text-align:right;">
-0
+1
 </td>
 <td style="text-align:right;">
-0
+1
 </td>
 <td style="text-align:right;">
-0
+1
 </td>
 <td style="text-align:right;">
-12
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+16
 </td>
 </tr>
 </tbody>
@@ -1393,21 +1420,21 @@ GSD_total
 <h3 class="hasAnchor">
 <a href="#turning-the-sum-into-a-factor" class="anchor"></a>Turning the sum into a factor</h3>
 <p>Most often, people will report not only the actual score, but also the accompanying depression classification based on that score. This can be derived by using the <code>gds_factorise</code> function.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">gds_data <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/gds_compute_sum.html">gds_compute_sum</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/gds_factorise.html">gds_factorise</a></span>()</a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; [1] Mild depression Mild depression Mild depression Mild depression</span></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt; [5] Mild depression</span></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; Levels: Normal &lt; Mild depression &lt; Severe depression</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">gds_data <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/gds_compute_sum.html">gds_compute_sum</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/gds_factorise.html">gds_factorise</a></span>()</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; [1] Mild depression Mild depression Mild depression Mild depression</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt; [5] Mild depression</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt; Levels: Normal &lt; Mild depression &lt; Severe depression</span></a></code></pre></div>
 <p>and this can also be added directly to the data through a `mutate``</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">gds_data <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(</a>
-<a class="sourceLine" id="cb7-3" data-line-number="3">    <span class="dt">GSD_total =</span> <span class="kw"><a href="../reference/gds_compute_sum.html">gds_compute_sum</a></span>(.),</a>
-<a class="sourceLine" id="cb7-4" data-line-number="4">    <span class="dt">GDS_cat =</span>  <span class="kw"><a href="../reference/gds_factorise.html">gds_factorise</a></span>(GSD_total)</a>
-<a class="sourceLine" id="cb7-5" data-line-number="5">  ) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="st">  </span><span class="co"># ignore this part, it's just so the table looks better online</span></a>
-<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="st">  </span><span class="kw">kable</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="st">  </span><span class="kw">kable_styling</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">gds_data <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">    <span class="dt">GSD_total =</span> <span class="kw"><a href="../reference/gds_compute_sum.html">gds_compute_sum</a></span>(.),</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">    <span class="dt">GDS_cat =</span>  <span class="kw"><a href="../reference/gds_factorise.html">gds_factorise</a></span>(GSD_total)</a>
+<a class="sourceLine" id="cb6-5" data-line-number="5">  ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="st">  </span><span class="co"># ignore this part, it's just so the table looks better online</span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="st">  </span><span class="kw">kable</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="st">  </span><span class="kw">kable_styling</span>()</a></code></pre></div>
 <table class="table table">
 <thead><tr>
 <th style="text-align:right;">
@@ -1516,6 +1543,39 @@ GDS_cat
 1
 </td>
 <td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
 1
 </td>
 <td style="text-align:right;">
@@ -1531,21 +1591,6 @@ GDS_cat
 0
 </td>
 <td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
 1
 </td>
 <td style="text-align:right;">
@@ -1558,7 +1603,10 @@ GDS_cat
 1
 </td>
 <td style="text-align:right;">
-0
+1
+</td>
+<td style="text-align:right;">
+1
 </td>
 <td style="text-align:right;">
 0
@@ -1576,7 +1624,7 @@ GDS_cat
 0
 </td>
 <td style="text-align:right;">
-0
+1
 </td>
 <td style="text-align:right;">
 0
@@ -1585,28 +1633,7 @@ GDS_cat
 1
 </td>
 <td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-14
+19
 </td>
 <td style="text-align:left;">
 Mild depression
@@ -1623,30 +1650,6 @@ Mild depression
 1
 </td>
 <td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
 0
 </td>
 <td style="text-align:right;">
@@ -1654,24 +1657,6 @@ Mild depression
 </td>
 <td style="text-align:right;">
 1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
 </td>
 <td style="text-align:right;">
 0
@@ -1695,10 +1680,52 @@ Mild depression
 0
 </td>
 <td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
 1
 </td>
 <td style="text-align:right;">
 0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
 </td>
 <td style="text-align:right;">
 1
@@ -1718,55 +1745,7 @@ Mild depression
 3
 </td>
 <td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
 1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
 </td>
 <td style="text-align:right;">
 1
@@ -1778,7 +1757,7 @@ Mild depression
 1
 </td>
 <td style="text-align:right;">
-0
+1
 </td>
 <td style="text-align:right;">
 0
@@ -1800,6 +1779,155 @@ Mild depression
 </td>
 <td style="text-align:right;">
 0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+Mild depression
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
 </td>
 <td style="text-align:right;">
 0
@@ -1816,125 +1944,9 @@ Mild depression
 </tr>
 <tr>
 <td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-14
-</td>
-<td style="text-align:left;">
-Mild depression
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
 5
 </td>
 <td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
 0
 </td>
 <td style="text-align:right;">
@@ -1944,7 +1956,7 @@ Mild depression
 1
 </td>
 <td style="text-align:right;">
-0
+1
 </td>
 <td style="text-align:right;">
 0
@@ -1968,15 +1980,6 @@ Mild depression
 0
 </td>
 <td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
 1
 </td>
 <td style="text-align:right;">
@@ -1992,7 +1995,22 @@ Mild depression
 0
 </td>
 <td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
 0
+</td>
+<td style="text-align:right;">
+1
 </td>
 <td style="text-align:right;">
 0
@@ -2001,16 +2019,25 @@ Mild depression
 0
 </td>
 <td style="text-align:right;">
-0
+1
 </td>
 <td style="text-align:right;">
-0
+1
 </td>
 <td style="text-align:right;">
-0
+1
 </td>
 <td style="text-align:right;">
-12
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+16
 </td>
 <td style="text-align:left;">
 Mild depression
@@ -2023,30 +2050,30 @@ Mild depression
 <h3 class="hasAnchor">
 <a href="#computing-score-and-factor-in-one-function" class="anchor"></a>Computing score and factor in one function</h3>
 <p>Lastly, since it is most common to want both the score and the factor added directly do data, a convenience function exists to assist in that.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">gds_data <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/gds_compute.html">gds_compute</a></span>()</a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#&gt; # A tibble: 5 x 33</span></a>
-<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt;      ID GDS_01 GDS_02 GDS_03 GDS_04 GDS_05 GDS_06 GDS_07 GDS_08 GDS_09 GDS_10</span></a>
-<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">#&gt;   &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#&gt; 1     1      1      0      1      0      0      0      1      0      0      1</span></a>
-<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="co">#&gt; 2     2      1      1      1      0      0      0      0      1      0      0</span></a>
-<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="co">#&gt; 3     3      0      1      0      1      0      0      1      0      0      0</span></a>
-<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="co">#&gt; 4     4      0      0      0      1      1      0      1      1      0      1</span></a>
-<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="co">#&gt; 5     5      1      0      0      0      1      0      0      1      0      0</span></a>
-<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="co">#&gt; # … with 22 more variables: GDS_11 &lt;dbl&gt;, GDS_12 &lt;dbl&gt;, GDS_13 &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb8-12" data-line-number="12"><span class="co">#&gt; #   GDS_14 &lt;dbl&gt;, GDS_15 &lt;dbl&gt;, GDS_16 &lt;dbl&gt;, GDS_17 &lt;dbl&gt;, GDS_18 &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb8-13" data-line-number="13"><span class="co">#&gt; #   GDS_19 &lt;dbl&gt;, GDS_20 &lt;dbl&gt;, GDS_21 &lt;dbl&gt;, GDS_22 &lt;dbl&gt;, GDS_23 &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb8-14" data-line-number="14"><span class="co">#&gt; #   GDS_24 &lt;dbl&gt;, GDS_25 &lt;dbl&gt;, GDS_26 &lt;dbl&gt;, GDS_27 &lt;dbl&gt;, GDS_28 &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb8-15" data-line-number="15"><span class="co">#&gt; #   GDS_29 &lt;dbl&gt;, GDS_30 &lt;dbl&gt;, GDS &lt;dbl&gt;, GDS_Coded &lt;ord&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">gds_data <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/gds_compute.html">gds_compute</a></span>()</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt; # A tibble: 5 x 33</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt;      ID GDS_01 GDS_02 GDS_03 GDS_04 GDS_05 GDS_06 GDS_07 GDS_08 GDS_09 GDS_10</span></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#&gt;   &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#&gt; 1     1      0      1      0      1      1      1      0      1      0      1</span></a>
+<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">#&gt; 2     2      1      1      0      1      1      0      1      0      1      1</span></a>
+<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co">#&gt; 3     3      1      1      1      1      1      0      1      1      1      1</span></a>
+<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="co">#&gt; 4     4      1      1      1      1      1      0      0      0      0      1</span></a>
+<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="co">#&gt; 5     5      0      0      1      1      0      0      0      1      1      1</span></a>
+<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="co">#&gt; # … with 22 more variables: GDS_11 &lt;dbl&gt;, GDS_12 &lt;dbl&gt;, GDS_13 &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb7-12" data-line-number="12"><span class="co">#&gt; #   GDS_14 &lt;dbl&gt;, GDS_15 &lt;dbl&gt;, GDS_16 &lt;dbl&gt;, GDS_17 &lt;dbl&gt;, GDS_18 &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb7-13" data-line-number="13"><span class="co">#&gt; #   GDS_19 &lt;dbl&gt;, GDS_20 &lt;dbl&gt;, GDS_21 &lt;dbl&gt;, GDS_22 &lt;dbl&gt;, GDS_23 &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb7-14" data-line-number="14"><span class="co">#&gt; #   GDS_24 &lt;dbl&gt;, GDS_25 &lt;dbl&gt;, GDS_26 &lt;dbl&gt;, GDS_27 &lt;dbl&gt;, GDS_28 &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb7-15" data-line-number="15"><span class="co">#&gt; #   GDS_29 &lt;dbl&gt;, GDS_30 &lt;dbl&gt;, GDS &lt;dbl&gt;, GDS_Coded &lt;ord&gt;</span></a></code></pre></div>
 <p>alternatively, you can also <code>keep_all = FALSE</code> in that function, to only retain the two computed columns, while maintaining the remaning data structure.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">gds_data <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/gds_compute.html">gds_compute</a></span>(<span class="dt">keep_all =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="co">#&gt;   GDS       GDS_Coded</span></a>
-<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="co">#&gt; 1  14 Mild depression</span></a>
-<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co">#&gt; 2  13 Mild depression</span></a>
-<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="co">#&gt; 3  16 Mild depression</span></a>
-<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="co">#&gt; 4  14 Mild depression</span></a>
-<a class="sourceLine" id="cb9-8" data-line-number="8"><span class="co">#&gt; 5  12 Mild depression</span></a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">gds_data <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/gds_compute.html">gds_compute</a></span>(<span class="dt">keep_all =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#&gt;   GDS       GDS_Coded</span></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt; 1  19 Mild depression</span></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">#&gt; 2  13 Mild depression</span></a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#&gt; 3  14 Mild depression</span></a>
+<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="co">#&gt; 4  16 Mild depression</span></a>
+<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="co">#&gt; 5  16 Mild depression</span></a></code></pre></div>
 </div>
 </div>
 <div id="references" class="section level2">
