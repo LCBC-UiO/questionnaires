@@ -24,7 +24,8 @@ The questionnaires covered so far:
     Inventory](https://lcbc-uio.github.io/Questionnaires/articles/psqi.html)
   - IPAQ - [International Physical Activity
     Questionnaire](https://lcbc-uio.github.io/Questionnaires/articles/ipaq.html)
-  - EHI - \[Edinburgh Handedness Inventory (not documented yet)\]
+  - EHI - [Edinburgh Handedness
+    Inventory](https://lcbc-uio.github.io/Questionnaires/articles/ehi.html)
   - BDI - [Beck Depression
     Inventory](https://lcbc-uio.github.io/Questionnaires/articles/bdi.html)
   - GDS - [Geriatric Depression
