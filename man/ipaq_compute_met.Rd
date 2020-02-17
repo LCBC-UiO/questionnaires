@@ -4,8 +4,7 @@
 \alias{ipaq_compute_met}
 \title{Compute MET from IPAQ}
 \usage{
-ipaq_compute_met(minutes = IPAQ_2, days = IPAQ_1b,
-  met = ipaq_mets()$light)
+ipaq_compute_met(minutes = IPAQ_2, days = IPAQ_1b, met = ipaq_mets()$light)
 }
 \arguments{
 \item{minutes}{vector of numeric minutes}
@@ -31,8 +30,10 @@ ipaq_vig_days <- c(1, 3, 2, 5, 6, 1, 1, 2, 2, 4)
 ipaq_compute_met(ipaq_vig_mins, ipaq_vig_days, met = 8.0)
 }
 \seealso{
-Other ipaq_functions: \code{\link{ipaq_compute_sum}},
-  \code{\link{ipaq_compute}}, \code{\link{ipaq_mets}},
-  \code{\link{ipaq_time_alter}}
+Other ipaq_functions: 
+\code{\link{ipaq_compute_sum}()},
+\code{\link{ipaq_compute}()},
+\code{\link{ipaq_mets}()},
+\code{\link{ipaq_time_alter}()}
 }
 \concept{ipaq_functions}

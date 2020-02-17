@@ -53,9 +53,12 @@ edu <- data.frame(
         )
 }
 \seealso{
-Other edu_functions: \code{\link{edu_compute}},
-  \code{\link{edu_factorise}},
-  \code{\link{edu_levels2name}}, \code{\link{edu_levels}},
-  \code{\link{edu_reduce}}, \code{\link{edu_to_years}}
+Other edu_functions: 
+\code{\link{edu_compute}()},
+\code{\link{edu_factorise}()},
+\code{\link{edu_levels2name}()},
+\code{\link{edu_levels}()},
+\code{\link{edu_reduce}()},
+\code{\link{edu_to_years}()}
 }
 \concept{edu_functions}

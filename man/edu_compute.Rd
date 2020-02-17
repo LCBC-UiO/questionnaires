@@ -4,8 +4,13 @@
 \alias{edu_compute}
 \title{Fill inn Education in MOAS}
 \usage{
-edu_compute(data, edu4 = Edu_Coded4, edu9 = Edu_Coded10,
-  edu_years = Edu_Years, keep_all = TRUE)
+edu_compute(
+  data,
+  edu4 = Edu_Coded4,
+  edu9 = Edu_Coded10,
+  edu_years = Edu_Years,
+  keep_all = TRUE
+)
 }
 \arguments{
 \item{data}{MOAS-like data}
@@ -47,9 +52,12 @@ edu <- data.frame(
              edu_years = edu_years)
 }
 \seealso{
-Other edu_functions: \code{\link{edu_compile}},
-  \code{\link{edu_factorise}},
-  \code{\link{edu_levels2name}}, \code{\link{edu_levels}},
-  \code{\link{edu_reduce}}, \code{\link{edu_to_years}}
+Other edu_functions: 
+\code{\link{edu_compile}()},
+\code{\link{edu_factorise}()},
+\code{\link{edu_levels2name}()},
+\code{\link{edu_levels}()},
+\code{\link{edu_reduce}()},
+\code{\link{edu_to_years}()}
 }
 \concept{edu_functions}

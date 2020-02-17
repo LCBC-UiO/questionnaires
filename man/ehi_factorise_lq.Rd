@@ -42,8 +42,9 @@ ehi_factorise_lqa(LQ)
 ehi_factorise_lqa(LQ, min = -40, max = 60)
 }
 \seealso{
-Other ehi_functions: \code{\link{ehi_compute_lq}},
-  \code{\link{ehi_compute}},
-  \code{\link{ehi_factorise_nominal}}
+Other ehi_functions: 
+\code{\link{ehi_compute_lq}()},
+\code{\link{ehi_compute}()},
+\code{\link{ehi_factorise_nominal}()}
 }
 \concept{ehi_functions}

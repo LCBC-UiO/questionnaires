@@ -13,11 +13,12 @@ psqi_compute_comp3(hoursSleep)
 Compute component PSQI 3
 }
 \seealso{
-Other psqi_functions: \code{\link{psqi_compute_comp2}},
-  \code{\link{psqi_compute_comp4}},
-  \code{\link{psqi_compute_comp5}},
-  \code{\link{psqi_compute_comp7}},
-  \code{\link{psqi_compute_global}},
-  \code{\link{psqi_compute}}
+Other psqi_functions: 
+\code{\link{psqi_compute_comp2}()},
+\code{\link{psqi_compute_comp4}()},
+\code{\link{psqi_compute_comp5}()},
+\code{\link{psqi_compute_comp7}()},
+\code{\link{psqi_compute_global}()},
+\code{\link{psqi_compute}()}
 }
 \concept{psqi_functions}

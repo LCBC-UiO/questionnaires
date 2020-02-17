@@ -29,8 +29,10 @@ vigorous = c(0, 1300)
 ipaq_compute_sum(vigorous , moderate, light)
 }
 \seealso{
-Other ipaq_functions: \code{\link{ipaq_compute_met}},
-  \code{\link{ipaq_compute}}, \code{\link{ipaq_mets}},
-  \code{\link{ipaq_time_alter}}
+Other ipaq_functions: 
+\code{\link{ipaq_compute_met}()},
+\code{\link{ipaq_compute}()},
+\code{\link{ipaq_mets}()},
+\code{\link{ipaq_time_alter}()}
 }
 \concept{ipaq_functions}

@@ -4,8 +4,13 @@
 \alias{ehi_compute}
 \title{Edinburgh handedness inventory}
 \usage{
-ehi_compute(data, cols = matches("^EHI_[0-9][0-9]$"), writing = EHI_01,
-  ..., keep_all = TRUE)
+ehi_compute(
+  data,
+  cols = matches("^EHI_[0-9][0-9]$"),
+  writing = EHI_01,
+  ...,
+  keep_all = TRUE
+)
 }
 \arguments{
 \item{data}{data.frame containing EHI data}
@@ -30,8 +35,9 @@ quotient (LQ), the laterality factor (Coded), and
 the nominal laterality code (Nominal).
 }
 \seealso{
-Other ehi_functions: \code{\link{ehi_compute_lq}},
-  \code{\link{ehi_factorise_lq}},
-  \code{\link{ehi_factorise_nominal}}
+Other ehi_functions: 
+\code{\link{ehi_compute_lq}()},
+\code{\link{ehi_factorise_lq}()},
+\code{\link{ehi_factorise_nominal}()}
 }
 \concept{ehi_functions}

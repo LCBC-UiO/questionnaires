@@ -16,7 +16,8 @@ factor
 Factorize BDI sum
 }
 \seealso{
-Other bdi_functions: \code{\link{bdi_compute_sum}},
-  \code{\link{bdi_compute}}
+Other bdi_functions: 
+\code{\link{bdi_compute_sum}()},
+\code{\link{bdi_compute}()}
 }
 \concept{bdi_functions}

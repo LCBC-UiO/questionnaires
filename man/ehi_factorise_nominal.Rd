@@ -22,7 +22,9 @@ writing <- c(2, 2, -1, 0, 1, -2)
 ehi_factorise_nominal(writing)
 }
 \seealso{
-Other ehi_functions: \code{\link{ehi_compute_lq}},
-  \code{\link{ehi_compute}}, \code{\link{ehi_factorise_lq}}
+Other ehi_functions: 
+\code{\link{ehi_compute_lq}()},
+\code{\link{ehi_compute}()},
+\code{\link{ehi_factorise_lq}()}
 }
 \concept{ehi_functions}

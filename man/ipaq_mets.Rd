@@ -34,8 +34,10 @@ ipaq_mets()
 ipaq_mets(moderate = 5.1)
 }
 \seealso{
-Other ipaq_functions: \code{\link{ipaq_compute_met}},
-  \code{\link{ipaq_compute_sum}},
-  \code{\link{ipaq_compute}}, \code{\link{ipaq_time_alter}}
+Other ipaq_functions: 
+\code{\link{ipaq_compute_met}()},
+\code{\link{ipaq_compute_sum}()},
+\code{\link{ipaq_compute}()},
+\code{\link{ipaq_time_alter}()}
 }
 \concept{ipaq_functions}

@@ -21,8 +21,9 @@ formula:
 (pos-neg)/(pos+neg)*100 )
 }
 \seealso{
-Other ehi_functions: \code{\link{ehi_compute}},
-  \code{\link{ehi_factorise_lq}},
-  \code{\link{ehi_factorise_nominal}}
+Other ehi_functions: 
+\code{\link{ehi_compute}()},
+\code{\link{ehi_factorise_lq}()},
+\code{\link{ehi_factorise_nominal}()}
 }
 \concept{ehi_functions}

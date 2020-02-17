@@ -31,8 +31,10 @@ dat <- data.frame(
 ipaq_time_alter(dat, cols = c(time_1, time_2))
 }
 \seealso{
-Other ipaq_functions: \code{\link{ipaq_compute_met}},
-  \code{\link{ipaq_compute_sum}},
-  \code{\link{ipaq_compute}}, \code{\link{ipaq_mets}}
+Other ipaq_functions: 
+\code{\link{ipaq_compute_met}()},
+\code{\link{ipaq_compute_sum}()},
+\code{\link{ipaq_compute}()},
+\code{\link{ipaq_mets}()}
 }
 \concept{ipaq_functions}

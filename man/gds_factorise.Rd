@@ -16,7 +16,11 @@ factor
 Factorise the GDS sum
 }
 \seealso{
-Other gds_functions: \code{\link{gds_compute_sum}},
-  \code{\link{gds_compute}}
+Other gds_functions: 
+\code{\link{gds_alter_values}()},
+\code{\link{gds_binary}()},
+\code{\link{gds_compute_sum}()},
+\code{\link{gds_compute}()},
+\code{\link{gds_values}()}
 }
 \concept{gds_functions}

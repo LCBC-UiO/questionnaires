@@ -45,9 +45,12 @@ edu_to_years(edu9, 9)
 edu9_to_years(edu9)
 }
 \seealso{
-Other edu_functions: \code{\link{edu_compile}},
-  \code{\link{edu_compute}}, \code{\link{edu_factorise}},
-  \code{\link{edu_levels2name}}, \code{\link{edu_levels}},
-  \code{\link{edu_reduce}}
+Other edu_functions: 
+\code{\link{edu_compile}()},
+\code{\link{edu_compute}()},
+\code{\link{edu_factorise}()},
+\code{\link{edu_levels2name}()},
+\code{\link{edu_levels}()},
+\code{\link{edu_reduce}()}
 }
 \concept{edu_functions}

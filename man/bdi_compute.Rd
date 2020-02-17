@@ -4,8 +4,13 @@
 \alias{bdi_compute}
 \title{Compute all BDI data from questionnaire}
 \usage{
-bdi_compute(data, cols = matches("BDI_[0-9][0-9]$"), max_missing = 0,
-  predicate = rep(TRUE, nrow(data)), keep_all = TRUE)
+bdi_compute(
+  data,
+  cols = matches("BDI_[0-9][0-9]$"),
+  max_missing = 0,
+  predicate = rep(TRUE, nrow(data)),
+  keep_all = TRUE
+)
 }
 \arguments{
 \item{data}{Data containing BDI data}
@@ -31,7 +36,8 @@ Computes the sum and factorises the sum into
 the four BDI categories based on the sum
 }
 \seealso{
-Other bdi_functions: \code{\link{bdi_compute_sum}},
-  \code{\link{bdi_factorise}}
+Other bdi_functions: 
+\code{\link{bdi_compute_sum}()},
+\code{\link{bdi_factorise}()}
 }
 \concept{bdi_functions}

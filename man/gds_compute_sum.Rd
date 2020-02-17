@@ -4,9 +4,12 @@
 \alias{gds_compute_sum}
 \title{Compute the GDS sum}
 \usage{
-gds_compute_sum(data, cols = matches("GDS_[0-3][0-9]$"),
-  cols_rev = matches("01$|05$|07$|09$|15$|19$|21$|27$|29$|30$"),
-  values = gds_values())
+gds_compute_sum(
+  data,
+  cols = dplyr::matches("GDS_[0-3][0-9]$"),
+  cols_rev = dplyr::matches("01$|05$|07$|09$|15$|19$|21$|27$|29$|30$"),
+  values = gds_values()
+)
 }
 \arguments{
 \item{data}{data.frame with GDS data in it}
@@ -26,7 +29,11 @@ on the columns indicated, with reversal
 of the columns indicated.
 }
 \seealso{
-Other gds_functions: \code{\link{gds_compute}},
-  \code{\link{gds_factorise}}
+Other gds_functions: 
+\code{\link{gds_alter_values}()},
+\code{\link{gds_binary}()},
+\code{\link{gds_compute}()},
+\code{\link{gds_factorise}()},
+\code{\link{gds_values}()}
 }
 \concept{gds_functions}

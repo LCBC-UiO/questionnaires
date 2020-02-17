@@ -4,8 +4,7 @@
 \alias{bdi_compute_sum}
 \title{Calculate sum of BDI}
 \usage{
-bdi_compute_sum(data, cols = matches("BDI_[0-9][0-9]$"),
-  max_missing = 0)
+bdi_compute_sum(data, cols = matches("BDI_[0-9][0-9]$"), max_missing = 0)
 }
 \arguments{
 \item{data}{Data containing BDI data}
@@ -44,7 +43,8 @@ data \%>\%
 
 }
 \seealso{
-Other bdi_functions: \code{\link{bdi_compute}},
-  \code{\link{bdi_factorise}}
+Other bdi_functions: 
+\code{\link{bdi_compute}()},
+\code{\link{bdi_factorise}()}
 }
 \concept{bdi_functions}

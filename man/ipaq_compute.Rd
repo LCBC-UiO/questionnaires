@@ -4,9 +4,17 @@
 \alias{ipaq_compute}
 \title{Compute all the IPAQ components}
 \usage{
-ipaq_compute(data, mets = ipaq_mets(), light_days = IPAQ_1b,
-  light_mins = IPAQ_2, mod_days = IPAQ_3b, mod_mins = IPAQ_4,
-  vig_days = IPAQ_5b, vig_mins = IPAQ_6, keep_all = TRUE)
+ipaq_compute(
+  data,
+  mets = ipaq_mets(),
+  light_days = IPAQ_1b,
+  light_mins = IPAQ_2,
+  mod_days = IPAQ_3b,
+  mod_mins = IPAQ_4,
+  vig_days = IPAQ_5b,
+  vig_mins = IPAQ_6,
+  keep_all = TRUE
+)
 }
 \arguments{
 \item{data}{data.frame containing all the IPAQ data}
@@ -41,8 +49,10 @@ This function takes many arguments in order to
 do that.
 }
 \seealso{
-Other ipaq_functions: \code{\link{ipaq_compute_met}},
-  \code{\link{ipaq_compute_sum}}, \code{\link{ipaq_mets}},
-  \code{\link{ipaq_time_alter}}
+Other ipaq_functions: 
+\code{\link{ipaq_compute_met}()},
+\code{\link{ipaq_compute_sum}()},
+\code{\link{ipaq_mets}()},
+\code{\link{ipaq_time_alter}()}
 }
 \concept{ipaq_functions}
