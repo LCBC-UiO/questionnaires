@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate sum of BDI — bdi_compute_sum • Questionnaires</title>
+<title>Turn string time into decimal hour — time_hms2deciH • Questionnaires</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,8 +42,8 @@
 
 
 
-<meta property="og:title" content="Calculate sum of BDI — bdi_compute_sum" />
-<meta property="og:description" content="Calculate sum of BDI" />
+<meta property="og:title" content="Turn string time into decimal hour — time_hms2deciH" />
+<meta property="og:description" content="Turn string time into decimal hour" />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -143,95 +143,43 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate sum of BDI</h1>
-    <small class="dont-index">Source: <a href='https://github.com/LCBC-UiO/Questionnaires/blob/master/R/bdi_functions.R'><code>R/bdi_functions.R</code></a></small>
-    <div class="hidden name"><code>bdi_compute_sum.Rd</code></div>
+    <h1>Turn string time into decimal hour</h1>
+    <small class="dont-index">Source: <a href='https://github.com/LCBC-UiO/Questionnaires/blob/master/R/time_functions.R'><code>R/time_functions.R</code></a></small>
+    <div class="hidden name"><code>time_hms2deciH.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Calculate sum of BDI</p>
+    <p>Turn string time into decimal hour</p>
     </div>
 
-    <pre class="usage"><span class='fu'>bdi_compute_sum</span>(<span class='no'>data</span>, <span class='kw'>cols</span> <span class='kw'>=</span> <span class='fu'>matches</span>(<span class='st'>"BDI_[0-9][0-9]$"</span>), <span class='kw'>max_missing</span> <span class='kw'>=</span> <span class='fl'>0</span>)</pre>
+    <pre class="usage"><span class='fu'>time_hms2deciH</span>(<span class='no'>x</span>, <span class='kw'>unit</span> <span class='kw'>=</span> <span class='st'>"hour"</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>data</th>
-      <td><p>Data containing BDI data</p></td>
+      <th>x</th>
+      <td><p>string of class lubridate::hms "HH:MM:SS"</p></td>
     </tr>
     <tr>
-      <th>cols</th>
-      <td><p>Columns that contain BDI data</p></td>
-    </tr>
-    <tr>
-      <th>max_missing</th>
-      <td><p>Maximum number of components allowed to be missing.
-Defaults to "0", and will return <code>NA</code> if missing any question. If set to
-<code>NULL</code> any missing component counts as 0, meaning if all BDI
-components are missing, the sum is still 0, not <code>NA</code>.</p></td>
+      <th>unit</th>
+      <td><p>unit to convert to</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>numeric</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>Other bdi_functions: 
-<code><a href='bdi_compute.html'>bdi_compute</a>()</code>,
-<code><a href='bdi_factorise.html'>bdi_factorise</a>()</code></p></div>
+    <p>numeric vector</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Example of treatment of missing values</span>
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)</div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: ‘dplyr’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:stats’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>Questionnaires</span>)
-<span class='no'>data</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>tibble</a></span>(
-<span class='kw'>BDI_01</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>NA_real_</span>, <span class='fl'>NA_real_</span>, <span class='fl'>2</span>, <span class='fl'>1</span>),
-<span class='kw'>BDI_02</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>NA_real_</span>, <span class='fl'>2</span>, <span class='fl'>NA_real_</span>)
-)
-
-<span class='co'># Row with all components missing, gets sum 0</span>
-<span class='no'>data</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/bind.html'>bind_cols</a></span>(<span class='kw'>BDI_sum</span> <span class='kw'>=</span> <span class='fu'>bdi_compute_sum</span>(<span class='no'>data</span>))</div><div class='output co'>#&gt; # A tibble: 5 x 3
-#&gt;   BDI_01 BDI_02 BDI_sum
-#&gt;    &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
-#&gt; 1      1      1       2
-#&gt; 2     NA      1      NA
-#&gt; 3     NA     NA      NA
-#&gt; 4      2      2       4
-#&gt; 5      1     NA      NA</div><div class='input'><span class='co'># Do not allow any missing values</span>
-<span class='no'>data</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/bind.html'>bind_cols</a></span>(<span class='kw'>BDI_sum</span> <span class='kw'>=</span> <span class='fu'>bdi_compute_sum</span>(<span class='no'>data</span>, <span class='kw'>max_missing</span> <span class='kw'>=</span> <span class='fl'>0</span>))</div><div class='output co'>#&gt; # A tibble: 5 x 3
-#&gt;   BDI_01 BDI_02 BDI_sum
-#&gt;    &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
-#&gt; 1      1      1       2
-#&gt; 2     NA      1      NA
-#&gt; 3     NA     NA      NA
-#&gt; 4      2      2       4
-#&gt; 5      1     NA      NA</div><div class='input'><span class='co'># Allow one missing value</span>
-<span class='no'>data</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/bind.html'>bind_cols</a></span>(<span class='kw'>BDI_sum</span> <span class='kw'>=</span> <span class='fu'>bdi_compute_sum</span>(<span class='no'>data</span>, <span class='kw'>max_missing</span> <span class='kw'>=</span> <span class='fl'>2</span>))</div><div class='output co'>#&gt; # A tibble: 5 x 3
-#&gt;   BDI_01 BDI_02 BDI_sum
-#&gt;    &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
-#&gt; 1      1      1       2
-#&gt; 2     NA      1       1
-#&gt; 3     NA     NA       0
-#&gt; 4      2      2       4
-#&gt; 5      1     NA       1</div><div class='input'>
-</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>time</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>lubridate</span><span class='kw ns'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/hms.html'>hms</a></span>(<span class='st'>"02:33:12"</span>)
+<span class='fu'>time_hms2deciH</span>(<span class='no'>time</span>)</div><div class='output co'>#&gt; [1] 2.65</div><div class='input'><span class='fu'>time_hms2deciH</span>(<span class='no'>time</span>, <span class='st'>"minute"</span>)</div><div class='output co'>#&gt; [1] 159</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
-      <li><a href="#see-also">See also</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 

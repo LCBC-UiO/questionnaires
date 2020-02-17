@@ -152,12 +152,22 @@
     <p>Compute all PSQI components and global score</p>
     </div>
 
-    <pre class="usage"><span class='fu'>psqi_compute</span>(<span class='no'>data</span>, <span class='kw'>components</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>7</span>, <span class='kw'>bedtime</span> <span class='kw'>=</span> <span class='no'>PSQI_01</span>,
-  <span class='kw'>minBeforeSleep</span> <span class='kw'>=</span> <span class='no'>PSQI_02</span>, <span class='kw'>risingtime</span> <span class='kw'>=</span> <span class='no'>PSQI_03</span>,
-  <span class='kw'>hoursSleep</span> <span class='kw'>=</span> <span class='no'>PSQI_04</span>, <span class='kw'>noSleep30min</span> <span class='kw'>=</span> <span class='no'>PSQI_05a</span>,
-  <span class='kw'>sleepQuality</span> <span class='kw'>=</span> <span class='no'>PSQI_06</span>, <span class='kw'>medication</span> <span class='kw'>=</span> <span class='no'>PSQI_07</span>, <span class='kw'>keepAwake</span> <span class='kw'>=</span> <span class='no'>PSQI_08</span>,
-  <span class='kw'>keepEnthused</span> <span class='kw'>=</span> <span class='no'>PSQI_09</span>, <span class='kw'>sleepTroubles</span> <span class='kw'>=</span> <span class='fu'>matches</span>(<span class='st'>"^PSQI_05[b-j]$"</span>),
-  <span class='kw'>max_missing</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>keep_all</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>psqi_compute</span>(
+  <span class='no'>data</span>,
+  <span class='kw'>components</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>7</span>,
+  <span class='kw'>bedtime</span> <span class='kw'>=</span> <span class='no'>PSQI_01</span>,
+  <span class='kw'>minBeforeSleep</span> <span class='kw'>=</span> <span class='no'>PSQI_02</span>,
+  <span class='kw'>risingtime</span> <span class='kw'>=</span> <span class='no'>PSQI_03</span>,
+  <span class='kw'>hoursSleep</span> <span class='kw'>=</span> <span class='no'>PSQI_04</span>,
+  <span class='kw'>noSleep30min</span> <span class='kw'>=</span> <span class='no'>PSQI_05a</span>,
+  <span class='kw'>sleepQuality</span> <span class='kw'>=</span> <span class='no'>PSQI_06</span>,
+  <span class='kw'>medication</span> <span class='kw'>=</span> <span class='no'>PSQI_07</span>,
+  <span class='kw'>keepAwake</span> <span class='kw'>=</span> <span class='no'>PSQI_08</span>,
+  <span class='kw'>keepEnthused</span> <span class='kw'>=</span> <span class='no'>PSQI_09</span>,
+  <span class='kw'>sleepTroubles</span> <span class='kw'>=</span> <span class='fu'>matches</span>(<span class='st'>"^PSQI_05[b-j]$"</span>),
+  <span class='kw'>max_missing</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>keep_all</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -227,12 +237,13 @@ global PSQI value is computed by weighting each non-missing entry with <code>7 /
     <p>a data.frame containing only the calculated components</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other psqi_functions: <code><a href='psqi_compute_comp2.html'>psqi_compute_comp2</a></code>,
-  <code><a href='psqi_compute_comp3.html'>psqi_compute_comp3</a></code>,
-  <code><a href='psqi_compute_comp4.html'>psqi_compute_comp4</a></code>,
-  <code><a href='psqi_compute_comp5.html'>psqi_compute_comp5</a></code>,
-  <code><a href='psqi_compute_comp7.html'>psqi_compute_comp7</a></code>,
-  <code><a href='psqi_compute_global.html'>psqi_compute_global</a></code></p></div>
+    <div class='dont-index'><p>Other psqi_functions: 
+<code><a href='psqi_compute_comp2.html'>psqi_compute_comp2</a>()</code>,
+<code><a href='psqi_compute_comp3.html'>psqi_compute_comp3</a>()</code>,
+<code><a href='psqi_compute_comp4.html'>psqi_compute_comp4</a>()</code>,
+<code><a href='psqi_compute_comp5.html'>psqi_compute_comp5</a>()</code>,
+<code><a href='psqi_compute_comp7.html'>psqi_compute_comp7</a>()</code>,
+<code><a href='psqi_compute_global.html'>psqi_compute_global</a>()</code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

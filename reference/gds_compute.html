@@ -152,9 +152,13 @@
     <p>Compute GDS score</p>
     </div>
 
-    <pre class="usage"><span class='fu'>gds_compute</span>(<span class='no'>data</span>, <span class='kw'>cols</span> <span class='kw'>=</span> <span class='fu'>matches</span>(<span class='st'>"GDS_[0-9][0-9]$"</span>),
-  <span class='kw'>cols_rev</span> <span class='kw'>=</span> <span class='fu'>matches</span>(<span class='st'>"01$|05$|07$|09$|15$|19$|21$|27$|29$|30$"</span>),
-  <span class='kw'>values</span> <span class='kw'>=</span> <span class='fu'><a href='gds_values.html'>gds_values</a></span>(), <span class='kw'>keep_all</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>gds_compute</span>(
+  <span class='no'>data</span>,
+  <span class='kw'>cols</span> <span class='kw'>=</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>matches</a></span>(<span class='st'>"GDS_[0-9][0-9]$"</span>),
+  <span class='kw'>cols_rev</span> <span class='kw'>=</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>matches</a></span>(<span class='st'>"01$|05$|07$|09$|15$|19$|21$|27$|29$|30$"</span>),
+  <span class='kw'>values</span> <span class='kw'>=</span> <span class='fu'><a href='gds_values.html'>gds_values</a></span>(),
+  <span class='kw'>keep_all</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -186,8 +190,12 @@
     <p>data frame</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other gds_functions: <code><a href='gds_compute_sum.html'>gds_compute_sum</a></code>,
-  <code><a href='gds_factorise.html'>gds_factorise</a></code></p></div>
+    <div class='dont-index'><p>Other gds_functions: 
+<code><a href='gds_alter_values.html'>gds_alter_values</a>()</code>,
+<code><a href='gds_binary.html'>gds_binary</a>()</code>,
+<code><a href='gds_compute_sum.html'>gds_compute_sum</a>()</code>,
+<code><a href='gds_factorise.html'>gds_factorise</a>()</code>,
+<code><a href='gds_values.html'>gds_values</a>()</code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

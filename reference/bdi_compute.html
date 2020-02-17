@@ -154,8 +154,13 @@ the four BDI categories based on the sum" />
 the four BDI categories based on the sum</p>
     </div>
 
-    <pre class="usage"><span class='fu'>bdi_compute</span>(<span class='no'>data</span>, <span class='kw'>cols</span> <span class='kw'>=</span> <span class='fu'>matches</span>(<span class='st'>"BDI_[0-9][0-9]$"</span>), <span class='kw'>max_missing</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>predicate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>TRUE</span>, <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='no'>data</span>)), <span class='kw'>keep_all</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>bdi_compute</span>(
+  <span class='no'>data</span>,
+  <span class='kw'>cols</span> <span class='kw'>=</span> <span class='fu'>matches</span>(<span class='st'>"BDI_[0-9][0-9]$"</span>),
+  <span class='kw'>max_missing</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>predicate</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>TRUE</span>, <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='no'>data</span>)),
+  <span class='kw'>keep_all</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -192,8 +197,9 @@ to include in the summing function</p></td>
     <p>data.frame</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other bdi_functions: <code><a href='bdi_compute_sum.html'>bdi_compute_sum</a></code>,
-  <code><a href='bdi_factorise.html'>bdi_factorise</a></code></p></div>
+    <div class='dont-index'><p>Other bdi_functions: 
+<code><a href='bdi_compute_sum.html'>bdi_compute_sum</a>()</code>,
+<code><a href='bdi_factorise.html'>bdi_factorise</a>()</code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
