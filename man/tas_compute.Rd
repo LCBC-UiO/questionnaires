@@ -4,10 +4,13 @@
 \alias{tas_compute}
 \title{Compute the TAS factors}
 \usage{
-tas_compute(data, feeling_cols = c(TAS_01, TAS_03, TAS_06, TAS_07,
-  TAS_09, TAS_13, TAS_14), descr_cols = c(TAS_02, TAS_04, TAS_11, TAS_12,
-  TAS_17), ext_cols = c(TAS_05, TAS_08, TAS_10, TAS_15, TAS_16, TAS_18,
-  TAS_19, TAS_20), keep_all = TRUE)
+tas_compute(
+  data,
+  feeling_cols = c(TAS_01, TAS_03, TAS_06, TAS_07, TAS_09, TAS_13, TAS_14),
+  descr_cols = c(TAS_02, TAS_04, TAS_11, TAS_12, TAS_17),
+  ext_cols = c(TAS_05, TAS_08, TAS_10, TAS_15, TAS_16, TAS_18, TAS_19, TAS_20),
+  keep_all = TRUE
+)
 }
 \arguments{
 \item{data}{Data containing TAS data}

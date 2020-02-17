@@ -1,5 +1,4 @@
-context("test-tas_functions")
-load("tas.rda")
+load(paste0(test_path(), "/data/tas.rda"))
 
 test_that("Check component calculations", {
   

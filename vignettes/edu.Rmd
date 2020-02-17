@@ -1,0 +1,233 @@
+---
+title: "Education"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Education}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(dplyr)
+library(knitr)
+library(kableExtra)
+devtools::load_all(".")
+```
+
+Education variables are one of the more complicated variabled in the MOAS, as they have been asked in several different ways and can be coded in a multitude of ways. This is even more complicated by the lifespan aspect of our data, where not all participants have been attending school for the same number of years despite completing mandatory schooling in Norway. While the education variables in the MOAS attempt to reflect the real educational levels of the participants, the changes in the Norwegian school system means the variables need to be interpreted with care.
+
+The categorical variables are nice because they treat all participants the same not matter which shcool system they were under. They are also gross simplifications. The numerical columns might be more precise, but participants interpret these differently, and as they are them selves asked to count their years of education. So while more fine grained, these also pose difficulties. 
+
+## Norwegian school history
+In Norway, a law for 9 years of mandatory schooling was implemented in 1969. 
+Before this, there was a (largely) 7 year primary school (folkeskole) in most districts. 
+After 1969 mandatory school (grunnskole) was implemented which was split into two parts primary school (barneskolen, years 1-6) and secondary school (ungdsomsskolen, year 7-9).  
+
+### M-74
+In 1974, a school reform called "Mønsterplanen" (M74) was implemented as a regulation of education. 
+This was an effort to get the schooling in the various districts to become more equal, but still had large focus on the teachers choosing what materials in schools were to be taught. 
+Certain subjects were made mandatory, while the curriculum was decided more by the teachers.
+English was made mandatory for all, and arts and crafts were introduced.
+
+### Reforms in 1987 og 1997
+In 1987 a new plan was implemented, which more precicely dictated what curriculum  should be used in the schools. One of the primary reasons for the change was the view that it had become more diffiult to grow up and that the schools should compensate for some of this. Schools should now represent a protective environment and culture against the new waves in society. Important elemts in M87 was care, work on attitudes and class environments.
+
+Only 10  years later a new reform in primary school was implemented, L97, where the mandatory school was extended to 10 years, and children started school 1 year earlier (at 6 years of age rather than 10). 
+
+### Sources 
+Tønnessen (1995): Norsk utdanningshistorie. En innføring. 
+Høigård & Ruge (1971): Den norske skolens historie. En oversikt.
+
+
+## MOAS data
+
+| MOAS variable | Explanation |
+|----|----|
+| Edu_Years |	Education Years to highest completed |
+| Edu_Total |	Education Years of total education rounded down to closest integer |
+| Edu_Coded_unknown |	Education Coded - unknown |
+| Edu_Coded4 |	Education Coded 4 categories |
+| Edu_Coded10 |	Education Coded 10 categories |
+| Edu_Desc |	Education Free text description |
+
+The functions created in this package is to make it transparent and easier to work with MOAS functions, particularly the categorical ones.
+All the functions start with `edu`, and should have names to indicate what they do.
+
+### Assessing factor levels
+
+There are several functions to help assess the different coding schemes we have (currently two, 4 and 9).
+To inspect the coding schemas, you can call the `edu_levels()` function, with either `4` or `9` as argument.
+```{r}
+edu_levels(4)
+edu_levels(9)
+```
+
+These are the schemas that the remaining `edu_functions` require to work properly and aplpy the correct schema.
+The levels scheme is adaptable, and should we adopt another we do not use now, a new schemas needs to be specified and hopefully should work farily well with the other functions.
+`edu_levels` returns a _names numeric vector_, meaning that the vector it self contains numbers.
+This means you can do computations with the values returned.
+To access the names you need to explicitly ask for them through the `names` function.
+
+```{r}
+names(edu_levels(4))
+
+edu_levels(9) %>% 
+  names()
+```
+
+### Recoding vector into factor
+
+While the MOAS is pre-curated, these functions are also applied to the MOAS-data to ensure consistency across projects.
+The `edu_factorise` functions help evaluate the data and create correct factors. 
+These functions require the data inputed to be either numberic or in character, and can handle is data has been mixed (i.e. numeric  mixed with character).
+
+```{r}
+edu_factorise(c("3", "High school", "University/University college (> 4 years)", 
+"University/University college (> 4 years)", "University/University college (> 4 years)", 
+"University/University college (> 4 years)"), levels = 4)
+
+edu_factorise(c(7,7,8,4,2,5), levels = 9)
+```
+
+The main `edu_factorise` function takes two arguments, the vector (x) and levels of the coding scheme to apply (4 or 9).
+The function it will return will have the correct labels, and their levels will correspond to the number of years generally needed to complete said education.
+There are specific functions for the two schemas, if you want to call them directly.
+You will find many of the `edu-functions` have this system, a main function needing a `levels` argument, or specialized functions for the two coding schemas. 
+The specialized functions always call the main one, with pre-set values to `levels`.
+
+```{r}
+edu4_factorise(c("3", "High school", "University/University college (> 4 years)", 
+"University/University college (> 4 years)", "University/University college (> 4 years)", 
+"University/University college (> 4 years)"))
+
+edu9_factorise(c(7,7,8,4,2,5))
+```
+
+### Alter factor to year
+
+Data from coding schemas, punched as levels of the factors (as seen in `edu_levels`) can be transformed into year equivalents with the `edu_to_year` functions. 
+While these functions **do not require** data to already be in factors to work, but double checking that the expected values are returned when turning data into factors, before converting the factors to numbers is recommended.
+
+```{r}
+# Check that factors are as expected
+c("3", "High school", "University/University college (> 4 years)", 
+"University/University college (> 4 years)", "University/University college (> 4 years)", 
+"University/University college (> 4 years)") %>% 
+  edu4_factorise()
+
+# or call the main function directly, specifying the levels of the schema
+c("3", "High school", "University/University college (> 4 years)", 
+"University/University college (> 4 years)", "University/University college (> 4 years)", 
+"University/University college (> 4 years)") %>% 
+  edu_factorise( levels = 4)
+
+# convert to factor then to year
+c("3", "High school", "University/University college (> 4 years)", 
+"University/University college (> 4 years)", "University/University college (> 4 years)", 
+"University/University college (> 4 years)") %>% 
+  edu4_factorise() %>% 
+  edu4_to_years()
+
+# you can skip factorizing as a middle step, 
+# if you are certain of the schema being applied correctly
+c("3", "High school", "University/University college (> 4 years)", 
+"University/University college (> 4 years)", "University/University college (> 4 years)", 
+"University/University college (> 4 years)") %>% 
+  edu4_to_years()
+
+```
+
+
+### Converting between schemas
+Since `Edu_Coded10` has many more categories than `Edu_Coded4` and they have not been collected simultaneously, you can also reduce the 10 categories to 4 by the function `edu10_reduce`. The categories are reduced by the following heuristic:
+
+```{r}
+edu_map(from = 9, to =4) %>% 
+  kable() %>% 
+  kable_styling()
+
+edu_map_chr(from = 9, to =4) %>% 
+  kable() %>% 
+  kable_styling()
+```
+
+
+```{r}
+c(7,7,8,4,2,5) %>% 
+  edu9_reduce(to = 4)
+
+c(7,7,8,4,2,5) %>% 
+  edu_reduce(from = 9, to = 4)
+```
+
+### Compute education years from all available schemas
+Some participants will have provided education information to us several times, likely using different coding schemas.
+This means we might have better, finer, information regarding participants education at later points of data collection.
+Particularly when it comes to estimating actual years of education, the more levels, the better precision we have.
+Also, in later data collection we direcly ask participants to calculate the number of total years they have been in full-time education. 
+As there are currently three main sources: edu4, edu10 and edu_years, we use this to get to the best estimate we can.
+The `edu_compute` function requires a full dataset with at least three columns that include this information, they do not have to have the same column-names as in the MOAS, as you will need to specify this your self.
+The function will do data checks in the following order:
+
+1. if `edu_years` **is not** `NA`, use this data
+2. if `edu10` **is not** `NA`, turn factor to years
+3. if `edu4` **is not** `NA`, turn factor to years
+
+```{r}
+edu_data <- data.frame(
+  edu4 = c("3", "High school", 1, NA,
+           "University/University college (> 4 years)", NA, 
+           "University/University college (< 4 years)"),
+  edu9 = c(7,7,8,NA,"Primary school (6 years)",5, 9),
+  edu_years = c(NA, 12, 9, NA, 19, 19, NA),
+  mother = c("3", "High school", 1, NA,
+             "University/University college (> 4 years)", "University/University college (> 4 years)", 
+             "University/University college (< 4 years)"),
+  father = c(7,7,8,4,"Primary school (6 years)",5, 10),
+  stringsAsFactors = FALSE
+)
+
+edu_data %>% 
+  # ignore this, this is to the table looks ok online
+  kable() %>% 
+  kable_styling()
+
+edu_compute(edu_data,
+            edu4 = edu4, 
+            edu9 = edu9, 
+            edu_years = edu_years) %>% 
+  # ignore this, this is to the table looks ok online
+  kable() %>% 
+  kable_styling()
+
+```
+
+You will see that the specified `edu_years` column wil have been populated with data available in the other two columns.
+
+### Compile education from several sources
+Lastly, because some of our participants are children, using their education is not possible as they are still completing lower-level education. In these cases it is nice to have a variable that actually spans educational information from participants and parents for kids, for easier reporting and analysis. For this we can use the information we have from parents to fill in gpas in pediatric data. 
+The rule for this filler is Participant - Mother - Father, so that only those missing all of these will have `NA` in the data.
+The columns this is done in are called `Edu_Compiled`, and there are three of them:
+
+`Edu_Compiled_Coded4` - 4 category coded education from participant, mother, or father  
+`Edu_Compiled_Years` - Year approximation of `Edu_Compiled_Coded4` 
+`Edu_Compiled_Source` - The source of the two above, one of "Participant", "Mother", or "Father".
+
+```{r}
+edu_compile(data = edu_data, 
+            participant = edu4, 
+            mother = edu4_factorise(mother), 
+            father = father
+) %>% 
+  # ignore this, this is to the table looks ok online
+  kable() %>% 
+  kable_styling()
+```
+
+
+
+

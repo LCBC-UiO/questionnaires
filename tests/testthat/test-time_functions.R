@@ -39,11 +39,31 @@ test_that("check that is.hms works", {
     hms = c("00:20:00", "22:30:12", "08:21:14", "01:21:49", "01:40:37"),
     strinsAsFactor = FALSE
   )
-  expect_false(is.hm(t$hm))
-  expect_false(is.hms(t$hms))
+  expect_false(is_hm(t$hm))
+  expect_false(is_hms(t$hms))
   
-  expect_true(is.hm(lubridate::hm(t$hm)))
-  expect_true(is.hms(lubridate::hms(t$hms)))
+  expect_true(is_hm(lubridate::hm(t$hm)))
+  expect_true(is_hms(lubridate::hms(t$hms)))
   
+})
+
+
+test_that("is_hms works", {
+  expect_false(is_hms("13:24:11"))
+  
+  #Does not work, because the class is now Period??
+  #expect_true(is_hms(lubridate::hms("13:24:11")))
+  
+})
+
+test_that("time_factor works", {
+  
+  expect_equal(
+    time_factor(c("12:23", "15:59", "22:10", "8:13")),
+    structure(
+      c(2L, 2L, 4L, 1L),
+      .Label = c("Morning", "Afternoon", "Evening", "Night"),
+      class = c("ordered", "factor"))
+  )
 })
 

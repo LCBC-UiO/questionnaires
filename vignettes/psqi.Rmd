@@ -13,32 +13,14 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+devtools::load_all(".")
 ```
+
 ## Background
-Despite the prevalence of sleep complaints among psychiatric patients, few questionnaires have been specifically designed to measure sleep quality in clinical populations. The Pittsburgh Sleep Quality Index (PSQI) is a self-rated questionnaire which assesses sleep quality and disturbances over a 1-month time interval. Nineteen individual items generate seven “component” scores: subjective sleep quality, sleep latency, sleep duration, habitual sleep efficiency, sleep disturbances, use of sleeping medication, and daytime dysfunction. The sum of scores for these seven components yields one global score.
-
-## Data requirements  
-### Column names
-Questions with multiple subquestions should be named in a similar manner, suffixed by the alphabetical index (**PSQI_5a**, **PSQI_5b** etc.). For questions 5j and 10j, the frequency of occurence should have the names **PSQI_5j** and **PSQI_10e**, and the freehand explanations should have any type of **suffix** after this to indicate a text answers (i.e. **PSQI_5j_Desc** or **PSQI_5j_string**, **PSQI_5j_freehand**). 
- As an example, LCBC has the following set-up:  
-- **PSQI_1**         
-- **PSQI_2**         
-- **PSQI_3**         
-- **PSQI_4**         
-- **PSQI_5a** **PSQI_5b** **PSQI_5c** **PSQI_5d** **PSQI_5e** **PSQI_5f** **PSQI_5g** **PSQI_5h** **PSQI_5i** **PSQI_5j** - - **PSQI_5j_Coded** **PSQI_5j_Desc**   
-- **PSQI_6**        
-- **PSQI_7**         
-- **PSQI_8**         
-- **PSQI_9**         
-- **PSQI_10** **PSQI_10a** **PSQI_10b** **PSQI_10c** **PSQI_10d** **PSQI_10e** **PSQI_10e_Desc** **PSQI_10e_Coded**    
-- **PSQI_11a** **PSQI_11b** **PSQI_11c** **PSQI_11d**  
-
-### 4-option questions coding
-All 4-option questions need to be coded **0-3**, not **1-4**.
-
-### Time formats
-For question 1, 3 and 4 (bedtime, rising time, hours of sleep), data should be punched as "**HH:MM**". 
-Question 2 should be punched as minutes in numbers.
+Despite the prevalence of sleep complaints among psychiatric patients, few questionnaires have been specifically designed to measure sleep quality in clinical populations. 
+The Pittsburgh Sleep Quality Index (PSQI) is a self-rated questionnaire which assesses sleep quality and disturbances over a 1-month time interval. 
+Nineteen individual items generate seven “component” scores: subjective sleep quality, sleep latency, sleep duration, habitual sleep efficiency, sleep disturbances, use of sleeping medication, and daytime dysfunction. 
+The sum of scores for these seven components yields one global score.
 
 ## The components
 - **Component 1: subjective sleep quality** - Answer to q 6.  
@@ -50,12 +32,161 @@ Question 2 should be punched as minutes in numbers.
 - **Component 7: daytime dysfunction **- Sum of evaluation of staying awake (q 8) and evaluation of keeping enthusiastic (q 9), scaled to a 5 point scale.  
 - **Global score: sum of the above.** If any of the above is not possible to calculate, the global sum is also not calculated. 
 
+
+## Data requirements  
+### Column names
+Questions with multiple subquestions should be named in a similar manner, suffixed by the alphabetical index (**PSQI_5a**, **PSQI_5b** etc.). 
+For questions 5j and 10j, the frequency of occurence should have the names **PSQI_5j** and **PSQI_10e**, and the freehand explanations should have any type of **suffix** after this to indicate a text answers (i.e. **PSQI_5j_Desc** or **PSQI_5j_string**, **PSQI_5j_freehand**). 
+ As an example, LCBC has the following set-up:  
+ 
+- **PSQI_1**  
+- **PSQI_2**  
+- **PSQI_3**  
+- **PSQI_4**  
+- **PSQI_5a** **PSQI_5b** **PSQI_5c** **PSQI_5d** **PSQI_5e** **PSQI_5f** **PSQI_5g** **PSQI_5h** **PSQI_5i** **PSQI_5j** **PSQI_5j_Coded** **PSQI_5j_Desc**   
+- **PSQI_6**        
+- **PSQI_7**  
+- **PSQI_8**  
+- **PSQI_9**  
+- **PSQI_10** **PSQI_10a** **PSQI_10b** **PSQI_10c** **PSQI_10d** **PSQI_10e** **PSQI_10e_Desc** **PSQI_10e_Coded**  
+- **PSQI_11a** **PSQI_11b** **PSQI_11c** **PSQI_11d**  
+
+### 4-option questions coding
+All 4-option questions need to be coded **0-3**, not **1-4**.
+
+### Time formats
+For question 1, 3 and 4 (bedtime, rising time, hours of sleep), data should be punched as "**HH:MM**". 
+Question 2 should be punched as minutes in numbers.
+
 ## Use the `psqi` functions
-All the functions necessary to compute the components and the global score for the psqi are included in this package, and loading it in your R-environment makes them accessable to you. All the functions for the PSQI, are prefixed with `psqi_`, so they are easy to find.
+All the functions necessary to compute the components and the global score for the psqi are included in this package, and loading it in your R-environment makes them accessable to you. 
+All the functions for the PSQI, are prefixed with `psqi_`, so they are easy to find.
 
-There are a total of 7 `psqi_` functions in this package. One for each component, except 1 and 6 which are just the raw answers from questions 4 and 7. In addition, there is a function to calculate the global, which must be done _after_ having computed the 7 components. Lastly, there is a function `psqi_compute` which will do it all for you, compute all the components and the global. All the functions are documented as any function in R, and so you may call `?psqi_compute` to see the user documentation for the functions.
+There are a total of 7 `psqi_` functions in this package. 
+One for each component, except 1 and 6 which are just the raw answers from questions 4 and 7. 
+In addition, there is a function to calculate the global, which must be done _after_ having computed the 7 components. 
+Lastly, there is a function `psqi_compute` which will do it all for you, compute all the components and the global.
+All the functions are documented as any function in R, and so you may call `?psqi_compute` to see the user documentation for the functions.
 
-There are many options you can utilise for these functions, so you may explore them as you wish. The functions are also made such that you can use them on datasets other than the LCBC MOAS dataset, but you will then have to specify the columns to use for the various components your self. The functions are made to work directly with the MOAS, and require no extra input other that the object containing the MOAS to run all calculations. Running `psqi_compute(MOAS)` will calculate all components and append them to the data you provided. Running `psqi_compute(MOAS, keep_all = FALSE)` will only return the computed components and the global score in a data frame.
+There are many options you can utilise for these functions, so you may explore them as you wish. 
+The functions are also made such that you can use them on datasets other than the LCBC MOAS dataset, but you will then have to specify the columns to use for the various components your self.
+The functions are made to work directly with the MOAS, and require no extra input other that the object containing the MOAS to run all calculations. 
+Running `psqi_compute(MOAS)` will calculate all components and append them to the data you provided.
+Running `psqi_compute(MOAS, keep_all = FALSE)` will only return the computed components and the global score in a data frame.
+
+```{r}
+# Create some data to test on
+data <- data.frame(
+  PSQI_01 = c("22:30:00", "07:00:00", "22:30:00", "NaN", "23:30:00"), 
+  PSQI_02 = c(5, 10, 30, 20, 30), 
+  PSQI_03 = c("05:50:00", "17:00:00", "06:30:00", "NaN", "06:45:00"), 
+  PSQI_04 = c(7, 9.75, 8, 9, 6), 
+  PSQI_05a = c(0L, 0L, 1L, 2L, 2L), 
+  PSQI_05b = c(0L, 0L, 2L, 0L, 2L), 
+  PSQI_05c = c(0L, 0L, 3L, 1L, 2L), 
+  PSQI_05d = c(0L, 0L, 0L, 0L, 0L), 
+  PSQI_05e = c(0L, 3L, 1L, 0L, 0L), 
+  PSQI_05f = c(0L, 0L, 1L, 0L, 1L),
+  PSQI_05g = c(0L, 0L, 1L, 1L, 3L), 
+  PSQI_05h = c(0L, 0L, 0L, 0L, 0L), 
+  PSQI_05i = c(0L, 0L, 0L, 0L, 0L), 
+  PSQI_05j_Coded = c(NA,NA, "No", NA, NA), 
+  PSQI_05j = c(0L, 0L, NA, NA, NA), 
+  PSQI_06 = c(0L, 1L, 2L, 1L, 1L), 
+  PSQI_07 = c(0L, 0L, 0L, 0L, 0L), 
+  PSQI_08 = c(0L, 0L, 0L, 1L, 0L), 
+  PSQI_09 = c(0L, 0L, 1L, 0L, 1L), 
+  PSQI_10 = c(3L, 1L, 3L, NA, 3L), 
+  PSQI_10a = c(1L, NA, 1L, NA, 0L), 
+  PSQI_10b = c(0L, NA, 0L, NA, 0L), 
+  PSQI_10c = c(2L, NA, 2L, NA, 0L), 
+  PSQI_10d = c(0L, NA, 0L, NA, 0L), 
+  PSQI_10e_Coded = c(NA, NA, "", NA, NA), 
+  PSQI_10e = c(NA_integer_, NA_integer_, NA_integer_, NA_integer_, NA_integer_), 
+  PSQI_11a = c(0L, 2L, 1L, 1L, 2L), 
+  PSQI_11b = c(0L, 0L, 2L, 0L, 2L), 
+  PSQI_11c = c(0L, 0L, 1L, 1L, 2L), 
+  PSQI_11d = c(0L, 3L, 2L, 0L, 2L)
+)
+
+data
+```
+
+### Component-wise calculations
+There are 7 components in the PSQI, and the functions in the package allow you to calculate 5 components based on two or more columns in the data. 
+Two components do not have their own functions as they are just the raw answers to two questions.
+
+Each component has unieuq arguments needed to calculate.
+
+```{r}
+psqi_compute_comp2(minBeforeSleep = data$PSQI_02, 
+                   noSleep30min = data$PSQI_05a)
+
+psqi_compute_comp3(hoursSleep = data$PSQI_04)
+
+psqi_compute_comp4(hoursSleep = data$PSQI_04, 
+                   bedtime = data$PSQI_01, 
+                   risingtime = data$PSQI_03)
+
+# Requires many columns, so for conveniece must be specified in another way than others.
+psqi_compute_comp5(data = data, 
+                   sleepTroubles = matches("^PSQI_05[b-j]$"))
+
+psqi_compute_comp7(keepAwake = data$PSQI_08, 
+                   keepEnthused = data$PSQI_09)
+```
+
+If you want to add these directly to your data.frame, you can wrap then insire a `dplyr::mutate`.
+
+```{r}
+data2 <- data %>% 
+  mutate(
+    Comp1 = PSQI_06,
+    Comp2 =  psqi_compute_comp2(minBeforeSleep = PSQI_02, 
+                                noSleep30min = PSQI_05a),
+    Comp3 = psqi_compute_comp3(hoursSleep = PSQI_04),
+    Comp4 = psqi_compute_comp4(hoursSleep = PSQI_04, 
+                               bedtime = PSQI_01, 
+                               risingtime = PSQI_03),
+    Comp5 = psqi_compute_comp5(data = ., 
+                               sleepTroubles = matches("^PSQI_05[b-j]$")),
+    Comp6 = PSQI_07,
+    Comp7 = psqi_compute_comp7(keepAwake = PSQI_08, 
+                               keepEnthused = PSQI_09)
+  )
+data2
+```
+
+
+### Global calculation
+After having all components calulcated, the global is the sum of all these.
+The `psqi_compute_global` function takes an entire data frame, and a tidy-selected collection of collumns of the calculated components. 
+In this case we called the components with names starting with "Comp", and can use this logic for the computation.
+
+```{r}
+psqi_compute_global(data2, starts_with("Comp"))
+```
+
+We get ona `NA` because someone has omitted to answer to a question, and so a component is missing, and thus a global cannot be computed.
+You have the option to specify how many missing components the global calculation will allow, but remember that this will skew the data somewhat.
+
+```{r}
+psqi_compute_global(data2, starts_with("Comp"), max_missing = 2)
+```
+
+### Calculating all components and global in one go
+It is quite cumbersome to mutate and fix every component manually, so the `psqi_compute` function is there to make everything in one go.
+If you are working on MOAS-like data, this is easy to use, as column names and specifications are pre-set to work with the MOAS.
+If you are working on other data, you will need to set each option to the column names in the data for each question manually.
+
+```{r}
+psqi_compute(data)
+
+psqi_compute(data, keep_all = FALSE)
+
+psqi_compute(data, keep_all = FALSE, max_missing = 1)
+```
+
 
 ## References  
 Buysse et al. (1989) [The Pittsburgh sleep quality index: A new instrument for psychiatric practice and research](https://www.sciencedirect.com/science/article/pii/0165178189900474), _Psychiatry Research_, 28:2, 193-213

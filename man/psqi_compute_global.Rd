@@ -4,8 +4,7 @@
 \alias{psqi_compute_global}
 \title{Compute Global PSQI component}
 \usage{
-psqi_compute_global(data, cols = matches("^PSQI_Comp[1-7]+_"),
-  max_missing = 0)
+psqi_compute_global(data, cols = matches("^PSQI_Comp[1-7]+_"), max_missing = 0)
 }
 \arguments{
 \item{data}{Data frame containing PSQI components}
@@ -20,11 +19,12 @@ global PSQI value is computed by weighting each non-missing entry with \code{7 /
 Compute Global PSQI component
 }
 \seealso{
-Other psqi_functions: \code{\link{psqi_compute_comp2}},
-  \code{\link{psqi_compute_comp3}},
-  \code{\link{psqi_compute_comp4}},
-  \code{\link{psqi_compute_comp5}},
-  \code{\link{psqi_compute_comp7}},
-  \code{\link{psqi_compute}}
+Other psqi_functions: 
+\code{\link{psqi_compute_comp2}()},
+\code{\link{psqi_compute_comp3}()},
+\code{\link{psqi_compute_comp4}()},
+\code{\link{psqi_compute_comp5}()},
+\code{\link{psqi_compute_comp7}()},
+\code{\link{psqi_compute}()}
 }
 \concept{psqi_functions}

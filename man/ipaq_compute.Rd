@@ -4,15 +4,22 @@
 \alias{ipaq_compute}
 \title{Compute all the IPAQ components}
 \usage{
-ipaq_compute(data, mets = list(light = 3.3, moderate = 4, vigorous = 8),
-  light_days = IPAQ_1b, light_mins = IPAQ_2, mod_days = IPAQ_3b,
-  mod_mins = IPAQ_4, vig_days = IPAQ_5b, vig_mins = IPAQ_6,
-  keep_all = TRUE)
+ipaq_compute(
+  data,
+  mets = ipaq_mets(),
+  light_days = IPAQ_1b,
+  light_mins = IPAQ_2,
+  mod_days = IPAQ_3b,
+  mod_mins = IPAQ_4,
+  vig_days = IPAQ_5b,
+  vig_mins = IPAQ_6,
+  keep_all = TRUE
+)
 }
 \arguments{
 \item{data}{data.frame containing all the IPAQ data}
 
-\item{mets}{list with three elements for the MET categories [default = list(light = 3.3, moderate = 4.0, vigorous = 8.0)]}
+\item{mets}{list generated with ipaq_mets() [default = ipaq_mets()]}
 
 \item{light_days}{column with the days of light activity}
 
@@ -22,12 +29,30 @@ ipaq_compute(data, mets = list(light = 3.3, moderate = 4, vigorous = 8),
 
 \item{mod_mins}{column with the minutes of moderate activity}
 
-\item{vig_days}{column with the days of vigurous activity}
+\item{vig_days}{column with the days of vigorous activity}
 
-\item{vig_mins}{column with the minutes of vigurous activity}
+\item{vig_mins}{column with the minutes of vigorous activity}
 
 \item{keep_all}{logical, append to data.frame}
 }
-\description{
-Compute all the IPAQ components
+\value{
+data.frame
 }
+\description{
+In most cases you have all the IPAQ
+data in a data frame and would like to
+calculate and add all the data directly
+to your data frame.
+}
+\details{
+This function takes many arguments in order to
+do that.
+}
+\seealso{
+Other ipaq_functions: 
+\code{\link{ipaq_compute_met}()},
+\code{\link{ipaq_compute_sum}()},
+\code{\link{ipaq_mets}()},
+\code{\link{ipaq_time_alter}()}
+}
+\concept{ipaq_functions}

@@ -15,5 +15,26 @@ ipaq_time_alter(data, cols = c(IPAQ_2, IPAQ_4, IPAQ_6))
 data.frame
 }
 \description{
-Alter the time instant columns to decminals
+Time is often punched as HH:MM in order
+to preserve correct time calculations.
+The IPAQ calculation recure time to be
+in decimal minutes. 
+This function easily changes HH:MM into
+decminal minutes in a data.frame
+It alters columns directly in the data.frame
 }
+\examples{
+dat <- data.frame(
+   time_1  = c("12:34", "09:33", "22:14"),
+   time_2  = c("10:55", "16:45", "18:02")
+)
+ipaq_time_alter(dat, cols = c(time_1, time_2))
+}
+\seealso{
+Other ipaq_functions: 
+\code{\link{ipaq_compute_met}()},
+\code{\link{ipaq_compute_sum}()},
+\code{\link{ipaq_compute}()},
+\code{\link{ipaq_mets}()}
+}
+\concept{ipaq_functions}

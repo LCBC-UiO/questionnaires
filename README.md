@@ -20,12 +20,19 @@ components from commonly used questionnaires in LCBC research.
 
 The questionnaires covered so far:
 
-  - PSQI - Pittsburgh Sleep Quality Inventory
-  - IPAQ - International Physical Activity Questionnaire
-  - EHI - Edinburgh Handedness Inventory
-  - BDI - Beck Depression Inventory
-  - GDS - Geriatric Depression Scale
-  - TAS -
+  - PSQI - [Pittsburgh Sleep Quality
+    Inventory](https://lcbc-uio.github.io/Questionnaires/articles/psqi.html)
+  - IPAQ - [International Physical Activity
+    Questionnaire](https://lcbc-uio.github.io/Questionnaires/articles/ipaq.html)
+  - EHI - [Edinburgh Handedness
+    Inventory](https://lcbc-uio.github.io/Questionnaires/articles/ehi.html)
+  - BDI - [Beck Depression
+    Inventory](https://lcbc-uio.github.io/Questionnaires/articles/bdi.html)
+  - GDS - [Geriatric Depression
+    Scale](https://lcbc-uio.github.io/Questionnaires/articles/gds.html)
+  - EDU - [Education
+    questions](https://lcbc-uio.github.io/Questionnaires/articles/edu.html)
+  - TAS - \[The Toronto Alexithymia Scale (not documented yet)\]
 
 All functions in this package are prefixed with the name of the
 questionnaire the function is intended for (i.e. `psqi_`, `ipaq_` etc.).
@@ -38,34 +45,13 @@ etc.). These functions all have the option to `keep_all` which takes a
 `TRUE` or `FALSE` statement on whether the data should be appended to
 the input data, or just to return the computed columns.
 
-Vignettes are on their way, and so far there are only vignettes for PSQI
-and IPAQ which just describe the background for the computations.
+Full documentation with tutorials and function docs online at
+<https://lcbc-uio.github.io/Questionnaires/>
 
 ## Installation
 
-As this package is in a private github repository, you need to do a
-couple of steps to install it.
-
-First, install the packages `usethis` and `remotes`.
-
-    install.packages("usethis")
-
-Then, in github, create a Personal Access Token (PAT) by going to
-Settings -\> Developer Settings -\> Personal Access Token -\> Generate
-new access token.
-
-Give the token a name, and tick of all boxes in the `repo` category.
-![](man/figures/PAT.png)
-
-Copy the token that is made, then go back to R. In R, type
-`usethis::edit_r_environ()`, which should open a blank file (if you have
-not edited it before) called `.Renviron`. Here add this line:
-`GITHUB_PAT=yourtoken`, and add your token after the `=` sign. Restart R
-(go to Session - Restart R in RStudio), and then you should be able to
-install this package.
-
-You can install the private version of Questionnaires from
-[GitHub](https://github.com/) with:
+This package is only on github, and requires the package `remotes` to
+install.
 
 ``` r
 # install.packages("remotes")

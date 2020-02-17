@@ -3,16 +3,18 @@ title: "International Physical Activity Questionnaire"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{International Physical Activity Questionnaire}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+ %\VignetteIndexEntry{International Physical Activity Questionnaire}
+ %\VignetteEngine{knitr::rmarkdown}
+ %\VignetteEncoding{UTF-8}
 ---
-
+  
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
+collapse = TRUE,
+comment = "#>"
 )
+devtools::load_all(".")
+library(dplyr)
 ```
 
 ## Background
@@ -74,6 +76,97 @@ week **OR**
 
 * 7 or more days of any combination of walking, moderate-intensity or vigorous
 intensity activities achieving a minimum of at least 3000 MET-minutes/week 
+
+## Using the `ipaq` functions
+
+### Altering times
+First important notice is on how your time-data is coded.
+The IPAQ has three important questions on the number of minutes spent doing something. 
+This can be recorded in many ways, and some might have given participants options to answer in specific ways to reduce inaccurate data.
+In LCBC we have online solutions for data collection, and for time questions we have forced an `HH:MM` format to make sure respondents are consistent in the way they answer. 
+In order to use these with the remaining ipaq calculations, a conversion to minutes is necessary.
+The `ipaq_time_atler` function will alter the columns from `HH:MM` to minutes.
+If you have any `NA` in the time data, you will get a warning about not being able to parse the data,
+this is expected and wanted behaviour, but you may proceed, the METs will not be calculated where data is missing.
+
+```{r}
+dat <- data.frame(
+  time_1  = c("02:34", "09:33", "01:14"),
+  time_2  = c("00:55", NA, "00:30")
+)
+
+dat
+
+ipaq_time_alter(dat, cols = c(time_1, time_2))
+```
+
+### MET category scores
+To calculate the MET score for an individual MET category the `ipaq_compute_met` is what you need.
+This function takes a vector of minutes, days and the MET-factor you want to apply. 
+Default MET-factor can be found in the `ipaq_mets()` function.
+
+```{r}
+ipaq_mets()
+```
+
+The different MET categories have different questions in the IPAQ, and should be calculated separately before combined to the total score. 
+
+```{r}
+vig_data <- data.frame(
+ ipaq_vig_mins = c(60, 20, 60, 25, 90, 20, 0, 75, 60, 30),
+ ipaq_vig_days = c(1, 3, 2, 5, 6, 1, 1, 2, 2, 4)
+)
+
+vig_data
+
+ipaq_compute_met(vig_data$ipaq_vig_mins, 
+                 vig_data$ipaq_vig_days, 
+                 met = 8.0)
+```
+
+
+The total MET score can be manually computed using the `ipaq_compute_sum`, where one supplies a vector for each of the three MET categories, containing the pre-calculates MET scores for the categories.
+```{r}
+light = c(1300, 300)
+moderate = c(200, 400)
+vigurous = c(0, 1300)
+
+ipaq_compute_sum(vigurous , moderate, light)
+```
+
+Finally, you can calculate everything in one go using the `ipaq_compute` function.
+This function has many arguments, as the minutes and days of each category (2x3) must
+be specified, and also the mets you want applied must be supplied.
+By default, if you have MOAS-like data you need not do any extra specifications to make this work,
+the MOAS columns necessary are specified as defaults.
+The easiest way to alter the default mets is by using the `ipaq_mets` function to alter them.
+The function takes an entire data frame with all columns of data necessary to compute the MET score.
+
+```{r}
+
+data <- data.frame(
+  IPAQ_1a = c(NA, "No", "Yes", NA, NA, NA, NA, NA, NA, "Yes"), 
+  IPAQ_1b = c(0, NA, 3, 3, 0, 2, 4, 3, 0, 3), 
+  IPAQ_2 = c("00:00", "", "01:00", "01:00", "00:00", "03:30", "01:00", "00:25", "00:00", "00:45"), 
+  IPAQ_3a = c(NA, "Yes", "Yes", NA, NA, NA, NA, NA, NA, "No"), 
+  IPAQ_3b = c(1, 3, 1, 3, 1, 4, 0, 5, 4, NA), 
+  IPAQ_4 = c("00:30", "01:30", "01:00", "01:00", "01:00", "02:00", "00:00", "00:15", "03:00", ""), 
+  IPAQ_5a = c(NA, "Yes", "Yes", NA, NA, NA, NA, NA, NA, "Yes"), 
+  IPAQ_5b = c(7, 3, 7, 7, 3, 3, 0, 5, 7, 4), 
+  IPAQ_6 = c("01:00", "00:20", "01:00", "00:25", "01:30", "00:20", "00:00", "01:15",  "01:00", "00:30"), 
+  IPAQ_7 = c("05:00", "12:00", "05:00", "07:00", "00:18", "05:00", "00:00", "08:00", "04:00", "08:00"), 
+  IPAQ_8a = c(5, NA, NA, 4, 4, 6, 5, 4, 6, NA),
+  IPAQ_8b = c(5, NA, NA, 4, NA, 6, 5, 4, 6, NA), 
+  IPAQ_8c = c(5, NA, NA, 5, 3, 5, 5, 3, 6, NA)
+)
+
+data
+
+data %>% 
+  ipaq_time_alter() %>% 
+  # Keeping only calculated values for show, you like want this to be TRUE (default)
+  ipaq_compute(keep_all = FALSE)
+```
 
 
 ## References

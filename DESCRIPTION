@@ -19,10 +19,13 @@ Imports:
     data.table
 Suggests: 
     testthat (>= 2.1.0),
+    here,
+    devtools,
     knitr,
+    kableExtra,
     rmarkdown,
     covr
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2
 VignetteBuilder: knitr
 URL: https://github.com/LCBC-UiO/Questionnaires
 BugReports: https://github.com/LCBC-UiO/Questionnaires/issues

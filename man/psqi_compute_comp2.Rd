@@ -12,14 +12,17 @@ psqi_compute_comp2(minBeforeSleep, noSleep30min)
 \item{noSleep30min}{column name with evaluation of sleep within 30min (0-3) [PSQI_05a]}
 }
 \description{
-Compute component PSQI 2
+Computes the second PSQI component on sleep quality, 
+using the number of minutes before sleep (PSQI Q2) and
+subjective evaluation of sleep within 30 minutes
 }
 \seealso{
-Other psqi_functions: \code{\link{psqi_compute_comp3}},
-  \code{\link{psqi_compute_comp4}},
-  \code{\link{psqi_compute_comp5}},
-  \code{\link{psqi_compute_comp7}},
-  \code{\link{psqi_compute_global}},
-  \code{\link{psqi_compute}}
+Other psqi_functions: 
+\code{\link{psqi_compute_comp3}()},
+\code{\link{psqi_compute_comp4}()},
+\code{\link{psqi_compute_comp5}()},
+\code{\link{psqi_compute_comp7}()},
+\code{\link{psqi_compute_global}()},
+\code{\link{psqi_compute}()}
 }
 \concept{psqi_functions}

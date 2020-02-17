@@ -1,5 +1,4 @@
-context("test-psqi_functions")
-load("psqi.rda")
+load(paste0(test_path(), "/data/psqi.rda"))
 
 test_that("Check component calculations", {
   

@@ -15,11 +15,12 @@ psqi_compute_comp5(data, sleepTroubles = matches("^PSQI_05[b-j]$"))
 Compute component PSQI 5
 }
 \seealso{
-Other psqi_functions: \code{\link{psqi_compute_comp2}},
-  \code{\link{psqi_compute_comp3}},
-  \code{\link{psqi_compute_comp4}},
-  \code{\link{psqi_compute_comp7}},
-  \code{\link{psqi_compute_global}},
-  \code{\link{psqi_compute}}
+Other psqi_functions: 
+\code{\link{psqi_compute_comp2}()},
+\code{\link{psqi_compute_comp3}()},
+\code{\link{psqi_compute_comp4}()},
+\code{\link{psqi_compute_comp7}()},
+\code{\link{psqi_compute_global}()},
+\code{\link{psqi_compute}()}
 }
 \concept{psqi_functions}
