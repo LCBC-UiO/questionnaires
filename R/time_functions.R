@@ -100,6 +100,7 @@ time_factor = function(x) {
   DATA2 <- suppressWarnings(dplyr::tibble(Time = lubridate::hms(x)))
   DATA2 <- mutate(DATA2,
                   TimeOfDay = dplyr::case_when(
+                    is.na(Time@hour) ~ NA_character_,
                     Time@hour >= 5 & Time@hour < 12 ~ "Morning",
                     Time@hour >= 12 & Time@hour < 17 ~ "Afternoon",
                     Time@hour >= 17 & Time@hour < 21 ~ "Evening",
@@ -128,7 +129,9 @@ time_factor = function(x) {
 #' }
 #' @export
 is_hms = function(x){
-  any(class(x) %in% "Period")
+  k <- any(class(x) %in% "Period")
+  k2 <- any(class(x) %in% "hms")
+  any(k, k2)
 }
 
 
@@ -144,7 +147,11 @@ is_hms = function(x){
 #' is_hm(data)
 #' }
 #' @export
-is_hm = function(x) any(class(x) %in% "Period")
+is_hm = function(x){
+  k <- any(class(x) %in% "Period")
+  k2 <- any(class(x) %in% "hm")
+  any(k, k2)
+}
 
 ## quiets concerns of R CMD check
 if(getRversion() >= "2.15.1"){
