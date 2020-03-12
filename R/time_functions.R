@@ -98,7 +98,7 @@ time_alter = function(x, unit = "minute"){
 time_factor = function(x) {
   
   DATA2 <- suppressWarnings(dplyr::tibble(Time = lubridate::hms(x)))
-  DATA2 <- mutate(DATA2,
+  DATA2 <- dplyr::mutate(DATA2,
                   TimeOfDay = dplyr::case_when(
                     is.na(Time@hour) ~ NA_character_,
                     Time@hour >= 5 & Time@hour < 12 ~ "Morning",

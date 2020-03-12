@@ -49,6 +49,47 @@ edu_levels <- function(levels = 4){
   }
 }
 
+#' Recode new 9 levels into old
+#' 
+#' New nettskjema data requires codebook to
+#' not have special characters, and as such the old and
+#' new coding scheme does not fit. This function turns new
+#' coding scheme into the old, wanted one
+#'
+#' @param x character vector of old scheme
+#' @param names logical. toggle return of names rather than numbers
+#'
+#' @return character
+#' @export
+#'
+#' @examples
+#' eds <- c(NA, "UnderGrad_BA", "HighSchool_Initial", "PostGrad_MA", 
+#'    "PostGrad_PhD", "HighSchool", "Junior-HighSchool", "HighSchool_addition")
+#' edu_recode(eds) 
+#' 
+#' eds <- c(1,5,8,2,6,9,1,10)
+#' edu_recode(eds, names = FALSE) 
+edu_recode <- function(x, names = TRUE){
+  
+  
+  if(!names){
+    levs <- 1:10
+  }else{
+    levs <- c("Pre-school-NoSchool", "PrimarySchool", "Junior-HighSchool", 
+              "HighSchool_Initial", "HighSchool", "HighSchool_addition", "UnderGrad_BA", 
+              "PostGrad_MA", "PostGrad_PhD")
+  }
+  
+  
+  names(levs) <- c("Pre-school/No schooling", "Primary school (6 years)", "Secondary school (9 years)", 
+                   "High school (12 years)", "High school diploma (13 years)", "High school addition (14 years)", 
+                   "Lower level University/University college degree (16 years)", 
+                   "Upper level University/University college (19 years)", "Ph.D. (21 years)"
+  )
+  
+  names(levs[match(x, levs)])
+}
+
 #' @rdname edu_levels 
 #' @export
 edu4_levels <- function(){
@@ -375,28 +416,32 @@ edu9_to_years <- function(x){
 #'              edu9 = edu9, 
 #'              edu_years = edu_years)
 edu_compute <- function(data, 
-                              edu4 = Edu_Coded4,
-                              edu9 = Edu_Coded10,
-                              edu_years = Edu_Years,
-                              keep_all = TRUE){
-  
+                        edu4 = Edu_Coded4,
+                        edu9 = Edu_Coded10,
+                        edu_years = Edu_Years,
+                        keep_all = TRUE){
+
   tmp <- mutate(data,
                 {{edu9}} := edu9_factorise( {{edu9}} ),
-                {{edu4 }} := ifelse(is.na( {{edu4}} ), 
-                                    edu9_reduce( {{edu9}} ),
-                                    {{edu4}} ),
-                {{edu4}}  := edu4_factorise( {{edu4}} ),
+                {{edu4}} := ifelse(is.na( {{edu4}} ), 
+                                   edu9_reduce( {{edu9}} ),
+                                   {{edu4}} ),
+                {{edu4}}  := edu4_factorise( {{edu4}} )
+  )
+  
+  
+  tmp <- mutate(tmp, 
                 {{edu_years}} := dplyr::case_when(
-                  !is.na({{edu_years}}) ~ {{edu_years}},
-                  !is.na({{edu9}}) ~ edu9_to_years({{edu9}}),
-                  !is.na({{edu4}}) ~ edu4_to_years({{edu4}})
+                 !is.na({{edu_years}}) ~ round({{edu_years}}, 0),
+                 !is.na({{edu9}}) ~ edu9_to_years({{edu9}}),
+                 !is.na({{edu4}}) ~ edu4_to_years({{edu4}})
                 )
   )
   
   if(keep_all){
     tmp
   }else{
-    dplyr::select(tmp, dplyr::starts_with("Edu"))
+    dplyr::select(tmp, {{edu4}}, {{edu9}}, {{edu_years}})
   }
 }
 
