@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Factor time of day — time_factor • Questionnaires</title>
+<title>Recode new 9 levels into old — edu_recode • Questionnaires</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,9 +42,11 @@
 
 
 
-<meta property="og:title" content="Factor time of day — time_factor" />
-<meta property="og:description" content="Takes a vector of HH:MM (HH:MM:SS) information and
-categorises these by a 4 level factor of time of day." />
+<meta property="og:title" content="Recode new 9 levels into old — edu_recode" />
+<meta property="og:description" content="New nettskjema data requires codebook to
+not have special characters, and as such the old and
+new coding scheme does not fit. This function turns new
+coding scheme into the old, wanted one" />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -147,34 +149,57 @@ categorises these by a 4 level factor of time of day." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Factor time of day</h1>
-    <small class="dont-index">Source: <a href='https://github.com/LCBC-UiO/Questionnaires/blob/master/R/time_functions.R'><code>R/time_functions.R</code></a></small>
-    <div class="hidden name"><code>time_factor.Rd</code></div>
+    <h1>Recode new 9 levels into old</h1>
+    <small class="dont-index">Source: <a href='https://github.com/LCBC-UiO/Questionnaires/blob/master/R/edu_functions.R'><code>R/edu_functions.R</code></a></small>
+    <div class="hidden name"><code>edu_recode.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Takes a vector of HH:MM (HH:MM:SS) information and
-categorises these by a 4 level factor of time of day.</p>
+    <p>New nettskjema data requires codebook to
+not have special characters, and as such the old and
+new coding scheme does not fit. This function turns new
+coding scheme into the old, wanted one</p>
     </div>
 
-    <pre class="usage"><span class='fu'>time_factor</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>edu_recode</span>(<span class='no'>x</span>, <span class='kw'>names</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>character or hms vector</p></td>
+      <td><p>character vector of old scheme</p></td>
+    </tr>
+    <tr>
+      <th>names</th>
+      <td><p>logical. toggle return of names rather than numbers</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>factor vector</p>
+    <p>character</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>time_factor</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"12:23"</span>, <span class='st'>"15:59"</span>, <span class='st'>"22:10"</span>, <span class='st'>"8:13"</span>))</div><div class='output co'>#&gt; [1] Afternoon Afternoon Night     Morning  
-#&gt; Levels: Morning &lt; Afternoon &lt; Evening &lt; Night</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>eds</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>NA</span>, <span class='st'>"UnderGrad_BA"</span>, <span class='st'>"HighSchool_Initial"</span>, <span class='st'>"PostGrad_MA"</span>,
+   <span class='st'>"PostGrad_PhD"</span>, <span class='st'>"HighSchool"</span>, <span class='st'>"Junior-HighSchool"</span>, <span class='st'>"HighSchool_addition"</span>)
+<span class='fu'>edu_recode</span>(<span class='no'>eds</span>)</div><div class='output co'>#&gt; [1] NA                                                           
+#&gt; [2] "Lower level University/University college degree (16 years)"
+#&gt; [3] "High school (12 years)"                                     
+#&gt; [4] "Upper level University/University college (19 years)"       
+#&gt; [5] "Ph.D. (21 years)"                                           
+#&gt; [6] "High school diploma (13 years)"                             
+#&gt; [7] "Secondary school (9 years)"                                 
+#&gt; [8] "High school addition (14 years)"                            </div><div class='input'>
+<span class='no'>eds</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>5</span>,<span class='fl'>8</span>,<span class='fl'>2</span>,<span class='fl'>6</span>,<span class='fl'>9</span>,<span class='fl'>1</span>,<span class='fl'>10</span>)
+<span class='fu'>edu_recode</span>(<span class='no'>eds</span>, <span class='kw'>names</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; [1] "Pre-school/No schooling"                             
+#&gt; [2] "High school diploma (13 years)"                      
+#&gt; [3] "Upper level University/University college (19 years)"
+#&gt; [4] "Primary school (6 years)"                            
+#&gt; [5] "High school addition (14 years)"                     
+#&gt; [6] "Ph.D. (21 years)"                                    
+#&gt; [7] "Pre-school/No schooling"                             
+#&gt; [8] NA                                                    </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
