@@ -1,0 +1,31 @@
+---
+title: "Stressful Life Events Screening Questionnaire (SLESQ)"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{life-events}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+devtools::load_all(".")
+```
+
+# Background
+
+
+# Domains & facets
+
+
+# Scoring
+
+
+# Reliability
+
+
+# References
+

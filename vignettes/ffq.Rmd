@@ -1,0 +1,31 @@
+---
+title: "Food Frequency Quesionnaire (FFQ)"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{ffq}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+devtools::load_all(".")
+```
+
+# Background
+We got this from VITAS, perhaps ask them for documentation if hard to find online?
+
+# Domains & facets
+
+
+# Scoring
+
+
+# Reliability
+
+
+# References
+

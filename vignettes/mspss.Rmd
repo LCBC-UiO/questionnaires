@@ -1,0 +1,32 @@
+---
+title: "The Multidimensional Scale of Perceived Social Support (MPSPSS)"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{mspss}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+devtools::load_all(".")
+```
+
+# Background
+
+
+# Domains & facets
+
+
+# Scoring
+
+
+# Reliability
+
+
+# References
+
+Zimet, G. D., Dahlem, N. W., Zimet, S. G., & Farley, G. K. (1988). The Multidimensional Scale of Perceived Social Support. _Journal of Personality Assessment_, **52** (1), 30–41. [https://doi.org/10.1207/s15327752jpa5201_2](https://doi.org/10.1207/s15327752jpa5201_2)

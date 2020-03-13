@@ -1,0 +1,31 @@
+---
+title: "Hierarchical Personality Inventory for Children (HiPIC)"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{hipic}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+devtools::load_all(".")
+```
+
+# Background
+
+
+# Domains & facets
+
+
+# Scoring
+
+
+# Reliability
+
+
+# References
+Mervielde I, Deary I, De Fruyt P, Ostendorf F. Personality Psychology in Europe. Vol 7. _Tilburg: Tilburg University Press;_ 1999.

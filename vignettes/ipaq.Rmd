@@ -1,5 +1,5 @@
 ---
-title: "International Physical Activity Questionnaire"
+title: "International Physical Activity Questionnaire (IPAQ)"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >

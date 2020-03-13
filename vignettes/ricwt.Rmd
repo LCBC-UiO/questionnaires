@@ -1,0 +1,25 @@
+---
+title: "Remembering–Imagination Cue-Word Task (RICWT)"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{ricwt}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+# Background
+_directly from the paper_
+See SI Materials and Methods for details. The task was modeled on a much-used cue-word paradigm for probing past and future events (3). In response to cue words presented on a computer screen, the participants were asked to, within 2 y into the past and future, to retrieve specific episodes from the past or to imagine episodes that they thought might actually happen to them in the future (a time frame of no longer than a day), without recasting memories as future scenarios. Three neutral-positive cue words for the past and three for the future, easy to relate to and open to many possible scenarios, were chosen. Each past and future episode was immediately rated by the participants on an 11-item questionnaire partly based on the Memory Experiences Questionnaire (51), measuring the autonoetic or phenomenological experience of the episodes on a 5-point Likert scale. This yielded one total autonoetic score for past and one for future. Cronbach’s α for past was 0.67, 0.70, and 0.59 for the three cue words and 0.69, 0.73, and 0.70 for future.
+
+# Domains & facets
+
+
+# Scoring
+
+
+# Reliability
+
+
+# References
+Østby, Ylva; Walhovd, Kristine B; Tamnes, Christian Krog; Grydeland, Håkon; Westlye, Lars Tjelta & Fjell, Anders Martin (2012). Mental time travel and default-mode network functional connectivity in the developing brain. _Proceedings of the National Academy of Sciences of the United States of America_.  ISSN 0027-8424.  **109**(42), s 16800- 16804 . [doi: 10.1073/pnas.1210627109](doi: 10.1073/pnas.1210627109)

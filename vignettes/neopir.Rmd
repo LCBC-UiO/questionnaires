@@ -2,7 +2,7 @@
 title: "NEO Personality Inventory-Revised (NEO PI-R)"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{NEO-PI-R}
+  %\VignetteIndexEntry{neopir}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
