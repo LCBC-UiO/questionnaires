@@ -2,11 +2,25 @@ pandoc: '2.2'
 pkgdown: 1.4.1
 pkgdown_sha: ~
 articles:
+  aseba: aseba.html
   bdi: bdi.html
+  bfi-2: bfi-2.html
+  bisbas: bisbas.html
+  brief: brief.html
   edu: edu.html
   ehi: ehi.html
+  emq: emq.html
+  ffq: ffq.html
+  gaming: gaming.html
   gds: gds.html
+  hipic: hipic.html
   ipaq: ipaq.html
+  mspss: mspss.html
   neopir: neopir.html
   psqi: psqi.html
+  ricwt: ricwt.html
+  sdq: sdq.html
+  slesq: slesq.html
+  tci: tci.html
+  ucla-loneliness: ucla-loneliness.html
 
