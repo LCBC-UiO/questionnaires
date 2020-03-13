@@ -11,7 +11,7 @@ deploy:
   script: 
   - |
     if [ "$TRAVIS_OS_NAME" == "linux" ]; then 
-      Rscript -e 'pkgdown::deploy_site_github(ssh_id = Sys.getenv("TRAVIS_DEPLOY_KEY", ""))'; 
+    Rscript -e 'pkgdown::deploy_site_github(ssh_id = Sys.getenv("TRAVIS_DEPLOY_KEY", ""))' 
     fi
   skip_cleanup: true
 after_success:
