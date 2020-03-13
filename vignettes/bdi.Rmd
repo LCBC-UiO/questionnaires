@@ -1,5 +1,5 @@
 ---
-title: "Beck Depression Inventory"
+title: "Beck Depression Inventory (BDI)"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{bdi}
