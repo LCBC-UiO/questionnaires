@@ -1,4 +1,4 @@
-load(paste0(test_path(), "/data/ehi.rda"))
+ehi <- read.delim(test_path("/data/ehi.tsv"))
 
 test_that("Check component calculations", {
   
@@ -8,29 +8,29 @@ test_that("Check component calculations", {
   
   expect_equal(ehi_factorise_lq(ehi_compute_lq(ehi)),
                structure(c(2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L), 
-                         .Label = c("Left", 
-                                    "Right"), 
+                         .Label = c("left", 
+                                    "right"), 
                          class = "factor"))
   
   expect_equal(ehi_factorise_lqa(ehi_compute_lq(ehi)),
                structure(c(3L, 2L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L), 
-                         .Label = c("Left", "Ambidexter", "Right"), class = "factor"))
+                         .Label = c("left", "ambidexter", "right"), class = "factor"))
   
   expect_equal(ehi_factorise_lqa(c(NA, 11, 85, 40, 100, -41, 50, 100, 100, 89), min = -40, max = 40),
                structure(c(NA, 2L, 3L, 2L, 3L, 1L, 3L, 3L, 3L, 3L), 
-                         .Label = c("Left", "Ambidexter", "Right"), class = "factor"))
+                         .Label = c("left", "ambidexter", "right"), class = "factor"))
   
   expect_equal(as.character(ehi_factorise_lq(ehi_compute_lq(ehi))),
-               rep("Right", 10))
+               rep("right", 10))
   
-  expect_equal(ehi_factorise_nominal(ehi$EHI_01),
+  expect_equal(ehi_factorise_nominal(ehi$ehi_01),
                structure(c(3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L), 
-                         .Label = c("Left","Ambidexterous", "Right"), 
+                         .Label = c("left","ambidexterous", "right"), 
                          class = "factor")
   )
   
-  expect_equal(as.character(ehi_factorise_nominal(ehi$EHI_01)),
-               rep("Right", 10)
+  expect_equal(as.character(ehi_factorise_nominal(ehi$ehi_01)),
+               rep("right", 10)
   )
 })
 
@@ -38,15 +38,15 @@ test_that("Check component calculations", {
 test_that("Check ehi_compute", {
   
   expect_equal(names(ehi_compute(ehi, keep_all = FALSE)),
-               c("EHI_LQ", "EHI_Nominal", "EHI_LQ_cat", "EHI_LQA_cat"))
+               c("ehi_lq", "ehi_nominal", "ehi_lq_cat", "ehi_lqa_cat"))
   
-  expect_equal(names(ehi_compute(ehi, keep_all = TRUE)),
-               c("EHI_LE", "EHI_Nominal", "EHI_Coded", "EHI_Date", "EHI_01", 
-                 "EHI_02", "EHI_03", "EHI_04", "EHI_05", "EHI_06", "EHI_07", "EHI_08", 
-                 "EHI_09", "EHI_10", "EHI_Time", "EHI_LQ", "EHI_LQ_cat", "EHI_LQA_cat"))
+  expect_equal(names(ehi_compute(select(ehi, -ehi_nominal), keep_all = TRUE)),
+               c("ehi_le", "ehi_coded", "ehi_date", "ehi_01", 
+                 "ehi_02", "ehi_03", "ehi_04", "ehi_05", "ehi_06", "ehi_07", "ehi_08", 
+                 "ehi_09", "ehi_10", "ehi_time", "ehi_lq", "ehi_nominal","ehi_lq_cat", "ehi_lqa_cat"))
   
-  expect_equal(ncol(ehi_compute(ehi, keep_all = TRUE)),
-               18)
+  expect_equal(suppressMessages(ncol(ehi_compute(ehi, keep_all = TRUE))),
+               19)
 })
 
 
