@@ -7,20 +7,20 @@
 ipaq_compute_sum(vigorous, moderate, light)
 }
 \arguments{
-\item{vigorous}{Vector with vigorous MET calculated}
+\item{vigorous}{Vector with vigorous met calculated}
 
-\item{moderate}{Vector with moderate MET calculated}
+\item{moderate}{Vector with moderate met calculated}
 
-\item{light}{Vector with light MET calculated}
+\item{light}{Vector with light met calculated}
 }
 \value{
 numeric vector
 }
 \description{
-The IPAQ sum is based on the calculated MET-scores
+The IPAQ sum is based on the calculated met-scores
 for the three categories of met activity.
 This function takes three arguments, which are
-the pre-calulcated MET scores for each category.
+the pre-calculated met scores for each category.
 }
 \examples{
 light = c(1300, 300)

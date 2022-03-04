@@ -2,27 +2,27 @@
 % Please edit documentation in R/ipaq_functions.R
 \name{ipaq_compute_met}
 \alias{ipaq_compute_met}
-\title{Compute MET from IPAQ}
+\title{Compute met from IPAQ}
 \usage{
-ipaq_compute_met(minutes = IPAQ_2, days = IPAQ_1b, met = ipaq_mets()$light)
+ipaq_compute_met(minutes = ipaq_2, days = ipaq_1b, met = ipaq_mets()$light)
 }
 \arguments{
 \item{minutes}{vector of numeric minutes}
 
 \item{days}{vector of numeric days}
 
-\item{met}{MET number (light = 3.3, moderate = 4.0, vigorous = 8)}
+\item{met}{met number (light = 3.3, moderate = 4.0, vigorous = 8)}
 }
 \value{
 numeric vector
 }
 \description{
-To calculate the MET score for a met category,
+To calculate the met score for a met category,
 the minutes spent and the number of days of this 
 activity needs to be multiplied with the met-value 
 of the activity. This function allows you to specify
-a vector with the minues, another with the days, and
-lastly a value to use as the MET of that activity level.
+a vector with the minutes, another with the days, and
+lastly a value to use as the met of that activity level.
 }
 \examples{
 ipaq_vig_mins <- c(60, 20, 60, 25, 90, 20, 0, 75, 60, 30)

@@ -18,7 +18,7 @@ list of three
 }
 \description{
 IPAQ calculations require specification of 
-MET (resting metabolic rate), which are not
+met (resting metabolic rate), which are not
 necessarily static values. While there are defaults
 for each of the three categories, there should
 be the possibility to alter these with newer research.
@@ -26,7 +26,7 @@ be the possibility to alter these with newer research.
 \details{
 This is a convenience function if users need to
 alter the default values for one or more of the categories
-and is compliable with the remaining ipaw functions
+and is compatible with the remaining IPAQ functions
 in this package.
 }
 \examples{

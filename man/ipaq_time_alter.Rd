@@ -4,12 +4,12 @@
 \alias{ipaq_time_alter}
 \title{Alter the time instant columns to decminals}
 \usage{
-ipaq_time_alter(data, cols = c(IPAQ_2, IPAQ_4, IPAQ_6))
+ipaq_time_alter(data, cols = c(ipaq_2, ipaq_4, ipaq_6, ipaq_7))
 }
 \arguments{
 \item{data}{data with columns to alter}
 
-\item{cols}{columns to alter}
+\item{cols}{columns to alter, in tidyselect format}
 }
 \value{
 data.frame
@@ -17,7 +17,7 @@ data.frame
 \description{
 Time is often punched as HH:MM in order
 to preserve correct time calculations.
-The IPAQ calculation recure time to be
+The ipaq calculation recure time to be
 in decimal minutes. 
 This function easily changes HH:MM into
 decminal minutes in a data.frame

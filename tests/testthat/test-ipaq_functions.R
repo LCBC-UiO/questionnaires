@@ -1,4 +1,4 @@
-load(paste0(test_path(), "/data/ipaq.rda"))
+ipaq <- read.delim(test_path("data/ipaq.tsv"))
 
 test_that("Check ipaq_mets", {
   
@@ -13,35 +13,32 @@ test_that("Check ipaq_mets", {
 
 test_that("Check component calculations", {
   
-  tt <- expect_warning(ipaq_time_alter(ipaq),
-                       "failed to parse")
+  tt <- ipaq_time_alter(ipaq, all_of(c("ipaq_2", "ipaq_4", "ipaq_6", "ipaq_7")))
   
-  expect_equal(tt$IPAQ_2,
+  expect_equal(tt$ipaq_2,
                c(0, NA, 60, 60, 0, 210, 60, 25, 0, 45)
   )
   
-  expect_equal(tt$IPAQ_4,
+  expect_equal(tt$ipaq_4,
                c(30, 90, 60, 60, 60, 120, 0, 15, 180, NA)
   )
   
-  expect_equal(tt$IPAQ_6,
+  expect_equal(tt$ipaq_6,
                c(60, 20, 60, 25, 90, 20, 0, 75, 60, 30)
   )
   
   
-  vig = ipaq_compute_met(tt$IPAQ_6, tt$IPAQ_5b, 8.0)
-  mod = ipaq_compute_met(tt$IPAQ_4, tt$IPAQ_3b, 4.0)
-  light = ipaq_compute_met(tt$IPAQ_2, tt$IPAQ_1b, 3.3)
-  
-  
+  light = ipaq_compute_met(tt$ipaq_2, tt$ipaq_1b, 3.3)
   expect_equal(light,
                c(0, NA, 594, 594, 0, 1386, 792, 247.5, 0, 445.5)
   )
   
+  mod = ipaq_compute_met(tt$ipaq_4, tt$ipaq_3b, 4.0)
   expect_equal(mod,
                c(120, 1080, 240, 720, 240, 1920, 0, 300, 2880, NA)
   )
   
+  vig = ipaq_compute_met(tt$ipaq_6, tt$ipaq_5b, 8.0)
   expect_equal(vig,
                c(3360, 480, 3360, 1400, 2160, 480, 0, 3000, 3360, 960)
   )
@@ -56,18 +53,17 @@ test_that("Check component calculations", {
 
 test_that("Check component calculations", {
   
-  tt <- expect_warning(ipaq_time_alter(ipaq),
-                       "failed to parse")
+  tt <- ipaq_time_alter(ipaq, all_of(c("ipaq_2", "ipaq_4", "ipaq_6", "ipaq_7")))
   
   expect_equal(names(ipaq_compute(tt, keep_all = FALSE)),
-               c("IPAQ_MET_Vigorous", "IPAQ_MET_Moderate", "IPAQ_MET_Light", 
-                 "IPAQ_MET", "IPAQ_Coded"))
+               c("ipaq_met_vigorous", "ipaq_met_moderate", "ipaq_met_light", 
+                 "ipaq_met", "ipaq_coded"))
   
   expect_equal(names(ipaq_compute(tt)),
-               c("IPAQ_1a", "IPAQ_1b", "IPAQ_2", "IPAQ_3a", "IPAQ_3b", "IPAQ_4", 
-                 "IPAQ_5a", "IPAQ_5b", "IPAQ_6", "IPAQ_7", "IPAQ_8a", "IPAQ_8b", 
-                 "IPAQ_8c", "IPAQ_MET_Vigorous", "IPAQ_MET_Moderate", "IPAQ_MET_Light", 
-                 "IPAQ_MET", "IPAQ_Coded"))
+               c("ipaq_1a", "ipaq_1b", "ipaq_2", "ipaq_3a", "ipaq_3b", "ipaq_4", 
+                 "ipaq_5a", "ipaq_5b", "ipaq_6", "ipaq_7", "ipaq_8a", "ipaq_8b", 
+                 "ipaq_8c", "ipaq_met_vigorous", "ipaq_met_moderate", "ipaq_met_light", 
+                 "ipaq_met", "ipaq_coded"))
   
   expect_equal(ncol(ipaq_compute(tt)),
                18)

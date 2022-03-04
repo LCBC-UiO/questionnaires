@@ -7,17 +7,18 @@
 ipaq_compute(
   data,
   mets = ipaq_mets(),
-  light_days = IPAQ_1b,
-  light_mins = IPAQ_2,
-  mod_days = IPAQ_3b,
-  mod_mins = IPAQ_4,
-  vig_days = IPAQ_5b,
-  vig_mins = IPAQ_6,
+  light_days = ipaq_1b,
+  light_mins = ipaq_2,
+  mod_days = ipaq_3b,
+  mod_mins = ipaq_4,
+  vig_days = ipaq_5b,
+  vig_mins = ipaq_6,
+  prefix = "ipaq_",
   keep_all = TRUE
 )
 }
 \arguments{
-\item{data}{data.frame containing all the IPAQ data}
+\item{data}{data.frame containing all the ipaq data}
 
 \item{mets}{list generated with ipaq_mets() [default = ipaq_mets()]}
 
@@ -32,6 +33,8 @@ ipaq_compute(
 \item{vig_days}{column with the days of vigorous activity}
 
 \item{vig_mins}{column with the minutes of vigorous activity}
+
+\item{prefix}{string to prefix column names of computed values}
 
 \item{keep_all}{logical, append to data.frame}
 }
