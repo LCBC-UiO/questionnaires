@@ -20,6 +20,7 @@ knitr::opts_chunk$set(
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![Travis build status](https://travis-ci.org/LCBC-UiO/Questionnaires.svg?branch=master)](https://travis-ci.org/LCBC-UiO/Questionnaires)
 [![Codecov test coverage](https://codecov.io/gh/LCBC-UiO/Questionnaires/branch/master/graph/badge.svg)](https://codecov.io/gh/LCBC-UiO/Questionnaires?branch=master)
+[![R-CMD-check](https://github.com/LCBC-UiO/Questionnaires/workflows/R-CMD-check/badge.svg)](https://github.com/LCBC-UiO/Questionnaires/actions)
 <!-- badges: end -->
 
 The repository contains functions to run coversions and calculate components from commonly used questionnaires in LCBC research. 

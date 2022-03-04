@@ -11,3 +11,4 @@
 ^LICENSE\.md$
 man-roxygen
 data-raw
+^\.github$
