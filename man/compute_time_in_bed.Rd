@@ -2,15 +2,24 @@
 % Please edit documentation in R/psqi_functions.R
 \name{compute_time_in_bed}
 \alias{compute_time_in_bed}
-\title{Compute time in bed}
+\title{compute time in bed}
 \usage{
-compute_time_in_bed(risingtime, bedtime)
+compute_time_in_bed(
+  risingtime,
+  bedtime,
+  risingtime_func = lubridate::hm,
+  bedtime_func = lubridate::hm
+)
 }
 \arguments{
-\item{risingtime}{column name with rising time (HH:MM:SS) [PSQI_03]}
+\item{risingtime}{column name with rising time (HH:MM:SS) [psqi_03]}
 
-\item{bedtime}{column name with bedtime (HH:MM:SS) [PSQI_01]}
+\item{bedtime}{column name with bedtime (HH:MM:SS) [psqi_01]}
+
+\item{risingtime_func}{function to convert time to \code{Period}}
+
+\item{bedtime_func}{function to convert time to \code{Period}}
 }
 \description{
-Compute time in bed
+compute time in bed
 }

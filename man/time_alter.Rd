@@ -4,12 +4,15 @@
 \alias{time_alter}
 \title{Turn strings of H:M to time}
 \usage{
-time_alter(x, unit = "minute")
+time_alter(x, unit = "minute", time_func = lubridate::hm)
 }
 \arguments{
 \item{x}{string of class lubridate::hms "HH:MM:SS"}
 
 \item{unit}{unit to convert to}
+
+\item{time_func}{a function to convert x to a lubridate time
+vector. Default is lubridate::hms}
 }
 \description{
 Turn strings of H:M to time

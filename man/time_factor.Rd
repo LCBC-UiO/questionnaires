@@ -4,17 +4,23 @@
 \alias{time_factor}
 \title{Factor time of day}
 \usage{
-time_factor(x)
+time_factor(x, time_func = lubridate::hms, tod = time_of_day())
 }
 \arguments{
-\item{x}{character or hms vector}
+\item{x}{character vector of times}
+
+\item{time_func}{a function to convert x to a lubridate time
+vector. Default is lubridate::hms}
+
+\item{tod}{list defining when the breakpoints for the various
+time of day distinctions.}
 }
 \value{
 factor vector
 }
 \description{
 Takes a vector of HH:MM (HH:MM:SS) information and
-categorises these by a 4 level factor of time of day.
+categorizes these by a 4 level factor of time of day.
 }
 \examples{
 time_factor(c("12:23", "15:59", "22:10", "8:13"))

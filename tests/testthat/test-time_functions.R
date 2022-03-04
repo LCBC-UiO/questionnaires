@@ -4,20 +4,20 @@
 
 test_that("check that time_deci2period works", {
   expect_equal(time_deci2period(c(4.3, 2.7, 1, .04, NA)),
-                                c("04:18", "02:42", "01:00", "00:02", NA_character_)
-               )
-
+               c("04:18", "02:42", "01:00", "00:02", NA_character_)
+  )
+  
   expect_equal(time_deci2period(c(4.543, 2.722, 1, .0404, NA), type = "hms"),
                c("04:32:35", "02:43:19", "01:00:00", "00:02:25", NA_character_)
-               )
+  )
   
   expect_equal(time_deci2period(c(4.543, 2.722, 1, .0404), unit = "minute", type = "hms"),
                c("00:04:33", "00:02:43", "00:01:00", "00:00:02")
-               )
+  )
   
   expect_equal(time_deci2period(c(4.543, 2.722, 1, .0404), unit = "second", type = "hms"),
                c("00:00:05", "00:00:03", "00:00:01", "00:00:00")
-               )
+  )
 })
 
 test_that("check that time_alter works", {
@@ -59,10 +59,12 @@ test_that("is_hms works", {
 test_that("time_factor works", {
   
   expect_equal(
-    time_factor(c("12:23", "15:59", "22:10", "8:13", NA_character_)),
+    suppressWarnings(
+      time_factor(c("12:23", "15:59", "22:10", "8:13", NA_character_), time_func = lubridate::hm)
+    ),
     structure(
       c(2L, 2L, 4L, 1L, NA),
-      .Label = c("Morning", "Afternoon", "Evening", "Night"),
+      .Label = c("morning", "afternoon", "evening", "night"),
       class = c("ordered", "factor"))
   )
 })
