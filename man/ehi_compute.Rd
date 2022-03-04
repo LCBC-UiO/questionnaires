@@ -6,28 +6,31 @@
 \usage{
 ehi_compute(
   data,
-  cols = matches("^EHI_[0-9][0-9]$"),
-  writing = EHI_01,
+  cols = matches("^ehi_[0-9][0-9]$"),
+  writing = ehi_01,
   ...,
-  keep_all = TRUE
+  keep_all = TRUE,
+  prefix = "ehi_"
 )
 }
 \arguments{
-\item{data}{data.frame containing EHI data}
+\item{data}{data.frame containing ehi data}
 
-\item{cols}{tidyselected columns of all EHI data}
+\item{cols}{tidyselected columns of all ehi data}
 
-\item{writing}{numeric vector of writing prefereance [-2,-1,0,1,2]}
+\item{writing}{numeric vector of writing preference [-2,-1,0,1,2]}
 
 \item{...}{additional arguments to ehi_factorise_lqa}
 
 \item{keep_all}{logical, append to data.frame}
+
+\item{prefix}{string to prefix column names of computed values}
 }
 \value{
 data.frame
 }
 \description{
-Compute all variables of EHI, using 
+Compute all variables of ehi, using 
 other functions in this package. 
 Will return the given data.frame with
 three additional columns, the laterality

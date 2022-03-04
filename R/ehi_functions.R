@@ -17,15 +17,12 @@
 #'
 #' @return numeric vector
 ehi_change <- function(x, direction = 1){
-  if(direction == 1){
-    abs(ifelse(x > 0, x, NA))
-  }else if(direction == -1){
-    abs(ifelse(x < 0, x, NA))
-  }else{
-    stop(sprintf("Direction '%s' is not valid. Choose '1' for positive or '-1' for negative",
-                 direction),
-         call. = FALSE)
-  }
+  direction <- as.character(direction)
+  direction <- match.arg(direction, c("1", "-1"))
+  switch(direction,
+         "1"  = abs(ifelse(x > 0, x, NA)),
+         "-1" =  abs(ifelse(x < 0, x, NA))
+  )
 }
 
 #' Sum ehi columns 
@@ -39,15 +36,13 @@ ehi_change <- function(x, direction = 1){
 #' @param cols  tidy-selection of all ehi columns
 #' @param direction sum positive or negatives (1 for
 #' positive, -1 for negative)
-#' @importFrom dplyr tramsnute across
+#' @importFrom dplyr transmute across
 #' @return numeric vector
 ehi_values <- function(data, 
                        cols = matches("^ehi_[0-9][0-9]$"),
                        direction = 1){
-  
-  tmp <- transmute(tmp, across({{cols}}, 
-                      ehi_change, direction = direction))
-  
+  tmp <- transmute(data, across({{cols}}, 
+                                ehi_change, direction = direction))
   rowSums(tmp, na.rm = TRUE)
 }
 
@@ -55,7 +50,7 @@ ehi_values <- function(data,
 #' Laterality Quotient
 #' 
 #' The laterality quotient is calculated
-#' using all the answes on the ehi, with the
+#' using all the answers on the ehi, with the
 #' formula:
 #' (pos-neg)/(pos+neg)*100 )
 #'
@@ -66,10 +61,8 @@ ehi_values <- function(data,
 #' @export
 #' @family ehi_functions
 ehi_compute_lq <- function(data, cols = matches("^ehi_[0-9][0-9]$")){
-  
   pos <- ehi_values(data, cols, 1)
   neg <- ehi_values(data, cols, -1)
-  
   ((pos-neg)/(pos+neg))*100 
 }
 
@@ -80,7 +73,7 @@ ehi_compute_lq <- function(data, cols = matches("^ehi_[0-9][0-9]$")){
 #' on writing from the Edinburgh handedness inventory,
 #' a nominal scale of three factors can be returned.
 #'
-#' @param writing numeric vector of writing prefereance [-2,-1,0,1,2]
+#' @param writing numeric vector of writing preference [-2,-1,0,1,2]
 #'
 #' @return factor
 #' @export
@@ -90,13 +83,7 @@ ehi_compute_lq <- function(data, cols = matches("^ehi_[0-9][0-9]$")){
 #' writing <- c(2, 2, -1, 0, 1, -2)
 #' ehi_factorise_nominal(writing)
 ehi_factorise_nominal <- function(writing = ehi_01){
-  factor(
-    case_when(
-      writing == 0 ~ "ambidexter", 
-      writing > 0 ~ "right", 
-      writing < 0 ~ "left"),
-    levels = c("left", "ambidexterous", "right")
-  )
+  ehi_factorise_lqa(writing, 0, 0)
 }
 
 #' Factorise laterality quotient
@@ -127,25 +114,25 @@ ehi_factorise_nominal <- function(writing = ehi_01){
 #' ehi_factorise_lq(LQ)
 #' ehi_factorise_lqa(LQ)
 #' ehi_factorise_lqa(LQ, min = -40, max = 60)
-ehi_factorise_lq <- function(lq = ehi_LQ){
-  factor(
-    ifelse(lq >= 0,"right","left"),
-    levels = c("left", "right")
-  )
+ehi_factorise_lq <- function(lq = ehi_lq){
+  lq <- ifelse(lq == 0, 0.1, lq)
+  ehi_factorise_lqa(lq, 0, 0, levels = c("left", "right"))
 }
 
 #' @rdname ehi_factorise_lq
 #' @export
+#' @importFrom dplyr case_when
 ehi_factorise_lqa <- function(lq,
                               min = -70,
-                              max = 70){
+                              max = 70,
+                              levels = c("left", "ambidexter", "right")){
   factor(
-    dplyr::case_when(
+    case_when(
       is.na(lq) ~ NA_character_,
       lq > max  ~ "right",
-      lq < min ~ "left",
+      lq < min  ~ "left",
       TRUE ~ "ambidexter"),
-    levels = c("left", "ambidexter", "right")
+    levels = levels
   )
 }
 
@@ -161,25 +148,25 @@ ehi_factorise_lqa <- function(lq,
 #' @param data data.frame containing ehi data
 #' @param cols tidyselected columns of all ehi data
 #' @param writing numeric vector of writing preference [-2,-1,0,1,2]
-#' @param keep_all logical, append to data.frame
+#' @template keep_all
+#' @template prefix
 #' @param ... additional arguments to ehi_factorise_lqa
 #' 
 #' @return data.frame
 #' @export
 #' @family ehi_functions
-#' @importFrom dplyr rename_all transmute bind_cold
+#' @importFrom dplyr rename_all transmute bind_cols
 ehi_compute = function(data, 
                        cols = matches("^ehi_[0-9][0-9]$"),
                        writing = ehi_01, 
                        ..., 
                        keep_all = TRUE,
                        prefix = "ehi_"){
-  
   tmp <- transmute(data,
-                   lq = ehi_compute_lq(data),
+                   lq = ehi_compute_lq(data, cols = cols),
                    nominal = ehi_factorise_nominal( {{writing}} ),
                    lq_cat = ehi_factorise_lq(lq),
-                   lqa_cat = ehi_factorise_lq(lq, ...)
+                   lqa_cat = ehi_factorise_lqa(lq, ...)
   )
   
   if(!is.null(prefix)){
@@ -188,11 +175,16 @@ ehi_compute = function(data,
   }
   
   if(keep_all){
-    bind_cols(data, tmp)
-  }else{
-    tmp
+    tmp <- bind_cols(data, tmp)
   }
+  
+  tmp
 }
 
 if(getRversion() >= "2.15.1")  
-  utils::globalVariables(c("ehi_01", "ehi_lq_cat","ehi_lqa_cat", "ehi_lq", "ehi_nominal"))
+  utils::globalVariables(c("ehi_01", 
+                           "ehi_lq_cat",
+                           "ehi_lqa_cat", 
+                           "ehi_lq", 
+                           "lq",
+                           "ehi_nominal"))

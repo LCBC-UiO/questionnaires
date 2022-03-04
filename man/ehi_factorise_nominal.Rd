@@ -4,10 +4,10 @@
 \alias{ehi_factorise_nominal}
 \title{Nominal laterality factor}
 \usage{
-ehi_factorise_nominal(writing = EHI_01)
+ehi_factorise_nominal(writing = ehi_01)
 }
 \arguments{
-\item{writing}{numeric vector of writing prefereance [-2,-1,0,1,2]}
+\item{writing}{numeric vector of writing preference [-2,-1,0,1,2]}
 }
 \value{
 factor

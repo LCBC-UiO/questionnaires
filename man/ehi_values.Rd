@@ -2,14 +2,14 @@
 % Please edit documentation in R/ehi_functions.R
 \name{ehi_values}
 \alias{ehi_values}
-\title{Sum EHI columns}
+\title{Sum ehi columns}
 \usage{
-ehi_values(data, cols = matches("^EHI_[0-9][0-9]$"), direction = 1)
+ehi_values(data, cols = matches("^ehi_[0-9][0-9]$"), direction = 1)
 }
 \arguments{
-\item{data}{data.frame containing EHI data}
+\item{data}{data.frame containing ehi data}
 
-\item{cols}{tidy-selection of all EHI columns}
+\item{cols}{tidy-selection of all ehi columns}
 
 \item{direction}{sum positive or negatives (1 for
 positive, -1 for negative)}

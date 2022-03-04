@@ -4,19 +4,19 @@
 \alias{ehi_compute_lq}
 \title{Laterality Quotient}
 \usage{
-ehi_compute_lq(data, cols = matches("^EHI_[0-9][0-9]$"))
+ehi_compute_lq(data, cols = matches("^ehi_[0-9][0-9]$"))
 }
 \arguments{
-\item{data}{data.frame containing EHI data}
+\item{data}{data.frame containing ehi data}
 
-\item{cols}{tidyselected columns of all EHI data}
+\item{cols}{tidyselected columns of all ehi data}
 }
 \value{
 numeric
 }
 \description{
 The laterality quotient is calculated
-using all the answes on the EHI, with the
+using all the answers on the ehi, with the
 formula:
 (pos-neg)/(pos+neg)*100 )
 }

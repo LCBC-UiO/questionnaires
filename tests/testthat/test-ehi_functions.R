@@ -1,4 +1,4 @@
-ehi <- read.delim(test_path("/data/ehi.tsv"))
+ehi <- read.delim(test_path("data/ehi.tsv"))
 
 test_that("Check component calculations", {
   
@@ -25,7 +25,7 @@ test_that("Check component calculations", {
   
   expect_equal(ehi_factorise_nominal(ehi$ehi_01),
                structure(c(3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L), 
-                         .Label = c("left","ambidexterous", "right"), 
+                         .Label = c("left","ambidexter", "right"), 
                          class = "factor")
   )
   
@@ -36,8 +36,8 @@ test_that("Check component calculations", {
 
 
 test_that("Check ehi_compute", {
-  
-  expect_equal(names(ehi_compute(ehi, keep_all = FALSE)),
+  test <- ehi_compute(ehi, keep_all = FALSE)
+  expect_equal(names(test),
                c("ehi_lq", "ehi_nominal", "ehi_lq_cat", "ehi_lqa_cat"))
   
   expect_equal(names(ehi_compute(select(ehi, -ehi_nominal), keep_all = TRUE)),
@@ -58,5 +58,5 @@ test_that("Check ehi_change", {
   expect_equal(ehi_change(-1:-4, direction = -1), 1:4)
   expect_equal(ehi_change(-1:-4, direction = 1), rep(NA_integer_,4))
   
-  expect_error(ehi_change(1:4, direction = 0), "not valid")
+  expect_error(ehi_change(1:4, direction = 0), "should be one of")
 })

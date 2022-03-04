@@ -12,14 +12,15 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+options(rmarkdown.html_vignette.check_title = FALSE)
+
 library(dplyr)
 library(knitr)
 library(kableExtra)
-devtools::load_all(".")
 ```
 
 
-## Bakcground
+## Background
 The Edinburgh Handedness Inventory is a measurement scale used to assess the dominance of a person's right or left hand in everyday activities, sometimes referred to as laterality. 
 The inventory can be used by an observer assessing the person, or by a person self-reporting hand use. 
 The latter method tends to be less reliable due to a person over-attributing tasks to the dominant hand.
@@ -28,6 +29,7 @@ The latter method tends to be less reliable due to a person over-attributing tas
 The EHI has several measures that can help assess a person's laterality.
 
 ```{r}
+library(Questionnaires)
 tibble(
   answer = c("Left dominance", "Left preference", 
              "No preference", 
@@ -35,9 +37,9 @@ tibble(
   value = -2:2
 ) %>% 
   mutate(nominal = ehi_factorise_nominal(value),
-         LQ = c(-100, -40, 0, 40, 100),
-         LQ_cat = ehi_factorise_lq(LQ),
-         LQA_cat = ehi_factorise_lqa(LQ)
+         lq = c(-100, -40, 0, 40, 100),
+         lq_cat = ehi_factorise_lq(lq),
+         lqa_cat = ehi_factorise_lqa(lq)
   ) %>% 
   kable() %>% 
   kable_styling() %>% 
@@ -73,37 +75,37 @@ As the index is based on the quotient, that ranges from -100 to 100, getting a p
 **-100 - -1 :** Left  
  **0 - 100 :** Right  
 
-An alternate laterality index is also often employed, where scores between -40 and 40 are treated as ambidexterious.
+An alternate laterality index is also often employed, where scores between -40 and 40 are treated as ambidextrous.
 
 ## Data requirements  
-One row of data should refer to a single questionnaire answered, and as such, if a person has answered multiple times, these should appear on seperate rows with columns identifying ID and time point per observation.
+One row of data should refer to a single questionnaire answered, and as such, if a person has answered multiple times, these should appear on separate rows with columns identifying ID and time point per observation.
 
 ### Column names
 For ease, we recommend naming the columns in a consistent way, so the functions in this package become easier to use. 
 If you have MOAS-like data, all defaults for the functions work immediately with the data, and you need not specify anything else.
 Working with other data and these functions is still possible, but you will need to inspect the arguments and find tidy-selectors that will select the correct columns from the data that contain the EHI data.
 
-The MOAS follows a naming scheme that prefixes al columns with `EHI_` and ends with a zero-padded double digit indicator of the question number:
+The MOAS follows a naming scheme that prefixes all columns with `ehi_` and ends with a zero-padded double digit indicator of the question number:
 
-**EHI_01** - Writing  
-**EHI_02** - Drawing  
-**EHI_03** - Trhrowing  
-**EHI_04** - Use scissors  
-**EHI_05** - Brush teeth  
-**EHI_06** - Use knife (without fork)  
-**EHI_07** - Use spoon  
-**EHI_08** - Use broom (top hand)  
-**EHI_09** - Strike match (holding match)  
-**EHI_10** - Opening container (hand on lid)  
+**ehi_01** - Writing  
+**ehi_02** - Drawing  
+**ehi_03** - Throwing  
+**ehi_04** - Use scissors  
+**ehi_05** - Brush teeth  
+**ehi_06** - Use knife (without fork)  
+**ehi_07** - Use spoon  
+**ehi_08** - Use broom (top hand)  
+**ehi_09** - Strike match (holding match)  
+**ehi_10** - Opening container (hand on lid)  
 
 ### Data values
 The cell values in the data should be coded from -2 through 0 to 2, and there should be a single value per question. 
 
 **-2 :** Left hand dominance  
 **-1 :** Left hand preference  
-  **0 :** No preference  
-  **1 :** Right hand preference  
-  **2 :** Right hand dominance  
+**0 :** No preference  
+**1 :** Right hand preference  
+**2 :** Right hand dominance  
 
 ## Using the `ehi` functions
 ### Nominal value
@@ -122,22 +124,19 @@ If you are working with MOAS-like data, the columns are select by default settin
 ```{r}
 # Make some synthetic data to try on
 ehi_data <- data.frame(
-  EHI_01 = c(2L, 2L, -2L, 1L, 2L), 
-  EHI_02 = c(2L, 1L, -2L, 1L, 2L), 
-  EHI_03 = c(2L, 0L, -1L, 0L, 1L), 
-  EHI_04 = c(2L, -1L, -2L, -1L, 1L), 
-  EHI_05 = c(2L, 0L, -1L, 1L, 1L),
-  EHI_06 = c(1L, 0L, -1L, 0L, 1L), 
-  EHI_07 = c(2L, 2L, -1L, 0L, 1L), 
-  EHI_08 = c(1L, 2L, 1L, -1L, 1L), 
-  EHI_09 = c(2L, 1L, -2L, -1L, 1L),
-  EHI_10 = c(2L, 0L, -1L, 0L, 1L)
+  ehi_01 = c(2L, 2L, -2L, 1L, 2L), 
+  ehi_02 = c(2L, 1L, -2L, 1L, 2L), 
+  ehi_03 = c(2L, 0L, -1L, 0L, 1L), 
+  ehi_04 = c(2L, -1L, -2L, -1L, 1L), 
+  ehi_05 = c(2L, 0L, -1L, 1L, 1L),
+  ehi_06 = c(1L, 0L, -1L, 0L, 1L), 
+  ehi_07 = c(2L, 2L, -1L, 0L, 1L), 
+  ehi_08 = c(1L, 2L, 1L, -1L, 1L), 
+  ehi_09 = c(2L, 1L, -2L, -1L, 1L),
+  ehi_10 = c(2L, 0L, -1L, 0L, 1L)
   )
 
-ehi_data %>% 
-  # ignore this part, just for nicer table online
-  kable() %>% 
-  kable_styling()
+ehi_data
 ```
 
 ```{r}
@@ -145,7 +144,7 @@ ehi_data %>%
   ehi_compute_lq()
 ```
 
-These values can then be categorised into the two different laterality factors we have available.
+These values can then be categorized into the two different laterality factors we have available.
 
 ```{r}
 ehi_data %>% 
@@ -164,14 +163,11 @@ This is in most cases best done using `dplyr::mutate`.
 ```{r}
 ehi_data %>% 
   mutate(
-    EHI_Nominal = ehi_factorise_nominal(EHI_01),
-    EHI_LQ = ehi_compute_lq(.),
-    EHI_LQ_cat = ehi_factorise_lq(EHI_LQ),
-    EHI_LQA_cat = ehi_factorise_lqa(EHI_LQ)
-  ) %>% 
-  # ignore this part, just for nicer table online
-  kable(digits = 2) %>% 
-  kable_styling()
+    ehi_nominal = ehi_factorise_nominal(ehi_01),
+    ehi_lq = ehi_compute_lq(.),
+    ehi_lq_cat = ehi_factorise_lq(ehi_lq),
+    ehi_lqa_cat = ehi_factorise_lqa(ehi_lq)
+  )
 ```
 
 Because this is a little cumbersome to remember, a convenience function is made that will add columns using this naming convention.

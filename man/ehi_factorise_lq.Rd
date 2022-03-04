@@ -5,9 +5,14 @@
 \alias{ehi_factorise_lqa}
 \title{Factorise laterality quotient}
 \usage{
-ehi_factorise_lq(lq = EHI_LQ)
+ehi_factorise_lq(lq = ehi_lq)
 
-ehi_factorise_lqa(lq = EHI_LQ, min = -70, max = 70)
+ehi_factorise_lqa(
+  lq,
+  min = -70,
+  max = 70,
+  levels = c("left", "ambidexter", "right")
+)
 }
 \arguments{
 \item{lq}{numeric vector calculated by [ehi_compute_lq]}
