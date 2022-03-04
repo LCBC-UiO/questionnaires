@@ -105,7 +105,7 @@ ehi_factorise_nominal <- function(writing = ehi_01){
 #' @param lq numeric vector calculated by [ehi_compute_lq]
 #' @param min minimum value for ambidexter specification (default = -70)
 #' @param max maximum value for ambidexter specification (default = 70)
-#'
+#' @param levels the levels for the lq component. Usually c("left", "ambidexter", "right").
 #' @return factor
 #' @export
 #' @family ehi_functions

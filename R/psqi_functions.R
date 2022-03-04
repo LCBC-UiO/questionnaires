@@ -1,12 +1,13 @@
 
-#' compute time in bed
+#' PSQI compute time in bed
 #' @param bedtime column name with bedtime (HH:MM:SS) [psqi_01]
 #' @param risingtime column name with rising time (HH:MM:SS) [psqi_03]
 #' @param risingtime_func function to convert time to \code{Period}
 #' @param bedtime_func function to convert time to \code{Period}
 #' @importFrom dplyr if_else
 #' @importFrom lubridate hms period_to_seconds hours
-compute_time_in_bed <- function(risingtime, bedtime, 
+#' @export
+psqi_compute_time_in_bed <- function(risingtime, bedtime, 
                                 risingtime_func = lubridate::hm,
                                 bedtime_func = lubridate::hm){
   tmp <- risingtime_func(risingtime, quiet = TRUE) - bedtime_func(bedtime, quiet = TRUE)
@@ -48,10 +49,11 @@ psqi_compute_comp3 <- function(hours_sleep){
 #' @param bedtime column name with bedtime (HH:MM:SS) [psqi_01]
 #' @param risingtime column name with rising time (HH:MM:SS) [psqi_03]
 #' @param hours_sleep column name with hours of sleep (decimal hours) [psqi_04]
+#' @param ... other arguments to \code{\link{psqi_compute_time_in_bed}}
 #' @family psqi_functions
 #' @export
 psqi_compute_comp4 <- function(hours_sleep, bedtime, risingtime, ...){
-  4L - cut(hours_sleep / compute_time_in_bed(risingtime, bedtime, ...) * 100,
+  4L - cut(hours_sleep / psqi_compute_time_in_bed(risingtime, bedtime, ...) * 100,
            breaks = c(0, 65, 75, 85.0001, Inf), labels = FALSE, include.lowest = TRUE,
            right = FALSE)
 }
@@ -136,6 +138,7 @@ psqi_compute_global <- function(data, cols = matches("comp[1-7]+_"), max_missing
 #' global PSQI value is computed by weighting each non-missing entry with \code{7 / (7 - max_missing)}.
 #' @template keep_all
 #' @template prefix
+#' @param ... other arguments to \code{\link{psqi_compute_time_in_bed}}
 #'
 #' @return a data.frame containing only the calculated components
 #' @export

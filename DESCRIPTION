@@ -21,7 +21,7 @@ Suggests:
     kableExtra,
     rmarkdown,
     covr
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 VignetteBuilder: knitr
 URL: https://github.com/LCBC-UiO/Questionnaires
 BugReports: https://github.com/LCBC-UiO/Questionnaires/issues

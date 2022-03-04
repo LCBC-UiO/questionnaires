@@ -52,6 +52,8 @@ psqi_compute(
 before the global PSQI value is set to missing. Defaults to 0. If \code{max_missing > 0}, the 
 global PSQI value is computed by weighting each non-missing entry with \code{7 / (7 - max_missing)}.}
 
+\item{...}{other arguments to \code{\link{psqi_compute_time_in_bed}}}
+
 \item{prefix}{string to prefix column names of computed values}
 
 \item{keep_all}{logical, append to data.frame}

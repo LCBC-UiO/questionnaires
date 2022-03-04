@@ -20,6 +20,8 @@ ehi_factorise_lqa(
 \item{min}{minimum value for ambidexter specification (default = -70)}
 
 \item{max}{maximum value for ambidexter specification (default = 70)}
+
+\item{levels}{the levels for the lq component. Usually c("left", "ambidexter", "right").}
 }
 \value{
 factor

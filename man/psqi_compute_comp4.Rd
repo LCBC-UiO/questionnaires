@@ -12,6 +12,8 @@ psqi_compute_comp4(hours_sleep, bedtime, risingtime, ...)
 \item{bedtime}{column name with bedtime (HH:MM:SS) [psqi_01]}
 
 \item{risingtime}{column name with rising time (HH:MM:SS) [psqi_03]}
+
+\item{...}{other arguments to \code{\link{psqi_compute_time_in_bed}}}
 }
 \description{
 compute component PSQI 4
