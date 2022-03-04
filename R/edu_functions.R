@@ -42,11 +42,10 @@ edu_levels <- function(levels = 4){
   )
   
   if(as.character(levels) %in% names(levs)){
-    levs[[as.character(levels)]]
-  }else{
-    stop(paste0("There is no stored scheme for levels == '", levels, "'"),
-         call. = FALSE)
+    return(levs[[as.character(levels)]])
   }
+  stop("There is no stored scheme for levels == '", levels, "'",
+       call. = FALSE)
 }
 
 #' Recode new 9 levels into old
@@ -70,23 +69,17 @@ edu_levels <- function(levels = 4){
 #' eds <- c(1,5,8,2,6,9,1,10)
 #' edu_recode(eds, names = FALSE) 
 edu_recode <- function(x, names = TRUE){
-  
-  
-  if(!names){
-    levs <- 1:10
-  }else{
+  levs <- 1:10
+  if(names){
     levs <- c("Pre-school-NoSchool", "PrimarySchool", "Junior-HighSchool", 
               "HighSchool_Initial", "HighSchool", "HighSchool_addition", "UnderGrad_BA", 
               "PostGrad_MA", "PostGrad_PhD")
   }
-  
-  
   names(levs) <- c("Pre-school/No schooling", "Primary school (6 years)", "Secondary school (9 years)", 
                    "High school (12 years)", "High school diploma (13 years)", "High school addition (14 years)", 
                    "Lower level University/University college degree (16 years)", 
                    "Upper level University/University college (19 years)", "Ph.D. (21 years)"
   )
-  
   names(levs[match(x, levs)])
 }
 
@@ -130,7 +123,7 @@ edu9_levels <- function(){
 #' edu9_levels2name(edu9)
 edu_levels2name <- function(x, levels){
   t <- factor(x, levels = unname(edu_levels(levels)))
-  base::levels(t) <- names(edu_levels(levels))
+  levels(t) <- names(edu_levels(levels))
   as.character(t)
 }
 
@@ -155,11 +148,11 @@ edu9_levels2name <- function(x){
 #' scheme specified in \code{\link{edu_levels}} 
 #' and tries 
 #' creating a conversion table between two
-#' specified scemas.
+#' specified schemas.
 #' 
 #' @param from schema levels to convert from
-#' @param to shecma levels to contert to
-#'
+#' @param to shcema levels to convtert to
+#' @export
 #' @details Specialized returns
 #' \itemize{
 #'  \item{edu_map - }{returns a data.frame of two named vectors}
@@ -167,6 +160,7 @@ edu9_levels2name <- function(x){
 #'  \item{edu_map_num - }{returns a data.frame with two numeric vectors}
 #' }
 #' @importFrom stats setNames na.omit
+#' @importFrom dplyr mutate filter group_by select distinct '%>%'
 edu_map <- function(from = 9, to = 4){
   
   toi <- to
@@ -180,40 +174,42 @@ edu_map <- function(from = 9, to = 4){
   # If the minimum in from is smaller
   # than min in to: cannot map, set 999 to return NA later
   if(min(all$from) < min(all$to)){
-    all[which(min(all$from) < min(all$to)), "to"] = 999  
+    all[which(min(all$from) < min(all$to)), "to"] <- 999  
   }
   
   comps <- all %>% 
-    dplyr::mutate(x = from - to) %>% 
-    dplyr::filter(x >= 0 | x == -999) %>% 
-    dplyr::group_by(from) %>% 
-    dplyr::mutate(y = min(x),
-                  to = ifelse(x == y, to, NA)) %>% 
-    dplyr::select(-x,-y) %>% 
-    dplyr::distinct() %>% 
-    stats::na.omit() %>% 
-    dplyr::ungroup() %>% 
-    dplyr::mutate(to = ifelse(to == 999, NA, to))
+    mutate(x = from - to) %>% 
+    filter(x >= 0 | x == -999) %>% 
+    group_by(from) %>% 
+    mutate(y = min(x),
+           to = ifelse(x == y, to, NA)) %>% 
+    select(-x,-y) %>% 
+    distinct() %>% 
+    na.omit() %>% 
+    ungroup() %>% 
+    mutate(to = ifelse(to == 999, NA, to))
   
-  dplyr::mutate(comps, 
-                to = stats::setNames(to, edu_levels2name(to, toi)),
-                from = stats::setNames(from, edu_levels2name(from, fromi))) 
+  mutate(comps, 
+         to = setNames(to, edu_levels2name(to, toi)),
+         from = setNames(from, edu_levels2name(from, fromi))) 
 }
 
 #' @rdname edu_map 
+#' @importFrom dplyr mutate
 #' @export
 edu_map_chr <- function(from = 9, to = 4){
-  dplyr::mutate(edu_map(from, to),
-                to = names(to),
-                from = names(from))
+  mutate(edu_map(from, to),
+         to = names(to),
+         from = names(from))
 }
 
 #' @rdname edu_map 
+#' @importFrom dplyr mutate
 #' @export
 edu_map_num <- function(from = 9, to = 4){
-  dplyr::mutate(edu_map(from, to),
-                to = unname(to),
-                from = unname(from))
+  mutate(edu_map(from, to),
+         to = unname(to),
+         from = unname(from))
 }
 
 # Factorise ----
@@ -235,6 +231,7 @@ edu_map_num <- function(from = 9, to = 4){
 #' @return factor
 #' @export
 #' @family edu_functions
+#' @importFrom lfactors lfactor
 #' @examples 
 #' 
 #' edu9 <- c("7", "7", "8", NA, "Primary school (6 years)", "5", "9")
@@ -246,21 +243,19 @@ edu_factorise <- function(x, levels){
   
   # Recode all to integer
   k <- suppressWarnings(as.numeric(t))
-  
-  for(i in which(is.na(k) & stringr::str_count(t) > 1)){
-    t[i] <- which(names(levs) %in% t[i])
+  if(!is.numeric(t)){
+    for(i in which(is.na(k) & str_count(t) > 1)){
+      t[i] <- which(names(levs) %in% t[i])
+    }
+    t <- as.numeric(t)
   }
   
-  t <- as.numeric(t)
+  t <- sapply(1:length(t), function(x) levs[t[x]])
   
-  for(i in 1:length(t)){
-    t[i] <- levs[t[i]]
-  }
-  
-  lfactors::lfactor(as.numeric(t),
-                    levels = levs,
-                    labels = names(levs),
-                    ordered = TRUE
+  lfactor(as.numeric(t),
+          levels = levs,
+          labels = names(levs),
+          ordered = TRUE
   )
 }
 
@@ -317,7 +312,7 @@ edu_reduce <- function(x, from, to){
   edu <- edu_map_chr(from, to)
   
   t <- data.frame(from = as.character(x), stringsAsFactors = FALSE)
-  t <- dplyr::left_join(t, edu, by ="from")
+  t <- left_join(t, edu, by ="from")
   
   edu_factorise(t$to, to)
 }
@@ -388,10 +383,10 @@ edu9_to_years <- function(x){
 #' @param edu4 unquoted column containing Education coded in 4 categories
 #' @param edu9 unquoted column containing Education coded in 4 categories
 #' @param edu_years unquoted column containing Education in years to highest completed
-#' @param keep_all  logical, append to data.frame
+#' @template keep_all 
+#' @template prefix
 #'
-#' @importFrom dplyr select starts_with case_when
-#' @importFrom data.table ':='
+#' @importFrom dplyr case_when transmute
 #' @family edu_functions
 #' @return a data.frame
 #' @export
@@ -416,33 +411,31 @@ edu9_to_years <- function(x){
 #'              edu9 = edu9, 
 #'              edu_years = edu_years)
 edu_compute <- function(data, 
-                        edu4 = Edu_Coded4,
-                        edu9 = Edu_Coded10,
-                        edu_years = Edu_Years,
+                        edu4 = edu_coded4,
+                        edu9 = edu_coded10,
+                        edu_years = edu_years,
+                        prefix = "edu_",
                         keep_all = TRUE){
-
-  tmp <- mutate(data,
-                {{edu9}} := edu9_factorise( {{edu9}} ),
-                {{edu4}} := ifelse(is.na( {{edu4}} ), 
+  
+  tmp <- transmute(data,
+                   coded9 = edu9_factorise( {{edu9}} ),
+                   coded4 = ifelse(is.na( {{edu4}} ), 
                                    edu9_reduce( {{edu9}} ),
                                    {{edu4}} ),
-                {{edu4}}  := edu4_factorise( {{edu4}} )
+                   coded4 = edu4_factorise( {{edu4}}),
+                   years = case_when(
+                     !is.na({{edu_years}}) ~ round({{edu_years}}, 0),
+                     !is.na({{edu9}}) ~ edu9_to_years({{edu9}}),
+                     !is.na({{edu4}}) ~ edu4_to_years({{edu4}})
+                   )
   )
-  
-  
-  tmp <- mutate(tmp, 
-                {{edu_years}} := dplyr::case_when(
-                 !is.na({{edu_years}}) ~ round({{edu_years}}, 0),
-                 !is.na({{edu9}}) ~ edu9_to_years({{edu9}}),
-                 !is.na({{edu4}}) ~ edu4_to_years({{edu4}})
-                )
-  )
-  
-  if(keep_all){
-    tmp
-  }else{
-    dplyr::select(tmp, {{edu4}}, {{edu9}}, {{edu_years}})
+  if(!is.null(prefix)){
+    tmp <- rename_all(tmp, ~paste0(prefix, .x))
   }
+  if(keep_all){
+    tmp <- bind_cols(data, tmp)
+  }
+  tmp
 }
 
 #' Compile education across sources
@@ -459,6 +452,7 @@ edu_compute <- function(data,
 #' @return dataframe with three new columns
 #' @export
 #' @family edu_functions
+#' @importFrom dplyr mutate case_when
 #' @examples 
 #' 
 #' edu <- data.frame(
@@ -492,21 +486,22 @@ edu_compile <- function(data,
                         mother,
                         father){
   
-  dplyr::mutate(data,
-                Edu_Compiled_Code4 = edu4_factorise(dplyr::case_when(
-                  !is.na( {{participant}} ) ~ as.character( {{participant}} ),
-                  !is.na( {{mother}} ) ~ as.character( {{mother}} ),
-                  !is.na( {{father}} ) ~ as.character( {{father}} ))),
-                Edu_Compiled_Years = as.numeric(Edu_Compiled_Code4),
-                Edu_Compiled_Source = dplyr::case_when(
-                  !is.na( {{participant}} ) ~ "Participant",
-                  !is.na( {{mother}} ) ~ "Mother",
-                  !is.na( {{father}} ) ~ "Father")
+  mutate(data,
+         edu_compiled_code4 = edu4_factorise(case_when(
+           !is.na( {{participant}} ) ~ as.character( {{participant}} ),
+           !is.na( {{mother}} ) ~ as.character( {{mother}} ),
+           !is.na( {{father}} ) ~ as.character( {{father}} ))),
+         edu_compiled_years = as.numeric(edu_compiled_code4),
+         edu_compiled_source = case_when(
+           !is.na( {{participant}} ) ~ "Participant",
+           !is.na( {{mother}} ) ~ "Mother",
+           !is.na( {{father}} ) ~ "Father")
   )
 }
 
-if(getRversion() >= "2.15.1")  utils::globalVariables(c("Edu_Coded4", 
-                                                        "Edu_Coded10", 
-                                                        "Edu_Years",
-                                                        "Edu_Compiled_Code4", 
-                                                        "x", "y"))
+if(getRversion() >= "2.15.1")  
+  utils::globalVariables(c("edu_coded4", 
+                           "edu_coded10", 
+                           "edu_years",
+                           "edu_compiled_code4", 
+                           "x", "y"))

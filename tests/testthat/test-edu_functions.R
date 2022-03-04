@@ -111,7 +111,7 @@ test_that("edu_map works", {
   )
   
   expect_equal(edu_map_chr(),
-               data.frame(from = c("Pre-school/No schooling", 
+               dplyr::tibble(from = c("Pre-school/No schooling", 
                                    "Secondary school (9 years)", 
                                    
                                    "High school (12 years)", 
@@ -126,8 +126,7 @@ test_that("edu_map works", {
                                  "High school", 
                                  "University/University college (< 4 years)", 
                                  "University/University college (> 4 years)", 
-                                 "University/University college (> 4 years)"),
-                          stringsAsFactors = FALSE)
+                                 "University/University college (> 4 years)"))
   )
   
   expect_equal(
@@ -136,7 +135,7 @@ test_that("edu_map works", {
   )
   
   expect_equal(edu_map_num(),
-               data.frame(
+               dplyr::tibble(
                  from = c(0, 9, 12, 13, 14, 16, 19, 21), 
                  to = c(NA, 9, 12, 12, 12, 16, 19, 19))
                )
@@ -236,18 +235,19 @@ test_that("test edu_to_year", {
 })
 
 
-# Composites ----
+# composites ----
 
 test_that("test edu_compute", {
   
   edu2 <- edu_compute(edu,
                       edu4 = edu4, 
                       edu9 = edu9, 
-                      edu_years = edu_years)
+                      edu_years = edu_years,
+                      prefix = "edu2_")
   
   expect_equal(nrow(edu2), 7)
-  expect_equal(ncol(edu2), 5)
-  expect_equal(edu2$edu_years, c(16, 12, 9, NA, 19, 19, 21))
+  expect_equal(ncol(edu2), 8)
+  expect_equal(edu2$edu2_years, c(16, 12, 9, NA, 19, 19, 21))
   
   edu2 <- edu_compute(edu,
                       edu4 = edu4, 
@@ -269,9 +269,9 @@ test_that("test edu_compile", {
   
   expect_equal(nrow(compiled), 7)
   expect_equal(ncol(compiled), 8)
-  expect_equal(names(compiled), c("edu4", "edu9", "edu_years", "mother", "father", "Edu_Compiled_Code4", "Edu_Compiled_Years", 
-                                  "Edu_Compiled_Source"))
-  expect_equal(compiled$Edu_Compiled_Code4,
+  expect_equal(names(compiled), c("edu4", "edu9", "edu_years", "mother", "father", "edu_compiled_code4", "edu_compiled_years", 
+                                  "edu_compiled_source"))
+  expect_equal(compiled$edu_compiled_code4,
                structure(c(3L, 2L, 1L, 4L, 4L, 4L, 3L), 
                          .Label = c("Primary school (9 years)", 
                                     "High school", 
@@ -285,10 +285,10 @@ test_that("test edu_compile", {
                          )
   )
   
-  expect_equal(compiled$Edu_Compiled_Years,
+  expect_equal(compiled$edu_compiled_years,
                c(16, 12, 9, 19, 19, 19, 16))
   
-  expect_equal(compiled$Edu_Compiled_Source,
+  expect_equal(compiled$edu_compiled_source,
                c("Participant", "Participant", "Participant", "Father", "Participant", 
                  "Mother", "Participant"))
   
@@ -305,7 +305,7 @@ test_that("test edu_compile", {
       father = father
     )
   
-  expect_equal(compiled$Edu_Compiled_Code4,
+  expect_equal(compiled$edu_compiled_code4,
                structure(c(3L, 2L, 1L, 2L, 4L, 4L, 3L), 
                          .Label = c("Primary school (9 years)", 
                                     "High school", 
@@ -318,10 +318,10 @@ test_that("test edu_compile", {
                                      `University/University college (> 4 years)` = 19))
   )
   
-  expect_equal(compiled$Edu_Compiled_Years,
+  expect_equal(compiled$edu_compiled_years,
                c(16, 12, 9, 12, 19, 19, 16))
   
-  expect_equal(compiled$Edu_Compiled_Source,
+  expect_equal(compiled$edu_compiled_source,
                c("Participant", "Participant", "Participant", "Father", "Participant", 
                  "Mother", "Participant"))
   

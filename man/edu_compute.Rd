@@ -6,9 +6,10 @@
 \usage{
 edu_compute(
   data,
-  edu4 = Edu_Coded4,
-  edu9 = Edu_Coded10,
-  edu_years = Edu_Years,
+  edu4 = edu_coded4,
+  edu9 = edu_coded10,
+  edu_years = edu_years,
+  prefix = "edu_",
   keep_all = TRUE
 )
 }
@@ -20,6 +21,8 @@ edu_compute(
 \item{edu9}{unquoted column containing Education coded in 4 categories}
 
 \item{edu_years}{unquoted column containing Education in years to highest completed}
+
+\item{prefix}{string to prefix column names of computed values}
 
 \item{keep_all}{logical, append to data.frame}
 }

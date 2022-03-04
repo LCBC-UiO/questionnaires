@@ -15,7 +15,7 @@ edu_map_num(from = 9, to = 4)
 \arguments{
 \item{from}{schema levels to convert from}
 
-\item{to}{shecma levels to contert to}
+\item{to}{shcema levels to convtert to}
 }
 \description{
 Converting from a high-level educational
@@ -24,7 +24,7 @@ This function bases it self in any coding
 scheme specified in \code{\link{edu_levels}} 
 and tries 
 creating a conversion table between two
-specified scemas.
+specified schemas.
 }
 \details{
 Specialized returns
