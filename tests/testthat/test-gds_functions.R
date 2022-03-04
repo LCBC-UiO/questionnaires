@@ -1,4 +1,4 @@
-load(paste0(test_path(), "/data/gds.rda"))
+gds <- read.delim(test_path("data/gds.tsv"))
 
 test_that("check binary", {
   
@@ -17,22 +17,22 @@ test_that("check binary", {
 
 test_that("check gds_alter_values",{
   
-  expect_error(gds_alter_values(gds, cols = GDS_01, value = 1),
+  expect_error(gds_alter_values(gds, cols = gds_01, value = 1),
                "is not TRUE")
   
   
-  tmp <- gds_alter_values(gds, cols = GDS_01, value = gds_values(1, 0))
-  expect_equal(tmp$GDS_01,
+  tmp <- gds_alter_values(gds, cols = gds_01, value = gds_values(1, 0))
+  expect_equal(tmp$gds_01,
                rep(1,10)
   )
   
-  tmp <- gds_alter_values(gds, cols = GDS_05, value = gds_values(1, 0))
-  expect_equal(tmp$GDS_05,
+  tmp <- gds_alter_values(gds, cols = gds_05, value = gds_values(1, 0))
+  expect_equal(tmp$gds_05,
                c(rep(1,3), 0, rep(1,5),0)
   )
   
-  tmp <- gds_alter_values(gds, cols = GDS_05, reverse = TRUE, value = gds_values(1, 0))
-  expect_equal(tmp$GDS_05,
+  tmp <- gds_alter_values(gds, cols = gds_05, reverse = TRUE, value = gds_values(1, 0))
+  expect_equal(tmp$gds_05,
                c(rep(0,3), 1, rep(0,5),1)
   )
 })
@@ -56,16 +56,16 @@ test_that("Check sum", {
 test_that("Check factor",{
   expect_equal(gds_factorise(gds_compute_sum(gds, values = gds_values(yes = 1, no = 0))),
                structure(c(1L, 2L, 1L, 2L, 1L, 2L, 2L, 2L, 1L, 2L), 
-                         .Label = c("Normal", 
-                                    "Mild depression", 
-                                    "Severe depression"), 
+                         .Label = c("normal", 
+                                    "mild depression", 
+                                    "severe depression"), 
                          class = c("ordered", "factor"))
   )
   
   expect_equal(as.character(gds_factorise(gds_compute_sum(gds, values = gds_values(yes = 1, no = 0)))),
-               c("Normal", "Mild depression", "Normal", "Mild depression", "Normal", 
-                 "Mild depression", "Mild depression", "Mild depression", "Normal", 
-                 "Mild depression"))
+               c("normal", "mild depression", "normal", "mild depression", "normal", 
+                 "mild depression", "mild depression", "mild depression", "normal", 
+                 "mild depression"))
   
 })
 
@@ -75,21 +75,22 @@ test_that("Check compute", {
   expect_equal(names(gds_compute(gds, 
                                  values = gds_values("Yes", "No"),
                                  keep_all = FALSE)),
-               c("GDS", "GDS_Coded")
+               c("gds_sum", "gds_coded")
   )
   
   expect_equal(names(gds_compute(gds, 
                                  values = gds_values("Yes", "No"),
+                                 prefix = "gds2_",
                                  keep_all = TRUE)),
-               c("GDS_01", "GDS_02", "GDS_03", "GDS_04", "GDS_05", "GDS_06", 
-                 "GDS_07", "GDS_08", "GDS_09", "GDS_10", "GDS_11", "GDS_12", "GDS_13", 
-                 "GDS_14", "GDS_15", "GDS_16", "GDS_17", "GDS_18", "GDS_19", "GDS_20", 
-                 "GDS_21", "GDS_22", "GDS_23", "GDS_24", "GDS_25", "GDS_26", "GDS_27", 
-                 "GDS_28", "GDS_29", "GDS_30", "GDS", "GDS_Coded")
+               c("gds", "gds_coded","gds_01", "gds_02", "gds_03", "gds_04", "gds_05", "gds_06", 
+                 "gds_07", "gds_08", "gds_09", "gds_10", "gds_11", "gds_12", "gds_13", 
+                 "gds_14", "gds_15", "gds_16", "gds_17", "gds_18", "gds_19", "gds_20", 
+                 "gds_21", "gds_22", "gds_23", "gds_24", "gds_25", "gds_26", "gds_27", 
+                 "gds_28", "gds_29", "gds_30", "gds2_sum", "gds2_coded")
   )
   
   expect_equal(ncol(gds_compute(gds, keep_all = TRUE)),
-               32
+               34
   )
 })
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/gds_functions.R
 \name{gds_binary}
 \alias{gds_binary}
-\title{Binerise GDS values}
+\title{Binarise GDS values}
 \usage{
 gds_binary(x, values = gds_values())
 }

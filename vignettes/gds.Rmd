@@ -13,9 +13,8 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+options(rmarkdown.html_vignette.check_title = FALSE)
 library(knitr)
-library(kableExtra)
-devtools::load_all(".")
 ```
 
 
@@ -59,16 +58,16 @@ Below or equal to `9` is "Normal", above 19 is "Severe depression", and the rema
 
 ## Data requirements
 ### Column naming
-The easiest is to have data coded as in the MOAS, as this will let you use default values for the arguments. 
-The column names in the MOAS all start with `GDS_` and then are followed by a two-digit numbering of the question: 
+The easiest is to have data coded as in the NOAS, as this will let you use default values for the arguments. 
+The column names in the NOAS all start with `gds_` and then are followed by a two-digit numbering of the question: 
 
-GDS_01,  
-GDS_02,   
-GDS_03,   
+gds_01,  
+gds_02,   
+gds_03,   
 ...  
-GDS_28,  
-GDS_29,   
-GDS_30  
+gds_28,  
+gds_29,   
+gds_30  
 
 If your data is coded differently, a consistent naming scheme should help you use the functions anyway.
 
@@ -80,6 +79,8 @@ While the functions are made in such a way that any type of binary coding works 
 These can be altered by applying the `gds_values` functions to the other functions asking for the coding schema.
 
 ```{r}
+library(Questionnaires)
+
 gds_values(yes = 1, no = 0)
 gds_values(yes = "yes", no = "no")
 gds_values(yes = "ja", no = "nei")
@@ -91,41 +92,34 @@ gds_values(yes = "ja", no = "nei")
 ```{r}
 library(dplyr)
 library(tidyr)
-library(stringr)
 
 # randomly create some data as example
 gds_data <- expand_grid(ID = 1:5, 
-            key = "GDS", 
-            question = str_pad(1:30, 2, "left", 0)) %>% 
+            key = "gds", 
+            question =  sprintf("%02d", 1:30)) %>% 
     mutate(value = sample(c(0,1), nrow(.), replace = TRUE)) %>% 
   unite(key, c(key, question)) %>% 
   spread(key, value)
 
-gds_data %>% 
-  # ignore this part, it's just so the table looks better online
-  kable() %>% 
-  kable_styling()
+gds_data
 ```
 
-### Calculating the GSD sum
+### Calculating the GDS sum
 The function to calculate the total GDS score is `gds_compute_sum`, and requires a data frame, a tidy-selector that selects all the GDS columns and a tidy-selector indicating which columns should be reversed.
-If you have MOAS-like data, then the defaults should work, and as such you need not specify this.
+If you have NOAS-like data, then the defaults should work, and as such you need not specify this.
 
 ```{r}
 gds_data %>% 
   gds_compute_sum()
 ```
 
-To add a column with total GDS to a data set, place the argument inside a `mutate`, here a column named `GDS_total` will appear as the right-most column.
+To add a column with total GDS to a data set, place the argument inside a `mutate`, here a column named `gds_total` will appear as the right-most column.
 
 ```{r}
 gds_data %>% 
   mutate(
-    GSD_total = gds_compute_sum(.)
-  ) %>% 
-  # ignore this part, it's just so the table looks better online
-  kable() %>% 
-  kable_styling()
+    gds_total = gds_compute_sum(.)
+  )
 ```
 
 ### Turning the sum into a factor
@@ -144,12 +138,9 @@ and this can also be added directly to the data through a `mutate``
 ```{r}
 gds_data %>% 
   mutate(
-    GSD_total = gds_compute_sum(.),
-    GDS_cat =  gds_factorise(GSD_total)
-  ) %>% 
-  # ignore this part, it's just so the table looks better online
-  kable() %>% 
-  kable_styling()
+    gds_total = gds_compute_sum(.),
+    gds_cat =  gds_factorise(gds_total)
+  )
 ```
 
 ### Computing score and factor in one function

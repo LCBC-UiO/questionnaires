@@ -8,7 +8,7 @@ gds_alter_values(
   data,
   values = gds_values(),
   reverse = FALSE,
-  cols = dplyr::matches("01$|05$|07$|09$|15$|19$|21$|27$|29$|30$")
+  cols = matches("01$|05$|07$|09$|15$|19$|21$|27$|29$|30$")
 )
 }
 \arguments{

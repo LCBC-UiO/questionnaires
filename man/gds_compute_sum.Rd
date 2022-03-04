@@ -6,7 +6,7 @@
 \usage{
 gds_compute_sum(
   data,
-  cols = dplyr::matches("GDS_[0-3][0-9]$"),
+  cols = dplyr::matches("[0-3][0-9]$"),
   cols_rev = dplyr::matches("01$|05$|07$|09$|15$|19$|21$|27$|29$|30$"),
   values = gds_values()
 )

@@ -6,9 +6,10 @@
 \usage{
 gds_compute(
   data,
-  cols = dplyr::matches("GDS_[0-9][0-9]$"),
+  cols = dplyr::matches("[0-9][0-9]$"),
   cols_rev = dplyr::matches("01$|05$|07$|09$|15$|19$|21$|27$|29$|30$"),
   values = gds_values(),
+  prefix = "gds_",
   keep_all = TRUE
 )
 }
@@ -20,6 +21,8 @@ gds_compute(
 \item{cols_rev}{Columns for reversal of binary code}
 
 \item{values}{named vector of 2 providing the coding for Yes and No answers c(Yes = 1, No = 2)}
+
+\item{prefix}{string to prefix column names of computed values}
 
 \item{keep_all}{logical, append to data.frame}
 }
