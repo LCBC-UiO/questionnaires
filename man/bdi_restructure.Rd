@@ -11,7 +11,7 @@ bdi_restructure(data, cols = matches("[0-9]_[0-9]"), sep = "_")
 
 \item{cols}{Columns that contain BDI data}
 
-\item{sep}{separator to use for the colum names}
+\item{sep}{separator to use for the column names}
 }
 \value{
 data frame
@@ -26,21 +26,21 @@ single columns for questions.
 \details{
 The columns must adhere to some specific logic to work.
 It is recommended that the column names are in 
-the format BDI_01_0 BDI_01_1 BDI_01_2 BDI_01_3,
+the format bdi_01_0 bdi_01_1 bdi_01_2 bdi_01_3,
 where the first two numbers are the question 
 number, and the last number is the option number.
 }
 \examples{
   dat <- data.frame(
      ID = 1:4, 
-     BDI_01_0 = c(NA,1, NA, NA),
-     BDI_01_1 = c(1, NA, 1, NA),
-     BDI_01_2 = c(NA, NA, 1, NA),
-     BDI_01_3 = c(NA, NA, NA, NA),
-     BDI_02_0 = c(1, NA, NA, NA),
-     BDI_02_1 = c(NA,NA, NA, NA),
-     BDI_02_2 = c(NA,1, NA, NA),
-     BDI_02_3 = c(NA, NA, NA, 1)
+     bdi_01_0 = c(NA,1, NA, NA),
+     bdi_01_1 = c(1, NA, 1, NA),
+     bdi_01_2 = c(NA, NA, 1, NA),
+     bdi_01_3 = c(NA, NA, NA, NA),
+     bdi_02_0 = c(1, NA, NA, NA),
+     bdi_02_1 = c(NA,NA, NA, NA),
+     bdi_02_2 = c(NA,1, NA, NA),
+     bdi_02_3 = c(NA, NA, NA, 1)
   )
   bdi_restructure(dat)
 }

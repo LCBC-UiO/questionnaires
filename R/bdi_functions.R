@@ -10,29 +10,27 @@
 #' @return numeric
 #' @export
 #' @family bdi_functions
-#' @importFrom dplyr enquo select matches
+#' @importFrom dplyr select matches
 #' @examples
 #' # Example of treatment of missing values
 #' library(dplyr)
 #' library(Questionnaires)
 #' data <- tibble(
-#' BDI_01 = c(1, NA_real_, NA_real_, 2, 1),
-#' BDI_02 = c(1, 1, NA_real_, 2, NA_real_)
+#' bdi_01 = c(1, NA_real_, NA_real_, 2, 1),
+#' bdi_02 = c(1, 1, NA_real_, 2, NA_real_)
 #' )
 #'
 #' # Row with all components missing, gets sum 0
 #' data %>%
-#'   bind_cols(BDI_sum = bdi_compute_sum(data))
+#'   bind_cols(bdi_sum = bdi_compute_sum(data))
 #' # Do not allow any missing values
 #' data %>%
-#'   bind_cols(BDI_sum = bdi_compute_sum(data, max_missing = 0))
+#'   bind_cols(bdi_sum = bdi_compute_sum(data, max_missing = 0))
 #' # Allow one missing value
 #' data %>%
-#'   bind_cols(BDI_sum = bdi_compute_sum(data, max_missing = 2))
+#'   bind_cols(bdi_sum = bdi_compute_sum(data, max_missing = 2))
 #' 
-bdi_compute_sum = function(data, cols = matches("BDI_[0-9][0-9]$"), max_missing = 0){
-
-  
+bdi_compute_sum = function(data, cols = matches("bdi_[0-9][0-9]$"), max_missing = 0){
   # If raw BDI is punched, calculate the sum
   if(is.null(max_missing)){
     rowSums(select(data, {{cols}} ), na.rm = TRUE)  
@@ -56,21 +54,23 @@ bdi_compute_sum = function(data, cols = matches("BDI_[0-9][0-9]$"), max_missing 
 #' @return factor
 #' @export
 #' @family bdi_functions
-bdi_factorise <- function(bdi_sum = BDI){
-  
-  # If there is a sum, categorise it according to original paper.
-  tmp <- dplyr::case_when(
-    bdi_sum <= 13 ~ "Minimal depression",
-    bdi_sum>=14 & bdi_sum <=19 ~ "Mild depression",
-    bdi_sum>=20 & bdi_sum <= 28 ~ "Moderate depression",
-    bdi_sum > 28 ~ "Severe depression"
-    )
-  
+bdi_factorise <- function(bdi_sum = sum){
+  tmp <- case_when(
+    bdi_sum <= 10 ~ "normal",
+    bdi_sum <= 16 ~ "mild mood disturbance",
+    bdi_sum <= 20 ~ "borderline clinical disturbance",
+    bdi_sum <= 30 ~ "moderate depression",
+    bdi_sum <= 40 ~ "severe depression",
+    bdi_sum >  40 ~ "extreme depression"
+  )
   factor(tmp, 
-         levels = c("Minimal depression", 
-                    "Mild depression",
-                    "Moderate depression",
-                    "Severe depression")
+         levels = c("normal", 
+                    "mild mood disturbance",
+                    "borderline clinical disturbance",
+                    "moderate depression",
+                    "severe depression",
+                    "extreme depression"),
+         ordered = TRUE
   )
 }
 
@@ -80,38 +80,27 @@ bdi_factorise <- function(bdi_sum = BDI){
 #' the four BDI categories based on the sum
 #'
 #' @inheritParams bdi_compute_sum
-#' @param predicate logical statement on which data 
-#' to include in the summing function
-#' @param keep_all logical, append to data.frame
-#' #TODO: create option to make your own name
+#' @template keep_all 
+#' @template prefix
 #' @return data.frame
 #' @export
 #' @family bdi_functions
+#' @importFrom dplyr transmute rename_all bind_cols
 bdi_compute = function(data, 
-                       cols = matches("BDI_[0-9][0-9]$"), 
+                       cols = matches("bdi_[0-9][0-9]$"), 
                        max_missing = 0, 
-                       predicate = rep(TRUE, nrow(data)),
+                       prefix = "bdi_",
                        keep_all = TRUE){
+  tmp <- transmute(data, 
+                   sum = bdi_compute_sum(data, cols, max_missing = max_missing),
+                   coded = bdi_factorise(sum))
+  if(!is.null(prefix))
+    tmp <- rename_all(tmp, ~paste0(prefix, .x))
   
-  # If BDI does not exists in the data, make NAs for missing
-  tmp <- if("BDI" %in% names(data)){
-    data
-  }else{
-    mutate(data, BDI = NA)
-  }
+  if(keep_all)
+    tmp <- bind_cols(data, tmp)
   
-  tmp <- mutate(tmp, 
-                BDI = ifelse({{predicate}}, 
-                             bdi_compute_sum(data, cols, max_missing = max_missing), 
-                             BDI))
-  
-  tmp <- mutate(tmp, BDI_Coded = bdi_factorise(BDI))
-  
-  if(keep_all){
-    tmp
-  }else{
-    select(tmp, BDI, BDI_Coded)
-  }
+  tmp
 }
 
 #' Restructure BDI questions from wide format
@@ -124,12 +113,12 @@ bdi_compute = function(data,
 #' 
 #' The columns must adhere to some specific logic to work.
 #' It is recommended that the column names are in 
-#' the format BDI_01_0 BDI_01_1 BDI_01_2 BDI_01_3,
+#' the format bdi_01_0 bdi_01_1 bdi_01_2 bdi_01_3,
 #' where the first two numbers are the question 
 #' number, and the last number is the option number.
 #'
 #' @inheritParams bdi_compute_sum
-#' @param sep separator to use for the colum names
+#' @param sep separator to use for the column names
 #' @importFrom dplyr filter mutate group_by_at summarise ungroup '%>%'
 #' @importFrom tidyr gather spread separate unite
 #' @return data frame
@@ -137,31 +126,31 @@ bdi_compute = function(data,
 #' @examples 
 #'   dat <- data.frame(
 #'      ID = 1:4, 
-#'      BDI_01_0 = c(NA,1, NA, NA),
-#'      BDI_01_1 = c(1, NA, 1, NA),
-#'      BDI_01_2 = c(NA, NA, 1, NA),
-#'      BDI_01_3 = c(NA, NA, NA, NA),
-#'      BDI_02_0 = c(1, NA, NA, NA),
-#'      BDI_02_1 = c(NA,NA, NA, NA),
-#'      BDI_02_2 = c(NA,1, NA, NA),
-#'      BDI_02_3 = c(NA, NA, NA, 1)
+#'      bdi_01_0 = c(NA,1, NA, NA),
+#'      bdi_01_1 = c(1, NA, 1, NA),
+#'      bdi_01_2 = c(NA, NA, 1, NA),
+#'      bdi_01_3 = c(NA, NA, NA, NA),
+#'      bdi_02_0 = c(1, NA, NA, NA),
+#'      bdi_02_1 = c(NA,NA, NA, NA),
+#'      bdi_02_2 = c(NA,1, NA, NA),
+#'      bdi_02_3 = c(NA, NA, NA, 1)
 #'   )
 #'   bdi_restructure(dat)
 bdi_restructure <- function(data, 
                             cols = matches("[0-9]_[0-9]"),
                             sep = "_"){
-  data %>% 
-    tidyr::gather(key, val, {{cols}}) %>% 
-    dplyr::filter(!is.na(val)) %>% 
-    tidyr::separate(key, c("key", "q", "val")) %>% 
-    dplyr::mutate(val = as.integer(val)) %>% 
-    dplyr::group_by_at(dplyr::vars(-val)) %>% 
-    dplyr::summarise_at(vars(val), mean) %>% 
-    tidyr::unite(key, c(key, q), sep = sep) %>% 
-    tidyr::spread(key, val) %>% 
-    dplyr::ungroup()
+  gather(data, key, val, {{cols}}) %>% 
+    filter(!is.na(val)) %>% 
+    separate(key, c("key", "q", "val")) %>% 
+    mutate(val = as.integer(val)) %>% 
+    group_by_at(dplyr::vars(-val)) %>% 
+    summarise(val = mean(val)) %>% 
+    unite(key, c(key, q), sep = sep) %>% 
+    spread(key, val) %>% 
+    ungroup()
 }
-  
-if(getRversion() >= "2.15.1")  utils::globalVariables(c("BDI_Coded", "BDI",
-                                                        "BDI_01", "val", "key"))
+
+if(getRversion() >= "2.15.1")  
+  utils::globalVariables(c("bdi_coded", "bdi",
+                           "bdi_01", "val", "key"))
 

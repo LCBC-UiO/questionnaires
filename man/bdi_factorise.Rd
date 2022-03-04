@@ -4,7 +4,7 @@
 \alias{bdi_factorise}
 \title{Factorize BDI sum}
 \usage{
-bdi_factorise(bdi_sum = BDI)
+bdi_factorise(bdi_sum = sum)
 }
 \arguments{
 \item{bdi_sum}{Sum of BDI questions, as summed by [bdi_compute_sum]}

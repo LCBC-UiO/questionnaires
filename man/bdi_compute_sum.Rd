@@ -4,7 +4,7 @@
 \alias{bdi_compute_sum}
 \title{Calculate sum of BDI}
 \usage{
-bdi_compute_sum(data, cols = matches("BDI_[0-9][0-9]$"), max_missing = 0)
+bdi_compute_sum(data, cols = matches("bdi_[0-9][0-9]$"), max_missing = 0)
 }
 \arguments{
 \item{data}{Data containing BDI data}
@@ -27,19 +27,19 @@ Calculate sum of BDI
 library(dplyr)
 library(Questionnaires)
 data <- tibble(
-BDI_01 = c(1, NA_real_, NA_real_, 2, 1),
-BDI_02 = c(1, 1, NA_real_, 2, NA_real_)
+bdi_01 = c(1, NA_real_, NA_real_, 2, 1),
+bdi_02 = c(1, 1, NA_real_, 2, NA_real_)
 )
 
 # Row with all components missing, gets sum 0
 data \%>\%
-  bind_cols(BDI_sum = bdi_compute_sum(data))
+  bind_cols(bdi_sum = bdi_compute_sum(data))
 # Do not allow any missing values
 data \%>\%
-  bind_cols(BDI_sum = bdi_compute_sum(data, max_missing = 0))
+  bind_cols(bdi_sum = bdi_compute_sum(data, max_missing = 0))
 # Allow one missing value
 data \%>\%
-  bind_cols(BDI_sum = bdi_compute_sum(data, max_missing = 2))
+  bind_cols(bdi_sum = bdi_compute_sum(data, max_missing = 2))
 
 }
 \seealso{

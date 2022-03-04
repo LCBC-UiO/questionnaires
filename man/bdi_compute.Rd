@@ -6,9 +6,9 @@
 \usage{
 bdi_compute(
   data,
-  cols = matches("BDI_[0-9][0-9]$"),
+  cols = matches("bdi_[0-9][0-9]$"),
   max_missing = 0,
-  predicate = rep(TRUE, nrow(data)),
+  prefix = "bdi_",
   keep_all = TRUE
 )
 }
@@ -22,11 +22,9 @@ Defaults to "0", and will return \code{NA} if missing any question. If set to
 \code{NULL} any missing component counts as 0, meaning if all BDI
 components are missing, the sum is still 0, not \code{NA}.}
 
-\item{predicate}{logical statement on which data 
-to include in the summing function}
+\item{prefix}{string to prefix column names of computed values}
 
-\item{keep_all}{logical, append to data.frame
-#TODO: create option to make your own name}
+\item{keep_all}{logical, append to data.frame}
 }
 \value{
 data.frame
