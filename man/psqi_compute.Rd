@@ -2,22 +2,24 @@
 % Please edit documentation in R/psqi_functions.R
 \name{psqi_compute}
 \alias{psqi_compute}
-\title{Compute all PSQI components and global score}
+\title{compute all PSQI components and global score}
 \usage{
 psqi_compute(
   data,
   components = 1:7,
-  bedtime = PSQI_01,
-  minBeforeSleep = PSQI_02,
-  risingtime = PSQI_03,
-  hoursSleep = PSQI_04,
-  noSleep30min = PSQI_05a,
-  sleepQuality = PSQI_06,
-  medication = PSQI_07,
-  keepAwake = PSQI_08,
-  keepEnthused = PSQI_09,
-  sleepTroubles = matches("^PSQI_05[b-j]$"),
+  bedtime = psqi_01,
+  min_before_sleep = psqi_02,
+  risingtime = psqi_03,
+  hours_sleep = psqi_04,
+  no_sleep_30min = psqi_05a,
+  sleepquality = psqi_06,
+  medication = psqi_07,
+  keep_awake = psqi_08,
+  keep_enthused = psqi_09,
+  sleep_troubles = matches("^psqi_05[b-j]$"),
   max_missing = 0,
+  ...,
+  prefix = "psqi_",
   keep_all = TRUE
 )
 }
@@ -26,29 +28,31 @@ psqi_compute(
 
 \item{components}{integer vector of components to calculate. If all 7, global is added also}
 
-\item{bedtime}{column name with bedtime (HH:MM:SS) [PSQI_01]}
+\item{bedtime}{column name with bedtime (HH:MM:SS) [psqi_01]}
 
-\item{minBeforeSleep}{column name with no. minutes before sleep (numeric) [PSQI_02]}
+\item{min_before_sleep}{column name with no. minutes before sleep (numeric) [psqi_02]}
 
-\item{risingtime}{column name with rising time (HH:MM:SS) [PSQI_03]}
+\item{risingtime}{column name with rising time (HH:MM:SS) [psqi_03]}
 
-\item{hoursSleep}{column name with hours of sleep (decimal hours) [PSQI_04]}
+\item{hours_sleep}{column name with hours of sleep (decimal hours) [psqi_04]}
 
-\item{noSleep30min}{column name with evaluation of sleep within 30min (0-3) [PSQI_05a]}
+\item{no_sleep_30min}{column name with evaluation of sleep within 30min (0-3) [psqi_05a]}
 
-\item{sleepQuality}{column name with evaluation of sleep quality (0-3) [PSQI_06]}
+\item{sleepquality}{column name with evaluation of sleep quality (0-3) [psqi_06]}
 
-\item{medication}{column name with use of sleep mediation (0-3) [PSQI_07]}
+\item{medication}{column name with use of sleep mediation (0-3) [psqi_07]}
 
-\item{keepAwake}{column name with evaluation of staying awake (0-3) [PSQI_08]}
+\item{keep_awake}{column name with evaluation of staying awake (0-3) [psqi_08]}
 
-\item{keepEnthused}{column name with evaluation of keeping enthusiastic (0-3) [PSQI_09]}
+\item{keep_enthused}{column name with evaluation of keeping enthusiastic (0-3) [psqi_09]}
 
-\item{sleepTroubles}{columns containing sleep problem evaluations (0-3) [PSQI_05[a-j] ]}
+\item{sleep_troubles}{columns containing sleep problem evaluations (0-3) [psqi_05[a-j] ]}
 
 \item{max_missing}{Integer specifying the number of missing values to accept in the PSQI components, 
 before the global PSQI value is set to missing. Defaults to 0. If \code{max_missing > 0}, the 
 global PSQI value is computed by weighting each non-missing entry with \code{7 / (7 - max_missing)}.}
+
+\item{prefix}{string to prefix column names of computed values}
 
 \item{keep_all}{logical, append to data.frame}
 }
@@ -56,7 +60,7 @@ global PSQI value is computed by weighting each non-missing entry with \code{7 /
 a data.frame containing only the calculated components
 }
 \description{
-Compute all PSQI components and global score
+compute all PSQI components and global score
 }
 \seealso{
 Other psqi_functions: 

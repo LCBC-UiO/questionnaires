@@ -4,12 +4,12 @@
 \alias{psqi_compute_comp7}
 \title{Calculate component 7 of PSQI}
 \usage{
-psqi_compute_comp7(keepAwake, keepEnthused)
+psqi_compute_comp7(keep_awake, keep_enthused)
 }
 \arguments{
-\item{keepAwake}{column name with evaluation of staying awake (0-3) [PSQI_08]}
+\item{keep_awake}{column name with evaluation of staying awake (0-3) [psqi_08]}
 
-\item{keepEnthused}{column name with evaluation of keeping enthusiastic (0-3) [PSQI_09]}
+\item{keep_enthused}{column name with evaluation of keeping enthusiastic (0-3) [psqi_09]}
 }
 \description{
 Calculate component 7 of PSQI

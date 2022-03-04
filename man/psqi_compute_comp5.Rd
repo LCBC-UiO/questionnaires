@@ -2,17 +2,17 @@
 % Please edit documentation in R/psqi_functions.R
 \name{psqi_compute_comp5}
 \alias{psqi_compute_comp5}
-\title{Compute component PSQI 5}
+\title{compute component PSQI 5}
 \usage{
-psqi_compute_comp5(data, sleepTroubles = matches("^PSQI_05[b-j]$"))
+psqi_compute_comp5(data, sleep_troubles = matches("^psqi_05[b-j]$"))
 }
 \arguments{
 \item{data}{data frame with the data}
 
-\item{sleepTroubles}{columns containing sleep problem evaluations (0-3) [PSQI_05[b-j] ]}
+\item{sleep_troubles}{columns containing sleep problem evaluations (0-3) [psqi_05[b-j] ]}
 }
 \description{
-Compute component PSQI 5
+compute component PSQI 5
 }
 \seealso{
 Other psqi_functions: 

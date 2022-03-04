@@ -2,15 +2,15 @@
 % Please edit documentation in R/psqi_functions.R
 \name{psqi_compute_comp3}
 \alias{psqi_compute_comp3}
-\title{Compute component PSQI 3}
+\title{compute component PSQI 3}
 \usage{
-psqi_compute_comp3(hoursSleep)
+psqi_compute_comp3(hours_sleep)
 }
 \arguments{
-\item{hoursSleep}{column name with hours of sleep (decimal hours) [PSQI_04]}
+\item{hours_sleep}{column name with hours of sleep (decimal hours) [psqi_04]}
 }
 \description{
-Compute component PSQI 3
+compute component PSQI 3
 }
 \seealso{
 Other psqi_functions: 

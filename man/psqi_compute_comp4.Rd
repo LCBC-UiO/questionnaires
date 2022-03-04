@@ -2,19 +2,19 @@
 % Please edit documentation in R/psqi_functions.R
 \name{psqi_compute_comp4}
 \alias{psqi_compute_comp4}
-\title{Compute component PSQI 4}
+\title{compute component PSQI 4}
 \usage{
-psqi_compute_comp4(hoursSleep, bedtime, risingtime)
+psqi_compute_comp4(hours_sleep, bedtime, risingtime, ...)
 }
 \arguments{
-\item{hoursSleep}{column name with hours of sleep (decimal hours) [PSQI_04]}
+\item{hours_sleep}{column name with hours of sleep (decimal hours) [psqi_04]}
 
-\item{bedtime}{column name with bedtime (HH:MM:SS) [PSQI_01]}
+\item{bedtime}{column name with bedtime (HH:MM:SS) [psqi_01]}
 
-\item{risingtime}{column name with rising time (HH:MM:SS) [PSQI_03]}
+\item{risingtime}{column name with rising time (HH:MM:SS) [psqi_03]}
 }
 \description{
-Compute component PSQI 4
+compute component PSQI 4
 }
 \seealso{
 Other psqi_functions: 

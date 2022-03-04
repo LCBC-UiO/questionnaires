@@ -2,17 +2,17 @@
 % Please edit documentation in R/psqi_functions.R
 \name{psqi_compute_comp2}
 \alias{psqi_compute_comp2}
-\title{Compute component PSQI 2}
+\title{compute component PSQI 2}
 \usage{
-psqi_compute_comp2(minBeforeSleep, noSleep30min)
+psqi_compute_comp2(min_before_sleep, no_sleep_30min)
 }
 \arguments{
-\item{minBeforeSleep}{column name with no. minutes before sleep (numeric) [PSQI_02]}
+\item{min_before_sleep}{column name with no. minutes before sleep (numeric) [psqi_02]}
 
-\item{noSleep30min}{column name with evaluation of sleep within 30min (0-3) [PSQI_05a]}
+\item{no_sleep_30min}{column name with evaluation of sleep within 30min (0-3) [psqi_05a]}
 }
 \description{
-Computes the second PSQI component on sleep quality, 
+computes the second PSQI component on sleep quality, 
 using the number of minutes before sleep (PSQI Q2) and
 subjective evaluation of sleep within 30 minutes
 }
