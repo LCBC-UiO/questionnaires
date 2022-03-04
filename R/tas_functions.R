@@ -2,18 +2,15 @@
 tas_reverse = function(x) (x-6)*-1
 
 
-#' @importFrom dplyr enquo vars mutate_at
-#' @importFrom readr cols
-tas_compute_reversed <- function(data, cols = c(TAS_04, TAS_05, TAS_10,TAS_18),
+#' @importFrom dplyr across mutate
+tas_compute_reversed <- function(data, 
+                                 cols = c(tas_04, tas_05, tas_10,tas_18),
                                  keep_all = TRUE){
-
-  tmp <- mutate_at(data, vars({{cols}} ), tas_reverse)
-  
-  if(keep_all){
-    tmp
-  }else{
-    select(tmp, {{cols}} )
+  tmp <- mutate(data, across({{cols}} , tas_reverse))
+  if(!keep_all){
+    tmp <- select(tmp, {{cols}} )
   }
+  tmp
 }
 
 
@@ -21,32 +18,37 @@ tas_compute_reversed <- function(data, cols = c(TAS_04, TAS_05, TAS_10,TAS_18),
 #' Compute the TAS factors
 #' 
 #' @param data Data containing TAS data
-#' @param feeling_cols Columns for the "identify feeling" factor
-#' @param descr_cols Columns for the "describing feelings" factor
-#' @param ext_cols Columns for the "externally oriented thinking" factor
-#' @param keep_all logical, append to data.frame
+#' @param reverse_cols Columns that need reversing
+#' @param identify_cols Columns for the "identify feeling" factor
+#' @param describe_cols Columns for the "describing feelings" factor
+#' @param thinking_cols Columns for the "externally oriented thinking" factor
+#' @template keep_all
+#' @template prefix
 #' @export
-#' @importFrom dplyr enquo transmute select bind_cols mutate one_of
+#' @importFrom dplyr transmute bind_cols 
 tas_compute <- function(data, 
-                        feeling_cols = c(TAS_01,TAS_03,TAS_06,TAS_07,TAS_09,TAS_13,TAS_14),
-                        descr_cols = c(TAS_02,TAS_04,TAS_11,TAS_12,TAS_17),
-                        ext_cols = c(TAS_05,TAS_08,TAS_10,TAS_15,TAS_16,TAS_18,TAS_19,TAS_20),
+                        reverse_cols  = c(tas_04, tas_05, tas_10,tas_18),
+                        identify_cols = c(tas_01,tas_03,tas_06,tas_07,tas_09,tas_13,tas_14),
+                        describe_cols = c(tas_02,tas_04,tas_11,tas_12,tas_17),
+                        thinking_cols = c(tas_05,tas_08,tas_10,tas_15,tas_16,tas_18,tas_19,tas_20),
+                        prefix = "tas_",
                         keep_all = TRUE){
   
-  tmp <- mutate(tas_compute_reversed(data))
-  
+  tmp <- tas_compute_reversed(data, cols = {{reverse_cols}}, keep_all = TRUE)
   tmp <- transmute(tmp,
-                   TAS_Fact1_Ident.Feelings = rowSums(select(tmp, {{feeling_cols}} )), 
-                   TAS_Fact2_Descr.Feelings = rowSums(select(tmp, {{descr_cols}} )), 
-                   TAS_Fact3_Ext.O.Thinking = rowSums(select(tmp, {{ext_cols}} )) 
+                   fact1_identify = rowSums(select(tmp, {{identify_cols}} )), 
+                   fact2_describe = rowSums(select(tmp, {{describe_cols}} )), 
+                   fact3_thinking = rowSums(select(tmp, {{thinking_cols}} )) 
   ) 
+  if(!is.null(prefix)){
+    tmp <- rename_all(tmp, ~paste0(prefix, .x))
+  }
   
   if(keep_all){
-    bind_cols(select(data, -one_of(names(data)[names(data) %in% names(tmp)])), 
-              tmp)
-  }else{
-    tmp
+    tmp <- bind_cols(data, tmp)
   }
+  tmp
 }
 
-if(getRversion() >= "2.15.1")  utils::globalVariables(paste0("TAS_", stringr::str_pad(1:20, 2, "left", 0)))
+if(getRversion() >= "2.15.1")  
+  utils::globalVariables(sprintf("tas_%02d", 1:20))

@@ -6,20 +6,26 @@
 \usage{
 tas_compute(
   data,
-  feeling_cols = c(TAS_01, TAS_03, TAS_06, TAS_07, TAS_09, TAS_13, TAS_14),
-  descr_cols = c(TAS_02, TAS_04, TAS_11, TAS_12, TAS_17),
-  ext_cols = c(TAS_05, TAS_08, TAS_10, TAS_15, TAS_16, TAS_18, TAS_19, TAS_20),
+  reverse_cols = c(tas_04, tas_05, tas_10, tas_18),
+  identify_cols = c(tas_01, tas_03, tas_06, tas_07, tas_09, tas_13, tas_14),
+  describe_cols = c(tas_02, tas_04, tas_11, tas_12, tas_17),
+  thinking_cols = c(tas_05, tas_08, tas_10, tas_15, tas_16, tas_18, tas_19, tas_20),
+  prefix = "tas_",
   keep_all = TRUE
 )
 }
 \arguments{
 \item{data}{Data containing TAS data}
 
-\item{feeling_cols}{Columns for the "identify feeling" factor}
+\item{reverse_cols}{Columns that need reversing}
 
-\item{descr_cols}{Columns for the "describing feelings" factor}
+\item{identify_cols}{Columns for the "identify feeling" factor}
 
-\item{ext_cols}{Columns for the "externally oriented thinking" factor}
+\item{describe_cols}{Columns for the "describing feelings" factor}
+
+\item{thinking_cols}{Columns for the "externally oriented thinking" factor}
+
+\item{prefix}{string to prefix column names of computed values}
 
 \item{keep_all}{logical, append to data.frame}
 }
