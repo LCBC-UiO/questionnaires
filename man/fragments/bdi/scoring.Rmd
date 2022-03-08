@@ -1,0 +1,15 @@
+The questionnaire consists of 21 statements, each reflecting a depression symptom or attitude which could be rated from 0 to 3 in terms of intensity. 
+The answers should be based the participant´s feelings throughout the last week, including the day of filling out the form. 
+The sum of the scores of the items (0-3) yields one total score, with a possible range between 0 and 62.
+
+### Interpretation of the scores (Total scores)
+|Score|Category|
+|---|---|
+|0-10|These ups and downs are considered to be normal|
+|11-16|Mild mood disturbance|
+|17 – 20|Borderline clinical disturbance|
+|21 – 30|Moderate depression|
+|31 – 40|Severe depression|
+|Above 40|Extreme depression|
+
+If a participant scores `>= 17`, we should consider contacting the participant to follow up on this and offer making a note for the participant's doctor describing the scores.

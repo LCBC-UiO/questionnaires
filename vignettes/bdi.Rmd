@@ -14,23 +14,26 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 options(rmarkdown.html_vignette.check_title = FALSE)
+frag_path <- here::here("man", "fragments", "bdi")
+paths <- list.files(frag_path, "Rmd", full.names = TRUE)
+names(paths) <- gsub("\\.Rmd", "", basename(paths))
+paths <- as.list(paths)
 ```
 
 ```{r setup, eval = TRUE}
-library(Questionnaires)
+library(questionnaires)
 ```
 
-## Bakcground
+## Background
 
-Beck Depression Inventory-II (BDI-II) is one of the most widely used instruments for measuring the severity of self-reported depression in adolescents and adults. 
-As a general rule, BDI-II is administrated in LCBC to adults with an upper cut off around 60 years, while depression in older adults is assessed with the Geriatric Depression Scale (GDS). 
-However, please consult the instructions for each project, as this guideline has been implemented at different time points across the projects.
+```{r child=paths$background, eval = TRUE} 
+```
 
-## Symptom specifications 
-The questionnaire consists of 21 statements, each reflecting a depression symptom or attitude which could be rated from 0 to 3 in terms of intensity. 
-The answers should be based the participant´s feelings throughout the last week, including the day of filling out the form. 
-The sum of the scores of the items (0-3) yields one total score, with a possible range between 0 and 62.
+## Scoring
+```{r child=paths$scoring, eval = TRUE} 
+```
 
+### Questionnaire items
 **1:**  Sadness  
 **2:**  Pessimism  
 **3:**  Past failure  
@@ -56,34 +59,16 @@ The sum of the scores of the items (0-3) yields one total score, with a possible
 **Weight loss format:**  
 For item 18, weight loss intention if applicable should be punched as numbers with decimals.
 
-### Interpretation of the scores (Total scores)
-|Score|Category|
-|---|---|
-|0-10|These ups and downs are considered to be normal|
-|11-16|Mild mood disturbance|
-|17 – 20|Borderline clinical disturbance|
-|21 – 30|Moderate depression|
-|31 – 40|Severe depression|
-|Above 40|Extreme depression|
-
-If a participant scores `>= 17`, we should consider contacting the participant to follow up on this and offer making a note for the participant's doctor describing the scores.
-
 #### Suicidality
 Please note that this questionnaire includes one question (q 9) regarding suicidal thoughts. 
 In the case of scores above 1 on this item, the participant should be contacted to for a follow up. 
 This should be described in the **clinical observation document** . 
-If the participant scores 3 on this question ("_Jeg vil ta livet mitt om jeg fikk sjansen_"), this should obviously be taken very seriously, and the participant should be contacted immediately.
-
+If the participant scores 3 on this question ("_Jeg vil ta livet mitt om jeg fikk sjansen_" / "_I would killl my self if I had the chance"_), this should obviously be taken very seriously, and the participant should be contacted immediately.
 
 ## Data requirements  
-### Column names
-By default, the functions assume that columns have names in the manner of `bdi_XX` where `XX` is a zero-padded (i.e. zero in front of numbers belof 9, eg. `09`) question number of the inventory. 
-You may have column names in another format, but in that case you will need to supply to the functions the names of those columns using tidy-selectors (see the [tidyverse](https://www.tidyverse.org/) packages for this).
-The columns should adhere to some naming logic that is easy to specify.
 
-### Data values
-The values in the columns should be the item number of the question that was answered (i.e. `0`, `1`, `2`, or `3`). 
-The inventory allows subjects to respond to several options per question, in the case of this, the mean of the responded alternatives should be applied. 
+```{r child=paths$datareq, eval = TRUE} 
+```
 
 ## Using the `bdi` functions
 
@@ -194,8 +179,5 @@ bdi_restructure(dat)
 
 ## References
 
-Aaron T.Beck, Robert A.Steer, Margery G.Carbin (1988) Psychometric properties of the Beck Depression Inventory: Twenty-five years of evaluation, _Clinical Psychology Review, Volume_ 8, Issue 1, Pages 77-100, [doi: 10.1016/0272-7358(88)90050-5](https://doi.org/10.1016/0272-7358(88)90050-5)
-
-Robert A.Steer, David J.Rissmiller, Aaron T.Beck (2000) Use of the Beck Depression Inventory-II with depressed geriatric inpatients _Behaviour Research and Therapy_ Volume 38, Issue 3,Pages 311-318, [doi: https://doi.org/10.1016/S0005-7967(99)00068-6](https://doi.org/10.1016/S0005-7967(99)00068-6)
- 
-Groth-Marnat G. (1990). [The handbook of psychological assessment (2nd ed.)](https://books.google.no/books?id=ldF5oRto-HAC&lpg=PR13&ots=Id0OKllubF&dq=Groth-Marnat%20G.%20(1990).%20The%20handbook%20of%20psychological%20assessment%20(2nd%20ed.).%20New%20York%3A%20John%20Wiley%20%26%20Sons.&lr&hl=no&pg=PR13#v=onepage&q&f=false). New York: John Wiley & Sons.
+```{r child=paths$references, eval = TRUE} 
+```

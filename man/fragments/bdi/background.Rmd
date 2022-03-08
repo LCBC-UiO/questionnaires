@@ -1,0 +1,3 @@
+Beck Depression Inventory-II (BDI-II) is one of the most widely used instruments for measuring the severity of self-reported depression in adolescents and adults. 
+As a general rule, BDI-II is administrated in LCBC to adults with an upper cut off around 60 years, while depression in older adults is assessed with the Geriatric Depression Scale (GDS). 
+However, please consult the instructions for each project, as this guideline has been implemented at different time points across the projects.

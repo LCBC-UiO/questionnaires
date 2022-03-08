@@ -19,15 +19,15 @@ data frame
 \description{
 If data come from Nettskjema, the structure is
 in wide format, with each question option as
-columns, creating 21*4 columns of data. 
+columns, creating 21*4 columns of data.
 This function allows you to gather and create
 single columns for questions.
 }
 \details{
 The columns must adhere to some specific logic to work.
-It is recommended that the column names are in 
+It is recommended that the column names are in
 the format bdi_01_0 bdi_01_1 bdi_01_2 bdi_01_3,
-where the first two numbers are the question 
+where the first two numbers are the question
 number, and the last number is the option number.
 }
 \examples{

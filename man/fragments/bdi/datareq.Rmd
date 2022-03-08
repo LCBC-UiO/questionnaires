@@ -1,0 +1,8 @@
+### Column names
+By default, the functions assume that columns have names in the manner of `bdi_XX` where `XX` is a zero-padded (i.e. zero in front of numbers below 9, eg. `09`) question number of the inventory. 
+You may have column names in another format, but in that case you will need to supply to the functions the names of those columns using tidy-selectors (see the [tidyverse](https://www.tidyverse.org/) packages for this).
+The columns should adhere to some naming logic that is easy to specify.
+
+### Data values
+The values in the columns should be the item number of the question that was answered (i.e. `0`, `1`, `2`, or `3`). 
+The inventory allows subjects to respond to several options per question, in the case of this, the mean of the responded alternatives should be applied. 

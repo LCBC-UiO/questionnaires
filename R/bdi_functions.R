@@ -1,20 +1,23 @@
-#' Calculate sum of BDI
-#'
-#' @param data Data containing BDI data
-#' @param cols Columns that contain BDI data
-#' @param max_missing Maximum number of components allowed to be missing.
-#'   Defaults to "0", and will return \code{NA} if missing any question. If set to
-#'   \code{NULL} any missing component counts as 0, meaning if all BDI
-#'   components are missing, the sum is still 0, not \code{NA}.
-#'
-#' @return numeric
+#' @rdname bdi
+#' @title Calculate BDI scores
+#' @description {
+#' ```{r child="man/fragments/bdi/background.Rmd"}
+#' ```
+#' ```{r child="man/fragments/bdi/scoring.Rmd"}
+#' ```
+#' ## Data requirements
+#' ```{r child="man/fragments/bdi/datareq.Rmd"}
+#' ```
+#' ## References
+#' ```{r child="man/fragments/bdi/references.Rmd"}
+#' ```
+#' }
+#' @return data.frame
 #' @export
-#' @family bdi_functions
-#' @importFrom dplyr select matches
 #' @examples
 #' # Example of treatment of missing values
 #' library(dplyr)
-#' library(Questionnaires)
+#' library(questionnaires)
 #' data <- tibble(
 #' bdi_01 = c(1, NA_real_, NA_real_, 2, 1),
 #' bdi_02 = c(1, 1, NA_real_, 2, NA_real_)
@@ -29,7 +32,35 @@
 #' # Allow one missing value
 #' data %>%
 #'   bind_cols(bdi_sum = bdi_compute_sum(data, max_missing = 2))
-#' 
+#' @importFrom dplyr transmute rename_all bind_cols
+#' @template keep_all 
+#' @template prefix
+bdi_compute = function(data, 
+                       cols = matches("bdi_[0-9][0-9]$"), 
+                       max_missing = 0, 
+                       prefix = "bdi_",
+                       keep_all = TRUE){
+  tmp <- transmute(data, 
+                   sum = bdi_compute_sum(data, cols, max_missing = max_missing),
+                   coded = bdi_factorise(sum))
+  if(!is.null(prefix))
+    tmp <- rename_all(tmp, ~paste0(prefix, .x))
+  
+  if(keep_all)
+    tmp <- bind_cols(data, tmp)
+  
+  tmp
+}
+
+#' @param data Data containing BDI data
+#' @param cols Columns that contain BDI data
+#' @param max_missing Maximum number of components allowed to be missing.
+#'   Defaults to "0", and will return \code{NA} if missing any question. If set to
+#'   \code{NULL} any missing component counts as 0, meaning if all BDI
+#'   components are missing, the sum is still 0, not \code{NA}.
+#' @importFrom dplyr select matches
+#' @export
+#' @describeIn bdi Compute the BDI sum based on a data.frame containing the BDI data. Returns a numeric vector.
 bdi_compute_sum = function(data, cols = matches("bdi_[0-9][0-9]$"), max_missing = 0){
   # If raw BDI is punched, calculate the sum
   if(is.null(max_missing)){
@@ -46,15 +77,10 @@ bdi_compute_sum = function(data, cols = matches("bdi_[0-9][0-9]$"), max_missing 
   }
 }
 
-
-#' Factorize BDI sum
-#'
 #' @param bdi_sum Sum of BDI questions, as summed by [bdi_compute_sum]
-#' @importFrom dplyr case_when
-#' @return factor
 #' @export
-#' @family bdi_functions
-bdi_factorise <- function(bdi_sum = sum){
+#' @describeIn bdi Create a factor based on the BDI sum, with the cut-off points as described in original paper.
+bdi_factorise <- function(bdi_sum){
   tmp <- case_when(
     bdi_sum <= 10 ~ "normal",
     bdi_sum <= 16 ~ "mild mood disturbance",
@@ -72,35 +98,6 @@ bdi_factorise <- function(bdi_sum = sum){
                     "extreme depression"),
          ordered = TRUE
   )
-}
-
-#' Compute all BDI data from questionnaire
-#' 
-#' Computes the sum and factorises the sum into 
-#' the four BDI categories based on the sum
-#'
-#' @inheritParams bdi_compute_sum
-#' @template keep_all 
-#' @template prefix
-#' @return data.frame
-#' @export
-#' @family bdi_functions
-#' @importFrom dplyr transmute rename_all bind_cols
-bdi_compute = function(data, 
-                       cols = matches("bdi_[0-9][0-9]$"), 
-                       max_missing = 0, 
-                       prefix = "bdi_",
-                       keep_all = TRUE){
-  tmp <- transmute(data, 
-                   sum = bdi_compute_sum(data, cols, max_missing = max_missing),
-                   coded = bdi_factorise(sum))
-  if(!is.null(prefix))
-    tmp <- rename_all(tmp, ~paste0(prefix, .x))
-  
-  if(keep_all)
-    tmp <- bind_cols(data, tmp)
-  
-  tmp
 }
 
 #' Restructure BDI questions from wide format
