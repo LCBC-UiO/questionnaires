@@ -1,3 +1,9 @@
+# questionnaires 0.0.2
+
+- altered the logic for the existing questionnaires, are now more robust
+- all _cmompute functions also take a prefix argument for better control of output
+- package name changed from Questionnaires to questionnaires
+
 # Questionnaires 0.0.1
 
 ## 15.01.2020

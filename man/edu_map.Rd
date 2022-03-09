@@ -21,16 +21,16 @@ edu_map_num(from = 9, to = 4)
 Converting from a high-level educational
 coding to a lower level one is cumbersome.
 This function bases it self in any coding
-scheme specified in \code{\link{edu_levels}} 
-and tries 
+scheme specified in \code{\link{edu_levels}}
+and tries
 creating a conversion table between two
 specified schemas.
 }
 \details{
 Specialized returns
 \itemize{
- \item{edu_map - }{returns a data.frame of two named vectors}
- \item{edu_map_chr - }{returns a data.frame with two character vectors}
- \item{edu_map_num - }{returns a data.frame with two numeric vectors}
+\item{edu_map - }{returns a data.frame of two named vectors}
+\item{edu_map_chr - }{returns a data.frame with two character vectors}
+\item{edu_map_num - }{returns a data.frame with two numeric vectors}
 }
 }

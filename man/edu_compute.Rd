@@ -30,7 +30,7 @@ edu_compute(
 a data.frame
 }
 \description{
-Using existing data in the MOAS, fills in gaps, 
+Using existing data in the MOAS, fills in gaps,
 converts from on type of coding to another etc.
 }
 \examples{

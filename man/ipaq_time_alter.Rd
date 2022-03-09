@@ -18,7 +18,7 @@ data.frame
 Time is often punched as HH:MM in order
 to preserve correct time calculations.
 The ipaq calculation recure time to be
-in decimal minutes. 
+in decimal minutes.
 This function easily changes HH:MM into
 decminal minutes in a data.frame
 It alters columns directly in the data.frame
@@ -33,8 +33,6 @@ ipaq_time_alter(dat, cols = c(time_1, time_2))
 \seealso{
 Other ipaq_functions: 
 \code{\link{ipaq_compute_met}()},
-\code{\link{ipaq_compute_sum}()},
-\code{\link{ipaq_compute}()},
 \code{\link{ipaq_mets}()}
 }
 \concept{ipaq_functions}

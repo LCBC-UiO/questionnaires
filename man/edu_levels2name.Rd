@@ -27,9 +27,9 @@ to names of the levels
 \details{
 Specialized returns
 \itemize{
- \item{edu_levels2name - }{transforms levels to names for levels specified}
- \item{edu4_levels2name - }{transforms levels to names for 4-levels scheme}
- \item{edu9_levels2name - }{transforms levels to names for 9-levels scheme}
+\item{edu_levels2name - }{transforms levels to names for levels specified}
+\item{edu4_levels2name - }{transforms levels to names for 4-levels scheme}
+\item{edu9_levels2name - }{transforms levels to names for 9-levels scheme}
 }
 }
 \examples{

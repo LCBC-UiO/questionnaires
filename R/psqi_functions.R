@@ -1,7 +1,7 @@
 
 #' PSQI compute time in bed
-#' @param bedtime column name with bedtime (HH:MM:SS) [psqi_01]
-#' @param risingtime column name with rising time (HH:MM:SS) [psqi_03]
+#' @param bedtime column name with bedtime (HH:MM:SS) (psqi_01)
+#' @param risingtime column name with rising time (HH:MM:SS) (psqi_03)
 #' @param risingtime_func function to convert time to \code{Period}
 #' @param bedtime_func function to convert time to \code{Period}
 #' @importFrom dplyr if_else
@@ -14,15 +14,9 @@ psqi_compute_time_in_bed <- function(risingtime, bedtime,
   period_to_seconds(if_else(as.numeric(tmp) < 0, hours(24) + tmp, tmp))/3600
 }
 
-#' compute component PSQI 2
-#' 
-#' computes the second PSQI component on sleep quality, 
-#' using the number of minutes before sleep (PSQI Q2) and
-#' subjective evaluation of sleep within 30 minutes
-#' 
-#' @param min_before_sleep column name with no. minutes before sleep (numeric) [psqi_02]
-#' @param no_sleep_30min column name with evaluation of sleep within 30min (0-3) [psqi_05a]
-#' @family psqi_functions
+#' @param min_before_sleep column name with no. minutes before sleep (numeric) (psqi_02)
+#' @param no_sleep_30min column name with evaluation of sleep within 30min (0-3) (psqi_05a)
+#' @describeIn psqi_compute calculate the component 2 (sleep latency)
 #' @export
 psqi_compute_comp2 <- function(min_before_sleep, no_sleep_30min){
   
@@ -34,23 +28,18 @@ psqi_compute_comp2 <- function(min_before_sleep, no_sleep_30min){
   
 }
 
-#' compute component PSQI 3
-#' 
-#' @param hours_sleep column name with hours of sleep (decimal hours) [psqi_04]
-#' @family psqi_functions
+#' @param hours_sleep column name with hours of sleep (decimal hours) (psqi_04)
+#' @describeIn psqi_compute calculate the component 3 (sleep duratione)
 #' @export
 psqi_compute_comp3 <- function(hours_sleep){
   4L - cut(hours_sleep, breaks = c(0, 4.999, 5.999, 7, Inf), 
            labels = FALSE, include.lowest = TRUE, right = TRUE)
 }
 
-#' compute component PSQI 4
-#' 
-#' @param bedtime column name with bedtime (HH:MM:SS) [psqi_01]
-#' @param risingtime column name with rising time (HH:MM:SS) [psqi_03]
-#' @param hours_sleep column name with hours of sleep (decimal hours) [psqi_04]
+#' @param bedtime column name with bedtime (HH:MM:SS) (psqi_01)
+#' @param risingtime column name with rising time (HH:MM:SS) (psqi_03)
 #' @param ... other arguments to \code{\link{psqi_compute_time_in_bed}}
-#' @family psqi_functions
+#' @describeIn psqi_compute calculate the component 4 (habitual sleep efficiency)
 #' @export
 psqi_compute_comp4 <- function(hours_sleep, bedtime, risingtime, ...){
   4L - cut(hours_sleep / psqi_compute_time_in_bed(risingtime, bedtime, ...) * 100,
@@ -58,11 +47,9 @@ psqi_compute_comp4 <- function(hours_sleep, bedtime, risingtime, ...){
            right = FALSE)
 }
 
-#' compute component PSQI 5
-#' 
 #' @param data data frame with the data
-#' @param sleep_troubles columns containing sleep problem evaluations (0-3) [psqi_05[b-j] ]
-#' @family psqi_functions
+#' @param sleep_troubles columns containing sleep problem evaluations (0-3) (psqi_05(b-j) )
+#' @describeIn psqi_compute calculate the component 5 (sleep disturbance)
 #' @export
 #' @importFrom dplyr select mutate if_else pull
 psqi_compute_comp5 <- function(data, sleep_troubles = matches("^psqi_05[b-j]$")){
@@ -78,11 +65,9 @@ psqi_compute_comp5 <- function(data, sleep_troubles = matches("^psqi_05[b-j]$"))
       labels = FALSE, include.lowest = TRUE, right = FALSE) - 1L
 }
 
-#' Calculate component 7 of PSQI
-#' 
-#' @param keep_awake column name with evaluation of staying awake (0-3) [psqi_08]
-#' @param keep_enthused column name with evaluation of keeping enthusiastic (0-3) [psqi_09]
-#' @family psqi_functions
+#' @param keep_awake column name with evaluation of staying awake (0-3) (psqi_08)
+#' @param keep_enthused column name with evaluation of keeping enthusiastic (0-3) (psqi_09)
+#' @describeIn psqi_compute calculate the component 7 (daytime dysfunction)
 #' @export
 psqi_compute_comp7 <- function(keep_awake, keep_enthused){
   cut(keep_awake + keep_enthused,
@@ -90,13 +75,11 @@ psqi_compute_comp7 <- function(keep_awake, keep_enthused){
       right = TRUE) - 1L
 }
 
-#' Compute Global PSQI component
-#' 
 #' @param data Data frame containing PSQI components
 #' @param cols columns containing the components
 #' @family psqi_functions
-#' @inheritParams psqi_compute
 #' @export
+#' @describeIn psqi_compute calculate the global scores, sum of all components
 #' @importFrom dplyr summarise if_else select group_by
 #' @importFrom tidyr gather
 psqi_compute_global <- function(data, cols = matches("comp[1-7]+_"), max_missing = 0){
@@ -118,21 +101,24 @@ psqi_compute_global <- function(data, cols = matches("comp[1-7]+_"), max_missing
   tmp$value
 }
 
-#' compute all PSQI components and global score
+#' Compute all PSQI components and global score
+#' 
+#' ```{r child="man/fragments/psqi/background.Rmd"}
+#' ```
+#' ##Scoring
+#' ```{r child="man/fragments/psqi/scoring.Rmd"}
+#' ```
+#' ## Data requirements
+#' ```{r child="man/fragments/psqi/datareq.Rmd"}
+#' ```
+#' ## References
+#' ```{r child="man/fragments/psqi/references.Rmd"}
+#' ```
 #' 
 #' @param data data frame
-#'
 #' @param components integer vector of components to calculate. If all 7, global is added also
-#' @param bedtime column name with bedtime (HH:MM:SS) [psqi_01]
-#' @param min_before_sleep column name with no. minutes before sleep (numeric) [psqi_02]
-#' @param risingtime column name with rising time (HH:MM:SS) [psqi_03]
-#' @param hours_sleep column name with hours of sleep (decimal hours) [psqi_04]
-#' @param no_sleep_30min column name with evaluation of sleep within 30min (0-3) [psqi_05a]
-#' @param sleepquality column name with evaluation of sleep quality (0-3) [psqi_06]
-#' @param medication column name with use of sleep mediation (0-3) [psqi_07]
-#' @param keep_awake column name with evaluation of staying awake (0-3) [psqi_08]
-#' @param keep_enthused column name with evaluation of keeping enthusiastic (0-3) [psqi_09]
-#' @param sleep_troubles columns containing sleep problem evaluations (0-3) [psqi_05[a-j] ]
+#' @param sleepquality column name with evaluation of sleep quality (0-3) (psqi_06)
+#' @param medication column name with use of sleep mediation (0-3) (psqi_07)
 #' @param max_missing Integer specifying the number of missing values to accept in the PSQI components, 
 #' before the global PSQI value is set to missing. Defaults to 0. If \code{max_missing > 0}, the 
 #' global PSQI value is computed by weighting each non-missing entry with \code{7 / (7 - max_missing)}.

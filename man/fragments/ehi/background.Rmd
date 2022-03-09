@@ -1,0 +1,3 @@
+The Edinburgh Handedness Inventory is a measurement scale used to assess the dominance of a person's right or left hand in everyday activities, sometimes referred to as laterality. 
+The inventory can be used by an observer assessing the person, or by a person self-reporting hand use. 
+The latter method tends to be less reliable due to a person over-attributing tasks to the dominant hand.

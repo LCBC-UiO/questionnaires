@@ -1,0 +1,20 @@
+### Column naming
+The easiest is to have data coded as in the NOAS, as this will let you use default values for the arguments. 
+The column names in the NOAS all start with `gds_` and then are followed by a two-digit numbering of the question: 
+
+gds_01,  
+gds_02,   
+gds_03,   
+...  
+gds_28,  
+gds_29,   
+gds_30  
+
+If your data is coded differently, a consistent naming scheme should help you use the functions anyway.
+
+### Data values
+Each row of data should belong to a single answer to the entire questionnaire.
+Meaning if you have multiple answers to the questionnaire over time, these should be placed in another row, duplicating the participant ID, together with a column indicating the timepoint the data was collected in.
+Data values are binary yes and no answers to the GDS. 
+While the functions are made in such a way that any type of binary coding works well, the default is set to be `yes = 1`, `no = 0`.
+These can be altered by applying the `gds_values` functions to the other functions asking for the coding schema.

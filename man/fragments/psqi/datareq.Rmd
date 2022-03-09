@@ -1,0 +1,23 @@
+### Column names
+Questions with multiple subquestions should be named in a similar manner, suffixed by the alphabetical index (**psqi_5a**, **psqi_5b** etc.). 
+For questions 5j and 10j, the frequency of occurence should have the names **psqi_5j** and **psqi_10e**, and the freehand explanations should have any type of **suffix** after this to indicate a text answers (i.e. **psqi_5j_Desc** or **psqi_5j_string**, **psqi_5j_freehand**). 
+ As an example, LCBC has the following set-up:  
+ 
+- **psqi_1**  
+- **psqi_2**  
+- **psqi_3**  
+- **psqi_4**  
+- **psqi_5a** **psqi_5b** **psqi_5c** **psqi_5d** **psqi_5e** **psqi_5f** **psqi_5g** **psqi_5h** **psqi_5i** **psqi_5j** **psqi_5j_Coded** **psqi_5j_Desc**   
+- **psqi_6**        
+- **psqi_7**  
+- **psqi_8**  
+- **psqi_9**  
+- **psqi_10** **psqi_10a** **psqi_10b** **psqi_10c** **psqi_10d** **psqi_10e** **psqi_10e_Desc** **psqi_10e_Coded**  
+- **psqi_11a** **psqi_11b** **psqi_11c** **psqi_11d**  
+
+### 4-option questions coding
+All 4-option questions need to be coded **0-3**, not **1-4**.
+
+### Time formats
+For question 1, 3 and 4 (bedtime, rising time, hours of sleep), data should be punched as "**HH:MM**". 
+Question 2 should be punched as minutes in numbers.

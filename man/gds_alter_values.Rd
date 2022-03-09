@@ -27,8 +27,6 @@ Necessary step for computing the total score
 Other gds_functions: 
 \code{\link{gds_binary}()},
 \code{\link{gds_compute_sum}()},
-\code{\link{gds_compute}()},
-\code{\link{gds_factorise}()},
 \code{\link{gds_values}()}
 }
 \concept{gds_functions}

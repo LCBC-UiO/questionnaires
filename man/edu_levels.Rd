@@ -27,9 +27,9 @@ of coding schemas employed by LCBC.
 \details{
 Specialized returns
 \itemize{
- \item{edu_levels - }{returns named numeric vector for levels specified}
- \item{edu4_levels - }{returns named numeric vector for 4-levels scheme}
- \item{edu9_levels - }{returns named numeric vector for 9-levels scheme}
+\item{edu_levels - }{returns named numeric vector for levels specified}
+\item{edu4_levels - }{returns named numeric vector for 4-levels scheme}
+\item{edu9_levels - }{returns named numeric vector for 9-levels scheme}
 }
 }
 \examples{

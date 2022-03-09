@@ -1,0 +1,16 @@
+One row of data should refer to a single questionnaire answered, and as such, if a person has answered multiple times, these should appear on separate rows with columns identifying ID and time point per observation.
+
+### Column names
+For ease, we recommend naming the columns in a consistent way, so the functions in this package become easier to use. 
+The LCBC database follows a naming scheme that prefixes all columns with `ehi_` and ends with a zero-padded double digit indicator of the question number.
+
+### Data values
+The cell values in the data should be coded from -2 through 0 to 2, and there should be a single value per question. 
+
+|value|category               |
+|--:  |:--                    |
+| -2  | Left hand dominance   |
+| -1  | Left hand preference  |
+|  0  | No preference         |
+|  1  | Right hand preference |
+|  2  | Right hand dominance  |

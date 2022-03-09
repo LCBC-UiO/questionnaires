@@ -67,19 +67,15 @@ gds_alter_values <- function(data, values = gds_values(), reverse = FALSE,
 
 #' Compute the GDS sum
 #' 
-#' Calculates the GDS total score based
-#' on the columns indicated, with reversal
-#' of the columns indicated.
-#' 
 #' @param data data.frame with GDS data in it
-#'
 #' @param cols GDS data columns
 #' @param cols_rev Columns for reversal of binary code
 #' @param values named vector of 2 providing the coding for Yes and No answers c(Yes = 1, No = 2)
 #' @export
 #' @return numeric
-#' @importFrom dplyr matches select
+#' @importFrom dplyr select
 #' @family gds_functions
+#' @describeIn gds_compute Calculate the total GDS score
 gds_compute_sum <- function(data, 
                             cols = dplyr::matches("[0-3][0-9]$"),
                             cols_rev = dplyr::matches("01$|05$|07$|09$|15$|19$|21$|27$|29$|30$"),
@@ -95,10 +91,10 @@ gds_compute_sum <- function(data,
 #' Factorise the GDS sum
 #'
 #' @param gds_sum numeric vector of GDS sums
-#'
 #' @return factor
 #' @export
 #' @family gds_functions
+#' @describeIn gds_compute Create a factor from the sum of the GDS scores
 gds_factorise <- function(gds_sum){
   tmp <- case_when(
     gds_sum <= 9 ~ "normal",
@@ -112,8 +108,19 @@ gds_factorise <- function(gds_sum){
 
 #' Compute GDS score
 #' 
+#' ```{r child="man/fragments/gds/background.Rmd"}
+#' ```
+#' ##Scoring
+#' ```{r child="man/fragments/gds/scoring.Rmd"}
+#' ```
+#' ## Data requirements
+#' ```{r child="man/fragments/gds/datareq.Rmd"}
+#' ```
+#' ## References
+#' ```{r child="man/fragments/gds/references.Rmd"}
+#' ```
+#' 
 #' @param data data.frame with GDS data in it
-#'
 #' @param cols GDS data columns
 #' @param cols_rev Columns for reversal of binary code
 #' @param values named vector of 2 providing the coding for Yes and No answers c(Yes = 1, No = 2)

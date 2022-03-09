@@ -1,0 +1,47 @@
+Scoring of the IPAQ is based on a metric called METs, which are multiples of the resting metabolic rate.
+[The IPAQ scoring description can be found here ](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnx0aGVpcGFxfGd4OjE0NDgxMDk3NDU1YWRlZTM)
+
+
+### Continuous Score
+
+Expressed as MET-min per week: MET level x minutes of activity/day x days per week
+
+MET levels:
+
+* **Light** - 3.3 METs
+
+* **Moderate** - 4.0 METs
+
+* **Vigorous** - 8.0 METs
+
+Total MET-minutes/week = Light (3.3 x min x days) + Mod (4.0 x min x days) + Vig (8.0 x min x days)
+
+
+### Categorical Score
+
+Three levels (categories) of physical activity are proposed:
+
+#### Category 1: Low
+
+This is the lowest level of physical activity. Those individuals who not meet criteria for categories 2 or 3 are considered low/inactive. 
+
+#### Category 2: Moderate
+
+Any one of the following 3 criteria:
+
+* 3 or more days of vigorous activity of at least 20 minutes per day **OR**
+
+* 5 or more days of moderate-intensity activity or walking of at least 30 minutes per day **OR**
+
+* 5 or more days of any combination of walking, moderate-intensity or vigorous intensity activities achieving a minimum of at least 600 MET-min/week. 
+
+
+#### Category 3: High
+
+Any one of the following 2 criteria:
+
+* Vigorous-intensity activity on at least 3 days and accumulating at least 1500 MET-minutes/
+week **OR**
+
+* 7 or more days of any combination of walking, moderate-intensity or vigorous
+intensity activities achieving a minimum of at least 3000 MET-minutes/week 

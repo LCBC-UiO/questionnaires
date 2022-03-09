@@ -59,21 +59,22 @@ RemeberImagine = function(FILE){
   #### PCA v.1 ####
   #--------------------#
   
-  # readme: Procedure: Following two guidelines   
-  # PCA v.2 - As in Andy Fields # and       
-  # see https://rpubs.com/hauselin/reliabilityanalysis 
-  # see that our aim it two obtain a single component thus deviating from 
-  # typical PCA analysis that want to explain theunderlying structure of data. 
-  # as in Ostby (PNAS, 2010) the 13th item -specficic for the future- has not been taken into account. This item 
-  # has been inconsistely been recorded for the participants (ask Ostby for more info on this item)
-  # the main a priori decision has been to average for each participant the scores on each questionaire item (regardless it was future or past)
-  # then, several items with poor contribution or that lead to lower scale reliability have been dismissed from the PCA. 
-  # The procedure is detailed in the following lines. 
+  # readme: Procedure: Following two guidelines PCA v.2 - As in Andy Fields #
+  # and see https://rpubs.com/hauselin/reliabilityanalysis see that our aim it
+  # two obtain a single component thus deviating from typical PCA analysis that
+  # want to explain the underlying structure of data. as in Østby (PNAS, 2010)
+  # the 13th item - specific for the future - has not been taken into account.
+  # This item has been inconsistently been recorded for the participants (ask
+  # Østby for more info on this item) the main a priori decision has been to
+  # average for each participant the scores on each questionnaire item
+  # (regardless it was future or past) then, several items with poor
+  # contribution or that lead to lower scale reliability have been dismissed
+  # from the PCA. The procedure is detailed in the following lines.
   
   
   
   
-  # item reversals - not strictly necesary as it can be explicited later; but minimizes errors notheless
+  # item reversals - not strictly necessary as it can be explicated later; but minimizes errors nonetheless
   db.current <- db.current[Vars]
   db.current <- transform(db.current, Past_1_01 = ((-1*Past_1_01)+6),
                           Past_2_01 = ((-1*Past_2_01)+6),

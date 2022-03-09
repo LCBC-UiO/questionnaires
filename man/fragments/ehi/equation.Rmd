@@ -1,0 +1,15 @@
+<!-- ```{r, include=FALSE} -->
+<!-- equation <- "\\frac{\\Sigma(|positive|)-\\Sigma(|negative|)}{\\Sigma(|positive|)+\\Sigma(|negative|)}x100" -->
+<!-- html <- knitr::is_html_output() -->
+<!-- rd <- !html -->
+<!-- ``` -->
+<!--  -->
+<!-- ```{r, include=html} -->
+<!-- katex::katex_html(equation) -->
+<!-- ``` -->
+
+<!-- ```{r, include=rd, results='asis'} -->
+<!-- eval(parse(text=sprintf("\\Sexpr[results=rd, stage=build]{katex::math_to_rd('%s')}", equation))) -->
+<!-- ``` -->
+
+

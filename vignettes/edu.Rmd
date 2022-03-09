@@ -15,7 +15,6 @@ knitr::opts_chunk$set(
 options(rmarkdown.html_vignette.check_title = FALSE)
 library(dplyr)
 library(knitr)
-library(kableExtra)
 ```
 
 Education variables are one of the more complicated variables in the NOAS, as they have been asked in several different ways and can be coded in a multitude of ways. This is even more complicated by the lifespan aspect of our data, where not all participants have been attending school for the same number of years despite completing mandatory schooling in Norway. While the education variables in the NOAS attempt to reflect the real educational levels of the participants, the changes in the Norwegian school system means the variables need to be interpreted with care.
@@ -62,7 +61,7 @@ All the functions start with `edu`, and should have names to indicate what they 
 There are several functions to help assess the different coding schemes we have (currently two, 4 and 9).
 To inspect the coding schemas, you can call the `edu_levels()` function, with either `4` or `9` as argument.
 ```{r}
-library(Questionnaires)
+library(questionnaires)
 edu_levels(4)
 edu_levels(9)
 ```

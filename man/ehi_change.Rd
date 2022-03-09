@@ -15,8 +15,8 @@ ehi_change(x, direction = 1)
 numeric vector
 }
 \description{
-Since the coding we have opten here uses 
-negative numbers to indicate left-hand 
+Since the coding we have often uses
+negative numbers to indicate left-hand
 preferences, a specialized function is here
 to return a vector with only the values asked
 for.

@@ -59,20 +59,11 @@ ipaq_mets <- function(light = 3.3, moderate = 4.0, vigorous = 8.0){
 }
 
 #' Compute met from IPAQ
-#'
-#' To calculate the met score for a met category,
-#' the minutes spent and the number of days of this 
-#' activity needs to be multiplied with the met-value 
-#' of the activity. This function allows you to specify
-#' a vector with the minutes, another with the days, and
-#' lastly a value to use as the met of that activity level.
-#'
 #' @param minutes vector of numeric minutes
 #' @param days vector of numeric days
 #' @param met met number (light = 3.3, moderate = 4.0, vigorous = 8)
-#' @family ipaq_functions
-#' @return numeric vector
 #' @export
+#' @describeIn ipaq_compute Calculate mets of an activity type
 #' @examples 
 #' ipaq_vig_mins <- c(60, 20, 60, 25, 90, 20, 0, 75, 60, 30)
 #' ipaq_vig_days <- c(1, 3, 2, 5, 6, 1, 1, 2, 2, 4)
@@ -85,18 +76,11 @@ ipaq_compute_met <- function(minutes = ipaq_2,
 
 
 #' Calculate the IPAQ sum
-#' 
-#' The IPAQ sum is based on the calculated met-scores
-#' for the three categories of met activity.
-#' This function takes three arguments, which are
-#' the pre-calculated met scores for each category.
-#' 
 #' @param vigorous Vector with vigorous met calculated
 #' @param moderate Vector with moderate met calculated
 #' @param light Vector with light met calculated
 #' @export
-#' @family ipaq_functions
-#' @return numeric vector
+#' @describeIn ipaq_compute Calculate the IPAQ sum based on activities and mets
 #' @examples
 #' light = c(1300, 300)
 #' moderate = c(200, 400)
@@ -110,16 +94,17 @@ ipaq_compute_sum <- function(vigorous, moderate, light){
 
 #' Compute all the IPAQ components
 #' 
-#' In most cases you have all the IPAQ
-#' data in a data frame and would like to
-#' calculate and add all the data directly
-#' to your data frame.
-#' 
-#' This function takes many arguments in order to
-#' do that.
+#' ```{r child="man/fragments/ipaq/background.Rmd"}
+#' ```
+#' ## Scoring
+#' ```{r child="man/fragments/ipaq/scoring.Rmd"}
+#' ```
+#' ## References
+#' ```{r child="man/fragments/gds/references.Rmd"}
+#' ```
 #' 
 #' @param data data.frame containing all the ipaq data
-#' @param mets list generated with ipaq_mets() [default = ipaq_mets()]
+#' @param mets list generated with ipaq_mets() (default = ipaq_mets())
 #' @param light_days column with the days of light activity
 #' @param light_mins column with the minutes of light activity
 #' @param mod_days column with the days of moderate activity
@@ -182,11 +167,9 @@ ipaq_compute <- function(data,
   }
   
   if(keep_all){
-    bind_cols(data, tmp)
-  }else{
-    tmp
+   tmp <- bind_cols(data, tmp)
   }
-  
+   tmp
 }
 
 if(getRversion() >= "2.15.1") 

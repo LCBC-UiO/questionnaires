@@ -1,0 +1,4 @@
+Despite the prevalence of sleep complaints among psychiatric patients, few questionnaires have been specifically designed to measure sleep quality in clinical populations. 
+The Pittsburgh Sleep Quality Index (PSQI) is a self-rated questionnaire which assesses sleep quality and disturbances over a 1-month time interval. 
+Nineteen individual items generate seven “component” scores: subjective sleep quality, sleep latency, sleep duration, habitual sleep efficiency, sleep disturbances, use of sleeping medication, and daytime dysfunction. 
+The sum of scores for these seven components yields one global score.

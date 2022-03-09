@@ -17,7 +17,7 @@ ipaq_mets(light = 3.3, moderate = 4, vigorous = 8)
 list of three
 }
 \description{
-IPAQ calculations require specification of 
+IPAQ calculations require specification of
 met (resting metabolic rate), which are not
 necessarily static values. While there are defaults
 for each of the three categories, there should
@@ -36,8 +36,6 @@ ipaq_mets(moderate = 5.1)
 \seealso{
 Other ipaq_functions: 
 \code{\link{ipaq_compute_met}()},
-\code{\link{ipaq_compute_sum}()},
-\code{\link{ipaq_compute}()},
 \code{\link{ipaq_time_alter}()}
 }
 \concept{ipaq_functions}

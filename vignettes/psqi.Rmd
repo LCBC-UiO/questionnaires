@@ -3,7 +3,7 @@ title: "Pittsburgh Sleep Quality Inventory"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Pittsburgh Sleep Quality Inventory}
+  %\VignetteIndexEntry{psqi}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -14,52 +14,26 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 options(rmarkdown.html_vignette.check_title = FALSE)
+frag_path <- here::here("man", "fragments", "psqi")
+paths <- list.files(frag_path, "Rmd", full.names = TRUE)
+names(paths) <- gsub("\\.Rmd", "", basename(paths))
+paths <- as.list(paths)
 ```
 
 ## Background
-Despite the prevalence of sleep complaints among psychiatric patients, few questionnaires have been specifically designed to measure sleep quality in clinical populations. 
-The Pittsburgh Sleep Quality Index (PSQI) is a self-rated questionnaire which assesses sleep quality and disturbances over a 1-month time interval. 
-Nineteen individual items generate seven “component” scores: subjective sleep quality, sleep latency, sleep duration, habitual sleep efficiency, sleep disturbances, use of sleeping medication, and daytime dysfunction. 
-The sum of scores for these seven components yields one global score.
+```{r child=paths$background, eval = TRUE} 
+```
 
-## The components
-- **Component 1: subjective sleep quality** - Answer to q 6.  
-- **Component 2: sleep latency** - Scaled sum of number of minutes before sleep (q 2) and evaluation of sleep within 30min (q 5a), scaled to a 5 point scale.  
-- **Component 3: sleep duration** - Scaled score of number of hours before one falls asleep (q 4), scaled to a 5 point scale.   
-- **Component 4: habitual sleep efficiency** - hours of sleep (q 4) divided by bedtime (q 1) subtracted from rising time (q 3), and scaled to a 5 point scale.  
-- **Component 5: sleep disturbances** - Sum of evaluation of sleep within 30min (q 5a) and all remaining questions on sleep problems (q 5b-j), scaled to a 5 point scale.  
-- **Component 6: use of sleeping medication** - Answer to question on use of sleep medication (q 7).  
-- **Component 7: daytime dysfunction **- Sum of evaluation of staying awake (q 8) and evaluation of keeping enthusiastic (q 9), scaled to a 5 point scale.  
-- **Global score: sum of the above.** If any of the above is not possible to calculate, the global sum is also not calculated. 
-
+## Scoring
+```{r child=paths$scoring, eval = TRUE} 
+```
 
 ## Data requirements  
-### Column names
-Questions with multiple subquestions should be named in a similar manner, suffixed by the alphabetical index (**psqi_5a**, **psqi_5b** etc.). 
-For questions 5j and 10j, the frequency of occurence should have the names **psqi_5j** and **psqi_10e**, and the freehand explanations should have any type of **suffix** after this to indicate a text answers (i.e. **psqi_5j_Desc** or **psqi_5j_string**, **psqi_5j_freehand**). 
- As an example, LCBC has the following set-up:  
- 
-- **psqi_1**  
-- **psqi_2**  
-- **psqi_3**  
-- **psqi_4**  
-- **psqi_5a** **psqi_5b** **psqi_5c** **psqi_5d** **psqi_5e** **psqi_5f** **psqi_5g** **psqi_5h** **psqi_5i** **psqi_5j** **psqi_5j_Coded** **psqi_5j_Desc**   
-- **psqi_6**        
-- **psqi_7**  
-- **psqi_8**  
-- **psqi_9**  
-- **psqi_10** **psqi_10a** **psqi_10b** **psqi_10c** **psqi_10d** **psqi_10e** **psqi_10e_Desc** **psqi_10e_Coded**  
-- **psqi_11a** **psqi_11b** **psqi_11c** **psqi_11d**  
-
-### 4-option questions coding
-All 4-option questions need to be coded **0-3**, not **1-4**.
-
-### Time formats
-For question 1, 3 and 4 (bedtime, rising time, hours of sleep), data should be punched as "**HH:MM**". 
-Question 2 should be punched as minutes in numbers.
+```{r child=paths$datareq, eval = TRUE} 
+```
 
 ## Use the `psqi` functions
-All the functions necessary to compute the components and the global score for the psqi are included in this package, and loading it in your R-environment makes them accessable to you. 
+All the functions necessary to compute the components and the global score for the psqi are included in this package, and loading it in your R-environment makes them accessible to you. 
 All the functions for the PSQI, are prefixed with `psqi_`, so they are easy to find.
 
 There are a total of 7 `psqi_` functions in this package. 
@@ -75,7 +49,7 @@ Running `psqi_compute(MOAS)` will calculate all components and append them to th
 Running `psqi_compute(MOAS, keep_all = FALSE)` will only return the computed components and the global score in a data frame.
 
 ```{r}
-library(Questionnaires)
+library(questionnaires)
 library(dplyr)
 
 # Create some data to test on
@@ -192,4 +166,5 @@ psqi_compute(data, keep_all = FALSE, max_missing = 1)
 
 
 ## References  
-Buysse et al. (1989) [The Pittsburgh sleep quality index: A new instrument for psychiatric practice and research](https://www.sciencedirect.com/science/article/pii/0165178189900474), _Psychiatry Research_, 28:2, 193-213
+```{r child=paths$references, eval = TRUE} 
+```

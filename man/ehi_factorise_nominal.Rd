@@ -7,13 +7,13 @@
 ehi_factorise_nominal(writing = ehi_01)
 }
 \arguments{
-\item{writing}{numeric vector of writing preference [-2,-1,0,1,2]}
+\item{writing}{numeric vector of writing preference (-2,-1,0,1,2)}
 }
 \value{
 factor
 }
 \description{
-Using the answers to the first question 
+Using the answers to the first question
 on writing from the Edinburgh handedness inventory,
 a nominal scale of three factors can be returned.
 }

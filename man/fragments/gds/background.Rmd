@@ -1,0 +1,11 @@
+The Geriatric Depression Scale (GDS) is an instrument designed specifically for rating depression in the elderly. 
+It can be administrated to healthy, medically ill, and mild to moderately cognitively impaired older adults. 
+As a general rule, GDS is administrated in LCBC to older adults with a lower cut off around 60 years. 
+However, please consult the instructions for each project, as this guideline has been implemented at different time points across the projects. 
+
+The questionnaire consists of 30 questions tapping into a wide variety of topics relevant to depression, including cognitive complaints, motivation, thoughts about the past and the future, self-image, and mood itself. 
+The answers should be based the participants' feelings throughout the last week. 
+
+Twenty of the questions indicate the presence of depression when answered positively, while the ten remaining indicate depression when answered negatively (see scoring instructions below). 
+The questionnaire is scored accordingly, giving one point for each statement that affirms a depressive symptom. 
+The sum of these scores yields one total score, with a possible range between 0 and 30.

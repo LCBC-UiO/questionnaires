@@ -12,9 +12,9 @@ psqi_compute_time_in_bed(
 )
 }
 \arguments{
-\item{risingtime}{column name with rising time (HH:MM:SS) [psqi_03]}
+\item{risingtime}{column name with rising time (HH:MM:SS) (psqi_03)}
 
-\item{bedtime}{column name with bedtime (HH:MM:SS) [psqi_01]}
+\item{bedtime}{column name with bedtime (HH:MM:SS) (psqi_01)}
 
 \item{risingtime_func}{function to convert time to \code{Period}}
 

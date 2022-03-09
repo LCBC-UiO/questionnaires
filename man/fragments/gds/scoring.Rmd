@@ -1,0 +1,21 @@
+The GDS is quite straight forward in its format, a series of 30 questions that take a yes or no answer. 
+This binary coding makes it quite easy to work with.
+Several of the questions, however, are formulated in such a way that they require a reversal of the coding before the total score can be summed.
+The questions which require reversal of coding are, **01, 05, 07, 09, 15, 19, 21, 27, 29, 30**, meaning answering "yes" to these should be altered to 0, and "no" altered to 1, before calculating the sum score.
+The total GDS score is after reversal, a simple addition of all the answers into a single score.
+
+One point is given for any “No” answered to the following questions:  
+1, 5, 7, 9, 15, 19, 21, 27, 29 and 30
+
+and one point is given for every “Yes” answered on the following questions:  
+2, 3, 4, 6, 8, 10, 11, 12, 13, 14, 16, 17, 18, 20, 22, 23, 24, 25, 26, 28  
+
+### Depression categories
+There are 3 categories of severity for the GDS total score.
+Below or equal to `9` is "Normal", above 19 is "Severe depression", and the remaining fall within "Mild depression". 
+
+|GDS score|Depression category|
+|---|---|
+|0-9|Normal|
+|10-19|Mild depressive|
+|20-30|Severe depressive|	  

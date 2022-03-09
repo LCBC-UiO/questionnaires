@@ -1,0 +1,47 @@
+```{r, include=FALSE}
+eq_path <- here::here("man/fragments/ehi/equation.Rmd")
+```
+
+The EHI has several measures that can help assess a person's laterality.
+
+|answer           |value|nominal     |lq    |lq_cat |lqa_cat     |
+|:--              |--:  |:--         |--:   |:--    |:--         |
+| Left dominance	| -2	| left	     | -100	| left	| left       |
+| Left preference | -1	| left	     |  -40	| left	| ambidexter |
+| No preference	  |  0	| ambidexter |	  0	| right	| ambidexter |
+| Right preference|  1	| right      |	 40	| right	| ambidexter |
+| Right dominance |  2	| right	     |  100	| right	| right      |
+
+### Nominal
+The easiest measure from the EHI is the nominal laterality value, which is just the answer to the first question on hand preference when writing. 
+This simple index just treat negative answers as "left" dominance, positive number as "right" dominance, and a 0 as ambidextrous.
+**Note:** The original paper by Oldfield (1971) does not explicitly state a category for "Ambidextrous".
+It is very rare that a person does not have a clear preference on writing hand, even if they _can_ write with both hands.
+This category is only added in this package to handle the possible case of someone answering "No preference". 
+
+|min|max|category   |
+|--:|--:|:--        |
+|-2 | -1|left       |
+| 0 |  0|ambidexter |
+| 1 |  2|right      |
+
+### Laterality quotient (lq)
+The total score of the EHI is more than just summing the values for each answer. 
+The laterality quotient (LQ) uses the answers to all the questions.
+The LQ can take values from -100 to 100, and is calculated by taking the sum of all positive answers subtracting the sum of absolute values of the negative answers, divided by the sum of both, and multiplied by 100. 
+
+```{r child=eq_path}
+```
+
+
+### Laterality index
+The laterality index is based on the laterality quotient (above) and categorises answers into to categories, Left and Right. 
+The Oldfield (1971) paper mentions "indeterminate handedness" a couple of times in the paper, but the case for "true" ambidextrous is not made, and as such the inventory does not have official categories for that.
+As the index is based on the quotient, that ranges from -100 to 100, getting a perfect `0` LQ is very unlikely, and as indicated in the paper, such score is assumed to belong to the Right hand part of the scale.
+
+|min  |max |category|
+|--:  |--: |:--     |
+|-100 |  -1|left    |  
+|   0 | 100|right   |
+
+An alternate laterality index is also often employed, where scores between -40 and 40 are treated as ambidextrous.

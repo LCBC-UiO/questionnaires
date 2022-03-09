@@ -18,7 +18,7 @@ ehi_compute(
 
 \item{cols}{tidyselected columns of all ehi data}
 
-\item{writing}{numeric vector of writing preference [-2,-1,0,1,2]}
+\item{writing}{numeric vector of writing preference (-2,-1,0,1,2)}
 
 \item{...}{additional arguments to ehi_factorise_lqa}
 
@@ -30,12 +30,114 @@ ehi_compute(
 data.frame
 }
 \description{
-Compute all variables of ehi, using 
-other functions in this package. 
+Compute all variables of ehi, using
+other functions in this package.
 Will return the given data.frame with
 three additional columns, the laterality
 quotient (LQ), the laterality factor (Coded), and
 the nominal laterality code (Nominal).
+}
+\details{
+\subsection{Background}{
+
+The Edinburgh Handedness Inventory is a measurement scale used to assess the dominance of a person's right or left hand in everyday activities, sometimes referred to as laterality.
+The inventory can be used by an observer assessing the person, or by a person self-reporting hand use.
+The latter method tends to be less reliable due to a person over-attributing tasks to the dominant hand.
+}
+
+\subsection{Scoring}{
+
+The EHI has several measures that can help assess a person's laterality.\tabular{lrlrll}{
+   answer \tab value \tab nominal \tab lq \tab lq_cat \tab lqa_cat \cr
+   Left dominance \tab -2 \tab left \tab -100 \tab left \tab left \cr
+   Left preference \tab -1 \tab left \tab -40 \tab left \tab ambidexter \cr
+   No preference \tab 0 \tab ambidexter \tab 0 \tab right \tab ambidexter \cr
+   Right preference \tab 1 \tab right \tab 40 \tab right \tab ambidexter \cr
+   Right dominance \tab 2 \tab right \tab 100 \tab right \tab right \cr
+}
+
+\subsection{Nominal}{
+
+The easiest measure from the EHI is the nominal laterality value, which is just the answer to the first question on hand preference when writing.
+This simple index just treat negative answers as "left" dominance, positive number as "right" dominance, and a 0 as ambidextrous.
+\strong{Note:} The original paper by Oldfield (1971) does not explicitly state a category for "Ambidextrous".
+It is very rare that a person does not have a clear preference on writing hand, even if they \emph{can} write with both hands.
+This category is only added in this package to handle the possible case of someone answering "No preference".\tabular{rrl}{
+   min \tab max \tab category \cr
+   -2 \tab -1 \tab left \cr
+   0 \tab 0 \tab ambidexter \cr
+   1 \tab 2 \tab right \cr
+}
+
+}
+
+\subsection{Laterality quotient (lq)}{
+
+The total score of the EHI is more than just summing the values for each answer.
+The laterality quotient (LQ) uses the answers to all the questions.
+The LQ can take values from -100 to 100, and is calculated by taking the sum of all positive answers subtracting the sum of absolute values of the negative answers, divided by the sum of both, and multiplied by 100.<!-- ```{r, include=FALSE} -->
+<!-- equation <- "\\\\frac{\\\\Sigma(|positive|)-\\\\Sigma(|negative|)}{\\\\Sigma(|positive|)+\\\\Sigma(|negative|)}x100" -->
+<!-- html <- knitr::is_html_output() -->
+<!-- rd <- !html -->
+<!-- ``` -->
+<!--  -->
+<!-- ```{r, include=html} -->
+<!-- katex::katex_html(equation) -->
+<!-- ``` -->
+<!-- ```{r, include=rd, results='asis'} -->
+<!-- eval(parse(text=sprintf("\\\\Sexpr[results=rd, stage=build]{katex::math_to_rd('\%s')}", equation))) -->
+<!-- ``` -->
+
+}
+
+\subsection{Laterality index}{
+
+The laterality index is based on the laterality quotient (above) and categorises answers into to categories, Left and Right.
+The Oldfield (1971) paper mentions "indeterminate handedness" a couple of times in the paper, but the case for "true" ambidextrous is not made, and as such the inventory does not have official categories for that.
+As the index is based on the quotient, that ranges from -100 to 100, getting a perfect \code{0} LQ is very unlikely, and as indicated in the paper, such score is assumed to belong to the Right hand part of the scale.\tabular{rrl}{
+   min \tab max \tab category \cr
+   -100 \tab -1 \tab left \cr
+   0 \tab 100 \tab right \cr
+}
+
+
+An alternate laterality index is also often employed, where scores between -40 and 40 are treated as ambidextrous.
+}
+
+}
+
+\subsection{Data requirements}{
+
+One row of data should refer to a single questionnaire answered, and as such, if a person has answered multiple times, these should appear on separate rows with columns identifying ID and time point per observation.
+\subsection{Column names}{
+
+For ease, we recommend naming the columns in a consistent way, so the functions in this package become easier to use.
+The LCBC database follows a naming scheme that prefixes all columns with \code{ehi_} and ends with a zero-padded double digit indicator of the question number.
+}
+
+\subsection{Data values}{
+
+The cell values in the data should be coded from -2 through 0 to 2, and there should be a single value per question.\tabular{rl}{
+   value \tab category \cr
+   -2 \tab Left hand dominance \cr
+   -1 \tab Left hand preference \cr
+   0 \tab No preference \cr
+   1 \tab Right hand preference \cr
+   2 \tab Right hand dominance \cr
+}
+
+}
+
+}
+
+\subsection{References}{
+
+Oldfield, RC (March 1971) \emph{The assessment and analysis of handedness: The Edinburgh inventory}. Neuropsychologia. 9 (1): 97–113. \href{https://www.sciencedirect.com/science/article/abs/pii/0028393271900674?via\%3Dihub}{doi:10.1016/0028-3932(71)90067-4}
+
+Verdino, M; Dingman, S (April 1998). \emph{Two measures of laterality in handedness: the Edinburgh Handedness Inventory and the Purdue Pegboard test of manual dexterity}. Perceptual and Motor Skills. 86 (2): 476–8. \href{https://doi.org/10.2466\%2Fpms.1998.86.2.476}{doi:10.2466/pms.1998.86.2.476}
+
+Knecht, S; Dräger, B; Deppe, M; Bobe, L; Lohmann, H; Flöel, A; Ringelstein, E-B; Henningsen, H (December 2000). \emph{Handedness and hemispheric language dominance in healthy humans}. Brain. 123 (12): 2512–8. \href{https://doi.org/10.1093\%2Fbrain\%2F123.12.2512}{doi:10.1093/brain/123.12.2512}.
+}
 }
 \seealso{
 Other ehi_functions: 

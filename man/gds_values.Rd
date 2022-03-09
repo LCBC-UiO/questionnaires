@@ -26,8 +26,6 @@ gds_values(yes = "YES", no = "NO")
 Other gds_functions: 
 \code{\link{gds_alter_values}()},
 \code{\link{gds_binary}()},
-\code{\link{gds_compute_sum}()},
-\code{\link{gds_compute}()},
-\code{\link{gds_factorise}()}
+\code{\link{gds_compute_sum}()}
 }
 \concept{gds_functions}

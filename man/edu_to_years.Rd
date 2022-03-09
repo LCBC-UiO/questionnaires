@@ -26,9 +26,9 @@ Turn education data to years
 \details{
 Specialized returns
 \itemize{
- \item{edu_to_years - }{Alter education to years specifying number of levels}
- \item{edu4_to_years - }{directly alter 4-level coded education to years }
- \item{edu9_to_years - }{directly alter 9-level coded education to years }
+\item{edu_to_years - }{Alter education to years specifying number of levels}
+\item{edu4_to_years - }{directly alter 4-level coded education to years }
+\item{edu9_to_years - }{directly alter 9-level coded education to years }
 }
 }
 \examples{

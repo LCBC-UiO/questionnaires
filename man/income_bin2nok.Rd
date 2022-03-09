@@ -16,7 +16,7 @@ numeric
 Older collected income data for LCBC
 collected income information in 7 bins.
 Newer data collects continuous income data.
-This function converts binned income data 
+This function converts binned income data
 from these 7 categories into the mean
 income value for each bin.
 }

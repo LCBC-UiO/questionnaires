@@ -1,4 +1,4 @@
-Package: Questionnaires
+Package: questionnaires
 Title: Package with functions to calculate components and sums for LCBC questionnaires
 Version: 0.0.2
 Authors@R: person("Athanasia Mo", "Mowinckel", 
@@ -18,10 +18,10 @@ Suggests:
     here,
     devtools,
     knitr,
-    kableExtra,
     rmarkdown,
     covr
 RoxygenNote: 7.1.2
+Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr
-URL: https://github.com/LCBC-UiO/Questionnaires
-BugReports: https://github.com/LCBC-UiO/Questionnaires/issues
+URL: https://github.com/LCBC-UiO/questionnaires
+BugReports: https://github.com/LCBC-UiO/questionnaires/issues

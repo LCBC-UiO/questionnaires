@@ -1,0 +1,11 @@
+
+| component | name  | description   |
+| --:       | :---- | :------------ |
+| 1 | subjective sleep quality | Answer to q 6 |
+| 2 | sleep latency | Scaled sum of number of minutes before sleep (q 2) and evaluation of sleep within 30min (q 5a), scaled to a 5 point scale |
+| 3 | sleep duration | Scaled score of number of hours before one falls asleep (q 4), scaled to a 5 point scale|
+| 4 | habitual sleep efficiency | hours of sleep (q 4) divided by bedtime (q 1) subtracted from rising time (q 3), and scaled to a 5 point scale |
+| 5 | sleep disturbances | Sum of evaluation of sleep within 30min (q 5a) and all remaining questions on sleep problems (q 5b-j), scaled to a 5 point scale |
+| 6 | use of sleeping medication | Answer to question on use of sleep medication (q 7) |
+| 7 | daytime dysfunction | Sum of evaluation of staying awake (q 8) and evaluation of keeping enthusiastic (q 9), scaled to a 5-point scale |
+| global score | sum of the above. | If any of the above is not possible to calculate, the global sum is also not calculated |

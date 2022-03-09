@@ -27,8 +27,6 @@ gds_binary(c("y","y","n",NA,"y"), gds_values(yes = "y", no = "n"))
 Other gds_functions: 
 \code{\link{gds_alter_values}()},
 \code{\link{gds_compute_sum}()},
-\code{\link{gds_compute}()},
-\code{\link{gds_factorise}()},
 \code{\link{gds_values}()}
 }
 \concept{gds_functions}

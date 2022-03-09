@@ -23,15 +23,15 @@ factor
 \description{
 Will convert even a mixed character
 vector (combining numbers and text)
-of education levels 10 and 4 to a 
+of education levels 10 and 4 to a
 factor.
 }
 \details{
 Specialized returns
 \itemize{
- \item{edu_factorise - }{with option to choose number of levels}
- \item{edu4_factorise - }{directly transform vector coded in 4-level scheme}
- \item{edu9_factorise - }{directly transform vector coded in 9-levels scheme}
+\item{edu_factorise - }{with option to choose number of levels}
+\item{edu4_factorise - }{directly transform vector coded in 4-level scheme}
+\item{edu9_factorise - }{directly transform vector coded in 9-levels scheme}
 }
 }
 \examples{

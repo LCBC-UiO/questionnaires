@@ -20,6 +20,6 @@ numeric vector
 \description{
 Calculate the sum on non-NA
 values in all columns in the specified direction(
-1 == sum all positives, -1 sum absolutes values of 
+1 == sum all positives, -1 sum absolutes values of
 negatives)
 }

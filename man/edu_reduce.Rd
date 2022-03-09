@@ -23,9 +23,9 @@ factor
 These functions will aid in converting
 one education scheme into another.
 While you may attempt to go from a low
-level to a high (from 4 to 9), there is 
+level to a high (from 4 to 9), there is
 no way to actually do that in a consistent
-way that will correctly reflect the 
+way that will correctly reflect the
 underlying data.
 }
 \details{
@@ -34,8 +34,8 @@ a lower one (currently from 9 to 4 only)
 
 Specialized returns
 \itemize{
- \item{edu_reduce - }{reduce with own to and from specification}
- \item{edu9_reduce - }{directly reduce from 9 to 4}
+\item{edu_reduce - }{reduce with own to and from specification}
+\item{edu9_reduce - }{directly reduce from 9 to 4}
 }
 }
 \examples{
