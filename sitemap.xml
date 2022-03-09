@@ -85,13 +85,7 @@
     <loc>/news/index.html</loc>
   </url>
   <url>
-    <loc>/reference/bdi_compute.html</loc>
-  </url>
-  <url>
-    <loc>/reference/bdi_compute_sum.html</loc>
-  </url>
-  <url>
-    <loc>/reference/bdi_factorise.html</loc>
+    <loc>/reference/bdi.html</loc>
   </url>
   <url>
     <loc>/reference/bdi_restructure.html</loc>
@@ -151,12 +145,6 @@
     <loc>/reference/gds_compute.html</loc>
   </url>
   <url>
-    <loc>/reference/gds_compute_sum.html</loc>
-  </url>
-  <url>
-    <loc>/reference/gds_factorise.html</loc>
-  </url>
-  <url>
     <loc>/reference/gds_values.html</loc>
   </url>
   <url>
@@ -172,12 +160,6 @@
     <loc>/reference/ipaq_compute.html</loc>
   </url>
   <url>
-    <loc>/reference/ipaq_compute_met.html</loc>
-  </url>
-  <url>
-    <loc>/reference/ipaq_compute_sum.html</loc>
-  </url>
-  <url>
     <loc>/reference/ipaq_mets.html</loc>
   </url>
   <url>
@@ -191,24 +173,6 @@
   </url>
   <url>
     <loc>/reference/psqi_compute.html</loc>
-  </url>
-  <url>
-    <loc>/reference/psqi_compute_comp2.html</loc>
-  </url>
-  <url>
-    <loc>/reference/psqi_compute_comp3.html</loc>
-  </url>
-  <url>
-    <loc>/reference/psqi_compute_comp4.html</loc>
-  </url>
-  <url>
-    <loc>/reference/psqi_compute_comp5.html</loc>
-  </url>
-  <url>
-    <loc>/reference/psqi_compute_comp7.html</loc>
-  </url>
-  <url>
-    <loc>/reference/psqi_compute_global.html</loc>
   </url>
   <url>
     <loc>/reference/psqi_compute_time_in_bed.html</loc>

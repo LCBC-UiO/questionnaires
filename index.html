@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Package with functions to calculate components and sums for LCBC questionnaires • Questionnaires</title>
+<title>Package with functions to calculate components and sums for LCBC questionnaires • questionnaires</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
@@ -39,7 +39,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">Questionnaires</a>
+        <a class="navbar-link" href="index.html">questionnaires</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.2</span>
       </span>
     </div>
@@ -127,7 +127,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/LCBC-UiO/Questionnaires/" class="external-link">
+  <a href="https://github.com/LCBC-UiO/questionnaires/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -149,32 +149,61 @@
 </h1></div>
 <!-- badges: start -->
 
-<p>The repository contains functions to run coversions and calculate components from commonly used questionnaires in LCBC research.</p>
-<p>The questionnaires covered so far:</p>
-<ul>
-<li>PSQI - <a href="https://lcbc-uio.github.io/Questionnaires/articles/psqi.html" class="external-link">Pittsburgh Sleep Quality Inventory</a>
-</li>
-<li>IPAQ - <a href="https://lcbc-uio.github.io/Questionnaires/articles/ipaq.html" class="external-link">International Physical Activity Questionnaire</a>
-</li>
-<li>EHI - <a href="https://lcbc-uio.github.io/Questionnaires/articles/ehi.html" class="external-link">Edinburgh Handedness Inventory</a>
-</li>
-<li>BDI - <a href="https://lcbc-uio.github.io/Questionnaires/articles/bdi.html" class="external-link">Beck Depression Inventory</a>
-</li>
-<li>GDS - <a href="https://lcbc-uio.github.io/Questionnaires/articles/gds.html" class="external-link">Geriatric Depression Scale</a>
-</li>
-<li>EDU - <a href="https://lcbc-uio.github.io/Questionnaires/articles/edu.html" class="external-link">Education questions</a>
-</li>
-<li>TAS - [The Toronto Alexithymia Scale (not documented yet)]</li>
-</ul>
-<p>All functions in this package are prefixed with the name of the questionnaire the function is intended for (i.e. <code>psqi_</code>, <code>ipaq_</code> etc.). Column specifications may be manually inputed, but if columns are named after as the function expects (i.e. MOAS standard), the functions generally work without manual input. The functions that will run all (most) necessary steps to completely calculate components and sums are named as <code>questionnaire_compute</code> (i.e. <code><a href="reference/psqi_compute.html">psqi_compute()</a></code>, <code>ipaq_compute</code>, etc.). These functions all have the option to <code>keep_all</code> which takes a <code>TRUE</code> or <code>FALSE</code> statement on whether the data should be appended to the input data, or just to return the computed columns.</p>
-<p>Full documentation with tutorials and function docs online at <a href="https://lcbc-uio.github.io/Questionnaires/" class="external-link uri">https://lcbc-uio.github.io/Questionnaires/</a></p>
+<p>The repository contains functions to run conversions and calculate components from commonly used questionnaires in LCBC research.</p>
+<p>All functions in this package are prefixed with the name of the questionnaire the function is intended for (i.e. <code>psqi_</code>, <code>ipaq_</code> etc.). Column specifications may be manually input’ed, but if columns are named after as the function expects (i.e. MOAS standard), the functions generally work without manual input. The functions that will run all (most) necessary steps to completely calculate components and sums are named as <code>questionnaire_compute</code> (i.e. <code><a href="reference/psqi_compute.html">psqi_compute()</a></code>, <code>ipaq_compute</code>, etc.). These functions all have the option to <code>keep_all</code> which takes a <code>TRUE</code> or <code>FALSE</code> statement on whether the data should be appended to the input data, or just to return the computed columns.</p>
+<p>Full documentation with tutorials and function docs online at <a href="https://lcbc-uio.github.io/questionnaires/" class="external-link uri">https://lcbc-uio.github.io/questionnaires/</a></p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>This package is only on github, and requires the package <code>remotes</code> to install.</p>
+<p>Install the package from the LCBC R-universe:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Enable universe(s) by lcbc-uio</span>
+<span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>
+  lcbcuio <span class="op">=</span> <span class="st">'https://lcbc-uio.r-universe.dev'</span>,
+  CRAN <span class="op">=</span> <span class="st">'https://cloud.r-project.org'</span><span class="op">)</span><span class="op">)</span>
+
+<span class="co"># Install some packages</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'lcbcr'</span><span class="op">)</span></code></pre></div>
+<p>OR using the the package <code>remotes</code> to install.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"LCBC-UiO/Questionnaires"</span><span class="op">)</span></code></pre></div>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"lcbc-uio/questionnaires"</span><span class="op">)</span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="questionnaire-descriptions">Questionnaire descriptions<a class="anchor" aria-label="anchor" href="#questionnaire-descriptions"></a>
+</h2>
+<div class="section level3">
+<h3 id="pittsburgh-sleep-quality-inventory">
+<a href="https://lcbc-uio.github.io/questionnaires/articles/psqi.html" class="external-link">Pittsburgh Sleep Quality Inventory</a><a class="anchor" aria-label="anchor" href="#pittsburgh-sleep-quality-inventory"></a>
+</h3>
+<p>Despite the prevalence of sleep complaints among psychiatric patients, few questionnaires have been specifically designed to measure sleep quality in clinical populations. The Pittsburgh Sleep Quality Index (PSQI) is a self-rated questionnaire which assesses sleep quality and disturbances over a 1-month time interval. Nineteen individual items generate seven “component” scores: subjective sleep quality, sleep latency, sleep duration, habitual sleep efficiency, sleep disturbances, use of sleeping medication, and daytime dysfunction. The sum of scores for these seven components yields one global score.</p>
+</div>
+<div class="section level3">
+<h3 id="international-physical-activity-questionnaire">
+<a href="https://lcbc-uio.github.io/questionnaires/articles/ipaq.html" class="external-link">International Physical Activity Questionnaire</a><a class="anchor" aria-label="anchor" href="#international-physical-activity-questionnaire"></a>
+</h3>
+<p>The purpose of the International Physical Activity questionnaires (IPAQ) is to provide a set of well-developed instruments that can be used internationally to obtain comparable estimates of physical activity. There are two versions of the questionnaire. The short version is suitable for use in national and regional surveillance systems and the long version provide more detailed information often required in research work or for evaluation purposes.</p>
+</div>
+<div class="section level3">
+<h3 id="edinburgh-handedness-inventory">
+<a href="https://lcbc-uio.github.io/questionnaires/articles/ehi.html" class="external-link">Edinburgh Handedness Inventory</a><a class="anchor" aria-label="anchor" href="#edinburgh-handedness-inventory"></a>
+</h3>
+<p>The Edinburgh Handedness Inventory is a measurement scale used to assess the dominance of a person’s right or left hand in everyday activities, sometimes referred to as laterality. The inventory can be used by an observer assessing the person, or by a person self-reporting hand use. The latter method tends to be less reliable due to a person over-attributing tasks to the dominant hand.</p>
+</div>
+<div class="section level3">
+<h3 id="beck-depression-inventory">
+<a href="https://lcbc-uio.github.io/questionnaires/articles/bdi.html" class="external-link">Beck Depression Inventory</a><a class="anchor" aria-label="anchor" href="#beck-depression-inventory"></a>
+</h3>
+<p>Beck Depression Inventory-II (BDI-II) is one of the most widely used instruments for measuring the severity of self-reported depression in adolescents and adults. As a general rule, BDI-II is administrated in LCBC to adults with an upper cut off around 60 years, while depression in older adults is assessed with the Geriatric Depression Scale (GDS). However, please consult the instructions for each project, as this guideline has been implemented at different time points across the projects.</p>
+</div>
+<div class="section level3">
+<h3 id="geriatric-depression-scale">
+<a href="https://lcbc-uio.github.io/questionnaires/articles/gds.html" class="external-link">Geriatric Depression Scale</a><a class="anchor" aria-label="anchor" href="#geriatric-depression-scale"></a>
+</h3>
+<p>The Geriatric Depression Scale (GDS) is an instrument designed specifically for rating depression in the elderly. It can be administrated to healthy, medically ill, and mild to moderately cognitively impaired older adults. As a general rule, GDS is administrated in LCBC to older adults with a lower cut off around 60 years. However, please consult the instructions for each project, as this guideline has been implemented at different time points across the projects.</p>
+<p>The questionnaire consists of 30 questions tapping into a wide variety of topics relevant to depression, including cognitive complaints, motivation, thoughts about the past and the future, self-image, and mood itself. The answers should be based the participants’ feelings throughout the last week.</p>
+<p>Twenty of the questions indicate the presence of depression when answered positively, while the ten remaining indicate depression when answered negatively (see scoring instructions below). The questionnaire is scored accordingly, giving one point for each statement that affirms a depressive symptom. The sum of these scores yields one total score, with a possible range between 0 and 30.</p>
+</div>
 </div>
 </div>
   </div>
@@ -183,8 +212,8 @@
     <div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/LCBC-UiO/Questionnaires/" class="external-link">Browse source code</a></li>
-<li><a href="https://github.com/LCBC-UiO/Questionnaires/issues" class="external-link">Report a bug</a></li>
+<li><a href="https://github.com/LCBC-UiO/questionnaires/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/LCBC-UiO/questionnaires/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 
@@ -200,7 +229,7 @@
 <div class="citation">
 <h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li><a href="authors.html#citation">Citing Questionnaires</a></li>
+<li><a href="authors.html#citation">Citing questionnaires</a></li>
 </ul>
 </div>
 
@@ -214,10 +243,10 @@
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://circleci.com/gh/LCBC-UiO/Questionnaires" class="external-link"><img src="https://circleci.com/gh/LCBC-UiO/Questionnaires.svg?style=svg&amp;circle-token=8de4dd4d0d428ed1382feef5513cfa15aac3703e" alt="CircleCI build status"></a></li>
 <li><a href="https://www.tidyverse.org/lifecycle/#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
-<li><a href="https://travis-ci.org/LCBC-UiO/Questionnaires" class="external-link"><img src="https://travis-ci.org/LCBC-UiO/Questionnaires.svg?branch=master" alt="Travis build status"></a></li>
-<li><a href="https://codecov.io/gh/LCBC-UiO/Questionnaires?branch=master" class="external-link"><img src="https://codecov.io/gh/LCBC-UiO/Questionnaires/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://codecov.io/gh/lcbc-uio/questionnaires?branch=master" class="external-link"><img src="https://codecov.io/gh/lcbc-uio/questionnaires/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://github.com/lcbc-uio/questionnaires/actions" class="external-link"><img src="https://github.com/lcbc-uio/questionnaires/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://lcbc-uio.github.io/Questionnaires/" class="external-link"><img src="https://lcbc-uio.r-universe.dev/badges/Questionnaires" alt="r-universe"></a></li>
 </ul>
 </div>
 
