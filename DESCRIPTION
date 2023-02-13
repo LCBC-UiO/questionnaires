@@ -19,8 +19,9 @@ Suggests:
     devtools,
     knitr,
     rmarkdown,
-    covr
-RoxygenNote: 7.1.2
+    covr,
+    katex
+RoxygenNote: 7.2.0
 Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr
 URL: https://github.com/LCBC-UiO/questionnaires
