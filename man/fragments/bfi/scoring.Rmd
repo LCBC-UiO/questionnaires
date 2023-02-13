@@ -1,0 +1,39 @@
+Item numbers for the BFI-2 domain and facet scales are listed below. Reverse-keyed items are denoted by “R.”
+For more information about the BFI-2, visit the Colby Personality Lab website
+(http://www.colby.edu/psych/personality-lab/).
+
+## Domain Scales
+
+**Extraversion:** 1, 6, 11R, 16R, 21, 26R, 31R, 36R, 41, 46, 51R, 56  
+**Agreeableness:** 2, 7, 12R, 17R, 22R, 27, 32, 37R, 42R, 47R, 52, 57  
+**Conscientiousness:** 3R, 8R, 13, 18, 23R, 28R, 33, 38, 43, 48R, 53, 58R  
+**Negative Emotionality:** 4R, 9R, 14, 19, 24R, 29R, 34, 39, 44R, 49R, 54, 59
+**Open-Mindedness:** 5R, 10, 15, 20, 25R, 30R, 35, 40, 45R, 50R, 55R, 60  
+
+## Facet Scales
+**Sociability:** 1, 16R, 31R, 46  
+**Assertiveness:** 6, 21, 36R, 51R  
+**Energy Level:** 11R, 26R, 41, 56  
+**Compassion:** 2, 17R, 32, 47R  
+**Respectfulness:** 7, 22R, 37R, 52  
+**Trust:** 12R, 27, 42R, 57  
+**Organization:** 3R, 18, 33, 48R  
+**Productiveness:** 8R, 23R, 38, 53  
+**Responsibility:** 13, 28R, 43, 58R  
+**Anxiety:** 4R, 19, 34, 49R  
+**Depression:** 9R, 24R, 39, 54  
+**Emotional Volatility:** 14, 29R, 44R, 59  
+**Intellectual Curiosity:** 10, 25R, 40, 55R  
+**Aesthetic Sensitivity:** 5R, 20, 35, 50R  
+**Creative Imagination:** 15, 30R, 45R, 60  
+
+
+## Relational table
+
+| Domain | Factor-pure facet | Complementary facets        |
+| ---    | -------           | --------------------        |
+| E      | Sociability       | Assertiveness, Energy Level |
+| A      | Compassion        | Respectfulness, Trust       |
+| C      | Organization      | Productiveness, Responsibility |
+| N      | Anxiety           | Depression, Emotional Volatility |
+| O      | Aesthetic Sensitivity | Intellectual Curiosity, Creative Imagination |

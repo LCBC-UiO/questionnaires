@@ -1,0 +1,5 @@
+The BFI-2 is a measure of the Big Five personality domains (which we label Extraversion, Agreeableness, Conscientiousness, Negative Emotionality, and Open-Mindedness) and 15 more-specific facet traits.
+The Big Five personality traits was the model to comprehend the relationship between personality and academic behaviors.
+This model was defined by several independent sets of researchers who used factor analysis of verbal descriptors of human behavior.
+These researchers began by studying relationships between a large number of verbal descriptors related to personality traits.
+They reduced the lists of these descriptors by 5–10 fold and then used factor analysis to group the remaining traits (using data mostly based upon people's estimations, in self-report questionnaire and peer ratings) in order to find the underlying factors of personality

@@ -1,0 +1,18 @@
+### Column names
+The package functions expect the data to be named in a specific way, and to not contain data other than the BFI-2 data.
+Column names should be zero-leading two digits to indicate the question number, and they should end with these two digits. 
+If this system is followed, then all functions work out of the box.
+
+Examples that work:
+
+- `bfi_01` `bfi_02` ... `bfi_59` `bfi_60`
+- `big_five_01` `big_five_02` ... `big_five_59` `bbig_five_60`
+
+Examples that won't work
+
+- `bfi_1` `bfi_2` ... `bfi_59` `bfi_60`
+- `big_five_01_trust` `big_five_02_change` ... `big_five_59_test` `bbig_five_60_lat`
+
+### Data values
+The data should be coded with the original scoring system 1-5.
+The data should **not** have implemented necessary reversal of answers for any of the questions, the functions will take care of this.
