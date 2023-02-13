@@ -69,8 +69,9 @@ ehi_compute = function(data,
 ehi_values <- function(data, 
                        cols = matches("^ehi_[0-9][0-9]$"),
                        direction = 1){
-  tmp <- transmute(data, across({{cols}}, 
-                                ehi_change, direction = direction))
+  tmp <- transmute(data, 
+                   across({{cols}}, 
+                          ehi_change, direction = direction))
   rowSums(tmp, na.rm = TRUE)
 }
 

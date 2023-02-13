@@ -35,7 +35,7 @@ income_bin2nok = function(x){
 #' Translate NOK to other currency
 #' 
 #' In order to compare income in Norway
-#' to other countries, currency concersions
+#' to other countries, currency conversions
 #' might be necessary. This function multiplies
 #' with the rate provided. 
 #'
