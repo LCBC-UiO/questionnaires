@@ -10,22 +10,150 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
+  eval = FALSE,
   comment = "#>"
 )
 options(rmarkdown.html_vignette.check_title = FALSE)
+frag_path <- here::here("man", "fragments", "bfi")
+paths <- list.files(frag_path, "Rmd", full.names = TRUE)
+names(paths) <- gsub("\\.Rmd", "", basename(paths))
+paths <- as.list(paths)
 ```
 
-# Background
+```{r setup, eval = TRUE}
+library(questionnaires)
+```
+
+## Background
+
+```{r child=paths$background, eval = TRUE} 
+```
+
+## Scoring
+```{r child=paths$scoring, eval = TRUE} 
+```
 
 
-# Domains & facets
+## Data requirements  
+
+```{r child=paths$datareq, eval = TRUE} 
+```
+
+## Using the `bfi` functions
+
+## Computing all domains and facets.
+
+```{r}
+# Making some test data
+test_data <- tibble(
+  id = rep(1:10, each = 60),
+  name = rep(sprintf("bfi_%02d", 1:60), 10),
+  value = lapply(1:10, function(x){
+    sample(1:5, size = 60, replace = TRUE)
+  }) |> unlist()
+) |> 
+  tidyr::pivot_wider()
+
+test_data
+```
+
+To compute all the possible domains and facets, as long as the data is set up correctly, you can run a single function
+
+```{r}
+bfi_compute(test_data)
+```
+
+You also have some options in terms of prefixing the data, and if you want to keep all the original data in the output as well.
+
+```{r}
+bfi_compute(test_data, keep_all = TRUE)
+
+bfi_compute(test_data, prefix = "bfi_")
+```
+
+### Domains
+
+There are two main ways you can compute domains alone.
+These two ways are equivalent, and take `prefix` and `keep_all` arguments.
+
+```{r}
+bfi_compute(test_data, type = "domains")
+
+bfi_compute_domains(test_data)
+```
+
+You can also choose to compute only certain domains, either by calling on their own special function or by specifying a domain in the main domain function.
+
+```{r}
+## Computes all
+bfi_compute_domains(test_data, domains = c("extraversion", 
+                "agreeableness",
+                "conscientiousness",
+                "negative emotionality",
+                "open-mindedness"))
+
+## extraversion and agreeableness only
+bfi_compute_domains(test_data, domains = c("extraversion", 
+                "agreeableness"))
+
+## only agreeableness, returned as a vector, not a data.frame
+bfi_domain_agreeable(test_data)
+
+## So it can be used in a mutate, but, awkwardly
+mutate(test_data,
+  agree = bfi_domain_agreeable(test_data)) |> 
+  select(agree, everything())
+```
+
+### Facets
+
+There are two main ways you can compute facets alone.
+These two ways are equivalent, and take `prefix` and `keep_all` arguments.
+
+```{r}
+bfi_compute(test_data, type = "facets")
+
+bfi_compute_facets(test_data)
+```
+
+You can also choose to compute only certain domains, either by calling on their own special function or by specifying a domain in the main domain function.
+
+```{r}
+## Computes all
+bfi_compute_facets(test_data, 
+                   facets = c("sociability", 
+                "assertiveness",
+                "energy",
+                "compassion",
+                "respectful",
+                "trust", 
+                "organization",
+                "productive",
+                "responsibility",
+                "anxiety",
+                "depression", 
+                "emotional volatility",
+                "intellectual curiosity",
+                "aesthetic sensebility",
+                "creative imagination"))
+
+## extraversion and agreeableness only
+bfi_compute_facets(test_data, 
+                    facets = c("anxiety",
+                "depression"))
+
+## only anxiety, returned as a vector, not a data.frame
+bfi_facet_anxiety(test_data)
+
+## So it can be used in a mutate, but, awkwardly
+mutate(test_data,
+  anx = bfi_domain_agreeable(test_data)) |> 
+  select(anx, everything())
+```
+
+## References
+
+```{r child=paths$references, eval = TRUE} 
+```
 
 
-# Scoring
-
-
-# Reliability
-
-
-# References
-Soto, C. J., & John, O. P. (2017). The next Big Five Inventory (BFI-2): Developing and assessing a hierarchical model with 15 facets to enhance bandwidth, fidelity, and predictive power. _Journal of Personality and Social Psychology_, **113**(1), 117–143. [https://doi.org/10.1037/pspp0000096](https://doi.org/10.1037/pspp0000096)
