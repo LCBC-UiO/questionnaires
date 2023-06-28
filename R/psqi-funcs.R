@@ -86,7 +86,7 @@ psqi_compute_comp7 <- function(keep_awake, keep_enthused){
 #' @importFrom tidyr gather
 psqi_compute_global <- function(data, cols = matches("comp[1-7]+_"), max_missing = 0){
   if(max_missing > 6) 
-    stop("max_missing must be between 0 and 6.", call. = FALSE)
+    cli::cli_abort("max_missing must be between 0 and 6.")
   tmp <- select(data, {{cols}})
   tmp <- mutate(tmp, .r = 1:nrow(data))
   tmp <- gather(tmp, 

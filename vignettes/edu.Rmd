@@ -75,7 +75,7 @@ To access the names you need to explicitly ask for them through the `names` func
 ```{r}
 names(edu_levels(4))
 
-edu_levels(9) |> 
+edu_levels(9) %>% 
   names()
 ```
 
@@ -116,27 +116,27 @@ While these functions **do not require** data to already be in factors to work, 
 # Check that factors are as expected
 c("3", "High school", "University/University college (> 4 years)", 
 "University/University college (> 4 years)", "University/University college (> 4 years)", 
-"University/University college (> 4 years)") |> 
+"University/University college (> 4 years)") %>% 
   edu4_factorise()
 
 # or call the main function directly, specifying the levels of the schema
 c("3", "High school", "University/University college (> 4 years)", 
 "University/University college (> 4 years)", "University/University college (> 4 years)", 
-"University/University college (> 4 years)") |> 
+"University/University college (> 4 years)") %>% 
   edu_factorise( levels = 4)
 
 # convert to factor then to year
 c("3", "High school", "University/University college (> 4 years)", 
 "University/University college (> 4 years)", "University/University college (> 4 years)", 
-"University/University college (> 4 years)") |> 
-  edu4_factorise() |> 
+"University/University college (> 4 years)") %>% 
+  edu4_factorise() %>% 
   edu4_to_years()
 
 # you can skip factorizing as a middle step, 
 # if you are certain of the schema being applied correctly
 c("3", "High school", "University/University college (> 4 years)", 
 "University/University college (> 4 years)", "University/University college (> 4 years)", 
-"University/University college (> 4 years)") |> 
+"University/University college (> 4 years)") %>% 
   edu4_to_years()
 
 ```
@@ -153,10 +153,10 @@ edu_map_chr(from = 9, to =4)
 
 
 ```{r}
-c(7,7,8,4,2,5) |> 
+c(7,7,8,4,2,5) %>% 
   edu9_reduce(to = 4)
 
-c(7,7,8,4,2,5) |> 
+c(7,7,8,4,2,5) %>% 
   edu_reduce(from = 9, to = 4)
 ```
 

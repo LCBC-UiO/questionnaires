@@ -12,3 +12,4 @@
 man-roxygen
 data-raw
 ^\.github$
+man/fragments/*html

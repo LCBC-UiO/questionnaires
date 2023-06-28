@@ -50,8 +50,8 @@ test_data <- tibble(
   name = rep(sprintf("bfi_%02d", 1:60), 10),
   value = lapply(1:10, function(x){
     sample(1:5, size = 60, replace = TRUE)
-  }) |> unlist()
-) |> 
+  }) %>% unlist()
+) %>% 
   tidyr::pivot_wider()
 
 test_data
@@ -101,7 +101,7 @@ bfi_domain_agreeable(test_data)
 
 ## So it can be used in a mutate, but, awkwardly
 mutate(test_data,
-  agree = bfi_domain_agreeable(test_data)) |> 
+  agree = bfi_domain_agreeable(test_data)) %>% 
   select(agree, everything())
 ```
 
@@ -147,7 +147,7 @@ bfi_facet_anxiety(test_data)
 
 ## So it can be used in a mutate, but, awkwardly
 mutate(test_data,
-  anx = bfi_domain_agreeable(test_data)) |> 
+  anx = bfi_domain_agreeable(test_data)) %>% 
   select(anx, everything())
 ```
 

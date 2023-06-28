@@ -44,8 +44,7 @@ edu_levels <- function(levels = 4){
   if(as.character(levels) %in% names(levs)){
     return(levs[[as.character(levels)]])
   }
-  stop("There is no stored scheme for levels == '", levels, "'",
-       call. = FALSE)
+  cli::cli_abort(sprintf("There is no stored scheme for levels == '%s'", levels))
 }
 
 #' Recode new 9 levels into old
@@ -160,7 +159,7 @@ edu9_levels2name <- function(x){
 #'  \item{edu_map_num - }{returns a data.frame with two numeric vectors}
 #' }
 #' @importFrom stats setNames na.omit
-#' @importFrom dplyr mutate filter group_by select distinct
+#' @importFrom dplyr mutate filter group_by select distinct `%>%`
 edu_map <- function(from = 9, to = 4){
   
   toi <- to
@@ -177,16 +176,16 @@ edu_map <- function(from = 9, to = 4){
     all[which(min(all$from) < min(all$to)), "to"] <- 999  
   }
   
-  comps <- all |> 
-    mutate(x = from - to) |> 
-    filter(x >= 0 | x == -999) |> 
-    group_by(from) |> 
+  comps <- all %>% 
+    mutate(x = from - to) %>% 
+    filter(x >= 0 | x == -999) %>% 
+    group_by(from) %>% 
     mutate(y = min(x),
-           to = ifelse(x == y, to, NA)) |> 
-    select(-x,-y) |> 
-    distinct() |> 
-    na.omit() |> 
-    ungroup() |> 
+           to = ifelse(x == y, to, NA)) %>% 
+    select(-x,-y) %>% 
+    distinct() %>% 
+    na.omit() %>% 
+    ungroup() %>% 
     mutate(to = ifelse(to == 999, NA, to))
   
   mutate(comps, 
@@ -470,12 +469,12 @@ edu_compute <- function(data,
 #'     )
 #'  
 #'  library(dplyr)
-#'  edu |> 
+#'  edu %>% 
 #'      mutate(
 #'         mother = ifelse(mother == "3", NA, mother),
 #'         mother = edu4_factorise(mother),
 #'         father = edu9_reduce(edu9_factorise(father))
-#'      ) |> 
+#'      ) %>% 
 #'      edu_compile(
 #'         participant = edu4,
 #'         mother = mother,

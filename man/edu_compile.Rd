@@ -40,12 +40,12 @@ edu <- data.frame(
     )
  
  library(dplyr)
- edu |> 
+ edu \%>\% 
      mutate(
         mother = ifelse(mother == "3", NA, mother),
         mother = edu4_factorise(mother),
         father = edu9_reduce(edu9_factorise(father))
-     ) |> 
+     ) \%>\% 
      edu_compile(
         participant = edu4,
         mother = mother,

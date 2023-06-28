@@ -103,12 +103,14 @@ bdi_02 = c(1, 1, NA_real_, 2, NA_real_)
 )
 
 # Row with all components missing, gets sum 0
-data |>
-  bind_cols(bdi_sum = bdi_compute_sum(data))
+  bind_cols(data,
+      bdi_sum = bdi_compute_sum(data))
+
 # Do not allow any missing values
-data |>
-  bind_cols(bdi_sum = bdi_compute_sum(data, max_missing = 0))
+  bind_cols(data,
+      bdi_sum = bdi_compute_sum(data, max_missing = 0))
+      
 # Allow one missing value
-data |>
-  bind_cols(bdi_sum = bdi_compute_sum(data, max_missing = 2))
+  bind_cols(data,
+      bdi_sum = bdi_compute_sum(data, max_missing = 2))
 }

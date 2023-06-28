@@ -54,11 +54,11 @@ library(tidyr)
 gds_data <- expand_grid(ID = 1:5, 
             key = "gds", 
             question =  sprintf("%02d", 1:30))
-gds_data <- gds_data |> 
+gds_data <- gds_data %>% 
     mutate(value = sample(c(0,1), 
                           nrow(gds_data), 
-                          replace = TRUE)) |> 
-  unite(key, c(key, question)) |> 
+                          replace = TRUE)) %>% 
+  unite(key, c(key, question)) %>% 
   spread(key, value)
 
 gds_data
@@ -69,14 +69,14 @@ The function to calculate the total GDS score is `gds_compute_sum`, and requires
 If you have NOAS-like data, then the defaults should work, and as such you need not specify this.
 
 ```{r}
-gds_data |> 
+gds_data %>% 
   gds_compute_sum()
 ```
 
 To add a column with total GDS to a data set, place the argument inside a `mutate`, here a column named `gds_total` will appear as the right-most column.
 
 ```{r}
-gds_data |> 
+gds_data %>% 
   mutate(
     gds_total = gds_compute_sum(gds_data)
   )
@@ -88,15 +88,15 @@ This can be derived by using the `gds_factorise` function.
 
 
 ```{r}
-gds_data |> 
-  gds_compute_sum() |> 
+gds_data %>% 
+  gds_compute_sum() %>% 
   gds_factorise()
 ```
 
 and this can also be added directly to the data through a `mutate``
 
 ```{r}
-gds_data |> 
+gds_data %>% 
   mutate(
     gds_total = gds_compute_sum(gds_data),
     gds_cat =  gds_factorise(gds_total)
@@ -107,14 +107,14 @@ gds_data |>
 Lastly, since it is most common to want both the score and the factor added directly do data, a convenience function exists to assist in that.
 
 ```{r}
-gds_data |> 
+gds_data %>% 
   gds_compute()
 ```
 
 alternatively, you can also `keep_all = FALSE` in that function, to only retain the two computed columns, while maintaining the remaining data structure.
 
 ```{r}
-gds_data |> 
+gds_data %>% 
   gds_compute(keep_all = FALSE)
 ```
 

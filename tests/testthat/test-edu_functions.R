@@ -293,12 +293,12 @@ test_that("test edu_compile", {
                  "Mother", "Participant"))
   
   # reduce edu9 correctly for father
-  compiled <- edu |> 
+  compiled <- edu %>% 
     mutate(
       mother = ifelse(mother == "3", NA, mother),
       mother = edu4_factorise(mother),
       father = edu9_reduce(edu9_factorise(father))
-    ) |> 
+    ) %>% 
     edu_compile(
       participant = edu4,
       mother = mother,

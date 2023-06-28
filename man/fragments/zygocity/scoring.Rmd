@@ -1,0 +1,30 @@
+### Classification
+This note contains a brief description of the algorithm used to determine zygocity in recruitment in the 2000s.
+
+| Name | Answer questions about... | Used for |
+|------|---------------------------|----------|
+| Drop   | You and your twin were like two drops of water in childhood | Pairs and singles|
+| Stranger | Strangers had trouble telling the difference when you were children | Pairs and singles|
+| Eye    | Similarity in terms of eye color | Pairs |
+| Voice  | Similarity in terms of voice | Single |
+| Dexter | Similarity in Dexterity | Pairs and Singles |
+| Belief | What you believe yourself | Pairs and Singles |
+
+"Single" twins here means those who have responded alone, i.e. there is no data available for both in the pair.
+The similarity questions that are not found in the table above, e.g. whether or not family members had problems distinguishing the twins is not used in the classification.
+
+
+### Weights
+
+During calculations of the entire zygocity score, weights are applied to the different categories,
+depending on whether one or both twins have responded to the questionnaire.
+
+| Name     | Answer questions about...                      | Factor single | Factor pair |
+| -----    | --------------------                           | -------:      | --------:   |
+| Drop     | You and your twin were like two drops of water | 1.494         | 2.111       |
+| Stranger | Strangers had trouble seeing the difference    | 0.647         | 0.691       |
+| Eye      | Similarity in terms of eye color               |               | 0.394       |
+| Voice    | Similarity in terms of voice                   | 0.347         |             |
+| Dexter   | Dexterity Similarity                           | 0.458         | 0.366       |
+| Belief   | What you believe yourself                      | 0.417         | 0.481       |
+|          | Constant term in the formula                   | 0.007         | - 0.087     |

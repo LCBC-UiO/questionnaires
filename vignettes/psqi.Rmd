@@ -116,7 +116,7 @@ psqi_compute_comp7(keep_awake = data$psqi_08,
 If you want to add these directly to your data.frame, you can wrap then insire a `dplyr::mutate`.
 
 ```{r}
-data2 <- data |> 
+data2 <- data %>% 
   mutate(
     comp1 = psqi_06,
     comp2 = psqi_compute_comp2(min_before_sleep = psqi_02, 

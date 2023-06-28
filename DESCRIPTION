@@ -12,7 +12,8 @@ Imports:
     dplyr (>= 1.0.0),
     tidyr,
     lubridate,
-    lfactors
+    lfactors,
+    cli
 Suggests: 
     testthat (>= 2.1.0),
     here,

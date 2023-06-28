@@ -160,14 +160,15 @@ Calculate the facets of the BFI-2
 
 }}
 \examples{
+library(dplyr)
 # Making some test data
-test_data <- dplyr::tibble(
+test_data <- tibble(
   id = rep(1:10, each = 60),
   name = rep(sprintf("bfi_\%02d", 1:60), 10),
   value = lapply(1:10, function(x){
     sample(1:5, size = 60, replace = TRUE)
-  }) |> unlist()
-) |> 
+  }) \%>\% unlist()
+) \%>\% 
   tidyr::pivot_wider()
   
 bfi_facet_sociability(test_data)

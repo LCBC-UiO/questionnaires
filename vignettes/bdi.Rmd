@@ -97,15 +97,15 @@ Hopefully, the naming is consistent in some way so you easily can you tidy-selec
 
 ```{r eval=FALSE}
 # Base calculation on columns with names that start with "bdi"
-otherData |> 
+otherData %>% 
   bdi_compute_sum(cols = starts_with("bdi"))
 
 # Base calculation on columns with names that contain the string "Beck"
-otherData |> 
+otherData %>% 
   bdi_compute_sum(cols = contains("Beck"))
 
 # Base calculation on columns with names matching a regular expression
-otherData |> 
+otherData %>% 
   bdi_compute_sum(cols = matches("bdi_[0-9][0-9]$"))
 ```
 
@@ -116,7 +116,7 @@ and using that column also create the factorised version in a column named `bdi_
 
 
 ```{r}
-data |> 
+data %>% 
   mutate(
     bdi_sum = bdi_compute_sum(., cols = matches("bdi_[0-9][0-9]$")),
     bdi_fact = bdi_factorise(bdi_sum))
@@ -127,13 +127,13 @@ This function will return a data.frame with columns `BDI` (the sum)  and `bdi_Co
 By default, these two columns will be added to the end of the dataset provided, and use the default arguments to the two other bdi functions it calls. 
 
 ```{r}
-data |> 
+data %>% 
   bdi_compute()
 ```
 
 You may also choose to only have the two computed columns returned by setting `keep_all` to `FALSE`
 ```{r}
-data |> 
+data %>% 
   bdi_compute(keep_all = FALSE)
 ```
 
@@ -144,7 +144,7 @@ In this case, we use the predicate `!is.na(bdi_01)`, so that the `bdi_compute_su
 If we don't do this, the punched `BDI` score will be overwritten with `NA`. 
 
 ```{r}
-data |> 
+data %>% 
   bdi_compute(predicate = !is.na(bdi_01))
 ```
 
