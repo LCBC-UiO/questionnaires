@@ -45,7 +45,7 @@ Groth-Marnat G. (1990). The handbook of psychological assessment (2nd ed.). New 
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">questionnaires</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.3</span>
       </span>
     </div>
 
@@ -122,6 +122,9 @@ Groth-Marnat G. (1990). The handbook of psychological assessment (2nd ed.). New 
     <li>
       <a href="../articles/ucla-loneliness.html">UCLA Loneliness Scale</a>
     </li>
+    <li>
+      <a href="../articles/zygocity.html">Zygocity - Norwegian Twin registry questionnaire</a>
+    </li>
   </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -142,7 +145,7 @@ Groth-Marnat G. (1990). The handbook of psychological assessment (2nd ed.). New 
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Calculate BDI scores</h1>
-    <small class="dont-index">Source: <a href="https://github.com/LCBC-UiO/questionnaires/blob/HEAD/R/bdi_functions.R" class="external-link"><code>R/bdi_functions.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/LCBC-UiO/questionnaires/blob/HEAD/R/bdi-funcs.R" class="external-link"><code>R/bdi-funcs.R</code></a></small>
     <div class="hidden name"><code>bdi.Rd</code></div>
     </div>
 
@@ -171,52 +174,65 @@ The inventory allows subjects to respond to several options per question, in the
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">bdi_compute</span><span class="op">(</span>
-  <span class="va">data</span>,
-  cols <span class="op">=</span> <span class="fu">matches</span><span class="op">(</span><span class="st">"bdi_[0-9][0-9]$"</span><span class="op">)</span>,
-  max_missing <span class="op">=</span> <span class="fl">0</span>,
-  prefix <span class="op">=</span> <span class="st">"bdi_"</span>,
-  keep_all <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span>
-
-<span class="fu">bdi_compute_sum</span><span class="op">(</span><span class="va">data</span>, cols <span class="op">=</span> <span class="fu">matches</span><span class="op">(</span><span class="st">"bdi_[0-9][0-9]$"</span><span class="op">)</span>, max_missing <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>
-
-<span class="fu">bdi_factorise</span><span class="op">(</span><span class="va">bdi_sum</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">bdi_compute</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  cols <span class="op">=</span> <span class="fu">matches</span><span class="op">(</span><span class="st">"bdi_[0-9][0-9]$"</span><span class="op">)</span>,</span>
+<span>  max_missing <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  prefix <span class="op">=</span> <span class="st">"bdi_"</span>,</span>
+<span>  keep_all <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">bdi_compute_sum</span><span class="op">(</span><span class="va">data</span>, cols <span class="op">=</span> <span class="fu">matches</span><span class="op">(</span><span class="st">"bdi_[0-9][0-9]$"</span><span class="op">)</span>, max_missing <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">bdi_factorise</span><span class="op">(</span><span class="va">bdi_sum</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>Data containing BDI data</p></dd>
+
+
 <dt>cols</dt>
 <dd><p>Columns that contain BDI data</p></dd>
+
+
 <dt>max_missing</dt>
 <dd><p>Maximum number of components allowed to be missing.
 Defaults to "0", and will return <code>NA</code> if missing any question. If set to
 <code>NULL</code> any missing component counts as 0, meaning if all BDI
 components are missing, the sum is still 0, not <code>NA</code>.</p></dd>
+
+
 <dt>prefix</dt>
 <dd><p>string to prefix column names of computed values</p></dd>
+
+
 <dt>keep_all</dt>
 <dd><p>logical, append to data.frame</p></dd>
+
+
 <dt>bdi_sum</dt>
 <dd><p>Sum of BDI questions, as summed by bdi_compute_sum</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>data.frame</p>
+    
+
+<p>data.frame</p>
     </div>
     <div id="functions">
     <h2>Functions</h2>
     
-<ul><li><p><code>bdi_compute_sum</code>: Compute the BDI sum based on a data.frame containing the BDI data. Returns a numeric vector.</p></li>
-<li><p><code>bdi_factorise</code>: Create a factor based on the BDI sum, with the cut-off points as described in original paper.</p></li>
+<ul><li><p><code>bdi_compute_sum()</code>: Compute the BDI sum based on a data.frame containing the BDI data. Returns a numeric vector.</p></li>
+<li><p><code>bdi_factorise()</code>: Create a factor based on the BDI sum, with the cut-off points as described in original paper.</p></li>
 </ul></div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Example of treatment of missing values</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Example of treatment of missing values</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Attaching package: ‘dplyr’</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> The following objects are masked from ‘package:stats’:</span>
@@ -225,15 +241,15 @@ components are missing, the sum is still 0, not <code>NA</code>.</p></dd>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> The following objects are masked from ‘package:base’:</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     intersect, setdiff, setequal, union</span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/LCBC-UiO/questionnaires" class="external-link">questionnaires</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span>
-<span class="r-in">bdi_01 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="cn">NA_real_</span>, <span class="cn">NA_real_</span>, <span class="fl">2</span>, <span class="fl">1</span><span class="op">)</span>,</span>
-<span class="r-in">bdi_02 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="cn">NA_real_</span>, <span class="fl">2</span>, <span class="cn">NA_real_</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Row with all components missing, gets sum 0</span></span>
-<span class="r-in"><span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html" class="external-link">bind_cols</a></span><span class="op">(</span>bdi_sum <span class="op">=</span> <span class="fu">bdi_compute_sum</span><span class="op">(</span><span class="va">data</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/LCBC-UiO/questionnaires" class="external-link">questionnaires</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>bdi_01 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="cn">NA_real_</span>, <span class="cn">NA_real_</span>, <span class="fl">2</span>, <span class="fl">1</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>bdi_02 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="cn">NA_real_</span>, <span class="fl">2</span>, <span class="cn">NA_real_</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Row with all components missing, gets sum 0</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_cols.html" class="external-link">bind_cols</a></span><span class="op">(</span><span class="va">data</span>,</span></span>
+<span class="r-in"><span>      bdi_sum <span class="op">=</span> <span class="fu">bdi_compute_sum</span><span class="op">(</span><span class="va">data</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 3</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   bdi_01 bdi_02 bdi_sum</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -242,9 +258,10 @@ components are missing, the sum is still 0, not <code>NA</code>.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>     <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>      2      2       4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>      1     <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span>
-<span class="r-in"><span class="co"># Do not allow any missing values</span></span>
-<span class="r-in"><span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html" class="external-link">bind_cols</a></span><span class="op">(</span>bdi_sum <span class="op">=</span> <span class="fu">bdi_compute_sum</span><span class="op">(</span><span class="va">data</span>, max_missing <span class="op">=</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Do not allow any missing values</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_cols.html" class="external-link">bind_cols</a></span><span class="op">(</span><span class="va">data</span>,</span></span>
+<span class="r-in"><span>      bdi_sum <span class="op">=</span> <span class="fu">bdi_compute_sum</span><span class="op">(</span><span class="va">data</span>, max_missing <span class="op">=</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 3</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   bdi_01 bdi_02 bdi_sum</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -253,9 +270,10 @@ components are missing, the sum is still 0, not <code>NA</code>.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>     <span style="color: #BB0000;">NA</span>     <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>      2      2       4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>      1     <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span></span>
-<span class="r-in"><span class="co"># Allow one missing value</span></span>
-<span class="r-in"><span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html" class="external-link">bind_cols</a></span><span class="op">(</span>bdi_sum <span class="op">=</span> <span class="fu">bdi_compute_sum</span><span class="op">(</span><span class="va">data</span>, max_missing <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span>      </span></span>
+<span class="r-in"><span><span class="co"># Allow one missing value</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_cols.html" class="external-link">bind_cols</a></span><span class="op">(</span><span class="va">data</span>,</span></span>
+<span class="r-in"><span>      bdi_sum <span class="op">=</span> <span class="fu">bdi_compute_sum</span><span class="op">(</span><span class="va">data</span>, max_missing <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 3</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   bdi_01 bdi_02 bdi_sum</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -278,7 +296,7 @@ components are missing, the sum is still 0, not <code>NA</code>.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

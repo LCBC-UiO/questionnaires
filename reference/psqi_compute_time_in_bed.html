@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">questionnaires</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.3</span>
       </span>
     </div>
 
@@ -94,6 +94,9 @@
     <li>
       <a href="../articles/ucla-loneliness.html">UCLA Loneliness Scale</a>
     </li>
+    <li>
+      <a href="../articles/zygocity.html">Zygocity - Norwegian Twin registry questionnaire</a>
+    </li>
   </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -114,7 +117,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>PSQI compute time in bed</h1>
-    <small class="dont-index">Source: <a href="https://github.com/LCBC-UiO/questionnaires/blob/HEAD/R/psqi_functions.R" class="external-link"><code>R/psqi_functions.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/LCBC-UiO/questionnaires/blob/HEAD/R/psqi-funcs.R" class="external-link"><code>R/psqi-funcs.R</code></a></small>
     <div class="hidden name"><code>psqi_compute_time_in_bed.Rd</code></div>
     </div>
 
@@ -123,24 +126,31 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">psqi_compute_time_in_bed</span><span class="op">(</span>
-  <span class="va">risingtime</span>,
-  <span class="va">bedtime</span>,
-  risingtime_func <span class="op">=</span> <span class="fu">lubridate</span><span class="fu">::</span><span class="va"><a href="https://lubridate.tidyverse.org/reference/hms.html" class="external-link">hm</a></span>,
-  bedtime_func <span class="op">=</span> <span class="fu">lubridate</span><span class="fu">::</span><span class="va"><a href="https://lubridate.tidyverse.org/reference/hms.html" class="external-link">hm</a></span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">psqi_compute_time_in_bed</span><span class="op">(</span></span>
+<span>  <span class="va">risingtime</span>,</span>
+<span>  <span class="va">bedtime</span>,</span>
+<span>  risingtime_func <span class="op">=</span> <span class="fu">lubridate</span><span class="fu">::</span><span class="va"><a href="https://lubridate.tidyverse.org/reference/hms.html" class="external-link">hm</a></span>,</span>
+<span>  bedtime_func <span class="op">=</span> <span class="fu">lubridate</span><span class="fu">::</span><span class="va"><a href="https://lubridate.tidyverse.org/reference/hms.html" class="external-link">hm</a></span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>risingtime</dt>
 <dd><p>column name with rising time (HH:MM:SS) (psqi_03)</p></dd>
+
+
 <dt>bedtime</dt>
 <dd><p>column name with bedtime (HH:MM:SS) (psqi_01)</p></dd>
+
+
 <dt>risingtime_func</dt>
 <dd><p>function to convert time to <code>Period</code></p></dd>
+
+
 <dt>bedtime_func</dt>
 <dd><p>function to convert time to <code>Period</code></p></dd>
+
 </dl></div>
 
   </div>
@@ -155,7 +165,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

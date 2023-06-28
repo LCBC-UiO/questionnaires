@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">questionnaires</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.3</span>
       </span>
     </div>
 
@@ -94,6 +94,9 @@
     <li>
       <a href="../articles/ucla-loneliness.html">UCLA Loneliness Scale</a>
     </li>
+    <li>
+      <a href="../articles/zygocity.html">Zygocity - Norwegian Twin registry questionnaire</a>
+    </li>
   </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -114,7 +117,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Change coding of GDS to correct numeric values</h1>
-    <small class="dont-index">Source: <a href="https://github.com/LCBC-UiO/questionnaires/blob/HEAD/R/gds_functions.R" class="external-link"><code>R/gds_functions.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/LCBC-UiO/questionnaires/blob/HEAD/R/gds-funcs.R" class="external-link"><code>R/gds-funcs.R</code></a></small>
     <div class="hidden name"><code>gds_alter_values.Rd</code></div>
     </div>
 
@@ -123,24 +126,31 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">gds_alter_values</span><span class="op">(</span>
-  <span class="va">data</span>,
-  values <span class="op">=</span> <span class="fu"><a href="gds_values.html">gds_values</a></span><span class="op">(</span><span class="op">)</span>,
-  reverse <span class="op">=</span> <span class="cn">FALSE</span>,
-  cols <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">matches</a></span><span class="op">(</span><span class="st">"01$|05$|07$|09$|15$|19$|21$|27$|29$|30$"</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">gds_alter_values</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  values <span class="op">=</span> <span class="fu"><a href="gds_values.html">gds_values</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  reverse <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  cols <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">matches</a></span><span class="op">(</span><span class="st">"01$|05$|07$|09$|15$|19$|21$|27$|29$|30$"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>data.frame with GDS data in it</p></dd>
+
+
 <dt>values</dt>
 <dd><p>named vector of 2 providing the coding for Yes and No answers c(Yes = 1, No = 2)</p></dd>
+
+
 <dt>reverse</dt>
 <dd><p>reverse logic</p></dd>
+
+
 <dt>cols</dt>
 <dd><p>GDS data columns</p></dd>
+
 </dl></div>
     <div id="see-also">
     <h2>See also</h2>
@@ -162,7 +172,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

@@ -1,5 +1,5 @@
-pandoc: 2.7.3
-pkgdown: 2.0.2
+pandoc: 2.19.2
+pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   aseba: aseba.html
@@ -23,5 +23,6 @@ articles:
   slesq: slesq.html
   tci: tci.html
   ucla-loneliness: ucla-loneliness.html
-last_built: 2022-03-09T12:47Z
+  zygocity: zygocity.html
+last_built: 2023-06-28T19:41Z
 

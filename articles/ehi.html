@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">questionnaires</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.3</span>
       </span>
     </div>
 
@@ -119,6 +119,9 @@
     <li>
       <a href="../articles/ucla-loneliness.html">UCLA Loneliness Scale</a>
     </li>
+    <li>
+      <a href="../articles/zygocity.html">Zygocity - Norwegian Twin registry questionnaire</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -142,7 +145,7 @@
 
       
 
-      </header><script src="ehi_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Edinburgh Handedness Inventory</h1>
@@ -158,12 +161,18 @@
 <div class="section level2">
 <h2 id="background">Background<a class="anchor" aria-label="anchor" href="#background"></a>
 </h2>
-<p>The Edinburgh Handedness Inventory is a measurement scale used to assess the dominance of a person’s right or left hand in everyday activities, sometimes referred to as laterality. The inventory can be used by an observer assessing the person, or by a person self-reporting hand use. The latter method tends to be less reliable due to a person over-attributing tasks to the dominant hand.</p>
+<p>The Edinburgh Handedness Inventory is a measurement scale used to
+assess the dominance of a person’s right or left hand in everyday
+activities, sometimes referred to as laterality. The inventory can be
+used by an observer assessing the person, or by a person self-reporting
+hand use. The latter method tends to be less reliable due to a person
+over-attributing tasks to the dominant hand.</p>
 </div>
 <div class="section level2">
 <h2 id="scoring">Scoring<a class="anchor" aria-label="anchor" href="#scoring"></a>
 </h2>
-<p>The EHI has several measures that can help assess a person’s laterality.</p>
+<p>The EHI has several measures that can help assess a person’s
+laterality.</p>
 <table class="table">
 <thead><tr class="header">
 <th align="left">answer</th>
@@ -219,7 +228,16 @@
 <div class="section level3">
 <h3 id="nominal">Nominal<a class="anchor" aria-label="anchor" href="#nominal"></a>
 </h3>
-<p>The easiest measure from the EHI is the nominal laterality value, which is just the answer to the first question on hand preference when writing. This simple index just treat negative answers as “left” dominance, positive number as “right” dominance, and a 0 as ambidextrous. <strong>Note:</strong> The original paper by Oldfield (1971) does not explicitly state a category for “Ambidextrous”. It is very rare that a person does not have a clear preference on writing hand, even if they <em>can</em> write with both hands. This category is only added in this package to handle the possible case of someone answering “No preference”.</p>
+<p>The easiest measure from the EHI is the nominal laterality value,
+which is just the answer to the first question on hand preference when
+writing. This simple index just treat negative answers as “left”
+dominance, positive number as “right” dominance, and a 0 as
+ambidextrous. <strong>Note:</strong> The original paper by Oldfield
+(1971) does not explicitly state a category for “Ambidextrous”. It is
+very rare that a person does not have a clear preference on writing
+hand, even if they <em>can</em> write with both hands. This category is
+only added in this package to handle the possible case of someone
+answering “No preference”.</p>
 <table class="table">
 <thead><tr class="header">
 <th align="right">min</th>
@@ -248,24 +266,28 @@
 <div class="section level3">
 <h3 id="laterality-quotient-lq">Laterality quotient (lq)<a class="anchor" aria-label="anchor" href="#laterality-quotient-lq"></a>
 </h3>
-<p>The total score of the EHI is more than just summing the values for each answer. The laterality quotient (LQ) uses the answers to all the questions. The LQ can take values from -100 to 100, and is calculated by taking the sum of all positive answers subtracting the sum of absolute values of the negative answers, divided by the sum of both, and multiplied by 100.</p>
-<!-- ```{r, include=FALSE} -->
-<!-- equation <- "\\frac{\\Sigma(|positive|)-\\Sigma(|negative|)}{\\Sigma(|positive|)+\\Sigma(|negative|)}x100" -->
-<!-- html <- knitr::is_html_output() -->
-<!-- rd <- !html -->
-<!-- ``` -->
-<!--  -->
-<!-- ```{r, include=html} -->
-<!-- katex::katex_html(equation) -->
-<!-- ``` -->
-<!-- ```{r, include=rd, results='asis'} -->
-<!-- eval(parse(text=sprintf("\\Sexpr[results=rd, stage=build]{katex::math_to_rd('%s')}", equation))) -->
-<!-- ``` -->
+<p>The total score of the EHI is more than just summing the values for
+each answer. The laterality quotient (LQ) uses the answers to all the
+questions. The LQ can take values from -100 to 100, and is calculated by
+taking the sum of all positive answers subtracting the sum of absolute
+values of the negative answers, divided by the sum of both, and
+multiplied by 100.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">katex</span><span class="fu">::</span><span class="fu"><a href="https://docs.ropensci.org/katex/reference/katex.html" class="external-link">katex_html</a></span><span class="op">(</span><span class="va">equation</span><span class="op">)</span></span></code></pre></div>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mfrac><mrow><mi mathvariant="normal">Σ</mi><mo stretchy="false">(</mo><mi mathvariant="normal">∣</mi><mi>p</mi><mi>o</mi><mi>s</mi><mi>i</mi><mi>t</mi><mi>i</mi><mi>v</mi><mi>e</mi><mi mathvariant="normal">∣</mi><mo stretchy="false">)</mo><mo>−</mo><mi mathvariant="normal">Σ</mi><mo stretchy="false">(</mo><mi mathvariant="normal">∣</mi><mi>n</mi><mi>e</mi><mi>g</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>v</mi><mi>e</mi><mi mathvariant="normal">∣</mi><mo stretchy="false">)</mo></mrow><mrow><mi mathvariant="normal">Σ</mi><mo stretchy="false">(</mo><mi mathvariant="normal">∣</mi><mi>p</mi><mi>o</mi><mi>s</mi><mi>i</mi><mi>t</mi><mi>i</mi><mi>v</mi><mi>e</mi><mi mathvariant="normal">∣</mi><mo stretchy="false">)</mo><mo>+</mo><mi mathvariant="normal">Σ</mi><mo stretchy="false">(</mo><mi mathvariant="normal">∣</mi><mi>n</mi><mi>e</mi><mi>g</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>v</mi><mi>e</mi><mi mathvariant="normal">∣</mi><mo stretchy="false">)</mo></mrow></mfrac><mi>x</mi><mn>100</mn></mrow><annotation encoding="application/x-tex">\frac{\Sigma(|positive|)-\Sigma(|negative|)}{\Sigma(|positive|)+\Sigma(|negative|)}x100</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.363em;vertical-align:-0.936em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">Σ</span><span class="mopen">(</span><span class="mord">∣</span><span class="mord mathnormal">p</span><span class="mord mathnormal">os</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">e</span><span class="mord">∣</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">Σ</span><span class="mopen">(</span><span class="mord">∣</span><span class="mord mathnormal">n</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">a</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">e</span><span class="mord">∣</span><span class="mclose">)</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">Σ</span><span class="mopen">(</span><span class="mord">∣</span><span class="mord mathnormal">p</span><span class="mord mathnormal">os</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">e</span><span class="mord">∣</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">Σ</span><span class="mopen">(</span><span class="mord">∣</span><span class="mord mathnormal">n</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">a</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">e</span><span class="mord">∣</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord mathnormal">x</span><span class="mord">100</span></span></span></span></span>
 </div>
 <div class="section level3">
 <h3 id="laterality-index">Laterality index<a class="anchor" aria-label="anchor" href="#laterality-index"></a>
 </h3>
-<p>The laterality index is based on the laterality quotient (above) and categorises answers into to categories, Left and Right. The Oldfield (1971) paper mentions “indeterminate handedness” a couple of times in the paper, but the case for “true” ambidextrous is not made, and as such the inventory does not have official categories for that. As the index is based on the quotient, that ranges from -100 to 100, getting a perfect <code>0</code> LQ is very unlikely, and as indicated in the paper, such score is assumed to belong to the Right hand part of the scale.</p>
+<p>The laterality index is based on the laterality quotient (above) and
+categorises answers into to categories, Left and Right. The Oldfield
+(1971) paper mentions “indeterminate handedness” a couple of times in
+the paper, but the case for “true” ambidextrous is not made, and as such
+the inventory does not have official categories for that. As the index
+is based on the quotient, that ranges from -100 to 100, getting a
+perfect <code>0</code> LQ is very unlikely, and as indicated in the
+paper, such score is assumed to belong to the Right hand part of the
+scale.</p>
 <table class="table">
 <thead><tr class="header">
 <th align="right">min</th>
@@ -285,7 +307,8 @@
 </tr>
 </tbody>
 </table>
-<p>An alternate laterality index is also often employed, where scores between -40 and 40 are treated as ambidextrous.</p>
+<p>An alternate laterality index is also often employed, where scores
+between -40 and 40 are treated as ambidextrous.</p>
 </div>
 <div class="section level3">
 <h3 id="questionnaire-items">Questionnaire Items<a class="anchor" aria-label="anchor" href="#questionnaire-items"></a>
@@ -296,16 +319,24 @@
 <div class="section level2">
 <h2 id="data-requirements">Data requirements<a class="anchor" aria-label="anchor" href="#data-requirements"></a>
 </h2>
-<p>One row of data should refer to a single questionnaire answered, and as such, if a person has answered multiple times, these should appear on separate rows with columns identifying ID and time point per observation.</p>
+<p>One row of data should refer to a single questionnaire answered, and
+as such, if a person has answered multiple times, these should appear on
+separate rows with columns identifying ID and time point per
+observation.</p>
 <div class="section level3">
 <h3 id="column-names">Column names<a class="anchor" aria-label="anchor" href="#column-names"></a>
 </h3>
-<p>For ease, we recommend naming the columns in a consistent way, so the functions in this package become easier to use. The LCBC database follows a naming scheme that prefixes all columns with <code>ehi_</code> and ends with a zero-padded double digit indicator of the question number.</p>
+<p>For ease, we recommend naming the columns in a consistent way, so the
+functions in this package become easier to use. The LCBC database
+follows a naming scheme that prefixes all columns with <code>ehi_</code>
+and ends with a zero-padded double digit indicator of the question
+number.</p>
 </div>
 <div class="section level3">
 <h3 id="data-values">Data values<a class="anchor" aria-label="anchor" href="#data-values"></a>
 </h3>
-<p>The cell values in the data should be coded from -2 through 0 to 2, and there should be a single value per question.</p>
+<p>The cell values in the data should be coded from -2 through 0 to 2,
+and there should be a single value per question.</p>
 <table class="table">
 <thead><tr class="header">
 <th align="right">value</th>
@@ -342,116 +373,135 @@
 <div class="section level3">
 <h3 id="nominal-value">Nominal value<a class="anchor" aria-label="anchor" href="#nominal-value"></a>
 </h3>
-<p>The nominal value from the EHI is based on the answer to question number 1, regarding writing. The <code>ehi_factorise_nominal</code> function should be supplied this answer directly, and will return a factor vector of equal length with the categories.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'dplyr'</span>
-<span class="co">#&gt; The following objects are masked from 'package:stats':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     filter, lag</span>
-<span class="co">#&gt; The following objects are masked from 'package:base':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     intersect, setdiff, setequal, union</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/LCBC-UiO/questionnaires" class="external-link">questionnaires</a></span><span class="op">)</span>
-
-<span class="va">writing</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="op">-</span><span class="fl">2</span><span class="op">)</span>
-<span class="fu"><a href="../reference/ehi_factorise_nominal.html">ehi_factorise_nominal</a></span><span class="op">(</span><span class="va">writing</span><span class="op">)</span>
-<span class="co">#&gt; [1] right      right      left       ambidexter right      left      </span>
-<span class="co">#&gt; Levels: left ambidexter right</span></code></pre></div>
+<p>The nominal value from the EHI is based on the answer to question
+number 1, regarding writing. The <code>ehi_factorise_nominal</code>
+function should be supplied this answer directly, and will return a
+factor vector of equal length with the categories.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Attaching package: 'dplyr'</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     filter, lag</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/LCBC-UiO/questionnaires" class="external-link">questionnaires</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">writing</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="op">-</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/ehi_factorise_nominal.html">ehi_factorise_nominal</a></span><span class="op">(</span><span class="va">writing</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] right      right      left       ambidexter right      left      </span></span>
+<span><span class="co">#&gt; Levels: left ambidexter right</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="laterality-quotient">Laterality quotient<a class="anchor" aria-label="anchor" href="#laterality-quotient"></a>
 </h3>
-<p>Calculating the laterality quotient requires the entire dataset of all EHI columns to be computed, and as such takes an entire data.frame, with a tidy-selector selecting the columns that contain the EHI columns. If you are working with MOAS-like data, the columns are select by default settings.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Make some synthetic data to try on</span>
-<span class="va">ehi_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>
-  ehi_01 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2L</span>, <span class="fl">2L</span>, <span class="op">-</span><span class="fl">2L</span>, <span class="fl">1L</span>, <span class="fl">2L</span><span class="op">)</span>, 
-  ehi_02 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2L</span>, <span class="fl">1L</span>, <span class="op">-</span><span class="fl">2L</span>, <span class="fl">1L</span>, <span class="fl">2L</span><span class="op">)</span>, 
-  ehi_03 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2L</span>, <span class="fl">0L</span>, <span class="op">-</span><span class="fl">1L</span>, <span class="fl">0L</span>, <span class="fl">1L</span><span class="op">)</span>, 
-  ehi_04 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2L</span>, <span class="op">-</span><span class="fl">1L</span>, <span class="op">-</span><span class="fl">2L</span>, <span class="op">-</span><span class="fl">1L</span>, <span class="fl">1L</span><span class="op">)</span>, 
-  ehi_05 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2L</span>, <span class="fl">0L</span>, <span class="op">-</span><span class="fl">1L</span>, <span class="fl">1L</span>, <span class="fl">1L</span><span class="op">)</span>,
-  ehi_06 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1L</span>, <span class="fl">0L</span>, <span class="op">-</span><span class="fl">1L</span>, <span class="fl">0L</span>, <span class="fl">1L</span><span class="op">)</span>, 
-  ehi_07 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2L</span>, <span class="fl">2L</span>, <span class="op">-</span><span class="fl">1L</span>, <span class="fl">0L</span>, <span class="fl">1L</span><span class="op">)</span>, 
-  ehi_08 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1L</span>, <span class="fl">2L</span>, <span class="fl">1L</span>, <span class="op">-</span><span class="fl">1L</span>, <span class="fl">1L</span><span class="op">)</span>, 
-  ehi_09 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2L</span>, <span class="fl">1L</span>, <span class="op">-</span><span class="fl">2L</span>, <span class="op">-</span><span class="fl">1L</span>, <span class="fl">1L</span><span class="op">)</span>,
-  ehi_10 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2L</span>, <span class="fl">0L</span>, <span class="op">-</span><span class="fl">1L</span>, <span class="fl">0L</span>, <span class="fl">1L</span><span class="op">)</span>
-  <span class="op">)</span>
-
-<span class="va">ehi_data</span>
-<span class="co">#&gt;   ehi_01 ehi_02 ehi_03 ehi_04 ehi_05 ehi_06 ehi_07 ehi_08 ehi_09 ehi_10</span>
-<span class="co">#&gt; 1      2      2      2      2      2      1      2      1      2      2</span>
-<span class="co">#&gt; 2      2      1      0     -1      0      0      2      2      1      0</span>
-<span class="co">#&gt; 3     -2     -2     -1     -2     -1     -1     -1      1     -2     -1</span>
-<span class="co">#&gt; 4      1      1      0     -1      1      0      0     -1     -1      0</span>
-<span class="co">#&gt; 5      2      2      1      1      1      1      1      1      1      1</span></code></pre></div>
+<p>Calculating the laterality quotient requires the entire dataset of
+all EHI columns to be computed, and as such takes an entire data.frame,
+with a tidy-selector selecting the columns that contain the EHI columns.
+If you are working with MOAS-like data, the columns are select by
+default settings.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ehi_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="fu"><a href="../reference/ehi_compute_lq.html">ehi_compute_lq</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; [1] 100.00000  77.77778 -85.71429   0.00000 100.00000</span></code></pre></div>
-<p>These values can then be categorized into the two different laterality factors we have available.</p>
+<code class="sourceCode R"><span><span class="co"># Make some synthetic data to try on</span></span>
+<span><span class="va">ehi_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
+<span>  ehi_01 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2L</span>, <span class="fl">2L</span>, <span class="op">-</span><span class="fl">2L</span>, <span class="fl">1L</span>, <span class="fl">2L</span><span class="op">)</span>, </span>
+<span>  ehi_02 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2L</span>, <span class="fl">1L</span>, <span class="op">-</span><span class="fl">2L</span>, <span class="fl">1L</span>, <span class="fl">2L</span><span class="op">)</span>, </span>
+<span>  ehi_03 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2L</span>, <span class="fl">0L</span>, <span class="op">-</span><span class="fl">1L</span>, <span class="fl">0L</span>, <span class="fl">1L</span><span class="op">)</span>, </span>
+<span>  ehi_04 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2L</span>, <span class="op">-</span><span class="fl">1L</span>, <span class="op">-</span><span class="fl">2L</span>, <span class="op">-</span><span class="fl">1L</span>, <span class="fl">1L</span><span class="op">)</span>, </span>
+<span>  ehi_05 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2L</span>, <span class="fl">0L</span>, <span class="op">-</span><span class="fl">1L</span>, <span class="fl">1L</span>, <span class="fl">1L</span><span class="op">)</span>,</span>
+<span>  ehi_06 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1L</span>, <span class="fl">0L</span>, <span class="op">-</span><span class="fl">1L</span>, <span class="fl">0L</span>, <span class="fl">1L</span><span class="op">)</span>, </span>
+<span>  ehi_07 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2L</span>, <span class="fl">2L</span>, <span class="op">-</span><span class="fl">1L</span>, <span class="fl">0L</span>, <span class="fl">1L</span><span class="op">)</span>, </span>
+<span>  ehi_08 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1L</span>, <span class="fl">2L</span>, <span class="fl">1L</span>, <span class="op">-</span><span class="fl">1L</span>, <span class="fl">1L</span><span class="op">)</span>, </span>
+<span>  ehi_09 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2L</span>, <span class="fl">1L</span>, <span class="op">-</span><span class="fl">2L</span>, <span class="op">-</span><span class="fl">1L</span>, <span class="fl">1L</span><span class="op">)</span>,</span>
+<span>  ehi_10 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2L</span>, <span class="fl">0L</span>, <span class="op">-</span><span class="fl">1L</span>, <span class="fl">0L</span>, <span class="fl">1L</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="va">ehi_data</span></span>
+<span><span class="co">#&gt;   ehi_01 ehi_02 ehi_03 ehi_04 ehi_05 ehi_06 ehi_07 ehi_08 ehi_09 ehi_10</span></span>
+<span><span class="co">#&gt; 1      2      2      2      2      2      1      2      1      2      2</span></span>
+<span><span class="co">#&gt; 2      2      1      0     -1      0      0      2      2      1      0</span></span>
+<span><span class="co">#&gt; 3     -2     -2     -1     -2     -1     -1     -1      1     -2     -1</span></span>
+<span><span class="co">#&gt; 4      1      1      0     -1      1      0      0     -1     -1      0</span></span>
+<span><span class="co">#&gt; 5      2      2      1      1      1      1      1      1      1      1</span></span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ehi_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="fu"><a href="../reference/ehi_compute_lq.html">ehi_compute_lq</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="fu"><a href="../reference/ehi_factorise_lq.html">ehi_factorise_lq</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; [1] right right left  right right</span>
-<span class="co">#&gt; Levels: left right</span>
-
-<span class="va">ehi_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="fu"><a href="../reference/ehi_compute_lq.html">ehi_compute_lq</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="fu"><a href="../reference/ehi_factorise_lq.html">ehi_factorise_lqa</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; [1] right      right      left       ambidexter right     </span>
-<span class="co">#&gt; Levels: left ambidexter right</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">ehi_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/ehi_compute_lq.html">ehi_compute_lq</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 100.00000  77.77778 -85.71429   0.00000 100.00000</span></span></code></pre></div>
+<p>These values can then be categorized into the two different
+laterality factors we have available.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ehi_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/ehi_compute_lq.html">ehi_compute_lq</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/ehi_factorise_lq.html">ehi_factorise_lq</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] right right left  right right</span></span>
+<span><span class="co">#&gt; Levels: left right</span></span>
+<span></span>
+<span><span class="va">ehi_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/ehi_compute_lq.html">ehi_compute_lq</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/ehi_factorise_lq.html">ehi_factorise_lqa</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] right      right      left       ambidexter right     </span></span>
+<span><span class="co">#&gt; Levels: left ambidexter right</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="combine-ehi-results-into-a-data-frame">Combine EHI results into a data.frame<a class="anchor" aria-label="anchor" href="#combine-ehi-results-into-a-data-frame"></a>
 </h3>
-<p>In most cases, people will want to add the data derived from the <code>ehi</code> functions directly into their data.frame. This is in most cases best done using <code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">dplyr::mutate</a></code>.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ehi_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>
-    ehi_nominal <span class="op">=</span> <span class="fu"><a href="../reference/ehi_factorise_nominal.html">ehi_factorise_nominal</a></span><span class="op">(</span><span class="va">ehi_01</span><span class="op">)</span>,
-    ehi_lq <span class="op">=</span> <span class="fu"><a href="../reference/ehi_compute_lq.html">ehi_compute_lq</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span>,
-    ehi_lq_cat <span class="op">=</span> <span class="fu"><a href="../reference/ehi_factorise_lq.html">ehi_factorise_lq</a></span><span class="op">(</span><span class="va">ehi_lq</span><span class="op">)</span>,
-    ehi_lqa_cat <span class="op">=</span> <span class="fu"><a href="../reference/ehi_factorise_lq.html">ehi_factorise_lqa</a></span><span class="op">(</span><span class="va">ehi_lq</span><span class="op">)</span>
-  <span class="op">)</span>
-<span class="co">#&gt;   ehi_01 ehi_02 ehi_03 ehi_04 ehi_05 ehi_06 ehi_07 ehi_08 ehi_09 ehi_10</span>
-<span class="co">#&gt; 1      2      2      2      2      2      1      2      1      2      2</span>
-<span class="co">#&gt; 2      2      1      0     -1      0      0      2      2      1      0</span>
-<span class="co">#&gt; 3     -2     -2     -1     -2     -1     -1     -1      1     -2     -1</span>
-<span class="co">#&gt; 4      1      1      0     -1      1      0      0     -1     -1      0</span>
-<span class="co">#&gt; 5      2      2      1      1      1      1      1      1      1      1</span>
-<span class="co">#&gt;   ehi_nominal    ehi_lq ehi_lq_cat ehi_lqa_cat</span>
-<span class="co">#&gt; 1       right 100.00000      right       right</span>
-<span class="co">#&gt; 2       right  77.77778      right       right</span>
-<span class="co">#&gt; 3        left -85.71429       left        left</span>
-<span class="co">#&gt; 4       right   0.00000      right  ambidexter</span>
-<span class="co">#&gt; 5       right 100.00000      right       right</span></code></pre></div>
-<p>Because this is a little cumbersome to remember, a convenience function is made that will add columns using this naming convention.</p>
+<p>In most cases, people will want to add the data derived from the
+<code>ehi</code> functions directly into their data.frame. This is in
+most cases best done using <code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">dplyr::mutate</a></code>.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ehi_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="fu"><a href="../reference/ehi_compute.html">ehi_compute</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt;   ehi_01 ehi_02 ehi_03 ehi_04 ehi_05 ehi_06 ehi_07 ehi_08 ehi_09 ehi_10</span>
-<span class="co">#&gt; 1      2      2      2      2      2      1      2      1      2      2</span>
-<span class="co">#&gt; 2      2      1      0     -1      0      0      2      2      1      0</span>
-<span class="co">#&gt; 3     -2     -2     -1     -2     -1     -1     -1      1     -2     -1</span>
-<span class="co">#&gt; 4      1      1      0     -1      1      0      0     -1     -1      0</span>
-<span class="co">#&gt; 5      2      2      1      1      1      1      1      1      1      1</span>
-<span class="co">#&gt;      ehi_lq ehi_nominal ehi_lq_cat ehi_lqa_cat</span>
-<span class="co">#&gt; 1 100.00000       right      right       right</span>
-<span class="co">#&gt; 2  77.77778       right      right       right</span>
-<span class="co">#&gt; 3 -85.71429        left       left        left</span>
-<span class="co">#&gt; 4   0.00000       right      right  ambidexter</span>
-<span class="co">#&gt; 5 100.00000       right      right       right</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">ehi_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
+<span>    ehi_lq <span class="op">=</span> <span class="fu"><a href="../reference/ehi_compute_lq.html">ehi_compute_lq</a></span><span class="op">(</span><span class="va">ehi_data</span><span class="op">)</span>,</span>
+<span>    ehi_nominal <span class="op">=</span> <span class="fu"><a href="../reference/ehi_factorise_nominal.html">ehi_factorise_nominal</a></span><span class="op">(</span><span class="va">ehi_01</span><span class="op">)</span>,</span>
+<span>    ehi_lq_cat <span class="op">=</span> <span class="fu"><a href="../reference/ehi_factorise_lq.html">ehi_factorise_lq</a></span><span class="op">(</span><span class="va">ehi_lq</span><span class="op">)</span>,</span>
+<span>    ehi_lqa_cat <span class="op">=</span> <span class="fu"><a href="../reference/ehi_factorise_lq.html">ehi_factorise_lqa</a></span><span class="op">(</span><span class="va">ehi_lq</span><span class="op">)</span>,</span>
+<span>  <span class="op">)</span></span>
+<span><span class="co">#&gt;   ehi_01 ehi_02 ehi_03 ehi_04 ehi_05 ehi_06 ehi_07 ehi_08 ehi_09 ehi_10</span></span>
+<span><span class="co">#&gt; 1      2      2      2      2      2      1      2      1      2      2</span></span>
+<span><span class="co">#&gt; 2      2      1      0     -1      0      0      2      2      1      0</span></span>
+<span><span class="co">#&gt; 3     -2     -2     -1     -2     -1     -1     -1      1     -2     -1</span></span>
+<span><span class="co">#&gt; 4      1      1      0     -1      1      0      0     -1     -1      0</span></span>
+<span><span class="co">#&gt; 5      2      2      1      1      1      1      1      1      1      1</span></span>
+<span><span class="co">#&gt;      ehi_lq ehi_nominal ehi_lq_cat ehi_lqa_cat</span></span>
+<span><span class="co">#&gt; 1 100.00000       right      right       right</span></span>
+<span><span class="co">#&gt; 2  77.77778       right      right       right</span></span>
+<span><span class="co">#&gt; 3 -85.71429        left       left        left</span></span>
+<span><span class="co">#&gt; 4   0.00000       right      right  ambidexter</span></span>
+<span><span class="co">#&gt; 5 100.00000       right      right       right</span></span></code></pre></div>
+<p>Because this is a little cumbersome to remember, a convenience
+function is made that will add columns using this naming convention.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ehi_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/ehi_compute.html">ehi_compute</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   ehi_01 ehi_02 ehi_03 ehi_04 ehi_05 ehi_06 ehi_07 ehi_08 ehi_09 ehi_10</span></span>
+<span><span class="co">#&gt; 1      2      2      2      2      2      1      2      1      2      2</span></span>
+<span><span class="co">#&gt; 2      2      1      0     -1      0      0      2      2      1      0</span></span>
+<span><span class="co">#&gt; 3     -2     -2     -1     -2     -1     -1     -1      1     -2     -1</span></span>
+<span><span class="co">#&gt; 4      1      1      0     -1      1      0      0     -1     -1      0</span></span>
+<span><span class="co">#&gt; 5      2      2      1      1      1      1      1      1      1      1</span></span>
+<span><span class="co">#&gt;      ehi_lq ehi_nominal ehi_lq_cat ehi_lqa_cat</span></span>
+<span><span class="co">#&gt; 1 100.00000       right      right       right</span></span>
+<span><span class="co">#&gt; 2  77.77778       right      right       right</span></span>
+<span><span class="co">#&gt; 3 -85.71429        left       left        left</span></span>
+<span><span class="co">#&gt; 4   0.00000       right      right  ambidexter</span></span>
+<span><span class="co">#&gt; 5 100.00000       right      right       right</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
 <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
-<p>Oldfield, RC (March 1971) <em>The assessment and analysis of handedness: The Edinburgh inventory</em>. Neuropsychologia. 9 (1): 97–113. <a href="https://www.sciencedirect.com/science/article/abs/pii/0028393271900674?via%3Dihub" class="external-link">doi:10.1016/0028-3932(71)90067-4</a></p>
-<p>Verdino, M; Dingman, S (April 1998). <em>Two measures of laterality in handedness: the Edinburgh Handedness Inventory and the Purdue Pegboard test of manual dexterity</em>. Perceptual and Motor Skills. 86 (2): 476–8. <a href="https://doi.org/10.2466%2Fpms.1998.86.2.476" class="external-link">doi:10.2466/pms.1998.86.2.476</a></p>
-<p>Knecht, S; Dräger, B; Deppe, M; Bobe, L; Lohmann, H; Flöel, A; Ringelstein, E-B; Henningsen, H (December 2000). <em>Handedness and hemispheric language dominance in healthy humans</em>. Brain. 123 (12): 2512–8. <a href="https://doi.org/10.1093%2Fbrain%2F123.12.2512" class="external-link">doi:10.1093/brain/123.12.2512</a>.</p>
+<p>Oldfield, RC (March 1971) <em>The assessment and analysis of
+handedness: The Edinburgh inventory</em>. Neuropsychologia. 9 (1):
+97–113. <a href="https://www.sciencedirect.com/science/article/abs/pii/0028393271900674?via%3Dihub" class="external-link">doi:10.1016/0028-3932(71)90067-4</a></p>
+<p>Verdino, M; Dingman, S (April 1998). <em>Two measures of laterality
+in handedness: the Edinburgh Handedness Inventory and the Purdue
+Pegboard test of manual dexterity</em>. Perceptual and Motor Skills. 86
+(2): 476–8. <a href="https://doi.org/10.2466%2Fpms.1998.86.2.476" class="external-link">doi:10.2466/pms.1998.86.2.476</a></p>
+<p>Knecht, S; Dräger, B; Deppe, M; Bobe, L; Lohmann, H; Flöel, A;
+Ringelstein, E-B; Henningsen, H (December 2000). <em>Handedness and
+hemispheric language dominance in healthy humans</em>. Brain. 123 (12):
+2512–8. <a href="https://doi.org/10.1093%2Fbrain%2F123.12.2512" class="external-link">doi:10.1093/brain/123.12.2512</a>.</p>
 </div>
   </div>
 
@@ -472,7 +522,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

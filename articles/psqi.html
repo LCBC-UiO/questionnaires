@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">questionnaires</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.3</span>
       </span>
     </div>
 
@@ -119,6 +119,9 @@
     <li>
       <a href="../articles/ucla-loneliness.html">UCLA Loneliness Scale</a>
     </li>
+    <li>
+      <a href="../articles/zygocity.html">Zygocity - Norwegian Twin registry questionnaire</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -142,12 +145,12 @@
 
       
 
-      </header><script src="psqi_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Pittsburgh Sleep Quality Inventory</h1>
             
-            <h4 data-toc-skip class="date">2022-03-09</h4>
+            <h4 data-toc-skip class="date">2023-06-28</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/LCBC-UiO/questionnaires/blob/HEAD/vignettes/psqi.Rmd" class="external-link"><code>vignettes/psqi.Rmd</code></a></small>
       <div class="hidden name"><code>psqi.Rmd</code></div>
@@ -159,7 +162,15 @@
 <div class="section level2">
 <h2 id="background">Background<a class="anchor" aria-label="anchor" href="#background"></a>
 </h2>
-<p>Despite the prevalence of sleep complaints among psychiatric patients, few questionnaires have been specifically designed to measure sleep quality in clinical populations. The Pittsburgh Sleep Quality Index (PSQI) is a self-rated questionnaire which assesses sleep quality and disturbances over a 1-month time interval. Nineteen individual items generate seven “component” scores: subjective sleep quality, sleep latency, sleep duration, habitual sleep efficiency, sleep disturbances, use of sleeping medication, and daytime dysfunction. The sum of scores for these seven components yields one global score.</p>
+<p>Despite the prevalence of sleep complaints among psychiatric
+patients, few questionnaires have been specifically designed to measure
+sleep quality in clinical populations. The Pittsburgh Sleep Quality
+Index (PSQI) is a self-rated questionnaire which assesses sleep quality
+and disturbances over a 1-month time interval. Nineteen individual items
+generate seven “component” scores: subjective sleep quality, sleep
+latency, sleep duration, habitual sleep efficiency, sleep disturbances,
+use of sleeping medication, and daytime dysfunction. The sum of scores
+for these seven components yields one global score.</p>
 </div>
 <div class="section level2">
 <h2 id="scoring">Scoring<a class="anchor" aria-label="anchor" href="#scoring"></a>
@@ -184,37 +195,45 @@
 <tr class="even">
 <td align="right">2</td>
 <td align="left">sleep latency</td>
-<td align="left">Scaled sum of number of minutes before sleep (q 2) and evaluation of sleep within 30min (q 5a), scaled to a 5 point scale</td>
+<td align="left">Scaled sum of number of minutes before sleep (q 2) and
+evaluation of sleep within 30min (q 5a), scaled to a 5 point scale</td>
 </tr>
 <tr class="odd">
 <td align="right">3</td>
 <td align="left">sleep duration</td>
-<td align="left">Scaled score of number of hours before one falls asleep (q 4), scaled to a 5 point scale</td>
+<td align="left">Scaled score of number of hours before one falls asleep
+(q 4), scaled to a 5 point scale</td>
 </tr>
 <tr class="even">
 <td align="right">4</td>
 <td align="left">habitual sleep efficiency</td>
-<td align="left">hours of sleep (q 4) divided by bedtime (q 1) subtracted from rising time (q 3), and scaled to a 5 point scale</td>
+<td align="left">hours of sleep (q 4) divided by bedtime (q 1)
+subtracted from rising time (q 3), and scaled to a 5 point scale</td>
 </tr>
 <tr class="odd">
 <td align="right">5</td>
 <td align="left">sleep disturbances</td>
-<td align="left">Sum of evaluation of sleep within 30min (q 5a) and all remaining questions on sleep problems (q 5b-j), scaled to a 5 point scale</td>
+<td align="left">Sum of evaluation of sleep within 30min (q 5a) and all
+remaining questions on sleep problems (q 5b-j), scaled to a 5 point
+scale</td>
 </tr>
 <tr class="even">
 <td align="right">6</td>
 <td align="left">use of sleeping medication</td>
-<td align="left">Answer to question on use of sleep medication (q 7)</td>
+<td align="left">Answer to question on use of sleep medication (q
+7)</td>
 </tr>
 <tr class="odd">
 <td align="right">7</td>
 <td align="left">daytime dysfunction</td>
-<td align="left">Sum of evaluation of staying awake (q 8) and evaluation of keeping enthusiastic (q 9), scaled to a 5-point scale</td>
+<td align="left">Sum of evaluation of staying awake (q 8) and evaluation
+of keeping enthusiastic (q 9), scaled to a 5-point scale</td>
 </tr>
 <tr class="even">
 <td align="right">global score</td>
 <td align="left">sum of the above.</td>
-<td align="left">If any of the above is not possible to calculate, the global sum is also not calculated</td>
+<td align="left">If any of the above is not possible to calculate, the
+global sum is also not calculated</td>
 </tr>
 </tbody>
 </table>
@@ -225,7 +244,15 @@
 <div class="section level3">
 <h3 id="column-names">Column names<a class="anchor" aria-label="anchor" href="#column-names"></a>
 </h3>
-<p>Questions with multiple subquestions should be named in a similar manner, suffixed by the alphabetical index (<strong>psqi_5a</strong>, <strong>psqi_5b</strong> etc.). For questions 5j and 10j, the frequency of occurence should have the names <strong>psqi_5j</strong> and <strong>psqi_10e</strong>, and the freehand explanations should have any type of <strong>suffix</strong> after this to indicate a text answers (i.e. <strong>psqi_5j_Desc</strong> or <strong>psqi_5j_string</strong>, <strong>psqi_5j_freehand</strong>). As an example, LCBC has the following set-up:</p>
+<p>Questions with multiple subquestions should be named in a similar
+manner, suffixed by the alphabetical index (<strong>psqi_5a</strong>,
+<strong>psqi_5b</strong> etc.). For questions 5j and 10j, the frequency
+of occurence should have the names <strong>psqi_5j</strong> and
+<strong>psqi_10e</strong>, and the freehand explanations should have any
+type of <strong>suffix</strong> after this to indicate a text answers
+(i.e. <strong>psqi_5j_Desc</strong> or <strong>psqi_5j_string</strong>,
+<strong>psqi_5j_freehand</strong>). As an example, LCBC has the
+following set-up:</p>
 <ul>
 <li>
 <strong>psqi_1</strong><br>
@@ -240,7 +267,12 @@
 <strong>psqi_4</strong><br>
 </li>
 <li>
-<strong>psqi_5a</strong> <strong>psqi_5b</strong> <strong>psqi_5c</strong> <strong>psqi_5d</strong> <strong>psqi_5e</strong> <strong>psqi_5f</strong> <strong>psqi_5g</strong> <strong>psqi_5h</strong> <strong>psqi_5i</strong> <strong>psqi_5j</strong> <strong>psqi_5j_Coded</strong> <strong>psqi_5j_Desc</strong><br>
+<strong>psqi_5a</strong> <strong>psqi_5b</strong>
+<strong>psqi_5c</strong> <strong>psqi_5d</strong>
+<strong>psqi_5e</strong> <strong>psqi_5f</strong>
+<strong>psqi_5g</strong> <strong>psqi_5h</strong>
+<strong>psqi_5i</strong> <strong>psqi_5j</strong>
+<strong>psqi_5j_Coded</strong> <strong>psqi_5j_Desc</strong><br>
 </li>
 <li>
 <strong>psqi_6</strong><br>
@@ -255,282 +287,330 @@
 <strong>psqi_9</strong><br>
 </li>
 <li>
-<strong>psqi_10</strong> <strong>psqi_10a</strong> <strong>psqi_10b</strong> <strong>psqi_10c</strong> <strong>psqi_10d</strong> <strong>psqi_10e</strong> <strong>psqi_10e_Desc</strong> <strong>psqi_10e_Coded</strong><br>
+<strong>psqi_10</strong> <strong>psqi_10a</strong>
+<strong>psqi_10b</strong> <strong>psqi_10c</strong>
+<strong>psqi_10d</strong> <strong>psqi_10e</strong>
+<strong>psqi_10e_Desc</strong> <strong>psqi_10e_Coded</strong><br>
 </li>
 <li>
-<strong>psqi_11a</strong> <strong>psqi_11b</strong> <strong>psqi_11c</strong> <strong>psqi_11d</strong>
+<strong>psqi_11a</strong> <strong>psqi_11b</strong>
+<strong>psqi_11c</strong> <strong>psqi_11d</strong>
 </li>
 </ul>
 </div>
 <div class="section level3">
 <h3 id="option-questions-coding">4-option questions coding<a class="anchor" aria-label="anchor" href="#option-questions-coding"></a>
 </h3>
-<p>All 4-option questions need to be coded <strong>0-3</strong>, not <strong>1-4</strong>.</p>
+<p>All 4-option questions need to be coded <strong>0-3</strong>, not
+<strong>1-4</strong>.</p>
 </div>
 <div class="section level3">
 <h3 id="time-formats">Time formats<a class="anchor" aria-label="anchor" href="#time-formats"></a>
 </h3>
-<p>For question 1, 3 and 4 (bedtime, rising time, hours of sleep), data should be punched as “<strong>HH:MM</strong>”. Question 2 should be punched as minutes in numbers.</p>
+<p>For question 1, 3 and 4 (bedtime, rising time, hours of sleep), data
+should be punched as “<strong>HH:MM</strong>”. Question 2 should be
+punched as minutes in numbers.</p>
 </div>
 </div>
 <div class="section level2">
 <h2 id="use-the-psqi-functions">Use the <code>psqi</code> functions<a class="anchor" aria-label="anchor" href="#use-the-psqi-functions"></a>
 </h2>
-<p>All the functions necessary to compute the components and the global score for the psqi are included in this package, and loading it in your R-environment makes them accessible to you. All the functions for the PSQI, are prefixed with <code>psqi_</code>, so they are easy to find.</p>
-<p>There are a total of 7 <code>psqi_</code> functions in this package. One for each component, except 1 and 6 which are just the raw answers from questions 4 and 7. In addition, there is a function to calculate the global, which must be done <em>after</em> having computed the 7 components. Lastly, there is a function <code>psqi_compute</code> which will do it all for you, compute all the components and the global. All the functions are documented as any function in R, and so you may call <code><a href="../reference/psqi_compute.html">?psqi_compute</a></code> to see the user documentation for the functions.</p>
-<p>There are many options you can utilize for these functions, so you may explore them as you wish. The functions are also made such that you can use them on datasets other than the LCBC MOAS dataset, but you will then have to specify the columns to use for the various components your self. The functions are made to work directly with the MOAS, and require no extra input other that the object containing the MOAS to run all calculations. Running <code>psqi_compute(MOAS)</code> will calculate all components and append them to the data you provided. Running <code>psqi_compute(MOAS, keep_all = FALSE)</code> will only return the computed components and the global score in a data frame.</p>
+<p>All the functions necessary to compute the components and the global
+score for the psqi are included in this package, and loading it in your
+R-environment makes them accessible to you. All the functions for the
+PSQI, are prefixed with <code>psqi_</code>, so they are easy to
+find.</p>
+<p>There are a total of 7 <code>psqi_</code> functions in this package.
+One for each component, except 1 and 6 which are just the raw answers
+from questions 4 and 7. In addition, there is a function to calculate
+the global, which must be done <em>after</em> having computed the 7
+components. Lastly, there is a function <code>psqi_compute</code> which
+will do it all for you, compute all the components and the global. All
+the functions are documented as any function in R, and so you may call
+<code><a href="../reference/psqi_compute.html">?psqi_compute</a></code> to see the user documentation for the
+functions.</p>
+<p>There are many options you can utilize for these functions, so you
+may explore them as you wish. The functions are also made such that you
+can use them on datasets other than the LCBC MOAS dataset, but you will
+then have to specify the columns to use for the various components your
+self. The functions are made to work directly with the MOAS, and require
+no extra input other that the object containing the MOAS to run all
+calculations. Running <code>psqi_compute(MOAS)</code> will calculate all
+components and append them to the data you provided. Running
+<code>psqi_compute(MOAS, keep_all = FALSE)</code> will only return the
+computed components and the global score in a data frame.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/LCBC-UiO/questionnaires" class="external-link">questionnaires</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'dplyr'</span>
-<span class="co">#&gt; The following objects are masked from 'package:stats':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     filter, lag</span>
-<span class="co">#&gt; The following objects are masked from 'package:base':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     intersect, setdiff, setequal, union</span>
-
-<span class="co"># Create some data to test on</span>
-<span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>
-  psqi_01 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"22:30:00"</span>, <span class="st">"07:00:00"</span>, <span class="st">"22:30:00"</span>, <span class="st">"NaN"</span>, <span class="st">"23:30:00"</span><span class="op">)</span>, 
-  psqi_02 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">30</span>, <span class="fl">20</span>, <span class="fl">30</span><span class="op">)</span>, 
-  psqi_03 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"05:50:00"</span>, <span class="st">"17:00:00"</span>, <span class="st">"06:30:00"</span>, <span class="st">"NaN"</span>, <span class="st">"06:45:00"</span><span class="op">)</span>, 
-  psqi_04 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">9.75</span>, <span class="fl">8</span>, <span class="fl">9</span>, <span class="fl">6</span><span class="op">)</span>, 
-  psqi_05a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">1L</span>, <span class="fl">2L</span>, <span class="fl">2L</span><span class="op">)</span>, 
-  psqi_05b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">2L</span>, <span class="fl">0L</span>, <span class="fl">2L</span><span class="op">)</span>, 
-  psqi_05c <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">3L</span>, <span class="fl">1L</span>, <span class="fl">2L</span><span class="op">)</span>, 
-  psqi_05d <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">0L</span><span class="op">)</span>, 
-  psqi_05e <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="fl">3L</span>, <span class="fl">1L</span>, <span class="fl">0L</span>, <span class="fl">0L</span><span class="op">)</span>, 
-  psqi_05f <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">1L</span>, <span class="fl">0L</span>, <span class="fl">1L</span><span class="op">)</span>,
-  psqi_05g <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">1L</span>, <span class="fl">1L</span>, <span class="fl">3L</span><span class="op">)</span>, 
-  psqi_05h <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">0L</span><span class="op">)</span>, 
-  psqi_05i <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">0L</span><span class="op">)</span>, 
-  psqi_05j_Coded <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>,<span class="cn">NA</span>, <span class="st">"No"</span>, <span class="cn">NA</span>, <span class="cn">NA</span><span class="op">)</span>, 
-  psqi_05j <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="fl">0L</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span><span class="op">)</span>, 
-  psqi_06 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="fl">1L</span>, <span class="fl">2L</span>, <span class="fl">1L</span>, <span class="fl">1L</span><span class="op">)</span>, 
-  psqi_07 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">0L</span><span class="op">)</span>, 
-  psqi_08 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">1L</span>, <span class="fl">0L</span><span class="op">)</span>, 
-  psqi_09 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">1L</span>, <span class="fl">0L</span>, <span class="fl">1L</span><span class="op">)</span>, 
-  psqi_10 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3L</span>, <span class="fl">1L</span>, <span class="fl">3L</span>, <span class="cn">NA</span>, <span class="fl">3L</span><span class="op">)</span>, 
-  psqi_10a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1L</span>, <span class="cn">NA</span>, <span class="fl">1L</span>, <span class="cn">NA</span>, <span class="fl">0L</span><span class="op">)</span>, 
-  psqi_10b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="cn">NA</span>, <span class="fl">0L</span>, <span class="cn">NA</span>, <span class="fl">0L</span><span class="op">)</span>, 
-  psqi_10c <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2L</span>, <span class="cn">NA</span>, <span class="fl">2L</span>, <span class="cn">NA</span>, <span class="fl">0L</span><span class="op">)</span>, 
-  psqi_10d <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="cn">NA</span>, <span class="fl">0L</span>, <span class="cn">NA</span>, <span class="fl">0L</span><span class="op">)</span>, 
-  psqi_10e_Coded <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NA</span>, <span class="st">""</span>, <span class="cn">NA</span>, <span class="cn">NA</span><span class="op">)</span>, 
-  psqi_10e <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA_integer_</span>, <span class="cn">NA_integer_</span>, <span class="cn">NA_integer_</span>, <span class="cn">NA_integer_</span>, <span class="cn">NA_integer_</span><span class="op">)</span>, 
-  psqi_11a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="fl">2L</span>, <span class="fl">1L</span>, <span class="fl">1L</span>, <span class="fl">2L</span><span class="op">)</span>, 
-  psqi_11b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">2L</span>, <span class="fl">0L</span>, <span class="fl">2L</span><span class="op">)</span>, 
-  psqi_11c <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">1L</span>, <span class="fl">1L</span>, <span class="fl">2L</span><span class="op">)</span>, 
-  psqi_11d <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="fl">3L</span>, <span class="fl">2L</span>, <span class="fl">0L</span>, <span class="fl">2L</span><span class="op">)</span>
-<span class="op">)</span>
-
-<span class="va">data</span>
-<span class="co">#&gt;    psqi_01 psqi_02  psqi_03 psqi_04 psqi_05a psqi_05b psqi_05c psqi_05d</span>
-<span class="co">#&gt; 1 22:30:00       5 05:50:00    7.00        0        0        0        0</span>
-<span class="co">#&gt; 2 07:00:00      10 17:00:00    9.75        0        0        0        0</span>
-<span class="co">#&gt; 3 22:30:00      30 06:30:00    8.00        1        2        3        0</span>
-<span class="co">#&gt; 4      NaN      20      NaN    9.00        2        0        1        0</span>
-<span class="co">#&gt; 5 23:30:00      30 06:45:00    6.00        2        2        2        0</span>
-<span class="co">#&gt;   psqi_05e psqi_05f psqi_05g psqi_05h psqi_05i psqi_05j_Coded psqi_05j psqi_06</span>
-<span class="co">#&gt; 1        0        0        0        0        0           &lt;NA&gt;        0       0</span>
-<span class="co">#&gt; 2        3        0        0        0        0           &lt;NA&gt;        0       1</span>
-<span class="co">#&gt; 3        1        1        1        0        0             No       NA       2</span>
-<span class="co">#&gt; 4        0        0        1        0        0           &lt;NA&gt;       NA       1</span>
-<span class="co">#&gt; 5        0        1        3        0        0           &lt;NA&gt;       NA       1</span>
-<span class="co">#&gt;   psqi_07 psqi_08 psqi_09 psqi_10 psqi_10a psqi_10b psqi_10c psqi_10d</span>
-<span class="co">#&gt; 1       0       0       0       3        1        0        2        0</span>
-<span class="co">#&gt; 2       0       0       0       1       NA       NA       NA       NA</span>
-<span class="co">#&gt; 3       0       0       1       3        1        0        2        0</span>
-<span class="co">#&gt; 4       0       1       0      NA       NA       NA       NA       NA</span>
-<span class="co">#&gt; 5       0       0       1       3        0        0        0        0</span>
-<span class="co">#&gt;   psqi_10e_Coded psqi_10e psqi_11a psqi_11b psqi_11c psqi_11d</span>
-<span class="co">#&gt; 1           &lt;NA&gt;       NA        0        0        0        0</span>
-<span class="co">#&gt; 2           &lt;NA&gt;       NA        2        0        0        3</span>
-<span class="co">#&gt; 3                      NA        1        2        1        2</span>
-<span class="co">#&gt; 4           &lt;NA&gt;       NA        1        0        1        0</span>
-<span class="co">#&gt; 5           &lt;NA&gt;       NA        2        2        2        2</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/LCBC-UiO/questionnaires" class="external-link">questionnaires</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Attaching package: 'dplyr'</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     filter, lag</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
+<span></span>
+<span><span class="co"># Create some data to test on</span></span>
+<span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
+<span>  psqi_01 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"22:30:00"</span>, <span class="st">"07:00:00"</span>, <span class="st">"22:30:00"</span>, <span class="st">"NaN"</span>, <span class="st">"23:30:00"</span><span class="op">)</span>, </span>
+<span>  psqi_02 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">30</span>, <span class="fl">20</span>, <span class="fl">30</span><span class="op">)</span>, </span>
+<span>  psqi_03 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"05:50:00"</span>, <span class="st">"17:00:00"</span>, <span class="st">"06:30:00"</span>, <span class="st">"NaN"</span>, <span class="st">"06:45:00"</span><span class="op">)</span>, </span>
+<span>  psqi_04 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">9.75</span>, <span class="fl">8</span>, <span class="fl">9</span>, <span class="fl">6</span><span class="op">)</span>, </span>
+<span>  psqi_05a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">1L</span>, <span class="fl">2L</span>, <span class="fl">2L</span><span class="op">)</span>, </span>
+<span>  psqi_05b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">2L</span>, <span class="fl">0L</span>, <span class="fl">2L</span><span class="op">)</span>, </span>
+<span>  psqi_05c <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">3L</span>, <span class="fl">1L</span>, <span class="fl">2L</span><span class="op">)</span>, </span>
+<span>  psqi_05d <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">0L</span><span class="op">)</span>, </span>
+<span>  psqi_05e <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="fl">3L</span>, <span class="fl">1L</span>, <span class="fl">0L</span>, <span class="fl">0L</span><span class="op">)</span>, </span>
+<span>  psqi_05f <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">1L</span>, <span class="fl">0L</span>, <span class="fl">1L</span><span class="op">)</span>,</span>
+<span>  psqi_05g <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">1L</span>, <span class="fl">1L</span>, <span class="fl">3L</span><span class="op">)</span>, </span>
+<span>  psqi_05h <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">0L</span><span class="op">)</span>, </span>
+<span>  psqi_05i <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">0L</span><span class="op">)</span>, </span>
+<span>  psqi_05j_Coded <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>,<span class="cn">NA</span>, <span class="st">"No"</span>, <span class="cn">NA</span>, <span class="cn">NA</span><span class="op">)</span>, </span>
+<span>  psqi_05j <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="fl">0L</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span><span class="op">)</span>, </span>
+<span>  psqi_06 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="fl">1L</span>, <span class="fl">2L</span>, <span class="fl">1L</span>, <span class="fl">1L</span><span class="op">)</span>, </span>
+<span>  psqi_07 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">0L</span><span class="op">)</span>, </span>
+<span>  psqi_08 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">1L</span>, <span class="fl">0L</span><span class="op">)</span>, </span>
+<span>  psqi_09 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">1L</span>, <span class="fl">0L</span>, <span class="fl">1L</span><span class="op">)</span>, </span>
+<span>  psqi_10 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3L</span>, <span class="fl">1L</span>, <span class="fl">3L</span>, <span class="cn">NA</span>, <span class="fl">3L</span><span class="op">)</span>, </span>
+<span>  psqi_10a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1L</span>, <span class="cn">NA</span>, <span class="fl">1L</span>, <span class="cn">NA</span>, <span class="fl">0L</span><span class="op">)</span>, </span>
+<span>  psqi_10b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="cn">NA</span>, <span class="fl">0L</span>, <span class="cn">NA</span>, <span class="fl">0L</span><span class="op">)</span>, </span>
+<span>  psqi_10c <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2L</span>, <span class="cn">NA</span>, <span class="fl">2L</span>, <span class="cn">NA</span>, <span class="fl">0L</span><span class="op">)</span>, </span>
+<span>  psqi_10d <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="cn">NA</span>, <span class="fl">0L</span>, <span class="cn">NA</span>, <span class="fl">0L</span><span class="op">)</span>, </span>
+<span>  psqi_10e_Coded <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NA</span>, <span class="st">""</span>, <span class="cn">NA</span>, <span class="cn">NA</span><span class="op">)</span>, </span>
+<span>  psqi_10e <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA_integer_</span>, <span class="cn">NA_integer_</span>, <span class="cn">NA_integer_</span>, <span class="cn">NA_integer_</span>, <span class="cn">NA_integer_</span><span class="op">)</span>, </span>
+<span>  psqi_11a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="fl">2L</span>, <span class="fl">1L</span>, <span class="fl">1L</span>, <span class="fl">2L</span><span class="op">)</span>, </span>
+<span>  psqi_11b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">2L</span>, <span class="fl">0L</span>, <span class="fl">2L</span><span class="op">)</span>, </span>
+<span>  psqi_11c <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="fl">0L</span>, <span class="fl">1L</span>, <span class="fl">1L</span>, <span class="fl">2L</span><span class="op">)</span>, </span>
+<span>  psqi_11d <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0L</span>, <span class="fl">3L</span>, <span class="fl">2L</span>, <span class="fl">0L</span>, <span class="fl">2L</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">data</span></span>
+<span><span class="co">#&gt;    psqi_01 psqi_02  psqi_03 psqi_04 psqi_05a psqi_05b psqi_05c psqi_05d</span></span>
+<span><span class="co">#&gt; 1 22:30:00       5 05:50:00    7.00        0        0        0        0</span></span>
+<span><span class="co">#&gt; 2 07:00:00      10 17:00:00    9.75        0        0        0        0</span></span>
+<span><span class="co">#&gt; 3 22:30:00      30 06:30:00    8.00        1        2        3        0</span></span>
+<span><span class="co">#&gt; 4      NaN      20      NaN    9.00        2        0        1        0</span></span>
+<span><span class="co">#&gt; 5 23:30:00      30 06:45:00    6.00        2        2        2        0</span></span>
+<span><span class="co">#&gt;   psqi_05e psqi_05f psqi_05g psqi_05h psqi_05i psqi_05j_Coded psqi_05j psqi_06</span></span>
+<span><span class="co">#&gt; 1        0        0        0        0        0           &lt;NA&gt;        0       0</span></span>
+<span><span class="co">#&gt; 2        3        0        0        0        0           &lt;NA&gt;        0       1</span></span>
+<span><span class="co">#&gt; 3        1        1        1        0        0             No       NA       2</span></span>
+<span><span class="co">#&gt; 4        0        0        1        0        0           &lt;NA&gt;       NA       1</span></span>
+<span><span class="co">#&gt; 5        0        1        3        0        0           &lt;NA&gt;       NA       1</span></span>
+<span><span class="co">#&gt;   psqi_07 psqi_08 psqi_09 psqi_10 psqi_10a psqi_10b psqi_10c psqi_10d</span></span>
+<span><span class="co">#&gt; 1       0       0       0       3        1        0        2        0</span></span>
+<span><span class="co">#&gt; 2       0       0       0       1       NA       NA       NA       NA</span></span>
+<span><span class="co">#&gt; 3       0       0       1       3        1        0        2        0</span></span>
+<span><span class="co">#&gt; 4       0       1       0      NA       NA       NA       NA       NA</span></span>
+<span><span class="co">#&gt; 5       0       0       1       3        0        0        0        0</span></span>
+<span><span class="co">#&gt;   psqi_10e_Coded psqi_10e psqi_11a psqi_11b psqi_11c psqi_11d</span></span>
+<span><span class="co">#&gt; 1           &lt;NA&gt;       NA        0        0        0        0</span></span>
+<span><span class="co">#&gt; 2           &lt;NA&gt;       NA        2        0        0        3</span></span>
+<span><span class="co">#&gt; 3                      NA        1        2        1        2</span></span>
+<span><span class="co">#&gt; 4           &lt;NA&gt;       NA        1        0        1        0</span></span>
+<span><span class="co">#&gt; 5           &lt;NA&gt;       NA        2        2        2        2</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="component-wise-calculations">Component-wise calculations<a class="anchor" aria-label="anchor" href="#component-wise-calculations"></a>
 </h3>
-<p>There are 7 components in the PSQI, and the functions in the package allow you to calculate 5 components based on two or more columns in the data. Two components do not have their own functions as they are just the raw answers to two questions.</p>
+<p>There are 7 components in the PSQI, and the functions in the package
+allow you to calculate 5 components based on two or more columns in the
+data. Two components do not have their own functions as they are just
+the raw answers to two questions.</p>
 <p>Each component has unique arguments needed to calculate.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/psqi_compute.html">psqi_compute_comp2</a></span><span class="op">(</span>min_before_sleep <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">psqi_02</span>, 
-                   no_sleep_30min <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">psqi_05a</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0 0 1 2 2</span>
-
-<span class="fu"><a href="../reference/psqi_compute.html">psqi_compute_comp3</a></span><span class="op">(</span>hours_sleep <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">psqi_04</span><span class="op">)</span>
-<span class="co">#&gt; [1] 1 0 0 0 1</span>
-
-<span class="fu"><a href="../reference/psqi_compute.html">psqi_compute_comp4</a></span><span class="op">(</span>hours_sleep <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">psqi_04</span>, 
-                   bedtime <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">psqi_01</span>, 
-                   risingtime <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">psqi_03</span><span class="op">)</span>
-<span class="co">#&gt; [1] NA NA NA NA NA</span>
-
-<span class="co"># Requires many columns, so for conveniece must be specified in another way than others.</span>
-<span class="fu"><a href="../reference/psqi_compute.html">psqi_compute_comp5</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">data</span>, 
-                   sleep_troubles <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">matches</a></span><span class="op">(</span><span class="st">"^psqi_05[b-j]$"</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0 1 1 1 1</span>
-
-<span class="fu"><a href="../reference/psqi_compute.html">psqi_compute_comp7</a></span><span class="op">(</span>keep_awake <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">psqi_08</span>, 
-                   keep_enthused <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">psqi_09</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0 0 1 1 1</span></code></pre></div>
-<p>If you want to add these directly to your data.frame, you can wrap then insire a <code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">dplyr::mutate</a></code>.</p>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/psqi_compute.html">psqi_compute_comp2</a></span><span class="op">(</span>min_before_sleep <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">psqi_02</span>, </span>
+<span>                   no_sleep_30min <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">psqi_05a</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0 0 1 2 2</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/psqi_compute.html">psqi_compute_comp3</a></span><span class="op">(</span>hours_sleep <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">psqi_04</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 1 0 0 0 1</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/psqi_compute.html">psqi_compute_comp4</a></span><span class="op">(</span>hours_sleep <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">psqi_04</span>, </span>
+<span>                   bedtime <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">psqi_01</span>, </span>
+<span>                   risingtime <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">psqi_03</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] NA NA NA NA NA</span></span>
+<span></span>
+<span><span class="co"># Requires many columns, so for conveniece must be specified in another way than others.</span></span>
+<span><span class="fu"><a href="../reference/psqi_compute.html">psqi_compute_comp5</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">data</span>, </span>
+<span>                   sleep_troubles <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">matches</a></span><span class="op">(</span><span class="st">"^psqi_05[b-j]$"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0 1 1 1 1</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/psqi_compute.html">psqi_compute_comp7</a></span><span class="op">(</span>keep_awake <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">psqi_08</span>, </span>
+<span>                   keep_enthused <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">psqi_09</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0 0 1 1 1</span></span></code></pre></div>
+<p>If you want to add these directly to your data.frame, you can wrap
+then insire a <code><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">dplyr::mutate</a></code>.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">data2</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>
-    comp1 <span class="op">=</span> <span class="va">psqi_06</span>,
-    comp2 <span class="op">=</span> <span class="fu"><a href="../reference/psqi_compute.html">psqi_compute_comp2</a></span><span class="op">(</span>min_before_sleep <span class="op">=</span> <span class="va">psqi_02</span>, 
-                                no_sleep_30min <span class="op">=</span> <span class="va">psqi_05a</span><span class="op">)</span>,
-    comp3 <span class="op">=</span> <span class="fu"><a href="../reference/psqi_compute.html">psqi_compute_comp3</a></span><span class="op">(</span>hours_sleep <span class="op">=</span> <span class="va">psqi_04</span><span class="op">)</span>,
-    comp4 <span class="op">=</span> <span class="fu"><a href="../reference/psqi_compute.html">psqi_compute_comp4</a></span><span class="op">(</span>hours_sleep <span class="op">=</span> <span class="va">psqi_04</span>, 
-                               bedtime <span class="op">=</span> <span class="va">psqi_01</span>, 
-                               risingtime <span class="op">=</span> <span class="va">psqi_03</span><span class="op">)</span>,
-    comp5 <span class="op">=</span> <span class="fu"><a href="../reference/psqi_compute.html">psqi_compute_comp5</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">.</span>, 
-                               sleep_troubles <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">matches</a></span><span class="op">(</span><span class="st">"^psqi_05[b-j]$"</span><span class="op">)</span><span class="op">)</span>,
-    comp6 <span class="op">=</span> <span class="va">psqi_07</span>,
-    comp7 <span class="op">=</span> <span class="fu"><a href="../reference/psqi_compute.html">psqi_compute_comp7</a></span><span class="op">(</span>keep_awake <span class="op">=</span> <span class="va">psqi_08</span>, 
-                               keep_enthused <span class="op">=</span> <span class="va">psqi_09</span><span class="op">)</span>
-  <span class="op">)</span>
-<span class="va">data2</span>
-<span class="co">#&gt;    psqi_01 psqi_02  psqi_03 psqi_04 psqi_05a psqi_05b psqi_05c psqi_05d</span>
-<span class="co">#&gt; 1 22:30:00       5 05:50:00    7.00        0        0        0        0</span>
-<span class="co">#&gt; 2 07:00:00      10 17:00:00    9.75        0        0        0        0</span>
-<span class="co">#&gt; 3 22:30:00      30 06:30:00    8.00        1        2        3        0</span>
-<span class="co">#&gt; 4      NaN      20      NaN    9.00        2        0        1        0</span>
-<span class="co">#&gt; 5 23:30:00      30 06:45:00    6.00        2        2        2        0</span>
-<span class="co">#&gt;   psqi_05e psqi_05f psqi_05g psqi_05h psqi_05i psqi_05j_Coded psqi_05j psqi_06</span>
-<span class="co">#&gt; 1        0        0        0        0        0           &lt;NA&gt;        0       0</span>
-<span class="co">#&gt; 2        3        0        0        0        0           &lt;NA&gt;        0       1</span>
-<span class="co">#&gt; 3        1        1        1        0        0             No       NA       2</span>
-<span class="co">#&gt; 4        0        0        1        0        0           &lt;NA&gt;       NA       1</span>
-<span class="co">#&gt; 5        0        1        3        0        0           &lt;NA&gt;       NA       1</span>
-<span class="co">#&gt;   psqi_07 psqi_08 psqi_09 psqi_10 psqi_10a psqi_10b psqi_10c psqi_10d</span>
-<span class="co">#&gt; 1       0       0       0       3        1        0        2        0</span>
-<span class="co">#&gt; 2       0       0       0       1       NA       NA       NA       NA</span>
-<span class="co">#&gt; 3       0       0       1       3        1        0        2        0</span>
-<span class="co">#&gt; 4       0       1       0      NA       NA       NA       NA       NA</span>
-<span class="co">#&gt; 5       0       0       1       3        0        0        0        0</span>
-<span class="co">#&gt;   psqi_10e_Coded psqi_10e psqi_11a psqi_11b psqi_11c psqi_11d comp1 comp2 comp3</span>
-<span class="co">#&gt; 1           &lt;NA&gt;       NA        0        0        0        0     0     0     1</span>
-<span class="co">#&gt; 2           &lt;NA&gt;       NA        2        0        0        3     1     0     0</span>
-<span class="co">#&gt; 3                      NA        1        2        1        2     2     1     0</span>
-<span class="co">#&gt; 4           &lt;NA&gt;       NA        1        0        1        0     1     2     0</span>
-<span class="co">#&gt; 5           &lt;NA&gt;       NA        2        2        2        2     1     2     1</span>
-<span class="co">#&gt;   comp4 comp5 comp6 comp7</span>
-<span class="co">#&gt; 1    NA     0     0     0</span>
-<span class="co">#&gt; 2    NA     1     0     0</span>
-<span class="co">#&gt; 3    NA     1     0     1</span>
-<span class="co">#&gt; 4    NA     1     0     1</span>
-<span class="co">#&gt; 5    NA     1     0     1</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">data2</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
+<span>    comp1 <span class="op">=</span> <span class="va">psqi_06</span>,</span>
+<span>    comp2 <span class="op">=</span> <span class="fu"><a href="../reference/psqi_compute.html">psqi_compute_comp2</a></span><span class="op">(</span>min_before_sleep <span class="op">=</span> <span class="va">psqi_02</span>, </span>
+<span>                                no_sleep_30min <span class="op">=</span> <span class="va">psqi_05a</span><span class="op">)</span>,</span>
+<span>    comp3 <span class="op">=</span> <span class="fu"><a href="../reference/psqi_compute.html">psqi_compute_comp3</a></span><span class="op">(</span>hours_sleep <span class="op">=</span> <span class="va">psqi_04</span><span class="op">)</span>,</span>
+<span>    comp4 <span class="op">=</span> <span class="fu"><a href="../reference/psqi_compute.html">psqi_compute_comp4</a></span><span class="op">(</span>hours_sleep <span class="op">=</span> <span class="va">psqi_04</span>, </span>
+<span>                               bedtime <span class="op">=</span> <span class="va">psqi_01</span>, </span>
+<span>                               risingtime <span class="op">=</span> <span class="va">psqi_03</span><span class="op">)</span>,</span>
+<span>    comp5 <span class="op">=</span> <span class="fu"><a href="../reference/psqi_compute.html">psqi_compute_comp5</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">data</span>, </span>
+<span>                               sleep_troubles <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">matches</a></span><span class="op">(</span><span class="st">"^psqi_05[b-j]$"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    comp6 <span class="op">=</span> <span class="va">psqi_07</span>,</span>
+<span>    comp7 <span class="op">=</span> <span class="fu"><a href="../reference/psqi_compute.html">psqi_compute_comp7</a></span><span class="op">(</span>keep_awake <span class="op">=</span> <span class="va">psqi_08</span>, </span>
+<span>                               keep_enthused <span class="op">=</span> <span class="va">psqi_09</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="va">data2</span></span>
+<span><span class="co">#&gt;    psqi_01 psqi_02  psqi_03 psqi_04 psqi_05a psqi_05b psqi_05c psqi_05d</span></span>
+<span><span class="co">#&gt; 1 22:30:00       5 05:50:00    7.00        0        0        0        0</span></span>
+<span><span class="co">#&gt; 2 07:00:00      10 17:00:00    9.75        0        0        0        0</span></span>
+<span><span class="co">#&gt; 3 22:30:00      30 06:30:00    8.00        1        2        3        0</span></span>
+<span><span class="co">#&gt; 4      NaN      20      NaN    9.00        2        0        1        0</span></span>
+<span><span class="co">#&gt; 5 23:30:00      30 06:45:00    6.00        2        2        2        0</span></span>
+<span><span class="co">#&gt;   psqi_05e psqi_05f psqi_05g psqi_05h psqi_05i psqi_05j_Coded psqi_05j psqi_06</span></span>
+<span><span class="co">#&gt; 1        0        0        0        0        0           &lt;NA&gt;        0       0</span></span>
+<span><span class="co">#&gt; 2        3        0        0        0        0           &lt;NA&gt;        0       1</span></span>
+<span><span class="co">#&gt; 3        1        1        1        0        0             No       NA       2</span></span>
+<span><span class="co">#&gt; 4        0        0        1        0        0           &lt;NA&gt;       NA       1</span></span>
+<span><span class="co">#&gt; 5        0        1        3        0        0           &lt;NA&gt;       NA       1</span></span>
+<span><span class="co">#&gt;   psqi_07 psqi_08 psqi_09 psqi_10 psqi_10a psqi_10b psqi_10c psqi_10d</span></span>
+<span><span class="co">#&gt; 1       0       0       0       3        1        0        2        0</span></span>
+<span><span class="co">#&gt; 2       0       0       0       1       NA       NA       NA       NA</span></span>
+<span><span class="co">#&gt; 3       0       0       1       3        1        0        2        0</span></span>
+<span><span class="co">#&gt; 4       0       1       0      NA       NA       NA       NA       NA</span></span>
+<span><span class="co">#&gt; 5       0       0       1       3        0        0        0        0</span></span>
+<span><span class="co">#&gt;   psqi_10e_Coded psqi_10e psqi_11a psqi_11b psqi_11c psqi_11d comp1 comp2 comp3</span></span>
+<span><span class="co">#&gt; 1           &lt;NA&gt;       NA        0        0        0        0     0     0     1</span></span>
+<span><span class="co">#&gt; 2           &lt;NA&gt;       NA        2        0        0        3     1     0     0</span></span>
+<span><span class="co">#&gt; 3                      NA        1        2        1        2     2     1     0</span></span>
+<span><span class="co">#&gt; 4           &lt;NA&gt;       NA        1        0        1        0     1     2     0</span></span>
+<span><span class="co">#&gt; 5           &lt;NA&gt;       NA        2        2        2        2     1     2     1</span></span>
+<span><span class="co">#&gt;   comp4 comp5 comp6 comp7</span></span>
+<span><span class="co">#&gt; 1    NA     0     0     0</span></span>
+<span><span class="co">#&gt; 2    NA     1     0     0</span></span>
+<span><span class="co">#&gt; 3    NA     1     0     1</span></span>
+<span><span class="co">#&gt; 4    NA     1     0     1</span></span>
+<span><span class="co">#&gt; 5    NA     1     0     1</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="global-calculation">Global calculation<a class="anchor" aria-label="anchor" href="#global-calculation"></a>
 </h3>
-<p>After having all components calculated, the global is the sum of all these. The <code>psqi_compute_global</code> function takes an entire data frame, and a tidy-selected collection of columns of the calculated components. In this case we called the components with names starting with “Comp”, and can use this logic for the computation.</p>
+<p>After having all components calculated, the global is the sum of all
+these. The <code>psqi_compute_global</code> function takes an entire
+data frame, and a tidy-selected collection of columns of the calculated
+components. In this case we called the components with names starting
+with “Comp”, and can use this logic for the computation.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/psqi_compute.html">psqi_compute_global</a></span><span class="op">(</span><span class="va">data2</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">starts_with</a></span><span class="op">(</span><span class="st">"comp"</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; [1] NA NA NA NA NA</span></code></pre></div>
-<p>We get one <code>NA</code> because someone has omitted to answer to a question, and so a component is missing, and thus a global cannot be computed. You have the option to specify how many missing components the global calculation will allow, but remember that this will skew the data somewhat.</p>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/psqi_compute.html">psqi_compute_global</a></span><span class="op">(</span><span class="va">data2</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">starts_with</a></span><span class="op">(</span><span class="st">"comp"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] NA NA NA NA NA</span></span></code></pre></div>
+<p>We get one <code>NA</code> because someone has omitted to answer to a
+question, and so a component is missing, and thus a global cannot be
+computed. You have the option to specify how many missing components the
+global calculation will allow, but remember that this will skew the data
+somewhat.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/psqi_compute.html">psqi_compute_global</a></span><span class="op">(</span><span class="va">data2</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">starts_with</a></span><span class="op">(</span><span class="st">"comp"</span><span class="op">)</span>, max_missing <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
-<span class="co">#&gt; [1] 1.166667 2.333333 5.833333 5.833333 7.000000</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/psqi_compute.html">psqi_compute_global</a></span><span class="op">(</span><span class="va">data2</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">starts_with</a></span><span class="op">(</span><span class="st">"comp"</span><span class="op">)</span>, max_missing <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 1.166667 2.333333 5.833333 5.833333 7.000000</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="calculating-all-components-and-global-in-one-go">Calculating all components and global in one go<a class="anchor" aria-label="anchor" href="#calculating-all-components-and-global-in-one-go"></a>
 </h3>
-<p>It is quite cumbersome to mutate and fix every component manually, so the <code>psqi_compute</code> function is there to make everything in one go. If you are working on MOAS-like data, this is easy to use, as column names and specifications are pre-set to work with the MOAS. If you are working on other data, you will need to set each option to the column names in the data for each question manually.</p>
+<p>It is quite cumbersome to mutate and fix every component manually, so
+the <code>psqi_compute</code> function is there to make everything in
+one go. If you are working on MOAS-like data, this is easy to use, as
+column names and specifications are pre-set to work with the MOAS. If
+you are working on other data, you will need to set each option to the
+column names in the data for each question manually.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/psqi_compute.html">psqi_compute</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>
-<span class="co">#&gt;    psqi_01 psqi_02  psqi_03 psqi_04 psqi_05a psqi_05b psqi_05c psqi_05d</span>
-<span class="co">#&gt; 1 22:30:00       5 05:50:00    7.00        0        0        0        0</span>
-<span class="co">#&gt; 2 07:00:00      10 17:00:00    9.75        0        0        0        0</span>
-<span class="co">#&gt; 3 22:30:00      30 06:30:00    8.00        1        2        3        0</span>
-<span class="co">#&gt; 4      NaN      20      NaN    9.00        2        0        1        0</span>
-<span class="co">#&gt; 5 23:30:00      30 06:45:00    6.00        2        2        2        0</span>
-<span class="co">#&gt;   psqi_05e psqi_05f psqi_05g psqi_05h psqi_05i psqi_05j_Coded psqi_05j psqi_06</span>
-<span class="co">#&gt; 1        0        0        0        0        0           &lt;NA&gt;        0       0</span>
-<span class="co">#&gt; 2        3        0        0        0        0           &lt;NA&gt;        0       1</span>
-<span class="co">#&gt; 3        1        1        1        0        0             No       NA       2</span>
-<span class="co">#&gt; 4        0        0        1        0        0           &lt;NA&gt;       NA       1</span>
-<span class="co">#&gt; 5        0        1        3        0        0           &lt;NA&gt;       NA       1</span>
-<span class="co">#&gt;   psqi_07 psqi_08 psqi_09 psqi_10 psqi_10a psqi_10b psqi_10c psqi_10d</span>
-<span class="co">#&gt; 1       0       0       0       3        1        0        2        0</span>
-<span class="co">#&gt; 2       0       0       0       1       NA       NA       NA       NA</span>
-<span class="co">#&gt; 3       0       0       1       3        1        0        2        0</span>
-<span class="co">#&gt; 4       0       1       0      NA       NA       NA       NA       NA</span>
-<span class="co">#&gt; 5       0       0       1       3        0        0        0        0</span>
-<span class="co">#&gt;   psqi_10e_Coded psqi_10e psqi_11a psqi_11b psqi_11c psqi_11d</span>
-<span class="co">#&gt; 1           &lt;NA&gt;       NA        0        0        0        0</span>
-<span class="co">#&gt; 2           &lt;NA&gt;       NA        2        0        0        3</span>
-<span class="co">#&gt; 3                      NA        1        2        1        2</span>
-<span class="co">#&gt; 4           &lt;NA&gt;       NA        1        0        1        0</span>
-<span class="co">#&gt; 5           &lt;NA&gt;       NA        2        2        2        2</span>
-<span class="co">#&gt;   psqi_comp1_quality psqi_comp2_latency psqi_comp3_duration</span>
-<span class="co">#&gt; 1                  0                  0                   1</span>
-<span class="co">#&gt; 2                  1                  0                   0</span>
-<span class="co">#&gt; 3                  2                  1                   0</span>
-<span class="co">#&gt; 4                  1                  2                   0</span>
-<span class="co">#&gt; 5                  1                  2                   1</span>
-<span class="co">#&gt;   psqi_comp4_efficiency psqi_comp5_problems psqi_comp6_medication</span>
-<span class="co">#&gt; 1                    NA                   0                     0</span>
-<span class="co">#&gt; 2                    NA                   1                     0</span>
-<span class="co">#&gt; 3                    NA                   1                     0</span>
-<span class="co">#&gt; 4                    NA                   1                     0</span>
-<span class="co">#&gt; 5                    NA                   1                     0</span>
-<span class="co">#&gt;   psqi_comp7_tired psqi_global</span>
-<span class="co">#&gt; 1                0          NA</span>
-<span class="co">#&gt; 2                0          NA</span>
-<span class="co">#&gt; 3                1          NA</span>
-<span class="co">#&gt; 4                1          NA</span>
-<span class="co">#&gt; 5                1          NA</span>
-
-<span class="fu"><a href="../reference/psqi_compute.html">psqi_compute</a></span><span class="op">(</span><span class="va">data</span>, keep_all <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-<span class="co">#&gt;   psqi_comp1_quality psqi_comp2_latency psqi_comp3_duration</span>
-<span class="co">#&gt; 1                  0                  0                   1</span>
-<span class="co">#&gt; 2                  1                  0                   0</span>
-<span class="co">#&gt; 3                  2                  1                   0</span>
-<span class="co">#&gt; 4                  1                  2                   0</span>
-<span class="co">#&gt; 5                  1                  2                   1</span>
-<span class="co">#&gt;   psqi_comp4_efficiency psqi_comp5_problems psqi_comp6_medication</span>
-<span class="co">#&gt; 1                    NA                   0                     0</span>
-<span class="co">#&gt; 2                    NA                   1                     0</span>
-<span class="co">#&gt; 3                    NA                   1                     0</span>
-<span class="co">#&gt; 4                    NA                   1                     0</span>
-<span class="co">#&gt; 5                    NA                   1                     0</span>
-<span class="co">#&gt;   psqi_comp7_tired psqi_global</span>
-<span class="co">#&gt; 1                0          NA</span>
-<span class="co">#&gt; 2                0          NA</span>
-<span class="co">#&gt; 3                1          NA</span>
-<span class="co">#&gt; 4                1          NA</span>
-<span class="co">#&gt; 5                1          NA</span>
-
-<span class="fu"><a href="../reference/psqi_compute.html">psqi_compute</a></span><span class="op">(</span><span class="va">data</span>, keep_all <span class="op">=</span> <span class="cn">FALSE</span>, max_missing <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
-<span class="co">#&gt;   psqi_comp1_quality psqi_comp2_latency psqi_comp3_duration</span>
-<span class="co">#&gt; 1                  0                  0                   1</span>
-<span class="co">#&gt; 2                  1                  0                   0</span>
-<span class="co">#&gt; 3                  2                  1                   0</span>
-<span class="co">#&gt; 4                  1                  2                   0</span>
-<span class="co">#&gt; 5                  1                  2                   1</span>
-<span class="co">#&gt;   psqi_comp4_efficiency psqi_comp5_problems psqi_comp6_medication</span>
-<span class="co">#&gt; 1                    NA                   0                     0</span>
-<span class="co">#&gt; 2                    NA                   1                     0</span>
-<span class="co">#&gt; 3                    NA                   1                     0</span>
-<span class="co">#&gt; 4                    NA                   1                     0</span>
-<span class="co">#&gt; 5                    NA                   1                     0</span>
-<span class="co">#&gt;   psqi_comp7_tired psqi_global</span>
-<span class="co">#&gt; 1                0    1.166667</span>
-<span class="co">#&gt; 2                0    2.333333</span>
-<span class="co">#&gt; 3                1    5.833333</span>
-<span class="co">#&gt; 4                1    5.833333</span>
-<span class="co">#&gt; 5                1    7.000000</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/psqi_compute.html">psqi_compute</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span>
+<span><span class="co">#&gt;    psqi_01 psqi_02  psqi_03 psqi_04 psqi_05a psqi_05b psqi_05c psqi_05d</span></span>
+<span><span class="co">#&gt; 1 22:30:00       5 05:50:00    7.00        0        0        0        0</span></span>
+<span><span class="co">#&gt; 2 07:00:00      10 17:00:00    9.75        0        0        0        0</span></span>
+<span><span class="co">#&gt; 3 22:30:00      30 06:30:00    8.00        1        2        3        0</span></span>
+<span><span class="co">#&gt; 4      NaN      20      NaN    9.00        2        0        1        0</span></span>
+<span><span class="co">#&gt; 5 23:30:00      30 06:45:00    6.00        2        2        2        0</span></span>
+<span><span class="co">#&gt;   psqi_05e psqi_05f psqi_05g psqi_05h psqi_05i psqi_05j_Coded psqi_05j psqi_06</span></span>
+<span><span class="co">#&gt; 1        0        0        0        0        0           &lt;NA&gt;        0       0</span></span>
+<span><span class="co">#&gt; 2        3        0        0        0        0           &lt;NA&gt;        0       1</span></span>
+<span><span class="co">#&gt; 3        1        1        1        0        0             No       NA       2</span></span>
+<span><span class="co">#&gt; 4        0        0        1        0        0           &lt;NA&gt;       NA       1</span></span>
+<span><span class="co">#&gt; 5        0        1        3        0        0           &lt;NA&gt;       NA       1</span></span>
+<span><span class="co">#&gt;   psqi_07 psqi_08 psqi_09 psqi_10 psqi_10a psqi_10b psqi_10c psqi_10d</span></span>
+<span><span class="co">#&gt; 1       0       0       0       3        1        0        2        0</span></span>
+<span><span class="co">#&gt; 2       0       0       0       1       NA       NA       NA       NA</span></span>
+<span><span class="co">#&gt; 3       0       0       1       3        1        0        2        0</span></span>
+<span><span class="co">#&gt; 4       0       1       0      NA       NA       NA       NA       NA</span></span>
+<span><span class="co">#&gt; 5       0       0       1       3        0        0        0        0</span></span>
+<span><span class="co">#&gt;   psqi_10e_Coded psqi_10e psqi_11a psqi_11b psqi_11c psqi_11d</span></span>
+<span><span class="co">#&gt; 1           &lt;NA&gt;       NA        0        0        0        0</span></span>
+<span><span class="co">#&gt; 2           &lt;NA&gt;       NA        2        0        0        3</span></span>
+<span><span class="co">#&gt; 3                      NA        1        2        1        2</span></span>
+<span><span class="co">#&gt; 4           &lt;NA&gt;       NA        1        0        1        0</span></span>
+<span><span class="co">#&gt; 5           &lt;NA&gt;       NA        2        2        2        2</span></span>
+<span><span class="co">#&gt;   psqi_comp1_quality psqi_comp2_latency psqi_comp3_duration</span></span>
+<span><span class="co">#&gt; 1                  0                  0                   1</span></span>
+<span><span class="co">#&gt; 2                  1                  0                   0</span></span>
+<span><span class="co">#&gt; 3                  2                  1                   0</span></span>
+<span><span class="co">#&gt; 4                  1                  2                   0</span></span>
+<span><span class="co">#&gt; 5                  1                  2                   1</span></span>
+<span><span class="co">#&gt;   psqi_comp4_efficiency psqi_comp5_problems psqi_comp6_medication</span></span>
+<span><span class="co">#&gt; 1                    NA                   0                     0</span></span>
+<span><span class="co">#&gt; 2                    NA                   1                     0</span></span>
+<span><span class="co">#&gt; 3                    NA                   1                     0</span></span>
+<span><span class="co">#&gt; 4                    NA                   1                     0</span></span>
+<span><span class="co">#&gt; 5                    NA                   1                     0</span></span>
+<span><span class="co">#&gt;   psqi_comp7_tired psqi_global</span></span>
+<span><span class="co">#&gt; 1                0          NA</span></span>
+<span><span class="co">#&gt; 2                0          NA</span></span>
+<span><span class="co">#&gt; 3                1          NA</span></span>
+<span><span class="co">#&gt; 4                1          NA</span></span>
+<span><span class="co">#&gt; 5                1          NA</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/psqi_compute.html">psqi_compute</a></span><span class="op">(</span><span class="va">data</span>, keep_all <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   psqi_comp1_quality psqi_comp2_latency psqi_comp3_duration</span></span>
+<span><span class="co">#&gt; 1                  0                  0                   1</span></span>
+<span><span class="co">#&gt; 2                  1                  0                   0</span></span>
+<span><span class="co">#&gt; 3                  2                  1                   0</span></span>
+<span><span class="co">#&gt; 4                  1                  2                   0</span></span>
+<span><span class="co">#&gt; 5                  1                  2                   1</span></span>
+<span><span class="co">#&gt;   psqi_comp4_efficiency psqi_comp5_problems psqi_comp6_medication</span></span>
+<span><span class="co">#&gt; 1                    NA                   0                     0</span></span>
+<span><span class="co">#&gt; 2                    NA                   1                     0</span></span>
+<span><span class="co">#&gt; 3                    NA                   1                     0</span></span>
+<span><span class="co">#&gt; 4                    NA                   1                     0</span></span>
+<span><span class="co">#&gt; 5                    NA                   1                     0</span></span>
+<span><span class="co">#&gt;   psqi_comp7_tired psqi_global</span></span>
+<span><span class="co">#&gt; 1                0          NA</span></span>
+<span><span class="co">#&gt; 2                0          NA</span></span>
+<span><span class="co">#&gt; 3                1          NA</span></span>
+<span><span class="co">#&gt; 4                1          NA</span></span>
+<span><span class="co">#&gt; 5                1          NA</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/psqi_compute.html">psqi_compute</a></span><span class="op">(</span><span class="va">data</span>, keep_all <span class="op">=</span> <span class="cn">FALSE</span>, max_missing <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   psqi_comp1_quality psqi_comp2_latency psqi_comp3_duration</span></span>
+<span><span class="co">#&gt; 1                  0                  0                   1</span></span>
+<span><span class="co">#&gt; 2                  1                  0                   0</span></span>
+<span><span class="co">#&gt; 3                  2                  1                   0</span></span>
+<span><span class="co">#&gt; 4                  1                  2                   0</span></span>
+<span><span class="co">#&gt; 5                  1                  2                   1</span></span>
+<span><span class="co">#&gt;   psqi_comp4_efficiency psqi_comp5_problems psqi_comp6_medication</span></span>
+<span><span class="co">#&gt; 1                    NA                   0                     0</span></span>
+<span><span class="co">#&gt; 2                    NA                   1                     0</span></span>
+<span><span class="co">#&gt; 3                    NA                   1                     0</span></span>
+<span><span class="co">#&gt; 4                    NA                   1                     0</span></span>
+<span><span class="co">#&gt; 5                    NA                   1                     0</span></span>
+<span><span class="co">#&gt;   psqi_comp7_tired psqi_global</span></span>
+<span><span class="co">#&gt; 1                0    1.166667</span></span>
+<span><span class="co">#&gt; 2                0    2.333333</span></span>
+<span><span class="co">#&gt; 3                1    5.833333</span></span>
+<span><span class="co">#&gt; 4                1    5.833333</span></span>
+<span><span class="co">#&gt; 5                1    7.000000</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
 <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
-<p>Buysse et al. (1989) <a href="https://www.sciencedirect.com/science/article/pii/0165178189900474" class="external-link">The Pittsburgh sleep quality index: A new instrument for psychiatric practice and research</a>, <em>Psychiatry Research</em>, 28:2, 193-213</p>
+<p>Buysse et al. (1989) <a href="https://www.sciencedirect.com/science/article/pii/0165178189900474" class="external-link">The
+Pittsburgh sleep quality index: A new instrument for psychiatric
+practice and research</a>, <em>Psychiatry Research</em>, 28:2,
+193-213</p>
 </div>
   </div>
 
@@ -551,7 +631,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

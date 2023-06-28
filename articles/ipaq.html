@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">questionnaires</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.3</span>
       </span>
     </div>
 
@@ -119,6 +119,9 @@
     <li>
       <a href="../articles/ucla-loneliness.html">UCLA Loneliness Scale</a>
     </li>
+    <li>
+      <a href="../articles/zygocity.html">Zygocity - Norwegian Twin registry questionnaire</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -142,12 +145,13 @@
 
       
 
-      </header><script src="ipaq_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>International Physical Activity Questionnaire (IPAQ)</h1>
+      <h1 data-toc-skip>International Physical Activity Questionnaire
+(IPAQ)</h1>
             
-            <h4 data-toc-skip class="date">2022-03-09</h4>
+            <h4 data-toc-skip class="date">2023-06-28</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/LCBC-UiO/questionnaires/blob/HEAD/vignettes/ipaq.Rmd" class="external-link"><code>vignettes/ipaq.Rmd</code></a></small>
       <div class="hidden name"><code>ipaq.Rmd</code></div>
@@ -159,28 +163,67 @@
 <div class="section level2">
 <h2 id="background">Background<a class="anchor" aria-label="anchor" href="#background"></a>
 </h2>
-<p>The Geriatric Depression Scale (GDS) is an instrument designed specifically for rating depression in the elderly. It can be administrated to healthy, medically ill, and mild to moderately cognitively impaired older adults. As a general rule, GDS is administrated in LCBC to older adults with a lower cut off around 60 years. However, please consult the instructions for each project, as this guideline has been implemented at different time points across the projects.</p>
-<p>The questionnaire consists of 30 questions tapping into a wide variety of topics relevant to depression, including cognitive complaints, motivation, thoughts about the past and the future, self-image, and mood itself. The answers should be based the participants’ feelings throughout the last week.</p>
-<p>Twenty of the questions indicate the presence of depression when answered positively, while the ten remaining indicate depression when answered negatively (see scoring instructions below). The questionnaire is scored accordingly, giving one point for each statement that affirms a depressive symptom. The sum of these scores yields one total score, with a possible range between 0 and 30.</p>
+<p>The Geriatric Depression Scale (GDS) is an instrument designed
+specifically for rating depression in the elderly. It can be
+administrated to healthy, medically ill, and mild to moderately
+cognitively impaired older adults. As a general rule, GDS is
+administrated in LCBC to older adults with a lower cut off around 60
+years. However, please consult the instructions for each project, as
+this guideline has been implemented at different time points across the
+projects.</p>
+<p>The questionnaire consists of 30 questions tapping into a wide
+variety of topics relevant to depression, including cognitive
+complaints, motivation, thoughts about the past and the future,
+self-image, and mood itself. The answers should be based the
+participants’ feelings throughout the last week.</p>
+<p>Twenty of the questions indicate the presence of depression when
+answered positively, while the ten remaining indicate depression when
+answered negatively (see scoring instructions below). The questionnaire
+is scored accordingly, giving one point for each statement that affirms
+a depressive symptom. The sum of these scores yields one total score,
+with a possible range between 0 and 30.</p>
 </div>
 <div class="section level2">
 <h2 id="rationale">Rationale<a class="anchor" aria-label="anchor" href="#rationale"></a>
 </h2>
-<p>The public health burden of a sedentary lifestyle has been recognized globally, but until recently, the prevalence and impact of the problem has not been studied in a uniform and systematic fashion. The questionnaire is the most feasible instrument for measuring physical activity in large groups or populations. However, many of the existing instruments are not comparable in the type of activities surveyed (i.e., leisure-time activities only) and format for data collection.</p>
-<p>In response to the global demand for comparable and valid measures of physical activity within and between countries, IPAQ was developed for surveillance activities and to guide policy development related to health-enhancing physical activity across various life domains.</p>
+<p>The public health burden of a sedentary lifestyle has been recognized
+globally, but until recently, the prevalence and impact of the problem
+has not been studied in a uniform and systematic fashion. The
+questionnaire is the most feasible instrument for measuring physical
+activity in large groups or populations. However, many of the existing
+instruments are not comparable in the type of activities surveyed (i.e.,
+leisure-time activities only) and format for data collection.</p>
+<p>In response to the global demand for comparable and valid measures of
+physical activity within and between countries, IPAQ was developed for
+surveillance activities and to guide policy development related to
+health-enhancing physical activity across various life domains.</p>
 </div>
 <div class="section level2">
 <h2 id="scoring">Scoring<a class="anchor" aria-label="anchor" href="#scoring"></a>
 </h2>
-<p>The GDS is quite straight forward in its format, a series of 30 questions that take a yes or no answer. This binary coding makes it quite easy to work with. Several of the questions, however, are formulated in such a way that they require a reversal of the coding before the total score can be summed. The questions which require reversal of coding are, <strong>01, 05, 07, 09, 15, 19, 21, 27, 29, 30</strong>, meaning answering “yes” to these should be altered to 0, and “no” altered to 1, before calculating the sum score. The total GDS score is after reversal, a simple addition of all the answers into a single score.</p>
-<p>One point is given for any “No” answered to the following questions:<br>
+<p>The GDS is quite straight forward in its format, a series of 30
+questions that take a yes or no answer. This binary coding makes it
+quite easy to work with. Several of the questions, however, are
+formulated in such a way that they require a reversal of the coding
+before the total score can be summed. The questions which require
+reversal of coding are, <strong>01, 05, 07, 09, 15, 19, 21, 27, 29,
+30</strong>, meaning answering “yes” to these should be altered to 0,
+and “no” altered to 1, before calculating the sum score. The total GDS
+score is after reversal, a simple addition of all the answers into a
+single score.</p>
+<p>One point is given for any “No” answered to the following
+questions:<br>
 1, 5, 7, 9, 15, 19, 21, 27, 29 and 30</p>
-<p>and one point is given for every “Yes” answered on the following questions:<br>
-2, 3, 4, 6, 8, 10, 11, 12, 13, 14, 16, 17, 18, 20, 22, 23, 24, 25, 26, 28</p>
+<p>and one point is given for every “Yes” answered on the following
+questions:<br>
+2, 3, 4, 6, 8, 10, 11, 12, 13, 14, 16, 17, 18, 20, 22, 23, 24, 25, 26,
+28</p>
 <div class="section level3">
 <h3 id="depression-categories">Depression categories<a class="anchor" aria-label="anchor" href="#depression-categories"></a>
 </h3>
-<p>There are 3 categories of severity for the GDS total score. Below or equal to <code>9</code> is “Normal”, above 19 is “Severe depression”, and the remaining fall within “Mild depression”.</p>
+<p>There are 3 categories of severity for the GDS total score. Below or
+equal to <code>9</code> is “Normal”, above 19 is “Severe depression”,
+and the remaining fall within “Mild depression”.</p>
 <table class="table">
 <thead><tr class="header">
 <th>GDS score</th>
@@ -209,157 +252,197 @@
 <div class="section level3">
 <h3 id="altering-times">Altering times<a class="anchor" aria-label="anchor" href="#altering-times"></a>
 </h3>
-<p>First important notice is on how your time-data is coded. The IPAQ has three important questions on the number of minutes spent doing something. This can be recorded in many ways, and some might have given participants options to answer in specific ways to reduce inaccurate data. In LCBC we have online solutions for data collection, and for time questions we have forced an <code>HH:MM</code> format to make sure respondents are consistent in the way they answer. In order to use these with the remaining ipaq calculations, a conversion to minutes is necessary. The <code>ipaq_time_atler</code> function will alter the columns from <code>HH:MM</code> to minutes. If you have any <code>NA</code> in the time data, you will get a warning about not being able to parse the data, this is expected and wanted behaviour, but you may proceed, the METs will not be calculated where data is missing.</p>
+<p>First important notice is on how your time-data is coded. The IPAQ
+has three important questions on the number of minutes spent doing
+something. This can be recorded in many ways, and some might have given
+participants options to answer in specific ways to reduce inaccurate
+data. In LCBC we have online solutions for data collection, and for time
+questions we have forced an <code>HH:MM</code> format to make sure
+respondents are consistent in the way they answer. In order to use these
+with the remaining ipaq calculations, a conversion to minutes is
+necessary. The <code>ipaq_time_atler</code> function will alter the
+columns from <code>HH:MM</code> to minutes. If you have any
+<code>NA</code> in the time data, you will get a warning about not being
+able to parse the data, this is expected and wanted behaviour, but you
+may proceed, the METs will not be calculated where data is missing.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/LCBC-UiO/questionnaires" class="external-link">questionnaires</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'dplyr'</span>
-<span class="co">#&gt; The following objects are masked from 'package:stats':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     filter, lag</span>
-<span class="co">#&gt; The following objects are masked from 'package:base':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     intersect, setdiff, setequal, union</span>
-
-<span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>
-  time_1  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"02:34"</span>, <span class="st">"09:33"</span>, <span class="st">"01:14"</span><span class="op">)</span>,
-  time_2  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"00:55"</span>, <span class="cn">NA</span>, <span class="st">"00:30"</span><span class="op">)</span>
-<span class="op">)</span>
-
-<span class="va">dat</span>
-<span class="co">#&gt;   time_1 time_2</span>
-<span class="co">#&gt; 1  02:34  00:55</span>
-<span class="co">#&gt; 2  09:33   &lt;NA&gt;</span>
-<span class="co">#&gt; 3  01:14  00:30</span>
-
-<span class="fu"><a href="../reference/ipaq_time_alter.html">ipaq_time_alter</a></span><span class="op">(</span><span class="va">dat</span>, cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">time_1</span>, <span class="va">time_2</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt;   time_1 time_2</span>
-<span class="co">#&gt; 1    154     55</span>
-<span class="co">#&gt; 2    573     NA</span>
-<span class="co">#&gt; 3     74     30</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/LCBC-UiO/questionnaires" class="external-link">questionnaires</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Attaching package: 'dplyr'</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     filter, lag</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
+<span></span>
+<span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
+<span>  time_1  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"02:34"</span>, <span class="st">"09:33"</span>, <span class="st">"01:14"</span><span class="op">)</span>,</span>
+<span>  time_2  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"00:55"</span>, <span class="cn">NA</span>, <span class="st">"00:30"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">dat</span></span>
+<span><span class="co">#&gt;   time_1 time_2</span></span>
+<span><span class="co">#&gt; 1  02:34  00:55</span></span>
+<span><span class="co">#&gt; 2  09:33   &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 3  01:14  00:30</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/ipaq_time_alter.html">ipaq_time_alter</a></span><span class="op">(</span><span class="va">dat</span>, cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">time_1</span>, <span class="va">time_2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   time_1 time_2</span></span>
+<span><span class="co">#&gt; 1    154     55</span></span>
+<span><span class="co">#&gt; 2    573     NA</span></span>
+<span><span class="co">#&gt; 3     74     30</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="met-category-scores">MET category scores<a class="anchor" aria-label="anchor" href="#met-category-scores"></a>
 </h3>
-<p>To calculate the MET score for an individual MET category the <code>ipaq_compute_met</code> is what you need. This function takes a vector of minutes, days and the MET-factor you want to apply. Default MET-factor can be found in the <code><a href="../reference/ipaq_mets.html">ipaq_mets()</a></code> function.</p>
+<p>To calculate the MET score for an individual MET category the
+<code>ipaq_compute_met</code> is what you need. This function takes a
+vector of minutes, days and the MET-factor you want to apply. Default
+MET-factor can be found in the <code><a href="../reference/ipaq_mets.html">ipaq_mets()</a></code> function.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/ipaq_mets.html">ipaq_mets</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; $light</span>
-<span class="co">#&gt; [1] 3.3</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $moderate</span>
-<span class="co">#&gt; [1] 4</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $vigorous</span>
-<span class="co">#&gt; [1] 8</span></code></pre></div>
-<p>The different MET categories have different questions in the IPAQ, and should be calculated separately before combined to the total score.</p>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/ipaq_mets.html">ipaq_mets</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; $light</span></span>
+<span><span class="co">#&gt; [1] 3.3</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $moderate</span></span>
+<span><span class="co">#&gt; [1] 4</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $vigorous</span></span>
+<span><span class="co">#&gt; [1] 8</span></span></code></pre></div>
+<p>The different MET categories have different questions in the IPAQ,
+and should be calculated separately before combined to the total
+score.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">vig_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>
- ipaq_vig_mins <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">60</span>, <span class="fl">20</span>, <span class="fl">60</span>, <span class="fl">25</span>, <span class="fl">90</span>, <span class="fl">20</span>, <span class="fl">0</span>, <span class="fl">75</span>, <span class="fl">60</span>, <span class="fl">30</span><span class="op">)</span>,
- ipaq_vig_days <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">2</span>, <span class="fl">5</span>, <span class="fl">6</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span>
-<span class="op">)</span>
-
-<span class="va">vig_data</span>
-<span class="co">#&gt;    ipaq_vig_mins ipaq_vig_days</span>
-<span class="co">#&gt; 1             60             1</span>
-<span class="co">#&gt; 2             20             3</span>
-<span class="co">#&gt; 3             60             2</span>
-<span class="co">#&gt; 4             25             5</span>
-<span class="co">#&gt; 5             90             6</span>
-<span class="co">#&gt; 6             20             1</span>
-<span class="co">#&gt; 7              0             1</span>
-<span class="co">#&gt; 8             75             2</span>
-<span class="co">#&gt; 9             60             2</span>
-<span class="co">#&gt; 10            30             4</span>
-
-<span class="fu"><a href="../reference/ipaq_compute.html">ipaq_compute_met</a></span><span class="op">(</span><span class="va">vig_data</span><span class="op">$</span><span class="va">ipaq_vig_mins</span>, 
-                 <span class="va">vig_data</span><span class="op">$</span><span class="va">ipaq_vig_days</span>, 
-                 met <span class="op">=</span> <span class="fl">8.0</span><span class="op">)</span>
-<span class="co">#&gt;  [1]  480  480  960 1000 4320  160    0 1200  960  960</span></code></pre></div>
-<p>The total MET score can be manually computed using the <code>ipaq_compute_sum</code>, where one supplies a vector for each of the three MET categories, containing the pre-calculates MET scores for the categories.</p>
+<code class="sourceCode R"><span><span class="va">vig_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
+<span> ipaq_vig_mins <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">60</span>, <span class="fl">20</span>, <span class="fl">60</span>, <span class="fl">25</span>, <span class="fl">90</span>, <span class="fl">20</span>, <span class="fl">0</span>, <span class="fl">75</span>, <span class="fl">60</span>, <span class="fl">30</span><span class="op">)</span>,</span>
+<span> ipaq_vig_days <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">2</span>, <span class="fl">5</span>, <span class="fl">6</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">vig_data</span></span>
+<span><span class="co">#&gt;    ipaq_vig_mins ipaq_vig_days</span></span>
+<span><span class="co">#&gt; 1             60             1</span></span>
+<span><span class="co">#&gt; 2             20             3</span></span>
+<span><span class="co">#&gt; 3             60             2</span></span>
+<span><span class="co">#&gt; 4             25             5</span></span>
+<span><span class="co">#&gt; 5             90             6</span></span>
+<span><span class="co">#&gt; 6             20             1</span></span>
+<span><span class="co">#&gt; 7              0             1</span></span>
+<span><span class="co">#&gt; 8             75             2</span></span>
+<span><span class="co">#&gt; 9             60             2</span></span>
+<span><span class="co">#&gt; 10            30             4</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/ipaq_compute.html">ipaq_compute_met</a></span><span class="op">(</span><span class="va">vig_data</span><span class="op">$</span><span class="va">ipaq_vig_mins</span>, </span>
+<span>                 <span class="va">vig_data</span><span class="op">$</span><span class="va">ipaq_vig_days</span>, </span>
+<span>                 met <span class="op">=</span> <span class="fl">8.0</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  [1]  480  480  960 1000 4320  160    0 1200  960  960</span></span></code></pre></div>
+<p>The total MET score can be manually computed using the
+<code>ipaq_compute_sum</code>, where one supplies a vector for each of
+the three MET categories, containing the pre-calculates MET scores for
+the categories.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">light</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1300</span>, <span class="fl">300</span><span class="op">)</span>
-<span class="va">moderate</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">200</span>, <span class="fl">400</span><span class="op">)</span>
-<span class="va">vigurous</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1300</span><span class="op">)</span>
-
-<span class="fu"><a href="../reference/ipaq_compute.html">ipaq_compute_sum</a></span><span class="op">(</span><span class="va">vigurous</span> , <span class="va">moderate</span>, <span class="va">light</span><span class="op">)</span>
-<span class="co">#&gt; [1] 1500 2000</span></code></pre></div>
-<p>Finally, you can calculate everything in one go using the <code>ipaq_compute</code> function. This function has many arguments, as the minutes and days of each category (2x3) must be specified, and also the mets you want applied must be supplied. The easiest way to alter the default mets is by using the <code>ipaq_mets</code> function to alter them. The function takes an entire data frame with all columns of data necessary to compute the MET score.</p>
+<code class="sourceCode R"><span><span class="va">light</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1300</span>, <span class="fl">300</span><span class="op">)</span></span>
+<span><span class="va">moderate</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">200</span>, <span class="fl">400</span><span class="op">)</span></span>
+<span><span class="va">vigurous</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1300</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/ipaq_compute.html">ipaq_compute_sum</a></span><span class="op">(</span><span class="va">vigurous</span> , <span class="va">moderate</span>, <span class="va">light</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 1500 2000</span></span></code></pre></div>
+<p>Finally, you can calculate everything in one go using the
+<code>ipaq_compute</code> function. This function has many arguments, as
+the minutes and days of each category (2x3) must be specified, and also
+the mets you want applied must be supplied. The easiest way to alter the
+default mets is by using the <code>ipaq_mets</code> function to alter
+them. The function takes an entire data frame with all columns of data
+necessary to compute the MET score.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>
-  ipaq_1a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="st">"No"</span>, <span class="st">"Yes"</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="st">"Yes"</span><span class="op">)</span>, 
-  ipaq_1b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="cn">NA</span>, <span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">0</span>, <span class="fl">2</span>, <span class="fl">4</span>, <span class="fl">3</span>, <span class="fl">0</span>, <span class="fl">3</span><span class="op">)</span>, 
-  ipaq_2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"00:00"</span>, <span class="st">""</span>, <span class="st">"01:00"</span>, <span class="st">"01:00"</span>, <span class="st">"00:00"</span>, <span class="st">"03:30"</span>, <span class="st">"01:00"</span>, <span class="st">"00:25"</span>, <span class="st">"00:00"</span>, <span class="st">"00:45"</span><span class="op">)</span>, 
-  ipaq_3a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="st">"Yes"</span>, <span class="st">"Yes"</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="st">"No"</span><span class="op">)</span>, 
-  ipaq_3b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">1</span>, <span class="fl">4</span>, <span class="fl">0</span>, <span class="fl">5</span>, <span class="fl">4</span>, <span class="cn">NA</span><span class="op">)</span>, 
-  ipaq_4 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"00:30"</span>, <span class="st">"01:30"</span>, <span class="st">"01:00"</span>, <span class="st">"01:00"</span>, <span class="st">"01:00"</span>, <span class="st">"02:00"</span>, <span class="st">"00:00"</span>, <span class="st">"00:15"</span>, <span class="st">"03:00"</span>, <span class="st">""</span><span class="op">)</span>, 
-  ipaq_5a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="st">"Yes"</span>, <span class="st">"Yes"</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="st">"Yes"</span><span class="op">)</span>, 
-  ipaq_5b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">3</span>, <span class="fl">7</span>, <span class="fl">7</span>, <span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">0</span>, <span class="fl">5</span>, <span class="fl">7</span>, <span class="fl">4</span><span class="op">)</span>, 
-  ipaq_6 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"01:00"</span>, <span class="st">"00:20"</span>, <span class="st">"01:00"</span>, <span class="st">"00:25"</span>, <span class="st">"01:30"</span>, <span class="st">"00:20"</span>, <span class="st">"00:00"</span>, <span class="st">"01:15"</span>,  <span class="st">"01:00"</span>, <span class="st">"00:30"</span><span class="op">)</span>, 
-  ipaq_7 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"05:00"</span>, <span class="st">"12:00"</span>, <span class="st">"05:00"</span>, <span class="st">"07:00"</span>, <span class="st">"00:18"</span>, <span class="st">"05:00"</span>, <span class="st">"00:00"</span>, <span class="st">"08:00"</span>, <span class="st">"04:00"</span>, <span class="st">"08:00"</span><span class="op">)</span>, 
-  ipaq_8a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="fl">4</span>, <span class="fl">4</span>, <span class="fl">6</span>, <span class="fl">5</span>, <span class="fl">4</span>, <span class="fl">6</span>, <span class="cn">NA</span><span class="op">)</span>,
-  ipaq_8b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="fl">4</span>, <span class="cn">NA</span>, <span class="fl">6</span>, <span class="fl">5</span>, <span class="fl">4</span>, <span class="fl">6</span>, <span class="cn">NA</span><span class="op">)</span>, 
-  ipaq_8c <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="fl">5</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">3</span>, <span class="fl">6</span>, <span class="cn">NA</span><span class="op">)</span>
-<span class="op">)</span>
-
-<span class="va">data</span>
-<span class="co">#&gt;    ipaq_1a ipaq_1b ipaq_2 ipaq_3a ipaq_3b ipaq_4 ipaq_5a ipaq_5b ipaq_6 ipaq_7</span>
-<span class="co">#&gt; 1     &lt;NA&gt;       0  00:00    &lt;NA&gt;       1  00:30    &lt;NA&gt;       7  01:00  05:00</span>
-<span class="co">#&gt; 2       No      NA            Yes       3  01:30     Yes       3  00:20  12:00</span>
-<span class="co">#&gt; 3      Yes       3  01:00     Yes       1  01:00     Yes       7  01:00  05:00</span>
-<span class="co">#&gt; 4     &lt;NA&gt;       3  01:00    &lt;NA&gt;       3  01:00    &lt;NA&gt;       7  00:25  07:00</span>
-<span class="co">#&gt; 5     &lt;NA&gt;       0  00:00    &lt;NA&gt;       1  01:00    &lt;NA&gt;       3  01:30  00:18</span>
-<span class="co">#&gt; 6     &lt;NA&gt;       2  03:30    &lt;NA&gt;       4  02:00    &lt;NA&gt;       3  00:20  05:00</span>
-<span class="co">#&gt; 7     &lt;NA&gt;       4  01:00    &lt;NA&gt;       0  00:00    &lt;NA&gt;       0  00:00  00:00</span>
-<span class="co">#&gt; 8     &lt;NA&gt;       3  00:25    &lt;NA&gt;       5  00:15    &lt;NA&gt;       5  01:15  08:00</span>
-<span class="co">#&gt; 9     &lt;NA&gt;       0  00:00    &lt;NA&gt;       4  03:00    &lt;NA&gt;       7  01:00  04:00</span>
-<span class="co">#&gt; 10     Yes       3  00:45      No      NA            Yes       4  00:30  08:00</span>
-<span class="co">#&gt;    ipaq_8a ipaq_8b ipaq_8c</span>
-<span class="co">#&gt; 1        5       5       5</span>
-<span class="co">#&gt; 2       NA      NA      NA</span>
-<span class="co">#&gt; 3       NA      NA      NA</span>
-<span class="co">#&gt; 4        4       4       5</span>
-<span class="co">#&gt; 5        4      NA       3</span>
-<span class="co">#&gt; 6        6       6       5</span>
-<span class="co">#&gt; 7        5       5       5</span>
-<span class="co">#&gt; 8        4       4       3</span>
-<span class="co">#&gt; 9        6       6       6</span>
-<span class="co">#&gt; 10      NA      NA      NA</span>
-
-<span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="fu"><a href="../reference/ipaq_time_alter.html">ipaq_time_alter</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="co"># Keeping only calculated values for show, you like want this to be TRUE (default)</span>
-  <span class="fu"><a href="../reference/ipaq_compute.html">ipaq_compute</a></span><span class="op">(</span>keep_all <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 × 5</span></span>
-<span class="co">#&gt; <span style="color: #949494;"># Rowwise: </span></span>
-<span class="co">#&gt;    ipaq_met_vigorous ipaq_met_moderate ipaq_met_light ipaq_met ipaq_coded</span>
-<span class="co">#&gt;                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>              <span style="text-decoration: underline;">3</span>360               120            <span style="color: #BB0000;">NA</span>     <span style="text-decoration: underline;">3</span>480  high      </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>               480              <span style="text-decoration: underline;">1</span>080            <span style="color: #BB0000;">NA</span>     <span style="text-decoration: underline;">1</span>560  moderate  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>              <span style="text-decoration: underline;">3</span>360               240           594     <span style="text-decoration: underline;">4</span>194  high      </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>              <span style="text-decoration: underline;">1</span>400               720           594     <span style="text-decoration: underline;">2</span>714  moderate  </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>              <span style="text-decoration: underline;">2</span>160               240            <span style="color: #BB0000;">NA</span>     <span style="text-decoration: underline;">2</span>400  high      </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>               480              <span style="text-decoration: underline;">1</span>920          <span style="text-decoration: underline;">1</span>386     <span style="text-decoration: underline;">3</span>786  high      </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>                <span style="color: #BB0000;">NA</span>                <span style="color: #BB0000;">NA</span>           792      792  low       </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>              <span style="text-decoration: underline;">3</span>000               300           248.    <span style="text-decoration: underline;">3</span>548. high      </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>              <span style="text-decoration: underline;">3</span>360              <span style="text-decoration: underline;">2</span>880            <span style="color: #BB0000;">NA</span>     <span style="text-decoration: underline;">6</span>240  high      </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>               960                <span style="color: #BB0000;">NA</span>           446.    <span style="text-decoration: underline;">1</span>406. moderate</span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
+<span>  ipaq_1a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="st">"No"</span>, <span class="st">"Yes"</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="st">"Yes"</span><span class="op">)</span>, </span>
+<span>  ipaq_1b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="cn">NA</span>, <span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">0</span>, <span class="fl">2</span>, <span class="fl">4</span>, <span class="fl">3</span>, <span class="fl">0</span>, <span class="fl">3</span><span class="op">)</span>, </span>
+<span>  ipaq_2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"00:00"</span>, <span class="st">""</span>, <span class="st">"01:00"</span>, <span class="st">"01:00"</span>, <span class="st">"00:00"</span>, <span class="st">"03:30"</span>, <span class="st">"01:00"</span>, <span class="st">"00:25"</span>, <span class="st">"00:00"</span>, <span class="st">"00:45"</span><span class="op">)</span>, </span>
+<span>  ipaq_3a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="st">"Yes"</span>, <span class="st">"Yes"</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="st">"No"</span><span class="op">)</span>, </span>
+<span>  ipaq_3b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">1</span>, <span class="fl">4</span>, <span class="fl">0</span>, <span class="fl">5</span>, <span class="fl">4</span>, <span class="cn">NA</span><span class="op">)</span>, </span>
+<span>  ipaq_4 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"00:30"</span>, <span class="st">"01:30"</span>, <span class="st">"01:00"</span>, <span class="st">"01:00"</span>, <span class="st">"01:00"</span>, <span class="st">"02:00"</span>, <span class="st">"00:00"</span>, <span class="st">"00:15"</span>, <span class="st">"03:00"</span>, <span class="st">""</span><span class="op">)</span>, </span>
+<span>  ipaq_5a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="st">"Yes"</span>, <span class="st">"Yes"</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="st">"Yes"</span><span class="op">)</span>, </span>
+<span>  ipaq_5b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">3</span>, <span class="fl">7</span>, <span class="fl">7</span>, <span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">0</span>, <span class="fl">5</span>, <span class="fl">7</span>, <span class="fl">4</span><span class="op">)</span>, </span>
+<span>  ipaq_6 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"01:00"</span>, <span class="st">"00:20"</span>, <span class="st">"01:00"</span>, <span class="st">"00:25"</span>, <span class="st">"01:30"</span>, <span class="st">"00:20"</span>, <span class="st">"00:00"</span>, <span class="st">"01:15"</span>,  <span class="st">"01:00"</span>, <span class="st">"00:30"</span><span class="op">)</span>, </span>
+<span>  ipaq_7 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"05:00"</span>, <span class="st">"12:00"</span>, <span class="st">"05:00"</span>, <span class="st">"07:00"</span>, <span class="st">"00:18"</span>, <span class="st">"05:00"</span>, <span class="st">"00:00"</span>, <span class="st">"08:00"</span>, <span class="st">"04:00"</span>, <span class="st">"08:00"</span><span class="op">)</span>, </span>
+<span>  ipaq_8a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="fl">4</span>, <span class="fl">4</span>, <span class="fl">6</span>, <span class="fl">5</span>, <span class="fl">4</span>, <span class="fl">6</span>, <span class="cn">NA</span><span class="op">)</span>,</span>
+<span>  ipaq_8b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="fl">4</span>, <span class="cn">NA</span>, <span class="fl">6</span>, <span class="fl">5</span>, <span class="fl">4</span>, <span class="fl">6</span>, <span class="cn">NA</span><span class="op">)</span>, </span>
+<span>  ipaq_8c <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="fl">5</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">3</span>, <span class="fl">6</span>, <span class="cn">NA</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">data</span></span>
+<span><span class="co">#&gt;    ipaq_1a ipaq_1b ipaq_2 ipaq_3a ipaq_3b ipaq_4 ipaq_5a ipaq_5b ipaq_6 ipaq_7</span></span>
+<span><span class="co">#&gt; 1     &lt;NA&gt;       0  00:00    &lt;NA&gt;       1  00:30    &lt;NA&gt;       7  01:00  05:00</span></span>
+<span><span class="co">#&gt; 2       No      NA            Yes       3  01:30     Yes       3  00:20  12:00</span></span>
+<span><span class="co">#&gt; 3      Yes       3  01:00     Yes       1  01:00     Yes       7  01:00  05:00</span></span>
+<span><span class="co">#&gt; 4     &lt;NA&gt;       3  01:00    &lt;NA&gt;       3  01:00    &lt;NA&gt;       7  00:25  07:00</span></span>
+<span><span class="co">#&gt; 5     &lt;NA&gt;       0  00:00    &lt;NA&gt;       1  01:00    &lt;NA&gt;       3  01:30  00:18</span></span>
+<span><span class="co">#&gt; 6     &lt;NA&gt;       2  03:30    &lt;NA&gt;       4  02:00    &lt;NA&gt;       3  00:20  05:00</span></span>
+<span><span class="co">#&gt; 7     &lt;NA&gt;       4  01:00    &lt;NA&gt;       0  00:00    &lt;NA&gt;       0  00:00  00:00</span></span>
+<span><span class="co">#&gt; 8     &lt;NA&gt;       3  00:25    &lt;NA&gt;       5  00:15    &lt;NA&gt;       5  01:15  08:00</span></span>
+<span><span class="co">#&gt; 9     &lt;NA&gt;       0  00:00    &lt;NA&gt;       4  03:00    &lt;NA&gt;       7  01:00  04:00</span></span>
+<span><span class="co">#&gt; 10     Yes       3  00:45      No      NA            Yes       4  00:30  08:00</span></span>
+<span><span class="co">#&gt;    ipaq_8a ipaq_8b ipaq_8c</span></span>
+<span><span class="co">#&gt; 1        5       5       5</span></span>
+<span><span class="co">#&gt; 2       NA      NA      NA</span></span>
+<span><span class="co">#&gt; 3       NA      NA      NA</span></span>
+<span><span class="co">#&gt; 4        4       4       5</span></span>
+<span><span class="co">#&gt; 5        4      NA       3</span></span>
+<span><span class="co">#&gt; 6        6       6       5</span></span>
+<span><span class="co">#&gt; 7        5       5       5</span></span>
+<span><span class="co">#&gt; 8        4       4       3</span></span>
+<span><span class="co">#&gt; 9        6       6       6</span></span>
+<span><span class="co">#&gt; 10      NA      NA      NA</span></span>
+<span></span>
+<span><span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/ipaq_time_alter.html">ipaq_time_alter</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="co"># Keeping only calculated values for show, you like want this to be TRUE (default)</span></span>
+<span>  <span class="fu"><a href="../reference/ipaq_compute.html">ipaq_compute</a></span><span class="op">(</span>keep_all <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 × 5</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Rowwise: </span></span></span>
+<span><span class="co">#&gt;    ipaq_met_vigorous ipaq_met_moderate ipaq_met_light ipaq_met ipaq_coded</span></span>
+<span><span class="co">#&gt;                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>                <span style="color: #BB0000;">NA</span>               120          <span style="text-decoration: underline;">1</span>386     <span style="text-decoration: underline;">1</span>506  low       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>                <span style="color: #BB0000;">NA</span>              <span style="text-decoration: underline;">1</span>080           198     <span style="text-decoration: underline;">1</span>278  low       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>              <span style="text-decoration: underline;">1</span>440               240          <span style="text-decoration: underline;">1</span>386     <span style="text-decoration: underline;">3</span>066  high      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>              <span style="text-decoration: underline;">1</span>440               720           578.    <span style="text-decoration: underline;">2</span>738. moderate  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>                <span style="color: #BB0000;">NA</span>               240           891     <span style="text-decoration: underline;">1</span>131  low       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>              <span style="text-decoration: underline;">3</span>360              <span style="text-decoration: underline;">1</span>920           198     <span style="text-decoration: underline;">5</span>478  high      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>              <span style="text-decoration: underline;">1</span>920                <span style="color: #BB0000;">NA</span>            <span style="color: #BB0000;">NA</span>     <span style="text-decoration: underline;">1</span>920  high      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>               600               300          <span style="text-decoration: underline;">1</span>238.    <span style="text-decoration: underline;">2</span>138. moderate  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>                <span style="color: #BB0000;">NA</span>              <span style="text-decoration: underline;">2</span>880          <span style="text-decoration: underline;">1</span>386     <span style="text-decoration: underline;">4</span>266  high      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>              <span style="text-decoration: underline;">1</span>080                <span style="color: #BB0000;">NA</span>           396     <span style="text-decoration: underline;">1</span>476  moderate</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
 <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
-<p>The GDS is quite straight forward in its format, a series of 30 questions that take a yes or no answer. This binary coding makes it quite easy to work with. Several of the questions, however, are formulated in such a way that they require a reversal of the coding before the total score can be summed. The questions which require reversal of coding are, <strong>01, 05, 07, 09, 15, 19, 21, 27, 29, 30</strong>, meaning answering “yes” to these should be altered to 0, and “no” altered to 1, before calculating the sum score. The total GDS score is after reversal, a simple addition of all the answers into a single score.</p>
-<p>One point is given for any “No” answered to the following questions:<br>
+<p>The GDS is quite straight forward in its format, a series of 30
+questions that take a yes or no answer. This binary coding makes it
+quite easy to work with. Several of the questions, however, are
+formulated in such a way that they require a reversal of the coding
+before the total score can be summed. The questions which require
+reversal of coding are, <strong>01, 05, 07, 09, 15, 19, 21, 27, 29,
+30</strong>, meaning answering “yes” to these should be altered to 0,
+and “no” altered to 1, before calculating the sum score. The total GDS
+score is after reversal, a simple addition of all the answers into a
+single score.</p>
+<p>One point is given for any “No” answered to the following
+questions:<br>
 1, 5, 7, 9, 15, 19, 21, 27, 29 and 30</p>
-<p>and one point is given for every “Yes” answered on the following questions:<br>
-2, 3, 4, 6, 8, 10, 11, 12, 13, 14, 16, 17, 18, 20, 22, 23, 24, 25, 26, 28</p>
+<p>and one point is given for every “Yes” answered on the following
+questions:<br>
+2, 3, 4, 6, 8, 10, 11, 12, 13, 14, 16, 17, 18, 20, 22, 23, 24, 25, 26,
+28</p>
 <div class="section level3">
 <h3 id="depression-categories-1">Depression categories<a class="anchor" aria-label="anchor" href="#depression-categories-1"></a>
 </h3>
-<p>There are 3 categories of severity for the GDS total score. Below or equal to <code>9</code> is “Normal”, above 19 is “Severe depression”, and the remaining fall within “Mild depression”.</p>
+<p>There are 3 categories of severity for the GDS total score. Below or
+equal to <code>9</code> is “Normal”, above 19 is “Severe depression”,
+and the remaining fall within “Mild depression”.</p>
 <table class="table">
 <thead><tr class="header">
 <th>GDS score</th>
@@ -401,7 +484,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

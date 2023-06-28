@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">questionnaires</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.3</span>
       </span>
     </div>
 
@@ -94,6 +94,9 @@
     <li>
       <a href="../articles/ucla-loneliness.html">UCLA Loneliness Scale</a>
     </li>
+    <li>
+      <a href="../articles/zygocity.html">Zygocity - Norwegian Twin registry questionnaire</a>
+    </li>
   </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -114,7 +117,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Turn strings of H:M to time</h1>
-    <small class="dont-index">Source: <a href="https://github.com/LCBC-UiO/questionnaires/blob/HEAD/R/time_functions.R" class="external-link"><code>R/time_functions.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/LCBC-UiO/questionnaires/blob/HEAD/R/time-funcs.R" class="external-link"><code>R/time-funcs.R</code></a></small>
     <div class="hidden name"><code>time_alter.Rd</code></div>
     </div>
 
@@ -123,26 +126,31 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">time_alter</span><span class="op">(</span><span class="va">x</span>, unit <span class="op">=</span> <span class="st">"minute"</span>, time_func <span class="op">=</span> <span class="fu">lubridate</span><span class="fu">::</span><span class="va"><a href="https://lubridate.tidyverse.org/reference/hms.html" class="external-link">hm</a></span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">time_alter</span><span class="op">(</span><span class="va">x</span>, unit <span class="op">=</span> <span class="st">"minute"</span>, time_func <span class="op">=</span> <span class="fu">lubridate</span><span class="fu">::</span><span class="va"><a href="https://lubridate.tidyverse.org/reference/hms.html" class="external-link">hm</a></span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>string of class lubridate::hms "HH:MM:SS"</p></dd>
+
+
 <dt>unit</dt>
 <dd><p>unit to convert to</p></dd>
+
+
 <dt>time_func</dt>
 <dd><p>a function to convert x to a lubridate time
 vector. Default is lubridate::hms</p></dd>
+
 </dl></div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">time</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"02:33"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">time_alter</span><span class="op">(</span><span class="va">time</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">time</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"02:33"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">time_alter</span><span class="op">(</span><span class="va">time</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 153</span>
-<span class="r-in"><span class="fu">time_alter</span><span class="op">(</span><span class="va">time</span>, <span class="st">"minute"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">time_alter</span><span class="op">(</span><span class="va">time</span>, <span class="st">"minute"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 153</span>
 </code></pre></div>
     </div>
@@ -158,7 +166,7 @@ vector. Default is lubridate::hms</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

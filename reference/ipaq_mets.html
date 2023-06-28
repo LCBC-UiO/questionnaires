@@ -21,7 +21,7 @@ be the possibility to alter these with newer research."><meta property="og:image
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">questionnaires</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.3</span>
       </span>
     </div>
 
@@ -98,6 +98,9 @@ be the possibility to alter these with newer research."><meta property="og:image
     <li>
       <a href="../articles/ucla-loneliness.html">UCLA Loneliness Scale</a>
     </li>
+    <li>
+      <a href="../articles/zygocity.html">Zygocity - Norwegian Twin registry questionnaire</a>
+    </li>
   </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -118,7 +121,7 @@ be the possibility to alter these with newer research."><meta property="og:image
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>IPAQ mets</h1>
-    <small class="dont-index">Source: <a href="https://github.com/LCBC-UiO/questionnaires/blob/HEAD/R/ipaq_functions.R" class="external-link"><code>R/ipaq_functions.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/LCBC-UiO/questionnaires/blob/HEAD/R/ipaq-funcs.R" class="external-link"><code>R/ipaq-funcs.R</code></a></small>
     <div class="hidden name"><code>ipaq_mets.Rd</code></div>
     </div>
 
@@ -131,21 +134,28 @@ be the possibility to alter these with newer research.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">ipaq_mets</span><span class="op">(</span>light <span class="op">=</span> <span class="fl">3.3</span>, moderate <span class="op">=</span> <span class="fl">4</span>, vigorous <span class="op">=</span> <span class="fl">8</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">ipaq_mets</span><span class="op">(</span>light <span class="op">=</span> <span class="fl">3.3</span>, moderate <span class="op">=</span> <span class="fl">4</span>, vigorous <span class="op">=</span> <span class="fl">8</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>light</dt>
 <dd><p>numeric. default 3.3</p></dd>
+
+
 <dt>moderate</dt>
 <dd><p>numeric. default 4.0</p></dd>
+
+
 <dt>vigorous</dt>
 <dd><p>numeric. default 8.0</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>list of three</p>
+    
+
+<p>list of three</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -163,7 +173,7 @@ in this package.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">ipaq_mets</span><span class="op">(</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">ipaq_mets</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $light</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3.3</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -173,7 +183,7 @@ in this package.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $vigorous</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 8</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span class="fu">ipaq_mets</span><span class="op">(</span>moderate <span class="op">=</span> <span class="fl">5.1</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">ipaq_mets</span><span class="op">(</span>moderate <span class="op">=</span> <span class="fl">5.1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $light</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3.3</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -197,7 +207,7 @@ in this package.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

@@ -23,7 +23,7 @@ It alters columns directly in the data.frame"><meta property="og:image" content=
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">questionnaires</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.3</span>
       </span>
     </div>
 
@@ -100,6 +100,9 @@ It alters columns directly in the data.frame"><meta property="og:image" content=
     <li>
       <a href="../articles/ucla-loneliness.html">UCLA Loneliness Scale</a>
     </li>
+    <li>
+      <a href="../articles/zygocity.html">Zygocity - Norwegian Twin registry questionnaire</a>
+    </li>
   </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -120,7 +123,7 @@ It alters columns directly in the data.frame"><meta property="og:image" content=
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Alter the time instant columns to decminals</h1>
-    <small class="dont-index">Source: <a href="https://github.com/LCBC-UiO/questionnaires/blob/HEAD/R/ipaq_functions.R" class="external-link"><code>R/ipaq_functions.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/LCBC-UiO/questionnaires/blob/HEAD/R/ipaq-funcs.R" class="external-link"><code>R/ipaq-funcs.R</code></a></small>
     <div class="hidden name"><code>ipaq_time_alter.Rd</code></div>
     </div>
 
@@ -135,19 +138,24 @@ It alters columns directly in the data.frame</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">ipaq_time_alter</span><span class="op">(</span><span class="va">data</span>, cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">ipaq_2</span>, <span class="va">ipaq_4</span>, <span class="va">ipaq_6</span>, <span class="va">ipaq_7</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">ipaq_time_alter</span><span class="op">(</span><span class="va">data</span>, cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">ipaq_2</span>, <span class="va">ipaq_4</span>, <span class="va">ipaq_6</span>, <span class="va">ipaq_7</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>data with columns to alter</p></dd>
+
+
 <dt>cols</dt>
 <dd><p>columns to alter, in tidyselect format</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>data.frame</p>
+    
+
+<p>data.frame</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -158,11 +166,11 @@ It alters columns directly in the data.frame</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
-<span class="r-in">   time_1  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"12:34"</span>, <span class="st">"09:33"</span>, <span class="st">"22:14"</span><span class="op">)</span>,</span>
-<span class="r-in">   time_2  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"10:55"</span>, <span class="st">"16:45"</span>, <span class="st">"18:02"</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="fu">ipaq_time_alter</span><span class="op">(</span><span class="va">dat</span>, cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">time_1</span>, <span class="va">time_2</span><span class="op">)</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>   time_1  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"12:34"</span>, <span class="st">"09:33"</span>, <span class="st">"22:14"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>   time_2  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"10:55"</span>, <span class="st">"16:45"</span>, <span class="st">"18:02"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">ipaq_time_alter</span><span class="op">(</span><span class="va">dat</span>, cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">time_1</span>, <span class="va">time_2</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   time_1 time_2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1    754    655</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2    573   1005</span>
@@ -181,7 +189,7 @@ It alters columns directly in the data.frame</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

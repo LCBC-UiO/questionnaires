@@ -76,6 +76,9 @@
     <loc>/articles/ucla-loneliness.html</loc>
   </url>
   <url>
+    <loc>/articles/zygocity.html</loc>
+  </url>
+  <url>
     <loc>/authors.html</loc>
   </url>
   <url>
@@ -89,6 +92,18 @@
   </url>
   <url>
     <loc>/reference/bdi_restructure.html</loc>
+  </url>
+  <url>
+    <loc>/reference/bfi.html</loc>
+  </url>
+  <url>
+    <loc>/reference/bfi_domain.html</loc>
+  </url>
+  <url>
+    <loc>/reference/bfi_facet.html</loc>
+  </url>
+  <url>
+    <loc>/reference/bfi_reversal.html</loc>
   </url>
   <url>
     <loc>/reference/edu_compile.html</loc>
@@ -194,5 +209,14 @@
   </url>
   <url>
     <loc>/reference/time_of_day.html</loc>
+  </url>
+  <url>
+    <loc>/reference/zygo_calc.html</loc>
+  </url>
+  <url>
+    <loc>/reference/zygo_compute.html</loc>
+  </url>
+  <url>
+    <loc>/reference/zygo_recode.html</loc>
   </url>
 </urlset>

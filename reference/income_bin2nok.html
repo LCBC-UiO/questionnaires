@@ -22,7 +22,7 @@ income value for each bin."><meta property="og:image" content="/logo.png"><!-- m
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">questionnaires</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.3</span>
       </span>
     </div>
 
@@ -99,6 +99,9 @@ income value for each bin."><meta property="og:image" content="/logo.png"><!-- m
     <li>
       <a href="../articles/ucla-loneliness.html">UCLA Loneliness Scale</a>
     </li>
+    <li>
+      <a href="../articles/zygocity.html">Zygocity - Norwegian Twin registry questionnaire</a>
+    </li>
   </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -119,7 +122,7 @@ income value for each bin."><meta property="og:image" content="/logo.png"><!-- m
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Turn income bins to mean of bin</h1>
-    <small class="dont-index">Source: <a href="https://github.com/LCBC-UiO/questionnaires/blob/HEAD/R/income_functions.R" class="external-link"><code>R/income_functions.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/LCBC-UiO/questionnaires/blob/HEAD/R/income-funcs.R" class="external-link"><code>R/income-funcs.R</code></a></small>
     <div class="hidden name"><code>income_bin2nok.Rd</code></div>
     </div>
 
@@ -133,25 +136,28 @@ income value for each bin.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">income_bin2nok</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">income_bin2nok</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>income bin vector</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>numeric</p>
+    
+
+<p>numeric</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"&lt; 200k"</span>, <span class="st">"600k - 699k"</span>, <span class="st">"400k - 499k"</span>, </span>
-<span class="r-in">       <span class="st">"&gt; 700k"</span>, <span class="st">"500k - 599k"</span>, <span class="st">"300k - 399k"</span>, </span>
-<span class="r-in">        <span class="st">"200k - 299k"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">income_bin2nok</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"&lt; 200k"</span>, <span class="st">"600k - 699k"</span>, <span class="st">"400k - 499k"</span>, </span></span>
+<span class="r-in"><span>       <span class="st">"&gt; 700k"</span>, <span class="st">"500k - 599k"</span>, <span class="st">"300k - 399k"</span>, </span></span>
+<span class="r-in"><span>        <span class="st">"200k - 299k"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">income_bin2nok</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 100000 650000 450000 800000 550000 350000 100000</span>
 </code></pre></div>
     </div>
@@ -167,7 +173,7 @@ income value for each bin.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

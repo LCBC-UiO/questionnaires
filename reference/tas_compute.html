@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">questionnaires</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.3</span>
       </span>
     </div>
 
@@ -94,6 +94,9 @@
     <li>
       <a href="../articles/ucla-loneliness.html">UCLA Loneliness Scale</a>
     </li>
+    <li>
+      <a href="../articles/zygocity.html">Zygocity - Norwegian Twin registry questionnaire</a>
+    </li>
   </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -114,7 +117,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Compute the TAS factors</h1>
-    <small class="dont-index">Source: <a href="https://github.com/LCBC-UiO/questionnaires/blob/HEAD/R/tas_functions.R" class="external-link"><code>R/tas_functions.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/LCBC-UiO/questionnaires/blob/HEAD/R/tas-funcs.R" class="external-link"><code>R/tas-funcs.R</code></a></small>
     <div class="hidden name"><code>tas_compute.Rd</code></div>
     </div>
 
@@ -123,33 +126,46 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">tas_compute</span><span class="op">(</span>
-  <span class="va">data</span>,
-  reverse_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">tas_04</span>, <span class="va">tas_05</span>, <span class="va">tas_10</span>, <span class="va">tas_18</span><span class="op">)</span>,
-  identify_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">tas_01</span>, <span class="va">tas_03</span>, <span class="va">tas_06</span>, <span class="va">tas_07</span>, <span class="va">tas_09</span>, <span class="va">tas_13</span>, <span class="va">tas_14</span><span class="op">)</span>,
-  describe_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">tas_02</span>, <span class="va">tas_04</span>, <span class="va">tas_11</span>, <span class="va">tas_12</span>, <span class="va">tas_17</span><span class="op">)</span>,
-  thinking_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">tas_05</span>, <span class="va">tas_08</span>, <span class="va">tas_10</span>, <span class="va">tas_15</span>, <span class="va">tas_16</span>, <span class="va">tas_18</span>, <span class="va">tas_19</span>, <span class="va">tas_20</span><span class="op">)</span>,
-  prefix <span class="op">=</span> <span class="st">"tas_"</span>,
-  keep_all <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">tas_compute</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  reverse_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">tas_04</span>, <span class="va">tas_05</span>, <span class="va">tas_10</span>, <span class="va">tas_18</span><span class="op">)</span>,</span>
+<span>  identify_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">tas_01</span>, <span class="va">tas_03</span>, <span class="va">tas_06</span>, <span class="va">tas_07</span>, <span class="va">tas_09</span>, <span class="va">tas_13</span>, <span class="va">tas_14</span><span class="op">)</span>,</span>
+<span>  describe_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">tas_02</span>, <span class="va">tas_04</span>, <span class="va">tas_11</span>, <span class="va">tas_12</span>, <span class="va">tas_17</span><span class="op">)</span>,</span>
+<span>  thinking_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">tas_05</span>, <span class="va">tas_08</span>, <span class="va">tas_10</span>, <span class="va">tas_15</span>, <span class="va">tas_16</span>, <span class="va">tas_18</span>, <span class="va">tas_19</span>, <span class="va">tas_20</span><span class="op">)</span>,</span>
+<span>  prefix <span class="op">=</span> <span class="st">"tas_"</span>,</span>
+<span>  keep_all <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>Data containing TAS data</p></dd>
+
+
 <dt>reverse_cols</dt>
 <dd><p>Columns that need reversing</p></dd>
+
+
 <dt>identify_cols</dt>
 <dd><p>Columns for the "identify feeling" factor</p></dd>
+
+
 <dt>describe_cols</dt>
 <dd><p>Columns for the "describing feelings" factor</p></dd>
+
+
 <dt>thinking_cols</dt>
 <dd><p>Columns for the "externally oriented thinking" factor</p></dd>
+
+
 <dt>prefix</dt>
 <dd><p>string to prefix column names of computed values</p></dd>
+
+
 <dt>keep_all</dt>
 <dd><p>logical, append to data.frame</p></dd>
+
 </dl></div>
 
   </div>
@@ -164,7 +180,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

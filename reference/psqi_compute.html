@@ -83,7 +83,7 @@ Buysse et al. (1989) The Pittsburgh sleep quality index: A new instrument for ps
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">questionnaires</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.3</span>
       </span>
     </div>
 
@@ -160,6 +160,9 @@ Buysse et al. (1989) The Pittsburgh sleep quality index: A new instrument for ps
     <li>
       <a href="../articles/ucla-loneliness.html">UCLA Loneliness Scale</a>
     </li>
+    <li>
+      <a href="../articles/zygocity.html">Zygocity - Norwegian Twin registry questionnaire</a>
+    </li>
   </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -180,7 +183,7 @@ Buysse et al. (1989) The Pittsburgh sleep quality index: A new instrument for ps
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Compute all PSQI components and global score</h1>
-    <small class="dont-index">Source: <a href="https://github.com/LCBC-UiO/questionnaires/blob/HEAD/R/psqi_functions.R" class="external-link"><code>R/psqi_functions.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/LCBC-UiO/questionnaires/blob/HEAD/R/psqi-funcs.R" class="external-link"><code>R/psqi-funcs.R</code></a></small>
     <div class="hidden name"><code>psqi_compute.Rd</code></div>
     </div>
 
@@ -239,90 +242,125 @@ Question 2 should be punched as minutes in numbers.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">psqi_compute_comp2</span><span class="op">(</span><span class="va">min_before_sleep</span>, <span class="va">no_sleep_30min</span><span class="op">)</span>
-
-<span class="fu">psqi_compute_comp3</span><span class="op">(</span><span class="va">hours_sleep</span><span class="op">)</span>
-
-<span class="fu">psqi_compute_comp4</span><span class="op">(</span><span class="va">hours_sleep</span>, <span class="va">bedtime</span>, <span class="va">risingtime</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">psqi_compute_comp5</span><span class="op">(</span><span class="va">data</span>, sleep_troubles <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">matches</a></span><span class="op">(</span><span class="st">"^psqi_05[b-j]$"</span><span class="op">)</span><span class="op">)</span>
-
-<span class="fu">psqi_compute_comp7</span><span class="op">(</span><span class="va">keep_awake</span>, <span class="va">keep_enthused</span><span class="op">)</span>
-
-<span class="fu">psqi_compute_global</span><span class="op">(</span><span class="va">data</span>, cols <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">matches</a></span><span class="op">(</span><span class="st">"comp[1-7]+_"</span><span class="op">)</span>, max_missing <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>
-
-<span class="fu">psqi_compute</span><span class="op">(</span>
-  <span class="va">data</span>,
-  components <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">7</span>,
-  bedtime <span class="op">=</span> <span class="va">psqi_01</span>,
-  min_before_sleep <span class="op">=</span> <span class="va">psqi_02</span>,
-  risingtime <span class="op">=</span> <span class="va">psqi_03</span>,
-  hours_sleep <span class="op">=</span> <span class="va">psqi_04</span>,
-  no_sleep_30min <span class="op">=</span> <span class="va">psqi_05a</span>,
-  sleepquality <span class="op">=</span> <span class="va">psqi_06</span>,
-  medication <span class="op">=</span> <span class="va">psqi_07</span>,
-  keep_awake <span class="op">=</span> <span class="va">psqi_08</span>,
-  keep_enthused <span class="op">=</span> <span class="va">psqi_09</span>,
-  sleep_troubles <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">matches</a></span><span class="op">(</span><span class="st">"^psqi_05[b-j]$"</span><span class="op">)</span>,
-  max_missing <span class="op">=</span> <span class="fl">0</span>,
-  <span class="va">...</span>,
-  prefix <span class="op">=</span> <span class="st">"psqi_"</span>,
-  keep_all <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">psqi_compute_comp2</span><span class="op">(</span><span class="va">min_before_sleep</span>, <span class="va">no_sleep_30min</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">psqi_compute_comp3</span><span class="op">(</span><span class="va">hours_sleep</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">psqi_compute_comp4</span><span class="op">(</span><span class="va">hours_sleep</span>, <span class="va">bedtime</span>, <span class="va">risingtime</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">psqi_compute_comp5</span><span class="op">(</span><span class="va">data</span>, sleep_troubles <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">matches</a></span><span class="op">(</span><span class="st">"^psqi_05[b-j]$"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">psqi_compute_comp7</span><span class="op">(</span><span class="va">keep_awake</span>, <span class="va">keep_enthused</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">psqi_compute_global</span><span class="op">(</span><span class="va">data</span>, cols <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">matches</a></span><span class="op">(</span><span class="st">"comp[1-7]+_"</span><span class="op">)</span>, max_missing <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">psqi_compute</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  components <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">7</span>,</span>
+<span>  bedtime <span class="op">=</span> <span class="va">psqi_01</span>,</span>
+<span>  min_before_sleep <span class="op">=</span> <span class="va">psqi_02</span>,</span>
+<span>  risingtime <span class="op">=</span> <span class="va">psqi_03</span>,</span>
+<span>  hours_sleep <span class="op">=</span> <span class="va">psqi_04</span>,</span>
+<span>  no_sleep_30min <span class="op">=</span> <span class="va">psqi_05a</span>,</span>
+<span>  sleepquality <span class="op">=</span> <span class="va">psqi_06</span>,</span>
+<span>  medication <span class="op">=</span> <span class="va">psqi_07</span>,</span>
+<span>  keep_awake <span class="op">=</span> <span class="va">psqi_08</span>,</span>
+<span>  keep_enthused <span class="op">=</span> <span class="va">psqi_09</span>,</span>
+<span>  sleep_troubles <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">matches</a></span><span class="op">(</span><span class="st">"^psqi_05[b-j]$"</span><span class="op">)</span>,</span>
+<span>  max_missing <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  <span class="va">...</span>,</span>
+<span>  prefix <span class="op">=</span> <span class="st">"psqi_"</span>,</span>
+<span>  keep_all <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>min_before_sleep</dt>
 <dd><p>column name with no. minutes before sleep (numeric) (psqi_02)</p></dd>
+
+
 <dt>no_sleep_30min</dt>
 <dd><p>column name with evaluation of sleep within 30min (0-3) (psqi_05a)</p></dd>
+
+
 <dt>hours_sleep</dt>
 <dd><p>column name with hours of sleep (decimal hours) (psqi_04)</p></dd>
+
+
 <dt>bedtime</dt>
 <dd><p>column name with bedtime (HH:MM:SS) (psqi_01)</p></dd>
+
+
 <dt>risingtime</dt>
 <dd><p>column name with rising time (HH:MM:SS) (psqi_03)</p></dd>
+
+
 <dt>...</dt>
 <dd><p>other arguments to <code><a href="psqi_compute_time_in_bed.html">psqi_compute_time_in_bed</a></code></p></dd>
+
+
 <dt>data</dt>
 <dd><p>data frame</p></dd>
+
+
 <dt>sleep_troubles</dt>
 <dd><p>columns containing sleep problem evaluations (0-3) (psqi_05(b-j) )</p></dd>
+
+
 <dt>keep_awake</dt>
 <dd><p>column name with evaluation of staying awake (0-3) (psqi_08)</p></dd>
+
+
 <dt>keep_enthused</dt>
 <dd><p>column name with evaluation of keeping enthusiastic (0-3) (psqi_09)</p></dd>
+
+
 <dt>cols</dt>
 <dd><p>columns containing the components</p></dd>
+
+
 <dt>max_missing</dt>
 <dd><p>Integer specifying the number of missing values to accept in the PSQI components,
 before the global PSQI value is set to missing. Defaults to 0. If <code>max_missing &gt; 0</code>, the
 global PSQI value is computed by weighting each non-missing entry with <code>7 / (7 - max_missing)</code>.</p></dd>
+
+
 <dt>components</dt>
 <dd><p>integer vector of components to calculate. If all 7, global is added also</p></dd>
+
+
 <dt>sleepquality</dt>
 <dd><p>column name with evaluation of sleep quality (0-3) (psqi_06)</p></dd>
+
+
 <dt>medication</dt>
 <dd><p>column name with use of sleep mediation (0-3) (psqi_07)</p></dd>
+
+
 <dt>prefix</dt>
 <dd><p>string to prefix column names of computed values</p></dd>
+
+
 <dt>keep_all</dt>
 <dd><p>logical, append to data.frame</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>a data.frame containing only the calculated components</p>
+    
+
+<p>a data.frame containing only the calculated components</p>
     </div>
     <div id="functions">
     <h2>Functions</h2>
     
-<ul><li><p><code>psqi_compute_comp2</code>: calculate the component 2 (sleep latency)</p></li>
-<li><p><code>psqi_compute_comp3</code>: calculate the component 3 (sleep duratione)</p></li>
-<li><p><code>psqi_compute_comp4</code>: calculate the component 4 (habitual sleep efficiency)</p></li>
-<li><p><code>psqi_compute_comp5</code>: calculate the component 5 (sleep disturbance)</p></li>
-<li><p><code>psqi_compute_comp7</code>: calculate the component 7 (daytime dysfunction)</p></li>
-<li><p><code>psqi_compute_global</code>: calculate the global scores, sum of all components</p></li>
+<ul><li><p><code>psqi_compute_comp2()</code>: calculate the component 2 (sleep latency)</p></li>
+<li><p><code>psqi_compute_comp3()</code>: calculate the component 3 (sleep duratione)</p></li>
+<li><p><code>psqi_compute_comp4()</code>: calculate the component 4 (habitual sleep efficiency)</p></li>
+<li><p><code>psqi_compute_comp5()</code>: calculate the component 5 (sleep disturbance)</p></li>
+<li><p><code>psqi_compute_comp7()</code>: calculate the component 7 (daytime dysfunction)</p></li>
+<li><p><code>psqi_compute_global()</code>: calculate the global scores, sum of all components</p></li>
 </ul></div>
 
   </div>
@@ -337,7 +375,7 @@ global PSQI value is computed by weighting each non-missing entry with <code>7 /
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

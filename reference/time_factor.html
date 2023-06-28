@@ -18,7 +18,7 @@ categorizes these by a 4 level factor of time of day."><meta property="og:image"
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">questionnaires</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.3</span>
       </span>
     </div>
 
@@ -95,6 +95,9 @@ categorizes these by a 4 level factor of time of day."><meta property="og:image"
     <li>
       <a href="../articles/ucla-loneliness.html">UCLA Loneliness Scale</a>
     </li>
+    <li>
+      <a href="../articles/zygocity.html">Zygocity - Norwegian Twin registry questionnaire</a>
+    </li>
   </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -115,7 +118,7 @@ categorizes these by a 4 level factor of time of day."><meta property="og:image"
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Factor time of day</h1>
-    <small class="dont-index">Source: <a href="https://github.com/LCBC-UiO/questionnaires/blob/HEAD/R/time_functions.R" class="external-link"><code>R/time_functions.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/LCBC-UiO/questionnaires/blob/HEAD/R/time-funcs.R" class="external-link"><code>R/time-funcs.R</code></a></small>
     <div class="hidden name"><code>time_factor.Rd</code></div>
     </div>
 
@@ -125,29 +128,39 @@ categorizes these by a 4 level factor of time of day.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">time_factor</span><span class="op">(</span><span class="va">x</span>, time_func <span class="op">=</span> <span class="fu">lubridate</span><span class="fu">::</span><span class="va"><a href="https://lubridate.tidyverse.org/reference/hms.html" class="external-link">hms</a></span>, tod <span class="op">=</span> <span class="fu"><a href="time_of_day.html">time_of_day</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">time_factor</span><span class="op">(</span><span class="va">x</span>, time_func <span class="op">=</span> <span class="fu">lubridate</span><span class="fu">::</span><span class="va"><a href="https://lubridate.tidyverse.org/reference/hms.html" class="external-link">hms</a></span>, tod <span class="op">=</span> <span class="fu"><a href="time_of_day.html">time_of_day</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>character vector of times</p></dd>
+
+
 <dt>time_func</dt>
 <dd><p>a function to convert x to a lubridate time
 vector. Default is lubridate::hms</p></dd>
+
+
 <dt>tod</dt>
 <dd><p>list defining when the breakpoints for the various
 time of day distinctions.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>factor vector</p>
+    
+
+<p>factor vector</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">time_factor</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"12:23"</span>, <span class="st">"15:59"</span>, <span class="st">"22:10"</span>, <span class="st">"8:13"</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Some strings failed to parse, or all strings are NAs</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">time_factor</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"12:23"</span>, <span class="st">"15:59"</span>, <span class="st">"22:10"</span>, <span class="st">"8:13"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>There was 1 warning in `mutate()`.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> In argument: `time = time_func(x)`.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> Caused by warning in `.parse_hms()`:</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Some strings failed to parse, or all strings are NAs</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Levels: morning &lt; afternoon &lt; evening &lt; night</span>
 </code></pre></div>
@@ -164,7 +177,7 @@ time of day distinctions.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

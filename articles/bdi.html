@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">questionnaires</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.3</span>
       </span>
     </div>
 
@@ -119,6 +119,9 @@
     <li>
       <a href="../articles/ucla-loneliness.html">UCLA Loneliness Scale</a>
     </li>
+    <li>
+      <a href="../articles/zygocity.html">Zygocity - Norwegian Twin registry questionnaire</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -142,7 +145,7 @@
 
       
 
-      </header><script src="bdi_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Beck Depression Inventory (BDI)</h1>
@@ -156,16 +159,28 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/LCBC-UiO/questionnaires" class="external-link">questionnaires</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/LCBC-UiO/questionnaires" class="external-link">questionnaires</a></span><span class="op">)</span></span></code></pre></div>
 <div class="section level2">
 <h2 id="background">Background<a class="anchor" aria-label="anchor" href="#background"></a>
 </h2>
-<p>Beck Depression Inventory-II (BDI-II) is one of the most widely used instruments for measuring the severity of self-reported depression in adolescents and adults. As a general rule, BDI-II is administrated in LCBC to adults with an upper cut off around 60 years, while depression in older adults is assessed with the Geriatric Depression Scale (GDS). However, please consult the instructions for each project, as this guideline has been implemented at different time points across the projects.</p>
+<p>Beck Depression Inventory-II (BDI-II) is one of the most widely used
+instruments for measuring the severity of self-reported depression in
+adolescents and adults. As a general rule, BDI-II is administrated in
+LCBC to adults with an upper cut off around 60 years, while depression
+in older adults is assessed with the Geriatric Depression Scale (GDS).
+However, please consult the instructions for each project, as this
+guideline has been implemented at different time points across the
+projects.</p>
 </div>
 <div class="section level2">
 <h2 id="scoring">Scoring<a class="anchor" aria-label="anchor" href="#scoring"></a>
 </h2>
-<p>The questionnaire consists of 21 statements, each reflecting a depression symptom or attitude which could be rated from 0 to 3 in terms of intensity. The answers should be based the participant´s feelings throughout the last week, including the day of filling out the form. The sum of the scores of the items (0-3) yields one total score, with a possible range between 0 and 62.</p>
+<p>The questionnaire consists of 21 statements, each reflecting a
+depression symptom or attitude which could be rated from 0 to 3 in terms
+of intensity. The answers should be based the participant´s feelings
+throughout the last week, including the day of filling out the form. The
+sum of the scores of the items (0-3) yields one total score, with a
+possible range between 0 and 62.</p>
 <div class="section level3">
 <h3 id="interpretation-of-the-scores-total-scores">Interpretation of the scores (Total scores)<a class="anchor" aria-label="anchor" href="#interpretation-of-the-scores-total-scores"></a>
 </h3>
@@ -201,18 +216,29 @@
 </tr>
 </tbody>
 </table>
-<p>If a participant scores <code>&gt;= 17</code>, we should consider contacting the participant to follow up on this and offer making a note for the participant’s doctor describing the scores.</p>
+<p>If a participant scores <code>&gt;= 17</code>, we should consider
+contacting the participant to follow up on this and offer making a note
+for the participant’s doctor describing the scores.</p>
 </div>
 <div class="section level3">
 <h3 id="questionnaire-items">Questionnaire items<a class="anchor" aria-label="anchor" href="#questionnaire-items"></a>
 </h3>
-<p><strong>1:</strong> Sadness<br><strong>2:</strong> Pessimism<br><strong>3:</strong> Past failure<br><strong>4:</strong> Loss of pleasure<br><strong>5:</strong> Guilty feelings<br><strong>6:</strong> punishment feelings<br><strong>7:</strong> Self-dislike<br><strong>8:</strong> Self-criticalness<br><strong>9:</strong> Suicidal thought or wishes*<br><strong>10:</strong> Crying<br><strong>11:</strong> Agitation<br><strong>12:</strong> Loss of interest<br><strong>13:</strong> Indecisiveness<br><strong>14:</strong> Worthlessness<br><strong>15:</strong> Loss of energy<br><strong>16:</strong> Changes in sleep pattern<br><strong>17:</strong> Irritability<br><strong>18:</strong> Changes in appetite (including specification of weight loss intentions if applicable)<br><strong>19:</strong> Concentration difficulty<br><strong>20:</strong> Tiredness or fatigue<br><strong>21:</strong> Loss of interest in sex</p>
+<p><strong>1:</strong> Sadness<br><strong>2:</strong> Pessimism<br><strong>3:</strong> Past failure<br><strong>4:</strong> Loss of pleasure<br><strong>5:</strong> Guilty feelings<br><strong>6:</strong> punishment feelings<br><strong>7:</strong> Self-dislike<br><strong>8:</strong> Self-criticalness<br><strong>9:</strong> Suicidal thought or wishes*<br><strong>10:</strong> Crying<br><strong>11:</strong> Agitation<br><strong>12:</strong> Loss of interest<br><strong>13:</strong> Indecisiveness<br><strong>14:</strong> Worthlessness<br><strong>15:</strong> Loss of energy<br><strong>16:</strong> Changes in sleep pattern<br><strong>17:</strong> Irritability<br><strong>18:</strong> Changes in appetite (including specification of
+weight loss intentions if applicable)<br><strong>19:</strong> Concentration difficulty<br><strong>20:</strong> Tiredness or fatigue<br><strong>21:</strong> Loss of interest in sex</p>
 <p><strong>Weight loss format:</strong><br>
-For item 18, weight loss intention if applicable should be punched as numbers with decimals.</p>
+For item 18, weight loss intention if applicable should be punched as
+numbers with decimals.</p>
 <div class="section level4">
 <h4 id="suicidality">Suicidality<a class="anchor" aria-label="anchor" href="#suicidality"></a>
 </h4>
-<p>Please note that this questionnaire includes one question (q 9) regarding suicidal thoughts. In the case of scores above 1 on this item, the participant should be contacted to for a follow up. This should be described in the <strong>clinical observation document</strong> . If the participant scores 3 on this question (“<em>Jeg vil ta livet mitt om jeg fikk sjansen</em>” / "<em>I would killl my self if I had the chance"</em>), this should obviously be taken very seriously, and the participant should be contacted immediately.</p>
+<p>Please note that this questionnaire includes one question (q 9)
+regarding suicidal thoughts. In the case of scores above 1 on this item,
+the participant should be contacted to for a follow up. This should be
+described in the <strong>clinical observation document</strong> . If the
+participant scores 3 on this question (“<em>Jeg vil ta livet mitt om jeg
+fikk sjansen</em>” / “<em>I would killl my self if I had the
+chance”</em>), this should obviously be taken very seriously, and the
+participant should be contacted immediately.</p>
 </div>
 </div>
 </div>
@@ -222,100 +248,166 @@ For item 18, weight loss intention if applicable should be punched as numbers wi
 <div class="section level3">
 <h3 id="column-names">Column names<a class="anchor" aria-label="anchor" href="#column-names"></a>
 </h3>
-<p>By default, the functions assume that columns have names in the manner of <code>bdi_XX</code> where <code>XX</code> is a zero-padded (i.e. zero in front of numbers below 9, eg. <code>09</code>) question number of the inventory. You may have column names in another format, but in that case you will need to supply to the functions the names of those columns using tidy-selectors (see the <a href="https://www.tidyverse.org/" class="external-link">tidyverse</a> packages for this). The columns should adhere to some naming logic that is easy to specify.</p>
+<p>By default, the functions assume that columns have names in the
+manner of <code>bdi_XX</code> where <code>XX</code> is a zero-padded
+(i.e. zero in front of numbers below 9, eg. <code>09</code>) question
+number of the inventory. You may have column names in another format,
+but in that case you will need to supply to the functions the names of
+those columns using tidy-selectors (see the <a href="https://www.tidyverse.org/" class="external-link">tidyverse</a> packages for this). The
+columns should adhere to some naming logic that is easy to specify.</p>
 </div>
 <div class="section level3">
 <h3 id="data-values">Data values<a class="anchor" aria-label="anchor" href="#data-values"></a>
 </h3>
-<p>The values in the columns should be the item number of the question that was answered (i.e. <code>0</code>, <code>1</code>, <code>2</code>, or <code>3</code>). The inventory allows subjects to respond to several options per question, in the case of this, the mean of the responded alternatives should be applied.</p>
+<p>The values in the columns should be the item number of the question
+that was answered (i.e. <code>0</code>, <code>1</code>, <code>2</code>,
+or <code>3</code>). The inventory allows subjects to respond to several
+options per question, in the case of this, the mean of the responded
+alternatives should be applied.</p>
 </div>
 </div>
 <div class="section level2">
 <h2 id="using-the-bdi-functions">Using the <code>bdi</code> functions<a class="anchor" aria-label="anchor" href="#using-the-bdi-functions"></a>
 </h2>
-<p>There are two main bdi functions: <code>bdi_compute_sum</code> and <code>bdi_factorise</code>. If you have MOAS-like data they can be applied directly without any other specification.</p>
+<p>There are two main bdi functions: <code>bdi_compute_sum</code> and
+<code>bdi_factorise</code>. If you have MOAS-like data they can be
+applied directly without any other specification.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Creates a vector with the BDI sums, given they are in the dataset</span>
-<span class="va">bdi_sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/bdi.html">bdi_compute_sum</a></span><span class="op">(</span><span class="va">yourData</span><span class="op">)</span>
-
-<span class="co"># Creates a vector of BDI clasification based on the sums from above</span>
-<span class="fu"><a href="../reference/bdi.html">bdi_factorise</a></span><span class="op">(</span><span class="va">bdi_sum</span><span class="op">)</span></code></pre></div>
-<p>Some participants may have missed answering some questions. By default, the <code>bdi_compute_sum</code> function allows no missing values for a participant, and will give NA if there are any. This is to ensure you are fully aware of what is happening to the output. You can alter the number of missing for a participant you allow through the <code>max_missing</code> argument.</p>
+<code class="sourceCode R"><span><span class="co"># Creates a vector with the BDI sums, given they are in the dataset</span></span>
+<span><span class="va">bdi_sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/bdi.html">bdi_compute_sum</a></span><span class="op">(</span><span class="va">yourData</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Creates a vector of BDI clasification based on the sums from above</span></span>
+<span><span class="fu"><a href="../reference/bdi.html">bdi_factorise</a></span><span class="op">(</span><span class="va">bdi_sum</span><span class="op">)</span></span></code></pre></div>
+<p>Some participants may have missed answering some questions. By
+default, the <code>bdi_compute_sum</code> function allows no missing
+values for a participant, and will give NA if there are any. This is to
+ensure you are fully aware of what is happening to the output. You can
+alter the number of missing for a participant you allow through the
+<code>max_missing</code> argument.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Allows each participant to have at most two missing questions</span>
-<span class="va">bdi_sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/bdi.html">bdi_compute_sum</a></span><span class="op">(</span><span class="va">yourData</span>, max_missing <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
-<p>If you are working with non-MOAS data, the naming of columns might be different. Hopefully, the naming is consistent in some way so you easily can you tidy-selectors.</p>
+<code class="sourceCode R"><span><span class="co"># Allows each participant to have at most two missing questions</span></span>
+<span><span class="va">bdi_sum</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/bdi.html">bdi_compute_sum</a></span><span class="op">(</span><span class="va">yourData</span>, max_missing <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
+<p>If you are working with non-MOAS data, the naming of columns might be
+different. Hopefully, the naming is consistent in some way so you easily
+can you tidy-selectors.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Base calculation on columns with names that start with "bdi"</span>
-<span class="va">otherData</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="fu"><a href="../reference/bdi.html">bdi_compute_sum</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">starts_with</a></span><span class="op">(</span><span class="st">"bdi"</span><span class="op">)</span><span class="op">)</span>
-
-<span class="co"># Base calculation on columns with names that contain the string "Beck"</span>
-<span class="va">otherData</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="fu"><a href="../reference/bdi.html">bdi_compute_sum</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">contains</a></span><span class="op">(</span><span class="st">"Beck"</span><span class="op">)</span><span class="op">)</span>
-
-<span class="co"># Base calculation on columns with names matching a regular expression</span>
-<span class="va">otherData</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="fu"><a href="../reference/bdi.html">bdi_compute_sum</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">matches</a></span><span class="op">(</span><span class="st">"bdi_[0-9][0-9]$"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p>The function can be used within <code>dplyr:mutate</code> but requires the use of the special <code>.</code> to work, as it needs the entire data frame to do calculations. the <code>.</code> within a <code>mutate</code> (or other dplyr function) means “insert piped object in here”, and thus the below example the entire <code>data</code> object is placed where the <code>.</code> is. In this case, you would make a new column in the piped data called <code>bdi_sum</code>, and using that column also create the factorised version in a column named <code>bdi_fact</code>.</p>
+<code class="sourceCode R"><span><span class="co"># Base calculation on columns with names that start with "bdi"</span></span>
+<span><span class="va">otherData</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/bdi.html">bdi_compute_sum</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">starts_with</a></span><span class="op">(</span><span class="st">"bdi"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Base calculation on columns with names that contain the string "Beck"</span></span>
+<span><span class="va">otherData</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/bdi.html">bdi_compute_sum</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">contains</a></span><span class="op">(</span><span class="st">"Beck"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Base calculation on columns with names matching a regular expression</span></span>
+<span><span class="va">otherData</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/bdi.html">bdi_compute_sum</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">matches</a></span><span class="op">(</span><span class="st">"bdi_[0-9][0-9]$"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>The function can be used within <code>dplyr:mutate</code> but
+requires the use of the special <code>.</code> to work, as it needs the
+entire data frame to do calculations. the <code>.</code> within a
+<code>mutate</code> (or other dplyr function) means “insert piped object
+in here”, and thus the below example the entire <code>data</code> object
+is placed where the <code>.</code> is. In this case, you would make a
+new column in the piped data called <code>bdi_sum</code>, and using that
+column also create the factorised version in a column named
+<code>bdi_fact</code>.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>
-    bdi_sum <span class="op">=</span> <span class="fu"><a href="../reference/bdi.html">bdi_compute_sum</a></span><span class="op">(</span><span class="va">.</span>, cols <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">matches</a></span><span class="op">(</span><span class="st">"bdi_[0-9][0-9]$"</span><span class="op">)</span><span class="op">)</span>,
-    bdi_fact <span class="op">=</span> <span class="fu"><a href="../reference/bdi.html">bdi_factorise</a></span><span class="op">(</span><span class="va">bdi_sum</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p>This last part can also be done in a single step with the <code>bdi_compute</code> function. This function will return a data.frame with columns <code>BDI</code> (the sum) and <code>bdi_Coded</code> (the factor), based on the given data set. By default, these two columns will be added to the end of the dataset provided, and use the default arguments to the two other bdi functions it calls.</p>
+<code class="sourceCode R"><span><span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
+<span>    bdi_sum <span class="op">=</span> <span class="fu"><a href="../reference/bdi.html">bdi_compute_sum</a></span><span class="op">(</span><span class="va">.</span>, cols <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">matches</a></span><span class="op">(</span><span class="st">"bdi_[0-9][0-9]$"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    bdi_fact <span class="op">=</span> <span class="fu"><a href="../reference/bdi.html">bdi_factorise</a></span><span class="op">(</span><span class="va">bdi_sum</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>This last part can also be done in a single step with the
+<code>bdi_compute</code> function. This function will return a
+data.frame with columns <code>BDI</code> (the sum) and
+<code>bdi_Coded</code> (the factor), based on the given data set. By
+default, these two columns will be added to the end of the dataset
+provided, and use the default arguments to the two other bdi functions
+it calls.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="fu"><a href="../reference/bdi.html">bdi_compute</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p>You may also choose to only have the two computed columns returned by setting <code>keep_all</code> to <code>FALSE</code></p>
+<code class="sourceCode R"><span><span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/bdi.html">bdi_compute</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>You may also choose to only have the two computed columns returned by
+setting <code>keep_all</code> to <code>FALSE</code></p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="fu"><a href="../reference/bdi.html">bdi_compute</a></span><span class="op">(</span>keep_all <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
-<p>Lastly, this function also takes a <code>predicate</code>, a logical statement (of length 1 or the number of rows of the data) for the calculation of the sum. For instance, in the MOAS, we do not have the single question answers for projects before nettskjema implementation. That means that we have a pre-calculated sum in the data, and the sum cannot be calculated based on single question data. In this case, we use the predicate <code>!is.na(bdi_01)</code>, so that the <code>bdi_compute_sum</code> function is only run on data that actually has single question data. If we don’t do this, the punched <code>BDI</code> score will be overwritten with <code>NA</code>.</p>
+<code class="sourceCode R"><span><span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/bdi.html">bdi_compute</a></span><span class="op">(</span>keep_all <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<p>Lastly, this function also takes a <code>predicate</code>, a logical
+statement (of length 1 or the number of rows of the data) for the
+calculation of the sum. For instance, in the MOAS, we do not have the
+single question answers for projects before nettskjema implementation.
+That means that we have a pre-calculated sum in the data, and the sum
+cannot be calculated based on single question data. In this case, we use
+the predicate <code>!is.na(bdi_01)</code>, so that the
+<code>bdi_compute_sum</code> function is only run on data that actually
+has single question data. If we don’t do this, the punched
+<code>BDI</code> score will be overwritten with <code>NA</code>.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
-  <span class="fu"><a href="../reference/bdi.html">bdi_compute</a></span><span class="op">(</span>predicate <span class="op">=</span> <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">bdi_01</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="../reference/bdi.html">bdi_compute</a></span><span class="op">(</span>predicate <span class="op">=</span> <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">bdi_01</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="nettskjema-special-case">Nettskjema special case<a class="anchor" aria-label="anchor" href="#nettskjema-special-case"></a>
 </h3>
-<p>Data collected through nettskjema has some special features because of the way the data gets structured with you can choose multiple options. For this reason, a special function to handle the way Nettskjema data is structures is made <code>bdi_restructure</code>. If data come from Nettskjema, the structure is in wide format, with each question option as columns, creating 21*4 columns of data. This function allows you to gather and create single columns for questions.</p>
-<p>The columns must adhere to some specific logic to work. It is recommended that the column names are in the format <code>bdi_01_2</code> <code>bdi_01_3</code>, where the first two numbers are the question number, and the last number is the option number. The <code>bdi_restructure</code> function transforms the last numbers in the column name a cell value, as this is the BDI score for that option, and then calculates the mean of all options <em>per question answered</em>.</p>
+<p>Data collected through nettskjema has some special features because
+of the way the data gets structured with you can choose multiple
+options. For this reason, a special function to handle the way
+Nettskjema data is structures is made <code>bdi_restructure</code>. If
+data come from Nettskjema, the structure is in wide format, with each
+question option as columns, creating 21*4 columns of data. This function
+allows you to gather and create single columns for questions.</p>
+<p>The columns must adhere to some specific logic to work. It is
+recommended that the column names are in the format
+<code>bdi_01_2</code> <code>bdi_01_3</code>, where the first two numbers
+are the question number, and the last number is the option number. The
+<code>bdi_restructure</code> function transforms the last numbers in the
+column name a cell value, as this is the BDI score for that option, and
+then calculates the mean of all options <em>per question
+answered</em>.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>
-    ID <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, 
-    bdi_01_0 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>,<span class="fl">1</span>, <span class="cn">NA</span>, <span class="cn">NA</span><span class="op">)</span>,
-    bdi_01_1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="cn">NA</span>, <span class="fl">1</span>, <span class="cn">NA</span><span class="op">)</span>,
-    bdi_01_2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NA</span>, <span class="fl">1</span>, <span class="cn">NA</span><span class="op">)</span>,
-    bdi_01_3 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span><span class="op">)</span>,
-    bdi_02_0 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span><span class="op">)</span>,
-    bdi_02_1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>,<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span><span class="op">)</span>,
-    bdi_02_2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>,<span class="fl">1</span>, <span class="cn">NA</span>, <span class="cn">NA</span><span class="op">)</span>,
-    bdi_02_3 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="fl">1</span><span class="op">)</span>
-  <span class="op">)</span>
-
-<span class="va">dat</span>
-<span class="co">#&gt;   ID bdi_01_0 bdi_01_1 bdi_01_2 bdi_01_3 bdi_02_0 bdi_02_1 bdi_02_2 bdi_02_3</span>
-<span class="co">#&gt; 1  1       NA        1       NA       NA        1       NA       NA       NA</span>
-<span class="co">#&gt; 2  2        1       NA       NA       NA       NA       NA        1       NA</span>
-<span class="co">#&gt; 3  3       NA        1        1       NA       NA       NA       NA       NA</span>
-<span class="co">#&gt; 4  4       NA       NA       NA       NA       NA       NA       NA        1</span>
-
-<span class="fu"><a href="../reference/bdi_restructure.html">bdi_restructure</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 3</span></span>
-<span class="co">#&gt;      ID bdi_01 bdi_02</span>
-<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1    1        0</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2    0        2</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3    1.5     <span style="color: #BB0000;">NA</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4   <span style="color: #BB0000;">NA</span>        3</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
+<span>    ID <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, </span>
+<span>    bdi_01_0 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>,<span class="fl">1</span>, <span class="cn">NA</span>, <span class="cn">NA</span><span class="op">)</span>,</span>
+<span>    bdi_01_1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="cn">NA</span>, <span class="fl">1</span>, <span class="cn">NA</span><span class="op">)</span>,</span>
+<span>    bdi_01_2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NA</span>, <span class="fl">1</span>, <span class="cn">NA</span><span class="op">)</span>,</span>
+<span>    bdi_01_3 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span><span class="op">)</span>,</span>
+<span>    bdi_02_0 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span><span class="op">)</span>,</span>
+<span>    bdi_02_1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>,<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span><span class="op">)</span>,</span>
+<span>    bdi_02_2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>,<span class="fl">1</span>, <span class="cn">NA</span>, <span class="cn">NA</span><span class="op">)</span>,</span>
+<span>    bdi_02_3 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="va">dat</span></span>
+<span><span class="co">#&gt;   ID bdi_01_0 bdi_01_1 bdi_01_2 bdi_01_3 bdi_02_0 bdi_02_1 bdi_02_2 bdi_02_3</span></span>
+<span><span class="co">#&gt; 1  1       NA        1       NA       NA        1       NA       NA       NA</span></span>
+<span><span class="co">#&gt; 2  2        1       NA       NA       NA       NA       NA        1       NA</span></span>
+<span><span class="co">#&gt; 3  3       NA        1        1       NA       NA       NA       NA       NA</span></span>
+<span><span class="co">#&gt; 4  4       NA       NA       NA       NA       NA       NA       NA        1</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/bdi_restructure.html">bdi_restructure</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 3</span></span></span>
+<span><span class="co">#&gt;      ID bdi_01 bdi_02</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1    1        0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2    0        2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3    1.5     <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4   <span style="color: #BB0000;">NA</span>        3</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
 <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
-<p>Aaron T.Beck, Robert A.Steer, Margery G.Carbin (1988) Psychometric properties of the Beck Depression Inventory: Twenty-five years of evaluation, <em>Clinical Psychology Review, Volume</em> 8, Issue 1, Pages 77-100, <a href="https://doi.org/10.1016/0272-7358(88)90050-5" class="external-link">doi: 10.1016/0272-7358(88)90050-5</a></p>
-<p>Robert A.Steer, David J.Rissmiller, Aaron T.Beck (2000) Use of the Beck Depression Inventory-II with depressed geriatric inpatients <em>Behaviour Research and Therapy</em> Volume 38, Issue 3,Pages 311-318, <a href="https://doi.org/10.1016/S0005-7967(99)00068-6" class="external-link">doi: https://doi.org/10.1016/S0005-7967(99)00068-6</a></p>
-<p>Groth-Marnat G. (1990). <a href="https://books.google.no/books?id=ldF5oRto-HAC&amp;lpg=PR13&amp;ots=Id0OKllubF&amp;dq=Groth-Marnat%20G.%20(1990).%20The%20handbook%20of%20psychological%20assessment%20(2nd%20ed.).%20New%20York%3A%20John%20Wiley%20%26%20Sons.&amp;lr&amp;hl=no&amp;pg=PR13#v=onepage&amp;q&amp;f=false" class="external-link">The handbook of psychological assessment (2nd ed.)</a>. New York: John Wiley &amp; Sons.</p>
+<p>Aaron T.Beck, Robert A.Steer, Margery G.Carbin (1988) Psychometric
+properties of the Beck Depression Inventory: Twenty-five years of
+evaluation, <em>Clinical Psychology Review, Volume</em> 8, Issue 1,
+Pages 77-100, <a href="https://doi.org/10.1016/0272-7358(88)90050-5" class="external-link">doi:
+10.1016/0272-7358(88)90050-5</a></p>
+<p>Robert A.Steer, David J.Rissmiller, Aaron T.Beck (2000) Use of the
+Beck Depression Inventory-II with depressed geriatric inpatients
+<em>Behaviour Research and Therapy</em> Volume 38, Issue 3,Pages
+311-318, <a href="https://doi.org/10.1016/S0005-7967(99)00068-6" class="external-link">doi:
+https://doi.org/10.1016/S0005-7967(99)00068-6</a></p>
+<p>Groth-Marnat G. (1990). <a href="https://books.google.no/books?id=ldF5oRto-HAC&amp;lpg=PR13&amp;ots=Id0OKllubF&amp;dq=Groth-Marnat%20G.%20(1990).%20The%20handbook%20of%20psychological%20assessment%20(2nd%20ed.).%20New%20York%3A%20John%20Wiley%20%26%20Sons.&amp;lr&amp;hl=no&amp;pg=PR13#v=onepage&amp;q&amp;f=false" class="external-link">The
+handbook of psychological assessment (2nd ed.)</a>. New York: John Wiley
+&amp; Sons.</p>
 </div>
   </div>
 
@@ -336,7 +428,7 @@ For item 18, weight loss intention if applicable should be punched as numbers wi
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

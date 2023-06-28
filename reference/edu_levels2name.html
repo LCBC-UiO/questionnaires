@@ -18,7 +18,7 @@ to names of the levels"><meta property="og:image" content="/logo.png"><!-- mathj
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">questionnaires</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.3</span>
       </span>
     </div>
 
@@ -95,6 +95,9 @@ to names of the levels"><meta property="og:image" content="/logo.png"><!-- mathj
     <li>
       <a href="../articles/ucla-loneliness.html">UCLA Loneliness Scale</a>
     </li>
+    <li>
+      <a href="../articles/zygocity.html">Zygocity - Norwegian Twin registry questionnaire</a>
+    </li>
   </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -115,7 +118,7 @@ to names of the levels"><meta property="og:image" content="/logo.png"><!-- mathj
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Alter levels to name</h1>
-    <small class="dont-index">Source: <a href="https://github.com/LCBC-UiO/questionnaires/blob/HEAD/R/edu_functions.R" class="external-link"><code>R/edu_functions.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/LCBC-UiO/questionnaires/blob/HEAD/R/edu-funcs.R" class="external-link"><code>R/edu-funcs.R</code></a></small>
     <div class="hidden name"><code>edu_levels2name.Rd</code></div>
     </div>
 
@@ -125,23 +128,28 @@ to names of the levels</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">edu_levels2name</span><span class="op">(</span><span class="va">x</span>, <span class="va">levels</span><span class="op">)</span>
-
-<span class="fu">edu4_levels2name</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">edu9_levels2name</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">edu_levels2name</span><span class="op">(</span><span class="va">x</span>, <span class="va">levels</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">edu4_levels2name</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">edu9_levels2name</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>vector containing levels</p></dd>
+
+
 <dt>levels</dt>
 <dd><p>numeric of number of levels (4 or 10)</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>character vector</p>
+    
+
+<p>character vector</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -162,27 +170,27 @@ to names of the levels</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">edu4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">9</span>, <span class="fl">9</span>, <span class="fl">16</span>, <span class="fl">19</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">edu_levels2name</span><span class="op">(</span><span class="va">edu4</span>, <span class="fl">4</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">edu4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">9</span>, <span class="fl">9</span>, <span class="fl">16</span>, <span class="fl">19</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">edu_levels2name</span><span class="op">(</span><span class="va">edu4</span>, <span class="fl">4</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Primary school (9 years)"                 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [2] "Primary school (9 years)"                 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [3] "University/University college (&lt; 4 years)"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [4] "University/University college (&gt; 4 years)"</span>
-<span class="r-in"><span class="co"># does the same as</span></span>
-<span class="r-in"><span class="fu">edu4_levels2name</span><span class="op">(</span><span class="va">edu4</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co"># does the same as</span></span></span>
+<span class="r-in"><span><span class="fu">edu4_levels2name</span><span class="op">(</span><span class="va">edu4</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Primary school (9 years)"                 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [2] "Primary school (9 years)"                 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [3] "University/University college (&lt; 4 years)"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [4] "University/University college (&gt; 4 years)"</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">edu9</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">6</span>, <span class="fl">21</span>, <span class="fl">16</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">edu_levels2name</span><span class="op">(</span><span class="va">edu9</span>, <span class="fl">9</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">edu9</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">6</span>, <span class="fl">21</span>, <span class="fl">16</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">edu_levels2name</span><span class="op">(</span><span class="va">edu9</span>, <span class="fl">9</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Pre-school/No schooling"                                    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [2] "Primary school (6 years)"                                   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [3] "Ph.D. (21 years)"                                           </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [4] "Lower level University/University college degree (16 years)"</span>
-<span class="r-in"><span class="co"># does the same as</span></span>
-<span class="r-in"><span class="fu">edu9_levels2name</span><span class="op">(</span><span class="va">edu9</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co"># does the same as</span></span></span>
+<span class="r-in"><span><span class="fu">edu9_levels2name</span><span class="op">(</span><span class="va">edu9</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Pre-school/No schooling"                                    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [2] "Primary school (6 years)"                                   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [3] "Ph.D. (21 years)"                                           </span>
@@ -201,7 +209,7 @@ to names of the levels</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>
