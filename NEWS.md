@@ -1,3 +1,10 @@
+# questionnaires 0.0.3
+
+- fix order of ipaq ligth and vigurous questions
+- add zygocity
+- fix compatiblity with dplyr
+
+
 # questionnaires 0.0.2
 
 - altered the logic for the existing questionnaires, are now more robust

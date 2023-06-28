@@ -1,6 +1,6 @@
 Package: questionnaires
 Title: Package with functions to calculate components and sums for LCBC questionnaires
-Version: 0.0.2
+Version: 0.0.3
 Authors@R: person("Athanasia Mo", "Mowinckel", 
         email = "a.m.mowinckel@psykologi.uio.no", 
         role = c("aut", "cre"),
