@@ -125,7 +125,7 @@ data2 <- data %>%
     comp4 = psqi_compute_comp4(hours_sleep = psqi_04, 
                                bedtime = psqi_01, 
                                risingtime = psqi_03),
-    comp5 = psqi_compute_comp5(data = ., 
+    comp5 = psqi_compute_comp5(data = data, 
                                sleep_troubles = matches("^psqi_05[b-j]$")),
     comp6 = psqi_07,
     comp7 = psqi_compute_comp7(keep_awake = psqi_08, 

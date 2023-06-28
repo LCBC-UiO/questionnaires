@@ -120,11 +120,11 @@ E L Lesher 1, J S Berryhill (1994), Validation of the Geriatric Depression Scale
 }
 \section{Functions}{
 \itemize{
-\item \code{gds_compute_sum}: Calculate the total GDS score
+\item \code{gds_compute_sum()}: Calculate the total GDS score
 
-\item \code{gds_factorise}: Create a factor from the sum of the GDS scores
+\item \code{gds_factorise()}: Create a factor from the sum of the GDS scores
+
 }}
-
 \seealso{
 Other gds_functions: 
 \code{\link{gds_alter_values}()},

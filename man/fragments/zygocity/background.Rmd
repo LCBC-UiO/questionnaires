@@ -1,0 +1,2 @@
+The Zygocity questionnaire was developed by the Norwegian Public Health Institute (FHI; Folkehelseinstituttet) for their twin registry studies.
+Its a series of questions probing the similarities between twins, to determine if they are mono- or dizygotic.

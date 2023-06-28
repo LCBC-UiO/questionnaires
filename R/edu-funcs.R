@@ -44,8 +44,7 @@ edu_levels <- function(levels = 4){
   if(as.character(levels) %in% names(levs)){
     return(levs[[as.character(levels)]])
   }
-  stop("There is no stored scheme for levels == '", levels, "'",
-       call. = FALSE)
+  cli::cli_abort(sprintf("There is no stored scheme for levels == '%s'", levels))
 }
 
 #' Recode new 9 levels into old
@@ -160,7 +159,7 @@ edu9_levels2name <- function(x){
 #'  \item{edu_map_num - }{returns a data.frame with two numeric vectors}
 #' }
 #' @importFrom stats setNames na.omit
-#' @importFrom dplyr mutate filter group_by select distinct '%>%'
+#' @importFrom dplyr mutate filter group_by select distinct `%>%`
 edu_map <- function(from = 9, to = 4){
   
   toi <- to

@@ -53,8 +53,11 @@ library(tidyr)
 # randomly create some data as example
 gds_data <- expand_grid(ID = 1:5, 
             key = "gds", 
-            question =  sprintf("%02d", 1:30)) %>% 
-    mutate(value = sample(c(0,1), nrow(.), replace = TRUE)) %>% 
+            question =  sprintf("%02d", 1:30))
+gds_data <- gds_data %>% 
+    mutate(value = sample(c(0,1), 
+                          nrow(gds_data), 
+                          replace = TRUE)) %>% 
   unite(key, c(key, question)) %>% 
   spread(key, value)
 
@@ -75,7 +78,7 @@ To add a column with total GDS to a data set, place the argument inside a `mutat
 ```{r}
 gds_data %>% 
   mutate(
-    gds_total = gds_compute_sum(.)
+    gds_total = gds_compute_sum(gds_data)
   )
 ```
 
@@ -95,7 +98,7 @@ and this can also be added directly to the data through a `mutate``
 ```{r}
 gds_data %>% 
   mutate(
-    gds_total = gds_compute_sum(.),
+    gds_total = gds_compute_sum(gds_data),
     gds_cat =  gds_factorise(gds_total)
   )
 ```

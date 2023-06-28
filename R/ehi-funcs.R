@@ -71,7 +71,8 @@ ehi_values <- function(data,
                        direction = 1){
   tmp <- transmute(data, 
                    across({{cols}}, 
-                          ehi_change, direction = direction))
+                          ~ ehi_change(.x, direction = direction)
+                   ))
   rowSums(tmp, na.rm = TRUE)
 }
 

@@ -24,14 +24,16 @@
 #' )
 #'
 #' # Row with all components missing, gets sum 0
-#' data %>%
-#'   bind_cols(bdi_sum = bdi_compute_sum(data))
+#'   bind_cols(data,
+#'       bdi_sum = bdi_compute_sum(data))
+#'
 #' # Do not allow any missing values
-#' data %>%
-#'   bind_cols(bdi_sum = bdi_compute_sum(data, max_missing = 0))
+#'   bind_cols(data,
+#'       bdi_sum = bdi_compute_sum(data, max_missing = 0))
+#'       
 #' # Allow one missing value
-#' data %>%
-#'   bind_cols(bdi_sum = bdi_compute_sum(data, max_missing = 2))
+#'   bind_cols(data,
+#'       bdi_sum = bdi_compute_sum(data, max_missing = 2))
 #' @importFrom dplyr transmute rename_all bind_cols
 #' @template keep_all 
 #' @template prefix
@@ -40,9 +42,12 @@ bdi_compute = function(data,
                        max_missing = 0, 
                        prefix = "bdi_",
                        keep_all = TRUE){
-  tmp <- transmute(data, 
-                   sum = bdi_compute_sum(data, cols, max_missing = max_missing),
-                   coded = bdi_factorise(sum))
+  tmp <- transmute(
+    data, 
+    sum = bdi_compute_sum(data, 
+                          {{cols}}, 
+                          max_missing = max_missing),
+    coded = bdi_factorise(sum))
   if(!is.null(prefix))
     tmp <- rename_all(tmp, ~paste0(prefix, .x))
   
@@ -66,7 +71,8 @@ bdi_compute_sum = function(data, cols = matches("bdi_[0-9][0-9]$"), max_missing 
   if(is.null(max_missing)){
     rowSums(select(data, {{cols}} ), na.rm = TRUE)  
   } else {
-    stopifnot(max_missing >= 0)
+    if(!max_missing >= 0)
+      cli::cli_abort("maximum missing must be a positive integer")
     apply(select(data, {{cols}} ), 1, function(x){
       if(sum(is.na(x)) > max_missing){
         NA_real_
@@ -116,7 +122,7 @@ bdi_factorise <- function(bdi_sum){
 #'
 #' @inheritParams bdi_compute_sum
 #' @param sep separator to use for the column names
-#' @importFrom dplyr filter mutate group_by_at summarise ungroup '%>%'
+#' @importFrom dplyr filter mutate group_by_at summarise ungroup `%>%`
 #' @importFrom tidyr gather spread separate unite
 #' @return data frame
 #' @export

@@ -50,7 +50,9 @@ gds_binary <- function(x, values = gds_values()){
 #' @inheritParams gds_compute_sum
 #' @importFrom dplyr matches mutate across
 #' @family gds_functions
-gds_alter_values <- function(data, values = gds_values(), reverse = FALSE,
+gds_alter_values <- function(data, 
+                             values = gds_values(), 
+                             reverse = FALSE,
                              cols = matches("01$|05$|07$|09$|15$|19$|21$|27$|29$|30$")){
   
   if(reverse){
@@ -60,7 +62,7 @@ gds_alter_values <- function(data, values = gds_values(), reverse = FALSE,
   
   mutate(data, 
          across({{cols}}, 
-         ~ gds_binary(.x, values = values))
+                ~ gds_binary(.x, values = values))
   )
 }
 
@@ -83,8 +85,14 @@ gds_compute_sum <- function(data,
 ){
   stopifnot(is_gds_values(values))
   tmp <- select(data, {{cols}} )
-  tmp <- gds_alter_values(tmp, values, reverse = FALSE, cols_rev)
-  tmp <- gds_alter_values(tmp, values, reverse = TRUE, -cols_rev)
+  tmp <- gds_alter_values(tmp, 
+                          values, 
+                          reverse = FALSE, 
+                          cols_rev)
+  tmp <- gds_alter_values(tmp, 
+                          values, 
+                          reverse = TRUE, 
+                          -cols_rev)
   rowSums(tmp)
 }
 
@@ -139,10 +147,11 @@ gds_compute <- function(data,
   
   stopifnot(is_gds_values(values))
   
-  tmp <- data.frame(sum = gds_compute_sum(data = data, 
-                                          cols = cols,
-                                          cols_rev = cols_rev,
-                                          values = values)
+  tmp <- data.frame(
+    sum = gds_compute_sum(data = data, 
+                          cols = cols,
+                          cols_rev = cols_rev,
+                          values = values)
   )
   tmp <- mutate(tmp, coded = gds_factorise(sum))
   if(!is.null(prefix)){

@@ -76,60 +76,64 @@ The total score of the EHI is more than just summing the values for each answer.
 The laterality quotient (LQ) uses the answers to all the questions.
 The LQ can take values from -100 to 100, and is calculated by taking the sum of all positive answers subtracting the sum of absolute values of the negative answers, divided by the sum of both, and multiplied by 100.
 
-\if{html}{\out{<div class="sourceCode r">}}\preformatted{katex::math_to_rd(equation)
-```\if{latex,text}{\n\\deqn{\n\\frac{\\Sigma(|positive|)-\\Sigma(|negative|)}{\\Sigma(|positive|)+\\Sigma(|negative|)}x100\n}{\n\\frac{\\Sigma(|positive|)-\\Sigma(|negative|)}{\\Sigma(|positive|)+\\Sigma(|negative|)}x100\n}}"
-attr(,"class")
-[1] "Rdtext"
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{katex::katex_html(equation)
+}\if{html}{\out{</div>}}\if{html}{\out{
+<!--html_preserve--><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mfrac><mrow><mi mathvariant="normal">Σ</mi><mo stretchy="false">(</mo><mi mathvariant="normal">∣</mi><mi>p</mi><mi>o</mi><mi>s</mi><mi>i</mi><mi>t</mi><mi>i</mi><mi>v</mi><mi>e</mi><mi mathvariant="normal">∣</mi><mo stretchy="false">)</mo><mo>−</mo><mi mathvariant="normal">Σ</mi><mo stretchy="false">(</mo><mi mathvariant="normal">∣</mi><mi>n</mi><mi>e</mi><mi>g</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>v</mi><mi>e</mi><mi mathvariant="normal">∣</mi><mo stretchy="false">)</mo></mrow><mrow><mi mathvariant="normal">Σ</mi><mo stretchy="false">(</mo><mi mathvariant="normal">∣</mi><mi>p</mi><mi>o</mi><mi>s</mi><mi>i</mi><mi>t</mi><mi>i</mi><mi>v</mi><mi>e</mi><mi mathvariant="normal">∣</mi><mo stretchy="false">)</mo><mo>+</mo><mi mathvariant="normal">Σ</mi><mo stretchy="false">(</mo><mi mathvariant="normal">∣</mi><mi>n</mi><mi>e</mi><mi>g</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>v</mi><mi>e</mi><mi mathvariant="normal">∣</mi><mo stretchy="false">)</mo></mrow></mfrac><mi>x</mi><mn>100</mn></mrow><annotation encoding="application/x-tex">\\frac\{\\Sigma(|positive|)-\\Sigma(|negative|)\}\{\\Sigma(|positive|)+\\Sigma(|negative|)\}x100</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.363em;vertical-align:-0.936em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">Σ</span><span class="mopen">(</span><span class="mord">∣</span><span class="mord mathnormal">p</span><span class="mord mathnormal">os</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">e</span><span class="mord">∣</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">Σ</span><span class="mopen">(</span><span class="mord">∣</span><span class="mord mathnormal">n</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">a</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">e</span><span class="mord">∣</span><span class="mclose">)</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">Σ</span><span class="mopen">(</span><span class="mord">∣</span><span class="mord mathnormal">p</span><span class="mord mathnormal">os</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">e</span><span class="mord">∣</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">Σ</span><span class="mopen">(</span><span class="mord">∣</span><span class="mord mathnormal">n</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">a</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">e</span><span class="mord">∣</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord mathnormal">x</span><span class="mord">100</span></span></span></span></span><!--/html_preserve-->
+}}
 
-
-
-
-### Laterality index
-The laterality index is based on the laterality quotient (above) and categorises answers into to categories, Left and Right. 
-The Oldfield (1971) paper mentions "indeterminate handedness" a couple of times in the paper, but the case for "true" ambidextrous is not made, and as such the inventory does not have official categories for that.
-As the index is based on the quotient, that ranges from -100 to 100, getting a perfect `0` LQ is very unlikely, and as indicated in the paper, such score is assumed to belong to the Right hand part of the scale.
-
-|min  |max |category|
-|--:  |--: |:--     |
-|-100 |  -1|left    |  
-|   0 | 100|right   |
-
-An alternate laterality index is also often employed, where scores between -40 and 40 are treated as ambidextrous.
-## Data requirements  
-One row of data should refer to a single questionnaire answered, and as such, if a person has answered multiple times, these should appear on separate rows with columns identifying ID and time point per observation.
-
-### Column names
-For ease, we recommend naming the columns in a consistent way, so the functions in this package become easier to use. 
-The LCBC database follows a naming scheme that prefixes all columns with `ehi_` and ends with a zero-padded double digit indicator of the question number.
-
-### Data values
-The cell values in the data should be coded from -2 through 0 to 2, and there should be a single value per question. 
-
-|value|category               |
-|--:  |:--                    |
-| -2  | Left hand dominance   |
-| -1  | Left hand preference  |
-|  0  | No preference         |
-|  1  | Right hand preference |
-|  2  | Right hand dominance  |
-## References
-Oldfield, RC (March 1971) _The assessment and analysis of handedness: The Edinburgh inventory_. Neuropsychologia. 9 (1): 97–113. [doi:10.1016/0028-3932(71)90067-4](https://www.sciencedirect.com/science/article/abs/pii/0028393271900674?via\%3Dihub)
-
-Verdino, M; Dingman, S (April 1998). _Two measures of laterality in handedness: the Edinburgh Handedness Inventory and the Purdue Pegboard test of manual dexterity_. Perceptual and Motor Skills. 86 (2): 476–8. [doi:10.2466/pms.1998.86.2.476](https://doi.org/10.2466\%2Fpms.1998.86.2.476)
-
-Knecht, S; Dräger, B; Deppe, M; Bobe, L; Lohmann, H; Flöel, A; Ringelstein, E-B; Henningsen, H (December 2000). _Handedness and hemispheric language dominance in healthy humans_. Brain. 123 (12): 2512–8. [doi:10.1093/brain/123.12.2512](https://doi.org/10.1093\%2Fbrain\%2F123.12.2512).
-\\itemize\{
- \\item\{ehi_factorise_lq - \}\{returns original two-factor specification\}
- \\item\{ehi_factorise_lqa - \}\{returns commonly used three-factor specification\}
-\}
-
-[1]: R:1
-[doi:10.1016/0028-3932(71)90067-4]: R:doi:10.1016/0028-3932(71)90067-4
-[doi:10.2466/pms.1998.86.2.476]: R:doi:10.2466/pms.1998.86.2.476
-[doi:10.1093/brain/123.12.2512]: R:doi:10.1093/brain/123.12.2512
-}\if{html}{\out{</div>}}
 }
 
+\subsection{Laterality index}{
+
+The laterality index is based on the laterality quotient (above) and categorises answers into to categories, Left and Right.
+The Oldfield (1971) paper mentions "indeterminate handedness" a couple of times in the paper, but the case for "true" ambidextrous is not made, and as such the inventory does not have official categories for that.
+As the index is based on the quotient, that ranges from -100 to 100, getting a perfect \code{0} LQ is very unlikely, and as indicated in the paper, such score is assumed to belong to the Right hand part of the scale.\tabular{rrl}{
+   min \tab max \tab category \cr
+   -100 \tab -1 \tab left \cr
+   0 \tab 100 \tab right \cr
+}
+
+
+An alternate laterality index is also often employed, where scores between -40 and 40 are treated as ambidextrous.
+}
+
+}
+
+\subsection{Data requirements}{
+
+One row of data should refer to a single questionnaire answered, and as such, if a person has answered multiple times, these should appear on separate rows with columns identifying ID and time point per observation.
+\subsection{Column names}{
+
+For ease, we recommend naming the columns in a consistent way, so the functions in this package become easier to use.
+The LCBC database follows a naming scheme that prefixes all columns with \code{ehi_} and ends with a zero-padded double digit indicator of the question number.
+}
+
+\subsection{Data values}{
+
+The cell values in the data should be coded from -2 through 0 to 2, and there should be a single value per question.\tabular{rl}{
+   value \tab category \cr
+   -2 \tab Left hand dominance \cr
+   -1 \tab Left hand preference \cr
+   0 \tab No preference \cr
+   1 \tab Right hand preference \cr
+   2 \tab Right hand dominance \cr
+}
+
+}
+
+}
+
+\subsection{References}{
+
+Oldfield, RC (March 1971) \emph{The assessment and analysis of handedness: The Edinburgh inventory}. Neuropsychologia. 9 (1): 97–113. \href{https://www.sciencedirect.com/science/article/abs/pii/0028393271900674?via\%3Dihub}{doi:10.1016/0028-3932(71)90067-4}
+
+Verdino, M; Dingman, S (April 1998). \emph{Two measures of laterality in handedness: the Edinburgh Handedness Inventory and the Purdue Pegboard test of manual dexterity}. Perceptual and Motor Skills. 86 (2): 476–8. \href{https://doi.org/10.2466\%2Fpms.1998.86.2.476}{doi:10.2466/pms.1998.86.2.476}
+
+Knecht, S; Dräger, B; Deppe, M; Bobe, L; Lohmann, H; Flöel, A; Ringelstein, E-B; Henningsen, H (December 2000). \emph{Handedness and hemispheric language dominance in healthy humans}. Brain. 123 (12): 2512–8. \href{https://doi.org/10.1093\%2Fbrain\%2F123.12.2512}{doi:10.1093/brain/123.12.2512}.
+\itemize{
+\item{ehi_factorise_lq - }{returns original two-factor specification}
+\item{ehi_factorise_lqa - }{returns commonly used three-factor specification}
+}
 }
 }
 \examples{

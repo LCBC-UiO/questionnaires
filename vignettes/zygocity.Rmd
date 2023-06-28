@@ -1,0 +1,49 @@
+---
+title: "Zygocity - Norwegian Twin registry questionnaire"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{zygo}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+options(rmarkdown.html_vignette.check_title = FALSE)
+frag_path <- here::here("man", "fragments", "zygocity")
+paths <- list.files(frag_path, "Rmd", full.names = TRUE)
+names(paths) <- gsub("\\.Rmd", "", basename(paths))
+paths <- as.list(paths)
+```
+
+## Background
+
+```{r child=paths$background, eval = TRUE} 
+```
+
+
+## Scoring
+```{r child=paths$scoring, eval = TRUE} 
+```
+
+```{r child=paths$score_coding, eval = TRUE} 
+```
+
+### Equation
+```{r child=paths$equation, eval = TRUE} 
+```
+
+## Data requirements  
+```{r child=paths$datareq, eval = TRUE} 
+```
+
+## Use the `zygo` functions
+Currently undocumented...
+
+## References  
+```{r child=paths$references, eval = TRUE} 
+```

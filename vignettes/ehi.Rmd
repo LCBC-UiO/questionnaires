@@ -103,10 +103,10 @@ This is in most cases best done using `dplyr::mutate`.
 ```{r}
 ehi_data %>% 
   mutate(
+    ehi_lq = ehi_compute_lq(ehi_data),
     ehi_nominal = ehi_factorise_nominal(ehi_01),
-    ehi_lq = ehi_compute_lq(.),
     ehi_lq_cat = ehi_factorise_lq(ehi_lq),
-    ehi_lqa_cat = ehi_factorise_lqa(ehi_lq)
+    ehi_lqa_cat = ehi_factorise_lqa(ehi_lq),
   )
 ```
 

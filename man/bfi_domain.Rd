@@ -63,26 +63,27 @@ Calculate the domains of the BFI-2
 }
 \section{Functions}{
 \itemize{
-\item \code{bfi_domain_extravers}: Calculate the extraversion domain.
+\item \code{bfi_domain_extravers()}: Calculate the extraversion domain.
 
-\item \code{bfi_domain_agreeable}: Calculate the agreeableness domain.
+\item \code{bfi_domain_agreeable()}: Calculate the agreeableness domain.
 
-\item \code{bfi_domain_conscient}: Calculate the conscientiousness domain.
+\item \code{bfi_domain_conscient()}: Calculate the conscientiousness domain.
 
-\item \code{bfi_domain_negemotion}: Calculate the negative emotionality domain.
+\item \code{bfi_domain_negemotion()}: Calculate the negative emotionality domain.
 
-\item \code{bfi_domain_openminded}: Calculate the open-minded domain.
+\item \code{bfi_domain_openminded()}: Calculate the open-minded domain.
+
 }}
-
 \examples{
+library(dplyr)
 # Making some test data
 test_data <- dplyr::tibble(
   id = rep(1:10, each = 60),
   name = rep(sprintf("bfi_\%02d", 1:60), 10),
   value = lapply(1:10, function(x){
     sample(1:5, size = 60, replace = TRUE)
-  }) |> unlist()
-) |> 
+  }) \%>\% unlist()
+) \%>\% 
   tidyr::pivot_wider()
   
 bfi_domain_extravers(test_data)

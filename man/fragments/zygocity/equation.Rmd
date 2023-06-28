@@ -1,0 +1,44 @@
+```{r, include=FALSE}
+html <- knitr::is_html_output()
+rd <- !html
+```
+
+The higher the absolute value of the final score, the more certain / clearer the classification. 
+For answers that reveal greater uncertainty about the similarity (e.g. a greater proportion of "almost" and "don't know"), the value will be closer to zero.
+
+
+## Pair formula
+For pairs where both have answered, the pair's average values for all score values are first calculated. 
+That is Drop = (Drop1 + Drop2) / 2, etc., where Drop1 is the score value of the response from twin 1 and Drop2 is the score value of the response from twin 2 in the same pair. 
+
+```{r, include=FALSE}
+equation <- "zygocity = (\\frac{drop{_1} + drop{_2}}{2} * 1.494) + (\\frac{stranger{_1} + stranger{_2}}{2} * 0.647 ) + (\\frac{dexter{_1} + dexter{_2}}{2} * 0.458) + (\\frac{belief{_1} + belief{_2}}{2} * 0.417) + (\\frac{voice{_1} + voice{_2}}{2} * 0.347) + 0.007"
+
+```
+
+```{r, include=html, echo = FALSE}
+katex::katex_html(equation)
+```
+
+```{r, include=rd, results='asis', echo = FALSE}
+katex::math_to_rd(equation)
+```
+
+The sign of this "pair score" is then used to determine zygocity in the same way as for "single": Negative value means double, positive value means single.
+
+## Single formula
+If only one twin in the pair has responded, the following is calculated:
+
+```{r, include=FALSE}
+equation <- "zygocity = drop{_1} * 2.111 + stranger{_1} * 0.691 + dexter{_1} * 0.366 + belief{_1} * 0.481 + eye{_1} * 0.394 - 0.087"
+```
+
+```{r, include=html, echo = FALSE}
+katex::katex_html(equation)
+```
+
+```{r, include=rd, results='asis', echo = FALSE}
+katex::math_to_rd(equation)
+```
+
+The sign of this "single score" is then used to determine the zygocity: Negative value means double egg, positive value means single egg.

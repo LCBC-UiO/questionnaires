@@ -88,7 +88,8 @@ ipaq_compute_met <- function(minutes = ipaq_2,
 #' ipaq_compute_sum(vigorous , moderate, light)
 ipaq_compute_sum <- function(vigorous, moderate, light){
   tmp <- data.frame(vigorous, moderate, light)
-  rowSums(tmp, na.rm=T)
+  val <- rowSums(tmp, na.rm = TRUE)
+  ifelse(val == 0 , NA, val)
 }
 
 
@@ -120,18 +121,23 @@ ipaq_compute_sum <- function(vigorous, moderate, light){
 #' @importFrom dplyr select across everything pull rowwise c_across
 ipaq_compute <- function(data, 
                          mets = ipaq_mets(),
-                         light_days = ipaq_1b,
-                         light_mins = ipaq_2,
+                         light_days = ipaq_5b,
+                         light_mins = ipaq_6,
                          mod_days = ipaq_3b,
                          mod_mins = ipaq_4,
-                         vig_days = ipaq_5b,
-                         vig_mins = ipaq_6,
+                         vig_days = ipaq_1b,
+                         vig_mins = ipaq_2,
                          prefix = "ipaq_",
                          keep_all = TRUE){
   tmp <- rowwise(data)
   tmp <- transmute(tmp,
-                   .valid1 = sum(c_across(c({{light_mins}}, {{mod_mins}}, {{vig_mins}})), na.rm = TRUE),
-                   .valid2 = sum(c_across(c({{light_mins}}, {{mod_mins}})), na.rm = TRUE),
+                   .valid1 = sum(c_across(c({{light_mins}}, 
+                                            {{mod_mins}}, 
+                                            {{vig_mins}})), 
+                                 na.rm = TRUE),
+                   .valid2 = sum(c_across(c({{light_mins}}, 
+                                            {{mod_mins}})), 
+                                 na.rm = TRUE),
                    met_vigorous = ipaq_compute_met(minutes = {{vig_mins}}, 
                                                    days = {{vig_days}}, 
                                                    mets$vigorous),

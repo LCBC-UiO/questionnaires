@@ -139,17 +139,17 @@ Buysse et al. (1989) \href{https://www.sciencedirect.com/science/article/pii/016
 }
 \section{Functions}{
 \itemize{
-\item \code{psqi_compute_comp2}: calculate the component 2 (sleep latency)
+\item \code{psqi_compute_comp2()}: calculate the component 2 (sleep latency)
 
-\item \code{psqi_compute_comp3}: calculate the component 3 (sleep duratione)
+\item \code{psqi_compute_comp3()}: calculate the component 3 (sleep duratione)
 
-\item \code{psqi_compute_comp4}: calculate the component 4 (habitual sleep efficiency)
+\item \code{psqi_compute_comp4()}: calculate the component 4 (habitual sleep efficiency)
 
-\item \code{psqi_compute_comp5}: calculate the component 5 (sleep disturbance)
+\item \code{psqi_compute_comp5()}: calculate the component 5 (sleep disturbance)
 
-\item \code{psqi_compute_comp7}: calculate the component 7 (daytime dysfunction)
+\item \code{psqi_compute_comp7()}: calculate the component 7 (daytime dysfunction)
 
-\item \code{psqi_compute_global}: calculate the global scores, sum of all components
+\item \code{psqi_compute_global()}: calculate the global scores, sum of all components
+
 }}
-
 \concept{psqi_functions}

@@ -1,0 +1,25 @@
+
+### Coding
+"Form value" is the value the answer option has in the data file.
+"Score value" is the value used in the algorithm when zygocity is calculated.
+
+| Variable            | Answer option           | Form value | Score value |
+| --------            | --------------------    | ---:       | ---:        | 
+| Drop                | Like two drops of water | 1          |           1 | 
+|                     | Like most siblings      | 2          |          -1 | 
+|                     | Don't know              | 3          |           0 | 
+| Stranger            | Often                   | 1          |           1 | 
+|                     | Occasionally            | 2          |           0 | 
+|                     | Never                   | 3          |          -1 | 
+|                     | Don't know              | 4          |           0 | 
+| Belief              | Monozygotic             | 1          |           1 | 
+|                     | Dizygotic               | 2          |          -1 | 
+|                     | Don't know              | 3          |           0 | 
+| Eye, Voice & Dexter | Exactly the same        | 1          |           1 | 
+|                     | Almost like             | 2          |           0 | 
+|                     | Different               | 3          |          -1 | 
+|                     | Don't know              | 4          |           0 | 
+
+No answer option is used directly in the calculations, only the score values. 
+In the following, it is these values (-1, 0 or 1) that are used in the algorithms. 
+E.g. has Drop in the formula value 1 for a positive answer to whether the twins were equal to two drops of water.

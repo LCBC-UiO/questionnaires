@@ -1,6 +1,6 @@
 Package: questionnaires
 Title: Package with functions to calculate components and sums for LCBC questionnaires
-Version: 0.0.2
+Version: 0.0.3
 Authors@R: person("Athanasia Mo", "Mowinckel", 
         email = "a.m.mowinckel@psykologi.uio.no", 
         role = c("aut", "cre"),
@@ -12,7 +12,8 @@ Imports:
     dplyr (>= 1.0.0),
     tidyr,
     lubridate,
-    lfactors
+    lfactors,
+    cli
 Suggests: 
     testthat (>= 2.1.0),
     here,
@@ -21,7 +22,7 @@ Suggests:
     rmarkdown,
     covr,
     katex
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.3
 Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr
 URL: https://github.com/LCBC-UiO/questionnaires

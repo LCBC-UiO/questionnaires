@@ -128,46 +128,47 @@ Calculate the facets of the BFI-2
 }
 \section{Functions}{
 \itemize{
-\item \code{bfi_facet_sociability}: Calculate the sociability facet.
+\item \code{bfi_facet_sociability()}: Calculate the sociability facet.
 
-\item \code{bfi_facet_assertive}: Calculate the assertive facet.
+\item \code{bfi_facet_assertive()}: Calculate the assertive facet.
 
-\item \code{bfi_facet_energy}: Calculate the energy level facet.
+\item \code{bfi_facet_energy()}: Calculate the energy level facet.
 
-\item \code{bfi_facet_compassion}: Calculate the compassion facet.
+\item \code{bfi_facet_compassion()}: Calculate the compassion facet.
 
-\item \code{bfi_facet_respectful}: Calculate the respectfulness facet.
+\item \code{bfi_facet_respectful()}: Calculate the respectfulness facet.
 
-\item \code{bfi_facet_trust}: Calculate the trust facet.
+\item \code{bfi_facet_trust()}: Calculate the trust facet.
 
-\item \code{bfi_facet_organization}: Calculate the organization facet.
+\item \code{bfi_facet_organization()}: Calculate the organization facet.
 
-\item \code{bfi_facet_productive}: Calculate the productive facet.
+\item \code{bfi_facet_productive()}: Calculate the productive facet.
 
-\item \code{bfi_facet_responsibility}: Calculate the responsibility facet.
+\item \code{bfi_facet_responsibility()}: Calculate the responsibility facet.
 
-\item \code{bfi_facet_anxiety}: Calculate the anxiety facet.
+\item \code{bfi_facet_anxiety()}: Calculate the anxiety facet.
 
-\item \code{bfi_facet_depression}: Calculate the depression facet.
+\item \code{bfi_facet_depression()}: Calculate the depression facet.
 
-\item \code{bfi_facet_emovolatility}: Calculate the emotional volatiliity facet.
+\item \code{bfi_facet_emovolatility()}: Calculate the emotional volatiliity facet.
 
-\item \code{bfi_facet_intcuriosity}: Calculate the intellectual curiosity facet.
+\item \code{bfi_facet_intcuriosity()}: Calculate the intellectual curiosity facet.
 
-\item \code{bfi_facet_aestheticsens}: Calculate the aesthetic sensibility facet.
+\item \code{bfi_facet_aestheticsens()}: Calculate the aesthetic sensibility facet.
 
-\item \code{bfi_facet_imagination}: Calculate the creative imagination facet.
+\item \code{bfi_facet_imagination()}: Calculate the creative imagination facet.
+
 }}
-
 \examples{
+library(dplyr)
 # Making some test data
-test_data <- dplyr::tibble(
+test_data <- tibble(
   id = rep(1:10, each = 60),
   name = rep(sprintf("bfi_\%02d", 1:60), 10),
   value = lapply(1:10, function(x){
     sample(1:5, size = 60, replace = TRUE)
-  }) |> unlist()
-) |> 
+  }) \%>\% unlist()
+) \%>\% 
   tidyr::pivot_wider()
   
 bfi_facet_sociability(test_data)
