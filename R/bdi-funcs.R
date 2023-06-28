@@ -24,13 +24,13 @@
 #' )
 #'
 #' # Row with all components missing, gets sum 0
-#' data %>%
+#' data |>
 #'   bind_cols(bdi_sum = bdi_compute_sum(data))
 #' # Do not allow any missing values
-#' data %>%
+#' data |>
 #'   bind_cols(bdi_sum = bdi_compute_sum(data, max_missing = 0))
 #' # Allow one missing value
-#' data %>%
+#' data |>
 #'   bind_cols(bdi_sum = bdi_compute_sum(data, max_missing = 2))
 #' @importFrom dplyr transmute rename_all bind_cols
 #' @template keep_all 
@@ -40,9 +40,12 @@ bdi_compute = function(data,
                        max_missing = 0, 
                        prefix = "bdi_",
                        keep_all = TRUE){
-  tmp <- transmute(data, 
-                   sum = bdi_compute_sum(data, cols, max_missing = max_missing),
-                   coded = bdi_factorise(sum))
+  tmp <- transmute(
+    data, 
+    sum = bdi_compute_sum(data, 
+                          {{cols}}, 
+                          max_missing = max_missing),
+    coded = bdi_factorise(sum))
   if(!is.null(prefix))
     tmp <- rename_all(tmp, ~paste0(prefix, .x))
   
@@ -116,7 +119,7 @@ bdi_factorise <- function(bdi_sum){
 #'
 #' @inheritParams bdi_compute_sum
 #' @param sep separator to use for the column names
-#' @importFrom dplyr filter mutate group_by_at summarise ungroup '%>%'
+#' @importFrom dplyr filter mutate group_by_at summarise ungroup
 #' @importFrom tidyr gather spread separate unite
 #' @return data frame
 #' @export
@@ -136,14 +139,14 @@ bdi_factorise <- function(bdi_sum){
 bdi_restructure <- function(data, 
                             cols = matches("[0-9]_[0-9]"),
                             sep = "_"){
-  gather(data, key, val, {{cols}}) %>% 
-    filter(!is.na(val)) %>% 
-    separate(key, c("key", "q", "val")) %>% 
-    mutate(val = as.integer(val)) %>% 
-    group_by_at(dplyr::vars(-val)) %>% 
-    summarise(val = mean(val)) %>% 
-    unite(key, c(key, q), sep = sep) %>% 
-    spread(key, val) %>% 
+  gather(data, key, val, {{cols}}) |> 
+    filter(!is.na(val)) |> 
+    separate(key, c("key", "q", "val")) |> 
+    mutate(val = as.integer(val)) |> 
+    group_by_at(dplyr::vars(-val)) |> 
+    summarise(val = mean(val)) |> 
+    unite(key, c(key, q), sep = sep) |> 
+    spread(key, val) |> 
     ungroup()
 }
 

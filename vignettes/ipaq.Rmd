@@ -121,8 +121,8 @@ data <- data.frame(
 
 data
 
-data %>% 
-  ipaq_time_alter() %>% 
+data |> 
+  ipaq_time_alter() |> 
   # Keeping only calculated values for show, you like want this to be TRUE (default)
   ipaq_compute(keep_all = FALSE)
 ```

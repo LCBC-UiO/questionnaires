@@ -10,7 +10,9 @@
 psqi_compute_time_in_bed <- function(risingtime, bedtime, 
                                 risingtime_func = lubridate::hm,
                                 bedtime_func = lubridate::hm){
-  tmp <- risingtime_func(risingtime, quiet = TRUE) - bedtime_func(bedtime, quiet = TRUE)
+  tmp <- risingtime_func(
+    risingtime, quiet = TRUE) - 
+    bedtime_func(bedtime, quiet = TRUE)
   period_to_seconds(if_else(as.numeric(tmp) < 0, hours(24) + tmp, tmp))/3600
 }
 
@@ -184,7 +186,8 @@ psqi_compute <- function(data,
   
   if(5 %in% components){
     tmp <- mutate(tmp, 
-                  comp5_problems = psqi_compute_comp5(data, sleep_troubles))
+                  comp5_problems = psqi_compute_comp5(data,
+                                                      {{sleep_troubles}}))
     nn = c(nn, "comp5_problems")
   } 
   

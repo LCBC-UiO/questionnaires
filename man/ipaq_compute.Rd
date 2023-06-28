@@ -13,12 +13,12 @@ ipaq_compute_sum(vigorous, moderate, light)
 ipaq_compute(
   data,
   mets = ipaq_mets(),
-  light_days = ipaq_1b,
-  light_mins = ipaq_2,
+  light_days = ipaq_5b,
+  light_mins = ipaq_6,
   mod_days = ipaq_3b,
   mod_mins = ipaq_4,
-  vig_days = ipaq_5b,
-  vig_mins = ipaq_6,
+  vig_days = ipaq_1b,
+  vig_mins = ipaq_2,
   prefix = "ipaq_",
   keep_all = TRUE
 )
@@ -124,11 +124,11 @@ E L Lesher 1, J S Berryhill (1994), Validation of the Geriatric Depression Scale
 }
 \section{Functions}{
 \itemize{
-\item \code{ipaq_compute_met}: Calculate mets of an activity type
+\item \code{ipaq_compute_met()}: Calculate mets of an activity type
 
-\item \code{ipaq_compute_sum}: Calculate the IPAQ sum based on activities and mets
+\item \code{ipaq_compute_sum()}: Calculate the IPAQ sum based on activities and mets
+
 }}
-
 \examples{
 ipaq_vig_mins <- c(60, 20, 60, 25, 90, 20, 0, 75, 60, 30)
 ipaq_vig_days <- c(1, 3, 2, 5, 6, 1, 1, 2, 2, 4)

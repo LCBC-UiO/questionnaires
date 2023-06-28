@@ -80,19 +80,19 @@ ehi_data
 ```
 
 ```{r}
-ehi_data %>% 
+ehi_data |> 
   ehi_compute_lq()
 ```
 
 These values can then be categorized into the two different laterality factors we have available.
 
 ```{r}
-ehi_data %>% 
-  ehi_compute_lq() %>% 
+ehi_data |> 
+  ehi_compute_lq() |> 
   ehi_factorise_lq()
 
-ehi_data %>% 
-  ehi_compute_lq() %>% 
+ehi_data |> 
+  ehi_compute_lq() |> 
   ehi_factorise_lqa()
 ```
 
@@ -101,19 +101,19 @@ In most cases, people will want to add the data derived from the `ehi` functions
 This is in most cases best done using `dplyr::mutate`.
 
 ```{r}
-ehi_data %>% 
+ehi_data |> 
   mutate(
+    ehi_lq = ehi_compute_lq(ehi_data),
     ehi_nominal = ehi_factorise_nominal(ehi_01),
-    ehi_lq = ehi_compute_lq(.),
     ehi_lq_cat = ehi_factorise_lq(ehi_lq),
-    ehi_lqa_cat = ehi_factorise_lqa(ehi_lq)
+    ehi_lqa_cat = ehi_factorise_lqa(ehi_lq),
   )
 ```
 
 Because this is a little cumbersome to remember, a convenience function is made that will add columns using this naming convention.
 
 ```{r}
-ehi_data %>% 
+ehi_data |> 
   ehi_compute()
 ```
 

@@ -88,7 +88,8 @@ ipaq_compute_met <- function(minutes = ipaq_2,
 #' ipaq_compute_sum(vigorous , moderate, light)
 ipaq_compute_sum <- function(vigorous, moderate, light){
   tmp <- data.frame(vigorous, moderate, light)
-  rowSums(tmp, na.rm=T)
+  val <- rowSums(tmp, na.rm = TRUE)
+  ifelse(val == 0 , NA, val)
 }
 
 

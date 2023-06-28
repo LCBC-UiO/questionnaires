@@ -1,13 +1,16 @@
-#' @rdname bfi
+#' @name bfi
 #' @title Big 5 Inventory
 #' @description {
 #' ```{r child="man/fragments/bfi/background.Rmd"}
 #' ```
+#' 
 #' ```{r child="man/fragments/bfi/scoring.Rmd"}
 #' ```
+#' 
 #' ## Data requirements
 #' ```{r child="man/fragments/bfi/datareq.Rmd"}
 #' ```
+#' 
 #' ## References
 #' ```{r child="man/fragments/bfi/references.Rmd"}
 #' ```
@@ -470,7 +473,7 @@ bfi_facet_imagination <- function(data,
 
 # utils ----
 bfi_sums <- function(data, cols, reverse = TRUE, ...){
-  tmp <- select(data, cols)
+  tmp <- select(data, {{cols}})
   
   if(reverse){
     tmp <- bfi_reversal(tmp, ...)

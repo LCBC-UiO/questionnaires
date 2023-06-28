@@ -88,11 +88,11 @@ Groth-Marnat G. (1990). \href{https://books.google.no/books?id=ldF5oRto-HAC&lpg=
 }
 \section{Functions}{
 \itemize{
-\item \code{bdi_compute_sum}: Compute the BDI sum based on a data.frame containing the BDI data. Returns a numeric vector.
+\item \code{bdi_compute_sum()}: Compute the BDI sum based on a data.frame containing the BDI data. Returns a numeric vector.
 
-\item \code{bdi_factorise}: Create a factor based on the BDI sum, with the cut-off points as described in original paper.
+\item \code{bdi_factorise()}: Create a factor based on the BDI sum, with the cut-off points as described in original paper.
+
 }}
-
 \examples{
 # Example of treatment of missing values
 library(dplyr)
@@ -103,12 +103,12 @@ bdi_02 = c(1, 1, NA_real_, 2, NA_real_)
 )
 
 # Row with all components missing, gets sum 0
-data \%>\%
+data |>
   bind_cols(bdi_sum = bdi_compute_sum(data))
 # Do not allow any missing values
-data \%>\%
+data |>
   bind_cols(bdi_sum = bdi_compute_sum(data, max_missing = 0))
 # Allow one missing value
-data \%>\%
+data |>
   bind_cols(bdi_sum = bdi_compute_sum(data, max_missing = 2))
 }

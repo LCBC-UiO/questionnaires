@@ -63,17 +63,17 @@ Calculate the domains of the BFI-2
 }
 \section{Functions}{
 \itemize{
-\item \code{bfi_domain_extravers}: Calculate the extraversion domain.
+\item \code{bfi_domain_extravers()}: Calculate the extraversion domain.
 
-\item \code{bfi_domain_agreeable}: Calculate the agreeableness domain.
+\item \code{bfi_domain_agreeable()}: Calculate the agreeableness domain.
 
-\item \code{bfi_domain_conscient}: Calculate the conscientiousness domain.
+\item \code{bfi_domain_conscient()}: Calculate the conscientiousness domain.
 
-\item \code{bfi_domain_negemotion}: Calculate the negative emotionality domain.
+\item \code{bfi_domain_negemotion()}: Calculate the negative emotionality domain.
 
-\item \code{bfi_domain_openminded}: Calculate the open-minded domain.
+\item \code{bfi_domain_openminded()}: Calculate the open-minded domain.
+
 }}
-
 \examples{
 # Making some test data
 test_data <- dplyr::tibble(
