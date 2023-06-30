@@ -4,7 +4,7 @@
 \alias{zygo_calc}
 \title{Zygocity - Calculate item}
 \usage{
-zygo_calc(x, type, n = "single")
+zygo_calc(x, type, n = "single", recode = TRUE)
 }
 \arguments{
 \item{x}{integer vector of answers to one
@@ -17,6 +17,9 @@ from. "drop", "stranger, "dexterity",
 
 \item{n}{string indicating number of twins in
 the pair available. Either "single" or "pair".}
+
+\item{recode}{logical indicating if data should be
+recoded from 1-5(7) to -1. 0. 1.}
 }
 \value{
 single value of calculated score based

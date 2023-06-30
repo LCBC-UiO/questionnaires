@@ -24,40 +24,45 @@
 #' @param twin_col column that codes for twin pairs. Each twin
 #'    should have the same identifier here.
 #' @template prefix 
+#' @param recode logical indicating if data should be recoded
+#'       from 1-5(7) to -1. 0. 1.
 #' @template keep_all 
-#'
-#' @return data.frame with computed values
-#' @export
 #' @importFrom dplyr mutate transmute ungroup rowwise rows_patch group_by
 #' @importFrom dplyr rename_all select bind_cols group_by row_number
-#'
-# #' @examples
+#' @return data.frame with computed values
+#' @export
 zygo_compute <- function(data,
                          twin_col,
+                         recode = TRUE,
                          prefix = "zygo_",
                          keep_all = FALSE){
+  .zc <- function(...){
+    zygo_calc(..., recode = recode)
+  }
   tmp <- ungroup(data)
   tmp <- mutate(tmp, .id = row_number())
-  tmpr <- dplyr::rowwise(tmp)
-  tmpr <- transmute(tmpr,
-            .id,
-            drop       = zygo_calc(drop, "drop", "single"),
-            stranger   = zygo_calc(stranger, "stranger", "single"),
-            dexterity  = zygo_calc(dexterity, "dexterity", "single"),
-            voice      = zygo_calc(voice, "voice", "single"),
-            belief     = zygo_calc(belief, "belief", "single"),
-            eye        = NA_real_
-            )
+  tmpr <- rowwise(tmp)
+  tmpr <- transmute(
+    tmpr,
+    .id,
+    drop       = .zc(drop, "drop", "single"),
+    stranger   = .zc(stranger, "stranger", "single"),
+    dexterity  = .zc(dexterity, "dexterity", "single"),
+    voice      = .zc(voice, "voice", "single"),
+    belief     = .zc(belief, "belief", "single"),
+    eye        = NA_real_
+  )
   
-  tmpg <- dplyr::group_by(tmp, {{twin_col}})
-  tmpg <- transmute(tmpg,
-                    .id,
-                    drop       = zygo_calc(drop, "drop", "pair"),
-                    stranger   = zygo_calc(stranger, "stranger", "pair"),
-                    dexterity  = zygo_calc(dexterity, "dexterity", "pair"),
-                    eye        = zygo_calc(eye, "eye", "pair"),
-                    belief     = zygo_calc(belief, "belief", "pair"),
-                    voice      = NA_real_
+  tmpg <- group_by(tmp, {{twin_col}})
+  tmpg <- transmute(
+    tmpg,
+    .id,
+    drop       = .zc(drop, "drop", "pair"),
+    stranger   = .zc(stranger, "stranger", "pair"),
+    dexterity  = .zc(dexterity, "dexterity", "pair"),
+    eye        = .zc(eye, "eye", "pair"),
+    belief     = .zc(belief, "belief", "pair"),
+    voice      = NA_real_
   )
   tmp <- rows_patch(tmpg, tmpr, by = ".id")
   tmp <- ungroup(tmp)
@@ -85,6 +90,8 @@ zygo_compute <- function(data,
 #'          "voice", "eye", or "belief".
 #' @param n string indicating number of twins in 
 #'          the pair available. Either "single" or "pair".
+#' @param recode logical indicating if data should be 
+#'          recoded from 1-5(7) to -1. 0. 1.
 #' @return single value of calculated score based
 #'         on recoded vector and multiplied with
 #'         correct factor weight.
@@ -94,8 +101,9 @@ zygo_compute <- function(data,
 #' zygo_calc(c(1), type = "eye")
 #' zygo_calc(c(1,3), type = "belief", n = "pair")
 #' zygo_calc(c(4), type = "voice")
-zygo_calc <- function(x, type, n = "single"){
-  x <- zygo_recode(x, type)
+zygo_calc <- function(x, type, n = "single", recode = TRUE){
+  if(recode)
+    x <- zygo_recode(x, type)
   zygo_fct(x, type, n)
 }
 
@@ -136,7 +144,7 @@ zygo_fct <- function(x, type, n = "single"){
   if(is.null(fct)){
     cli::cli_alert(sprintf(
       "Cannot calculate '%s' for '%s' data",
-            type, n))
+      type, n))
     return(NA)
   }
   

@@ -44,6 +44,24 @@ paths <- as.list(paths)
 ## Use the `zygo` functions
 Currently undocumented...
 
+```{r}
+library(questionnaires)
+library(dplyr)
+zygo <- tibble(
+  id = 1:10,
+  twinpair = rep(1:5, each = 2),
+  drop = c(1, 2, 3, NA, 2, 2, 1, 1, NA, 2),
+  stranger = c(1, 2, 4, NA, 2, 3, 3, 1, NA, 2),
+  dexterity = c(1, 1, 3, NA, 2, 2, 1, 2, NA, 1),
+  voice = c(2, 2, 3, NA, 2, 2, 1, 1, NA, 1),
+  eye = c(2, 2, 2, NA, 2, 2, 1, 1, NA, 2),
+  belief = c(1, 1, 2, NA, 2, 2, 1, 1, NA, 2)
+)
+
+zygo_compute(zygo, twin_col = twinpair, recode = FALSE)
+
+```
+
 ## References  
 ```{r child=paths$references, eval = TRUE} 
 ```
