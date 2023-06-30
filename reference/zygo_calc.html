@@ -181,7 +181,7 @@ depending on whether one or both twins have responded to the questionnaire.</p><
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">zygo_calc</span><span class="op">(</span><span class="va">x</span>, <span class="va">type</span>, n <span class="op">=</span> <span class="st">"single"</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">zygo_calc</span><span class="op">(</span><span class="va">x</span>, <span class="va">type</span>, n <span class="op">=</span> <span class="st">"single"</span>, recode <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -201,6 +201,11 @@ from. "drop", "stranger, "dexterity",
 <dt>n</dt>
 <dd><p>string indicating number of twins in
 the pair available. Either "single" or "pair".</p></dd>
+
+
+<dt>recode</dt>
+<dd><p>logical indicating if data should be
+recoded from 1-5(7) to -1. 0. 1.</p></dd>
 
 </dl></div>
     <div id="value">

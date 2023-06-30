@@ -317,11 +317,11 @@ coding schema.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 31</span></span></span>
 <span><span class="co">#&gt;      ID gds_01 gds_02 gds_03 gds_04 gds_05 gds_06 gds_07 gds_08 gds_09 gds_10</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1      1      1      0      1      0      1      0      1      1      1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2      1      0      0      0      0      0      0      0      1      1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3      1      0      0      0      0      0      1      1      0      0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4      1      1      0      1      0      0      0      1      0      0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>     5      0      0      0      0      1      1      1      0      1      1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1      1      0      1      1      1      1      0      1      1      1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2      0      0      1      0      0      1      1      0      0      1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3      0      0      0      0      0      1      0      0      1      1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4      0      1      0      0      1      1      1      1      1      0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>     5      0      1      0      0      1      1      0      0      0      0</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 20 more variables: gds_11 &lt;dbl&gt;, gds_12 &lt;dbl&gt;, gds_13 &lt;dbl&gt;, gds_14 &lt;dbl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   gds_15 &lt;dbl&gt;, gds_16 &lt;dbl&gt;, gds_17 &lt;dbl&gt;, gds_18 &lt;dbl&gt;, gds_19 &lt;dbl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   gds_20 &lt;dbl&gt;, gds_21 &lt;dbl&gt;, gds_22 &lt;dbl&gt;, gds_23 &lt;dbl&gt;, gds_24 &lt;dbl&gt;,</span></span></span>
@@ -338,7 +338,7 @@ defaults should work, and as such you need not specify this.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gds_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="../reference/gds_compute.html">gds_compute_sum</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 15 11 14 18 17</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 13 15 16 17 17</span></span></code></pre></div>
 <p>To add a column with total GDS to a data set, place the argument
 inside a <code>mutate</code>, here a column named <code>gds_total</code>
 will appear as the right-most column.</p>
@@ -350,11 +350,11 @@ will appear as the right-most column.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 32</span></span></span>
 <span><span class="co">#&gt;      ID gds_01 gds_02 gds_03 gds_04 gds_05 gds_06 gds_07 gds_08 gds_09 gds_10</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1      1      1      0      1      0      1      0      1      1      1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2      1      0      0      0      0      0      0      0      1      1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3      1      0      0      0      0      0      1      1      0      0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4      1      1      0      1      0      0      0      1      0      0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>     5      0      0      0      0      1      1      1      0      1      1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1      1      0      1      1      1      1      0      1      1      1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2      0      0      1      0      0      1      1      0      0      1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3      0      0      0      0      0      1      0      0      1      1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4      0      1      0      0      1      1      1      1      1      0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>     5      0      1      0      0      1      1      0      0      0      0</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 21 more variables: gds_11 &lt;dbl&gt;, gds_12 &lt;dbl&gt;, gds_13 &lt;dbl&gt;, gds_14 &lt;dbl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   gds_15 &lt;dbl&gt;, gds_16 &lt;dbl&gt;, gds_17 &lt;dbl&gt;, gds_18 &lt;dbl&gt;, gds_19 &lt;dbl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   gds_20 &lt;dbl&gt;, gds_21 &lt;dbl&gt;, gds_22 &lt;dbl&gt;, gds_23 &lt;dbl&gt;, gds_24 &lt;dbl&gt;,</span></span></span>
@@ -385,11 +385,11 @@ be derived by using the <code>gds_factorise</code> function.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 33</span></span></span>
 <span><span class="co">#&gt;      ID gds_01 gds_02 gds_03 gds_04 gds_05 gds_06 gds_07 gds_08 gds_09 gds_10</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1      1      1      0      1      0      1      0      1      1      1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2      1      0      0      0      0      0      0      0      1      1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3      1      0      0      0      0      0      1      1      0      0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4      1      1      0      1      0      0      0      1      0      0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>     5      0      0      0      0      1      1      1      0      1      1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1      1      0      1      1      1      1      0      1      1      1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2      0      0      1      0      0      1      1      0      0      1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3      0      0      0      0      0      1      0      0      1      1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4      0      1      0      0      1      1      1      1      1      0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>     5      0      1      0      0      1      1      0      0      0      0</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 22 more variables: gds_11 &lt;dbl&gt;, gds_12 &lt;dbl&gt;, gds_13 &lt;dbl&gt;, gds_14 &lt;dbl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   gds_15 &lt;dbl&gt;, gds_16 &lt;dbl&gt;, gds_17 &lt;dbl&gt;, gds_18 &lt;dbl&gt;, gds_19 &lt;dbl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   gds_20 &lt;dbl&gt;, gds_21 &lt;dbl&gt;, gds_22 &lt;dbl&gt;, gds_23 &lt;dbl&gt;, gds_24 &lt;dbl&gt;,</span></span></span>
@@ -408,11 +408,11 @@ that.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 33</span></span></span>
 <span><span class="co">#&gt;      ID gds_01 gds_02 gds_03 gds_04 gds_05 gds_06 gds_07 gds_08 gds_09 gds_10</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1      1      1      0      1      0      1      0      1      1      1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2      1      0      0      0      0      0      0      0      1      1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3      1      0      0      0      0      0      1      1      0      0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4      1      1      0      1      0      0      0      1      0      0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>     5      0      0      0      0      1      1      1      0      1      1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1      1      0      1      1      1      1      0      1      1      1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2      0      0      1      0      0      1      1      0      0      1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3      0      0      0      0      0      1      0      0      1      1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4      0      1      0      0      1      1      1      1      1      0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>     5      0      1      0      0      1      1      0      0      0      0</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 22 more variables: gds_11 &lt;dbl&gt;, gds_12 &lt;dbl&gt;, gds_13 &lt;dbl&gt;, gds_14 &lt;dbl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   gds_15 &lt;dbl&gt;, gds_16 &lt;dbl&gt;, gds_17 &lt;dbl&gt;, gds_18 &lt;dbl&gt;, gds_19 &lt;dbl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   gds_20 &lt;dbl&gt;, gds_21 &lt;dbl&gt;, gds_22 &lt;dbl&gt;, gds_23 &lt;dbl&gt;, gds_24 &lt;dbl&gt;,</span></span></span>
@@ -425,10 +425,10 @@ remaining data structure.</p>
 <code class="sourceCode R"><span><span class="va">gds_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="../reference/gds_compute.html">gds_compute</a></span><span class="op">(</span>keep_all <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   gds_sum       gds_coded</span></span>
-<span><span class="co">#&gt; 1      15 mild depression</span></span>
-<span><span class="co">#&gt; 2      11 mild depression</span></span>
-<span><span class="co">#&gt; 3      14 mild depression</span></span>
-<span><span class="co">#&gt; 4      18 mild depression</span></span>
+<span><span class="co">#&gt; 1      13 mild depression</span></span>
+<span><span class="co">#&gt; 2      15 mild depression</span></span>
+<span><span class="co">#&gt; 3      16 mild depression</span></span>
+<span><span class="co">#&gt; 4      17 mild depression</span></span>
 <span><span class="co">#&gt; 5      17 mild depression</span></span></code></pre></div>
 </div>
 </div>

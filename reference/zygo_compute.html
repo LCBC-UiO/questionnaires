@@ -128,7 +128,7 @@ Its a series of questions probing the similarities between twins, to determine i
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">zygo_compute</span><span class="op">(</span><span class="va">data</span>, <span class="va">twin_col</span>, prefix <span class="op">=</span> <span class="st">"zygo_"</span>, keep_all <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">zygo_compute</span><span class="op">(</span><span class="va">data</span>, <span class="va">twin_col</span>, recode <span class="op">=</span> <span class="cn">TRUE</span>, prefix <span class="op">=</span> <span class="st">"zygo_"</span>, keep_all <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -140,6 +140,11 @@ Its a series of questions probing the similarities between twins, to determine i
 <dt>twin_col</dt>
 <dd><p>column that codes for twin pairs. Each twin
 should have the same identifier here.</p></dd>
+
+
+<dt>recode</dt>
+<dd><p>logical indicating if data should be recoded
+from 1-5(7) to -1. 0. 1.</p></dd>
 
 
 <dt>prefix</dt>
