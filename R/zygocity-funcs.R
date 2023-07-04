@@ -45,28 +45,45 @@ zygo_compute <- function(data,
   tmpr <- transmute(
     tmpr,
     .id,
+    eye        = NA_real_,
     drop       = .zc(drop, "drop", "single"),
     stranger   = .zc(stranger, "stranger", "single"),
     dexterity  = .zc(dexterity, "dexterity", "single"),
     voice      = .zc(voice, "voice", "single"),
     belief     = .zc(belief, "belief", "single"),
-    eye        = NA_real_
+  )
+  tmpr <- mutate(
+    tmpr,
+    score = sum(c_across(c(-1:-2))) - 0.087,
+    type = if_else(!is.na(score), "single", NA_character_)
   )
   
   tmpg <- group_by(tmp, {{twin_col}})
   tmpg <- transmute(
     tmpg,
     .id,
+    voice      = NA_real_,
     drop       = .zc(drop, "drop", "pair"),
     stranger   = .zc(stranger, "stranger", "pair"),
     dexterity  = .zc(dexterity, "dexterity", "pair"),
     eye        = .zc(eye, "eye", "pair"),
-    belief     = .zc(belief, "belief", "pair"),
-    voice      = NA_real_
+    belief     = .zc(belief, "belief", "pair")
   )
+  tmpg <- rowwise(tmpg)
+  tmpg <- mutate(
+    tmpg,
+    score = sum(c_across(c(-1:-3))) + 0.007,
+    type = if_else(!is.na(score), "pair", NA_character_)
+  )
+  
   tmp <- rows_patch(tmpg, tmpr, by = ".id")
   tmp <- ungroup(tmp)
   tmp <- select(tmp, -.id, -{{twin_col}})
+  tmp <- mutate(tmp, 
+         zygocity = case_when(
+           sign(score) == 1 ~ "monozygote",
+           sign(score) == -1 ~ "dizygote"
+         ))
   
   if(!is.null(prefix))
     tmp <- rename_all(tmp, ~paste0(prefix, .x))
@@ -75,6 +92,10 @@ zygo_compute <- function(data,
     tmp <- bind_cols(data, tmp)
   
   tmp
+}
+
+zygo_compute_sum <- function(data, type = c("pair", "single")){
+  
 }
 
 #' Zygocity - Calculate item
