@@ -151,7 +151,7 @@
       <h1 data-toc-skip>Zygocity - Norwegian Twin registry
 questionnaire</h1>
             
-            <h4 data-toc-skip class="date">2023-06-30</h4>
+            <h4 data-toc-skip class="date">2023-07-04</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/LCBC-UiO/questionnaires/blob/HEAD/vignettes/zygocity.Rmd" class="external-link"><code>vignettes/zygocity.Rmd</code></a></small>
       <div class="hidden name"><code>zygocity.Rmd</code></div>
@@ -483,19 +483,20 @@ that was answered (i.e. <code>1</code>, <code>2</code>, or
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/zygo_compute.html">zygo_compute</a></span><span class="op">(</span><span class="va">zygo</span>, twin_col <span class="op">=</span> <span class="va">twinpair</span>, recode <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 × 6</span></span></span>
-<span><span class="co">#&gt;    zygo_drop zygo_stranger zygo_dexterity zygo_eye zygo_belief zygo_voice</span></span>
-<span><span class="co">#&gt;        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>      3.17          1.04          0.366    0.788       0.481      0.694</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>      3.17          1.04          0.366    0.788       0.481      0.694</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>      4.48          2.59          1.37    <span style="color: #BB0000;">NA</span>           0.834      1.04 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>     <span style="color: #BB0000;">NA</span>            <span style="color: #BB0000;">NA</span>            <span style="color: #BB0000;">NA</span>       <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>      4.22          1.73          0.732    0.788       0.962      0.694</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>      4.22          1.73          0.732    0.788       0.962      0.694</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>      2.11          1.38          0.549    0.394       0.481      0.347</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      2.11          1.38          0.549    0.394       0.481      0.347</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     <span style="color: #BB0000;">NA</span>            <span style="color: #BB0000;">NA</span>            <span style="color: #BB0000;">NA</span>       <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      2.99          1.29          0.458   <span style="color: #BB0000;">NA</span>           0.834      0.347</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 × 9</span></span></span>
+<span><span class="co">#&gt;    zygo_voice zygo_drop zygo_stranger zygo_dexterity zygo_eye zygo_belief</span></span>
+<span><span class="co">#&gt;         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>      0.694      3.17          1.04          0.366    0.788       0.481</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>      0.694      3.17          1.04          0.366    0.788       0.481</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>      1.04       4.48          2.59          1.37    <span style="color: #BB0000;">NA</span>           0.834</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>     <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>            <span style="color: #BB0000;">NA</span>            <span style="color: #BB0000;">NA</span>       <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>      0.694      4.22          1.73          0.732    0.788       0.962</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>      0.694      4.22          1.73          0.732    0.788       0.962</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>      0.347      2.11          1.38          0.549    0.394       0.481</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      0.347      2.11          1.38          0.549    0.394       0.481</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>            <span style="color: #BB0000;">NA</span>            <span style="color: #BB0000;">NA</span>       <span style="color: #BB0000;">NA</span>          <span style="color: #BB0000;">NA</span>    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      0.347      2.99          1.29          0.458   <span style="color: #BB0000;">NA</span>           0.834</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 3 more variables: zygo_score &lt;dbl&gt;, zygo_type &lt;chr&gt;, zygo_zygocity &lt;chr&gt;</span></span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
