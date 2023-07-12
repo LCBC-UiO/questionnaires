@@ -128,7 +128,14 @@ Its a series of questions probing the similarities between twins, to determine i
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">zygo_compute</span><span class="op">(</span><span class="va">data</span>, <span class="va">twin_col</span>, recode <span class="op">=</span> <span class="cn">TRUE</span>, prefix <span class="op">=</span> <span class="st">"zygo_"</span>, keep_all <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">zygo_compute</span><span class="op">(</span></span>
+<span>  <span class="va">data</span>,</span>
+<span>  <span class="va">twin_col</span>,</span>
+<span>  <span class="va">cols</span>,</span>
+<span>  recode <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  prefix <span class="op">=</span> <span class="st">"zygo_"</span>,</span>
+<span>  keep_all <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -140,6 +147,10 @@ Its a series of questions probing the similarities between twins, to determine i
 <dt>twin_col</dt>
 <dd><p>column that codes for twin pairs. Each twin
 should have the same identifier here.</p></dd>
+
+
+<dt>cols</dt>
+<dd><p>columns that contain the zygocity data. Use tidy-selectors</p></dd>
 
 
 <dt>recode</dt>
