@@ -4,13 +4,22 @@
 \alias{zygo_compute}
 \title{Compute weighted zygocity}
 \usage{
-zygo_compute(data, twin_col, recode = TRUE, prefix = "zygo_", keep_all = FALSE)
+zygo_compute(
+  data,
+  twin_col,
+  cols,
+  recode = TRUE,
+  prefix = "zygo_",
+  keep_all = FALSE
+)
 }
 \arguments{
 \item{data}{dara.frame with the relevant data}
 
 \item{twin_col}{column that codes for twin pairs. Each twin
 should have the same identifier here.}
+
+\item{cols}{columns that contain the zygocity data. Use tidy-selectors}
 
 \item{recode}{logical indicating if data should be recoded
 from 1-5(7) to -1. 0. 1.}

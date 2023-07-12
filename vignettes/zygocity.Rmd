@@ -58,7 +58,10 @@ zygo <- tibble(
   belief = c(1, 1, 2, NA, 2, 2, 1, 1, NA, 2)
 )
 
-zygo_compute(zygo, twin_col = twinpair, recode = FALSE)
+zygo_compute(zygo, 
+             twin_col = twinpair, 
+             cols = 3:6, 
+             recode = FALSE)
 
 ```
 

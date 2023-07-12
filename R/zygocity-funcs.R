@@ -23,79 +23,106 @@
 #' @template data 
 #' @param twin_col column that codes for twin pairs. Each twin
 #'    should have the same identifier here.
+#' @param cols columns that contain the zygocity data. Use tidy-selectors
 #' @template prefix 
 #' @param recode logical indicating if data should be recoded
 #'       from 1-5(7) to -1. 0. 1.
 #' @template keep_all 
-#' @importFrom dplyr mutate transmute ungroup rowwise rows_patch group_by
-#' @importFrom dplyr rename_all select bind_cols group_by row_number
+#' @importFrom dplyr mutate transmute ungroup rowwise bind_cols
+#' @importFrom dplyr rename_all select group_by row_number
 #' @return data.frame with computed values
 #' @export
 zygo_compute <- function(data,
                          twin_col,
+                         cols,
                          recode = TRUE,
                          prefix = "zygo_",
                          keep_all = FALSE){
   .zc <- function(...){
-    zygo_calc(..., recode = recode)
+    suppressWarnings(zygo_calc(..., recode = recode))
   }
+  if(missing(twin_col))
+    cli::cli_abort(sprintf("Missing column identifying twins: 'twin_col'"))
+  if(missing(cols))
+    cli::cli_abort(sprintf("Missing column identifying Zygocity data. Use tidy-selectors to indicate correct data."))
   tmp <- ungroup(data)
   tmp <- mutate(tmp, .id = row_number())
-  tmpr <- rowwise(tmp)
+  tmp <- zygo_type(tmp, {{twin_col}}, {{cols}})
+  tmp <- group_by(tmp, .id)
   tmpr <- transmute(
-    tmpr,
+    tmp,
     .id,
-    eye        = NA_real_,
-    drop       = .zc(drop, "drop", "single"),
-    stranger   = .zc(stranger, "stranger", "single"),
-    dexterity  = .zc(dexterity, "dexterity", "single"),
-    voice      = .zc(voice, "voice", "single"),
-    belief     = .zc(belief, "belief", "single"),
+    .type,
+    eye        = .zc(eye, "eye", .type),
+    drop       = .zc(drop, "drop", .type),
+    stranger   = .zc(stranger, "stranger", .type),
+    dexterity  = .zc(dexterity, "dexterity", .type),
+    voice      = .zc(voice, "voice", .type),
+    belief     = .zc(belief, "belief", .type)
   )
-  tmpr <- mutate(
-    tmpr,
-    score = sum(c_across(c(-1:-2))) - 0.087,
-    type = if_else(!is.na(score), "single", NA_character_)
-  )
-  
-  tmpg <- group_by(tmp, {{twin_col}})
-  tmpg <- transmute(
-    tmpg,
-    .id,
-    voice      = NA_real_,
-    drop       = .zc(drop, "drop", "pair"),
-    stranger   = .zc(stranger, "stranger", "pair"),
-    dexterity  = .zc(dexterity, "dexterity", "pair"),
-    eye        = .zc(eye, "eye", "pair"),
-    belief     = .zc(belief, "belief", "pair")
-  )
-  tmpg <- rowwise(tmpg)
-  tmpg <- mutate(
-    tmpg,
-    score = sum(c_across(c(-1:-3))) + 0.007,
-    type = if_else(!is.na(score), "pair", NA_character_)
-  )
-  
-  tmp <- rows_patch(tmpg, tmpr, by = ".id")
-  tmp <- ungroup(tmp)
-  tmp <- select(tmp, -.id, -{{twin_col}})
-  tmp <- mutate(tmp, 
-         zygocity = case_when(
-           sign(score) == 1 ~ "monozygote",
-           sign(score) == -1 ~ "dizygote"
-         ))
+  tmpr <- zygo_compute_sum(tmpr, .type)
+  tmpr <- select(tmpr, -.id, -.type)
   
   if(!is.null(prefix))
-    tmp <- rename_all(tmp, ~paste0(prefix, .x))
+    tmpr <- rename_all(tmpr, ~paste0(prefix, .x))
   
   if(keep_all) 
-    tmp <- bind_cols(data, tmp)
+    tmpr <- bind_cols(data, tmpr)
   
-  tmp
+  tmpr
 }
 
-zygo_compute_sum <- function(data, type = c("pair", "single")){
-  
+#' Find how many twins have answered
+#' 
+#' The zygocity calculations are different depending
+#' on wheather both twins have answered the
+#' questionnaire or not. This convenience function
+#' help determine, based on the column coding for 
+#' twin pairs, if one or two twins are present in 
+#' the data with complete viable data.
+#' If both twins are in the data, but one twin has
+#' incomplete data, the function will return 
+#' "single" for the remaining twin.
+#'
+#' @inheritParams zygo_compute 
+#'
+#' @return full data frame with twin type appended
+#' @export
+#' @importFrom dplyr starts_with group_by mutate
+#' @importFrom dplyr case_when ungroup select
+#' @examples
+zygo_type <- function(data, 
+                      twin_col, 
+                      cols = starts_with("zygo")) {
+  tmp <- group_by(data, {{twin_col}})
+  tmp <- mutate(tmp,
+                .tt = sum(c_across({{cols}})),
+                .type = case_when(
+                  is.na(.tt) ~ "single",
+                  length({{twin_col}}) == 1 ~ "single",
+                  length({{twin_col}}) == 2 ~ "pair"
+                )
+  )
+  tmp <- ungroup(tmp, {{twin_col}})
+  select(tmp, -.tt)  
+}
+
+zygo_compute_sum <- function(data, type_col){
+  tmpr <- rowwise(data)
+  tmpr <- mutate(
+    tmpr,
+    score = case_when(
+      {{type_col}} == "single" ~ 
+        sum(c_across(c(voice, drop, stranger, dexterity, belief))) -0.087,
+      {{type_col}} == "pair" ~ 
+        sum(c_across(c(eye, drop, stranger, dexterity, belief))) +0.007
+    ),
+    zygocity = case_when(
+      sign(score) == 1 ~ "monozygote",
+      sign(score) == -1 ~ "dizygote"
+    )
+  )
+  ungroup(tmpr)
 }
 
 #' Zygocity - Calculate item
@@ -125,10 +152,27 @@ zygo_compute_sum <- function(data, type = c("pair", "single")){
 zygo_calc <- function(x, type, n = "single", recode = TRUE){
   if(recode)
     x <- zygo_recode(x, type)
-  zygo_fct(x, type, n)
+  zygo_weighted(x, type, n)
 }
 
-zygo_fct <- function(x, type, n = "single"){
+#' Calculate weighted zygocity item
+#' 
+#' Calculate the item score of a question.
+#' Function takes a single vector, with information
+#' on the question type and the twin type ('single' 
+#' or 'pair') and calculates the zygocity item score.
+#'
+#' @param x vector or recoded zygocity data (-1, 0, 1)
+#' @param type string. one of 'drop', 'stranger', 
+#'    'dexterity', 'voice', 'eye' or 'belief.'
+#' @param n string, 'pair' if both twins have answered,
+#'  'single' if not.
+#'
+#' @return numeric vector of weighted data
+#' @export
+#'
+#' @examples
+zygo_weighted <- function(x, type, n = "single"){
   n <- match.arg(n, c("single", "pair"))
   type <- match.arg(type,
                     c("drop", 
@@ -163,7 +207,7 @@ zygo_fct <- function(x, type, n = "single"){
   }
   
   if(is.null(fct)){
-    cli::cli_alert(sprintf(
+    cli::cli_warn(sprintf(
       "Cannot calculate '%s' for '%s' data",
       type, n))
     return(NA)
@@ -227,8 +271,11 @@ zygo_recode_07 <- zygo_recode_06
 
 if(getRversion() >= "2.15.1")  
   utils::globalVariables(c(".id",
+                           ".tt",
+                           ".type",
                            "stranger",
                            "dexterity",
                            "voice",
                            "belief",
-                           "eye"))
+                           "eye",
+                           "score"))
